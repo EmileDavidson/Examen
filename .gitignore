@@ -1,3 +1,35 @@
+.vs
+*.sln
+*.csproj
+*.csproj.meta
+/Library
+/Temp
+/UnityPackageManager
+/obj
+/QCAR
+/App/
+/Application
+/UserSettings
+/Logs
+/UWP
+/**/Assets/Dependencies
+/**/Assets/Dependencies.meta
+/**/MSbuild
+/MSBuildForUnity.Common.props
+/**/StreamingAssets/Movies
+/**/.editorconfig
+/Builds/WSAPlayer
+/**/Packages/packages-lock.json
+/**/*.sln.DotSettings.user
+/**/.idea
+*.sfk
+*.sfk.meta
+/Assets/VelicusEditorUserSettings/
+/Assets/VelicusEditorUserSettings.meta
+/Assets/StreamingAssets/VelicusUserSettings/
+/Assets/StreamingAssets/VelicusUserSettings.meta
+
+
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
