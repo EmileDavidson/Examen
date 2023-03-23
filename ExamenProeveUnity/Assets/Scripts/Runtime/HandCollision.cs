@@ -1,53 +1,59 @@
-﻿using System;
+﻿using Runtime.Dictonaries;
+using Runtime.Enums;
+using Toolbox.Attributes;
 using Toolbox.MethodExtensions;
 using UnityEngine;
 
-
-public class HandCollision : MonoBehaviour
+namespace Runtime
 {
-    [SerializeField] private bool isRightHand;
-    [SerializeField] private ConfigurableJoint shoulderJoint;
-    
-    private GameObject _grabbedObject;
-    private Rigidbody _rigidbody;
-
-    private int _isMouseRight;
-
-    private void Start()
+    [RequireComponent(typeof(Rigidbody))]
+    public class HandCollision : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+        [SerializeField] private MouseType mouseType;
+        [SerializeField] private ConfigurableJoint shoulderJoint;
 
-    private void Update()
-    {
-        if (Input.GetMouseButton(_isMouseRight))
+        private GameObject _grabbedObject;
+        private Rigidbody _rigidbody;
+
+        private void Awake()
         {
-            if (_isMouseRight == 0 && !isRightHand) shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
-            else if (_isMouseRight == 1 && isRightHand) shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
-
-            if (_grabbedObject != null && !_grabbedObject.HasComponent<FixedJoint>())
-            {
-                FixedJoint fixedJoint = _grabbedObject.AddComponent<FixedJoint>();
-                fixedJoint.connectedBody = _rigidbody;
-            }
+            _rigidbody ??= GetComponent<Rigidbody>();
         }
 
-        if (Input.GetMouseButtonUp(_isMouseRight))
+        private void Update()
         {
-            if (_isMouseRight == 0) shoulderJoint.targetRotation = Quaternion.Euler(0f, 0f, 0f);
+            HandleMousePressed();
+            HandleMouseRelease();
+        }
+
+        private void HandleMouseRelease()
+        {
+            if (!Input.GetMouseButtonUp(MouseKeyDict.Dict[mouseType])) return;
             
-            if (_grabbedObject != null) _grabbedObject.RemoveComponent<FixedJoint>();
+            shoulderJoint.targetRotation = Quaternion.Euler(0f, 0f, 0f);
+            
+            if (_grabbedObject is null) return;
+
+            _grabbedObject.RemoveComponent<FixedJoint>();
+            _grabbedObject = null;
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.transform.HasComponent<IGrabbable>()) return;
-        _grabbedObject = collision.transform.gameObject;
-    }
+        private void HandleMousePressed()
+        {
+            if (!Input.GetMouseButton(MouseKeyDict.Dict[mouseType])) return;
 
-    private void OnCollisionExit(Collision other)
-    {
-        _grabbedObject = null;
+            shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
+
+            if (_grabbedObject is null) return;
+
+            FixedJoint fixedJoint = _grabbedObject.GetOrAddComponent<FixedJoint>();
+            fixedJoint.connectedBody = _rigidbody;
+        }
+        
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (!collision.transform.HasComponent<Grabbable>()) return;
+            _grabbedObject = collision.transform.gameObject;
+        }
     }
 }
