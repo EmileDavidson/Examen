@@ -165,20 +165,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11219537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11219533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 860aa64517a8d8149877e3bd360ddddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightArmJoint: {fileID: 1054179224}
-  leftArmJoint: {fileID: 1804348405}
 --- !u!4 &16257415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1700714270343211992, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
@@ -684,9 +670,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612044119}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 0.0000001
+  m_Drag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1055,6 +1041,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 850259080}
+--- !u!114 &1526527635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526527625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3514823637c14f689405f8fd798aa8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseType: 1
+  shoulderJoint: {fileID: 1054179224}
 --- !u!1 &1676591533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1336487369282024287, guid: e78acc57068af8e4caa23159482d11f4, type: 3}
@@ -1295,6 +1295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3514823637c14f689405f8fd798aa8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseType: 0
+  shoulderJoint: {fileID: 1804348405}
 --- !u!54 &2054295816 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 2962996640632164298, guid: e78acc57068af8e4caa23159482d11f4, type: 3}
