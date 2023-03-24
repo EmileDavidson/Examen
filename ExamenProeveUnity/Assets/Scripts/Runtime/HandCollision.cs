@@ -14,6 +14,7 @@ namespace Runtime
 
         private GameObject _grabbedObject;
         private Rigidbody _rigidbody;
+        private FixedJoint _grabbedObjectJoined;
 
         private bool _isGrabbingObject = false;
 
@@ -36,7 +37,7 @@ namespace Runtime
             
             if (_grabbedObject is null) return;
 
-            _grabbedObject.RemoveComponent<FixedJoint>();
+            Destroy(_grabbedObjectJoined);
             _grabbedObject = null;
             _isGrabbingObject = false;
         }
@@ -50,8 +51,8 @@ namespace Runtime
             if(_isGrabbingObject) return;
             if (_grabbedObject is null) return;
 
-            FixedJoint fixedJoint = _grabbedObject.GetOrAddComponent<FixedJoint>();
-            fixedJoint.connectedBody = _rigidbody;
+            _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
+            _grabbedObjectJoined.connectedBody = _rigidbody;
             _isGrabbingObject = true;
         }
         

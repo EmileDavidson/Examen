@@ -8,8 +8,8 @@ namespace Runtime.Dictonaries
     {
         public static Dictionary<MouseType, int> Dict = new Dictionary<MouseType, int>()
         {
-            {MouseType.Left, 0},
-            {MouseType.Right, 1}
+            {MouseType.Left, 1},
+            {MouseType.Right, 0}
         };
     }
 }
