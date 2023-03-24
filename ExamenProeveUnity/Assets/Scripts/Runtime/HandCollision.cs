@@ -15,6 +15,8 @@ namespace Runtime
         private GameObject _grabbedObject;
         private Rigidbody _rigidbody;
 
+        private bool _isGrabbingObject = false;
+
         private void Awake()
         {
             _rigidbody ??= GetComponent<Rigidbody>();
@@ -36,18 +38,21 @@ namespace Runtime
 
             _grabbedObject.RemoveComponent<FixedJoint>();
             _grabbedObject = null;
+            _isGrabbingObject = false;
         }
 
         private void HandleMousePressed()
         {
             if (!Input.GetMouseButton(MouseKeyDict.Dict[mouseType])) return;
-
+            
             shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
 
+            if(_isGrabbingObject) return;
             if (_grabbedObject is null) return;
 
             FixedJoint fixedJoint = _grabbedObject.GetOrAddComponent<FixedJoint>();
             fixedJoint.connectedBody = _rigidbody;
+            _isGrabbingObject = true;
         }
         
         private void OnCollisionEnter(Collision collision)
