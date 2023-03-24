@@ -1,13 +1,12 @@
 ﻿using Runtime.Dictonaries;
 using Runtime.Enums;
-using Toolbox.Attributes;
 using Toolbox.MethodExtensions;
 using UnityEngine;
 
 namespace Runtime
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class HandCollision : MonoBehaviour
+    public class PlayerGrab : MonoBehaviour
     {
         [SerializeField] private MouseType mouseType;
         [SerializeField] private ConfigurableJoint shoulderJoint;
@@ -60,6 +59,14 @@ namespace Runtime
         {
             if (!collision.transform.HasComponent<Grabbable>()) return;
             _grabbedObject = collision.transform.gameObject;
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (_isGrabbingObject) return;
+            if (other.transform.gameObject != _grabbedObject) return;
+            
+            _grabbedObject = null;
         }
     }
 }
