@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Runtime.Player
 {
@@ -8,14 +9,13 @@ namespace Runtime.Player
         [SerializeField] private ConfigurableJoint hipJoint;
         [SerializeField] private Rigidbody hip;
         [SerializeField] private Animator targetAnimator;
+        [SerializeField] private PlayerInputHandler playerInputHandler;
 
         private float _horizontalMoveValue = 0f;
         private float _verticalMoveValue = 0f;
 
         private bool _walk;
         private static readonly int Walk = Animator.StringToHash("Walk");
-
-        [SerializeField] private PlayerInputHandler _playerInputHandler;
 
         private void Start()
         {
@@ -24,41 +24,39 @@ namespace Runtime.Player
 
         private void SetupInputHandler()
         {
-            _playerInputHandler ??= GetComponent<PlayerInputHandler>();
-            if (_playerInputHandler is null)
+            playerInputHandler ??= GetComponent<PlayerInputHandler>();
+            if (playerInputHandler is null)
             {
                 Debug.LogWarning("playerInputHandler is null");
                 return;
             }
 
-            _playerInputHandler.onMoveValueChanged.AddListener((value) =>
+            playerInputHandler.onMoveValueChanged.AddListener((value) =>
             {
-                print(value.ToString());
                 _horizontalMoveValue = value.x;
                 _verticalMoveValue = value.y;
             });
 
-            _playerInputHandler.onMoveStopped.AddListener(() =>
+            playerInputHandler.onMoveCanceled.AddListener(() =>
             {
                 _horizontalMoveValue = 0f;
                 _verticalMoveValue = 0f;
             });
-    }
-
-    private void Update()
-    {
-        Vector3 direction = new Vector3(_horizontalMoveValue, 0f, _verticalMoveValue).normalized;
-        _walk = (direction.magnitude >= 0.1f);
-
-        if (_walk)
-        {
-            var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
-            hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-            hip.AddForce(direction * speed);
         }
 
-        targetAnimator.SetBool(Walk, _walk);
-    }
-}
+        private void Update()
+        {
+            Vector3 direction = new Vector3(_horizontalMoveValue, 0f, _verticalMoveValue).normalized;
+            _walk = (direction.magnitude >= 0.1f);
 
+            if (_walk)
+            {
+                var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+                hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+                hip.AddForce(direction * speed);
+            }
+
+            targetAnimator.SetBool(Walk, _walk);
+        }
+    }
 }
