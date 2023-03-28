@@ -2,8 +2,8 @@
 
 ## General Information
 
-* Branch Types
-* Branch Naming
+* [Branch Types](branch-types.md)
+* [Branch Naming](branch-naming.md)
 
 ## How To's
 
