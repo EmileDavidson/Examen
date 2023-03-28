@@ -1,9 +1,9 @@
 # Navigation
 
-## General Information
+## Conventions
 
-* [Branch Types](branch-types.md)
-* [Branch Naming](branch-naming.md)
+* [Branch Types](conventions/branch-types.md)
+* [Branch Naming](conventions/branch-naming.md)
 
 ## How To's
 
@@ -11,4 +11,4 @@
 * Publish Branch
 * Commit changes
 * Pull request
-* Merge with main
+* Merge with develop

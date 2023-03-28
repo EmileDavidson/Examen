@@ -22,4 +22,4 @@ Hotfix branches are used to quickly fix critical issues or bugs that need to be 
 
 ### import/{name}
 
-Import branches are used to import work examples of this 'work' could be 3d models, sprites, etc. the work will not be added to the scene and would just be placed in the assets folder so it can be used in other branches ones it's merged to the develop
+Import branches are used to import work examples of this 'work' could be 3d models, sprites, particle effects, etc. (note that this is not limited from outside work but could also include unity particles, shaders and more) the work added is not added in any scene and would just be placed in the assets folder so it can be used in other branches ones it's merged to the develop&#x20;
