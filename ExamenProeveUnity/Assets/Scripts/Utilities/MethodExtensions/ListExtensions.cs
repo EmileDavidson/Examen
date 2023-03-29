@@ -157,6 +157,5 @@ namespace Toolbox.MethodExtensions
         {
             return oldList.Select(oldItem => oldItem as TU).ToList();
         }
-
     }
 }
