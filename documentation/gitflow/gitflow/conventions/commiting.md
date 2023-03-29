@@ -13,11 +13,10 @@ Good Examples:
 1. Fix typo in header text
 2. Add button to submit form
 3. Update styling of homepage
-4. Remove deprecated code
-5. Refactor login function
-6. Implement feature to sort items alphabetically
-7. WIP - Update player scripts to new input system
-8. UNSAFE WIP - Update player scripts to new input system
+4. Add player movement
+5. Remove deprecated code&#x20;
+6. WIP - Update player scripts to new input system
+7. UNSAFE WIP - Update player scripts to new input system
 
 #### Bad Examples:
 
