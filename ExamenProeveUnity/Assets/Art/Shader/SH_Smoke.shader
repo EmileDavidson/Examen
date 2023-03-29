@@ -8,6 +8,7 @@ Shader "Game/VFX/Smoke"
 		_MainColor("MainColor", Color) = (1,1,1,0)
 		_ShadowColor("ShadowColor", Color) = (0,0,0,0)
 		_Disolvescale("Disolve scale", Float) = 1
+		_ShadowAmount("ShadowAmount", Range( 0 , 1)) = 0.32
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
@@ -31,6 +32,7 @@ Shader "Game/VFX/Smoke"
 		};
 
 		uniform float4 _MainColor;
+		uniform float _ShadowAmount;
 		uniform float4 _ShadowColor;
 		uniform float _Disolvescale;
 		uniform float _Cutoff = 0.5;
@@ -83,7 +85,7 @@ Shader "Game/VFX/Smoke"
 			#endif //aseld
 			float3 ase_worldNormal = i.worldNormal;
 			float dotResult29 = dot( ase_worldlightDir , ase_worldNormal );
-			float temp_output_67_0 = saturate( step( 0.32 , dotResult29 ) );
+			float temp_output_67_0 = saturate( step( _ShadowAmount , dotResult29 ) );
 			float4 Albodio100 = ( ( _MainColor * temp_output_67_0 ) + ( ( 1.0 - temp_output_67_0 ) * _ShadowColor ) );
 			o.Emission = Albodio100.rgb;
 			o.Alpha = 1;
@@ -202,7 +204,7 @@ Node;AmplifyShaderEditor.ColorNode;57;-1344,112;Inherit;False;Property;_MainColo
 Node;AmplifyShaderEditor.SimpleAddOpNode;56;-944,256;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.RegisterLocalVarNode;100;-816,256;Inherit;False;Albodio;-1;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SaturateNode;67;-1536,240;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;95;-1952,192;Inherit;False;Constant;_ShadowAmount;ShadowAmount;4;0;Create;True;0;0;0;False;0;False;0.32;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;95;-1952,192;Inherit;False;Property;_ShadowAmount;ShadowAmount;4;0;Create;True;0;0;0;False;0;False;0.32;0.32;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.DotProductOpNode;29;-1824,304;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.WorldNormalVector;30;-2048,448;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.WorldSpaceLightDirHlpNode;28;-2080,304;Inherit;False;False;1;0;FLOAT;0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
@@ -233,4 +235,4 @@ WireConnection;67;0;31;0
 WireConnection;29;0;28;0
 WireConnection;29;1;30;0
 ASEEND*/
-//CHKSM=4AFD55A6AEF3133B591778E301C296FEAD0106BA
+//CHKSM=4128476752CF458828E6AA18B427D882CD5F6828
