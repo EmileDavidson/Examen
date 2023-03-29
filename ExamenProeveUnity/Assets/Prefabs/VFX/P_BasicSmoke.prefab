@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8435061242418358787}
   - component: {fileID: 2175984851640267579}
   m_Layer: 0
-  m_Name: VFX_BasicSmoke
+  m_Name: P_BasicSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
