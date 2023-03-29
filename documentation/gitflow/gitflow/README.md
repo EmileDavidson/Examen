@@ -20,11 +20,11 @@ this is the general flow we used. there might be some rare instances where it is
 
 ## Conventions
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td>Branch Types</td><td></td><td><a href="conventions/branch-types.md">branch-types.md</a></td></tr><tr><td></td><td>Branch Naming</td><td></td><td><a href="conventions/branch-naming.md">branch-naming.md</a></td></tr><tr><td></td><td>Commiting</td><td></td><td><a href="conventions/commiting.md">commiting.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td><strong>Branch Types</strong><br>what types do we use or can we use </td><td></td><td><a href="conventions/branch-types.md">branch-types.md</a></td></tr><tr><td></td><td><strong>Branch Naming</strong><br>how do we name our branches</td><td></td><td><a href="conventions/branch-naming.md">branch-naming.md</a></td></tr><tr><td></td><td><strong>Commiting</strong><br>how do we create a good title and description</td><td></td><td><a href="conventions/commiting.md">commiting.md</a></td></tr></tbody></table>
 
 ## How To's&#x20;
 
 All software we used to manage GitHub note that this is just the basics of how to use it and explain only what we use to manage GitHub itself not the things we can do locally like stashing and or discarding.
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td>GitHub Desktop</td><td></td><td><a href="how-tos/github-desktop.md">github-desktop.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td><strong>GitHub Desktop</strong><br>how do we use GitHub Desktop</td><td></td><td><a href="how-tos/github-desktop.md">github-desktop.md</a></td></tr></tbody></table>
 
