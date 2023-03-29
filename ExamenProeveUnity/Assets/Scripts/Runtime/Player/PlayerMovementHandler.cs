@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
 namespace Runtime.Player
 {
     public class PlayerMovementHandler : MonoBehaviour
     {
+        [SerializeField] private PlayerInput playerInput;
         [SerializeField] private float speed = 5f;
         [SerializeField] private ConfigurableJoint hipJoint;
         [SerializeField] private Rigidbody hip;
         [SerializeField] private Animator targetAnimator;
-        [SerializeField] private PlayerInputHandler playerInputHandler;
 
         private float _horizontalMoveValue = 0f;
         private float _verticalMoveValue = 0f;
@@ -17,33 +17,22 @@ namespace Runtime.Player
         private bool _walk;
         private static readonly int Walk = Animator.StringToHash("Walk");
 
-        private void Start()
+        
+        /// <summary>
+        /// OnMovement is an event method from PlayerInput that is called when the player uses the move input action
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnMovement(InputValue context)
         {
-            SetupInputHandler();
+            var value = context.Get<Vector2>();
+            _horizontalMoveValue = value.x;
+            _verticalMoveValue = value.y;
         }
 
-        private void SetupInputHandler()
-        {
-            playerInputHandler ??= GetComponent<PlayerInputHandler>();
-            if (playerInputHandler is null)
-            {
-                Debug.LogWarning("playerInputHandler is null");
-                return;
-            }
-
-            playerInputHandler.onMoveValueChanged.AddListener((value) =>
-            {
-                _horizontalMoveValue = value.x;
-                _verticalMoveValue = value.y;
-            });
-
-            playerInputHandler.onMoveCanceled.AddListener(() =>
-            {
-                _horizontalMoveValue = 0f;
-                _verticalMoveValue = 0f;
-            });
-        }
-
+        /// <summary>
+        /// Update is called once per frame
+        /// And it will update the movement of the player
+        /// </summary>
         private void Update()
         {
             Vector3 direction = new Vector3(_horizontalMoveValue, 0f, _verticalMoveValue).normalized;

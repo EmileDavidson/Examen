@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1752440830437766233}
   - component: {fileID: 2645165763287977559}
-  - component: {fileID: 2643808727594615775}
   - component: {fileID: 3999560726022868171}
   - component: {fileID: 9042142562578118032}
   m_Layer: 0
@@ -50,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: cc8032b4ea7eec84093e2ba8f58a36ff, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -71,25 +70,6 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2643808727594615775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752440830437766232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c5392c8af61aea48b24bb6f04357b60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInput: {fileID: 2645165763287977559}
-  onMoveValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  onMoveStopped:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3999560726022868171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,11 +82,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91392a089e94c0280e3dc3eb8909794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 2645165763287977559}
   speed: 5
   hipJoint: {fileID: 1752440830908393999}
   hip: {fileID: 1752440830908393989}
   targetAnimator: {fileID: 1752440830711012888}
-  _playerInputHandler: {fileID: 2643808727594615775}
 --- !u!114 &9042142562578118032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759573401517522218, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7690868513212564855, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
       propertyPath: m_Layer
@@ -272,7 +252,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2962996640432475163, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996638646771639, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996640496019679, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996640344995122, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996640408043013, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996640632164299, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996640252500469, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996639618900305, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996640030750820, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996639643349551, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996639837766807, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996639644415557, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996639515982887, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996638800190653, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
+    - {fileID: 2962996639776266807, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 111e36e3f2bc33f44a64fc49471e19f4, type: 3}
 --- !u!4 &154881823355250979 stripped
 Transform:
