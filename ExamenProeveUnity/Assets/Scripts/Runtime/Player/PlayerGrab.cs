@@ -26,18 +26,18 @@ namespace Runtime.Player
         private void OnRightGrab(InputValue value)
         {
             if (handType != HandType.Right) return;
-            if(value.isPressed) HandleMousePressed();
-            else HandleMouseRelease();
+            if(value.isPressed) HandlePressed();
+            else HandleRelease();
         }
         
         private void OnLeftGrab(InputValue value)
         {
             if (handType != HandType.Left) return;
-            if(value.isPressed) HandleMousePressed();
-            else HandleMouseRelease();
+            if(value.isPressed) HandlePressed();
+            else HandleRelease();
         }
 
-        private void HandleMouseRelease()
+        private void HandleRelease()
         {
             shoulderJoint.targetRotation = Quaternion.Euler(0f, 0f, 0f);
             if (_grabbedObject is null) return;
@@ -47,7 +47,7 @@ namespace Runtime.Player
             _isGrabbingObject = false;
         }
 
-        private void HandleMousePressed()
+        private void HandlePressed()
         {
             shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
 
