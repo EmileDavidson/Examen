@@ -1,6 +1,6 @@
 ﻿namespace Runtime.Enums
 {
-    public enum MouseType
+    public enum HandType
     {
         Left,
         Right,

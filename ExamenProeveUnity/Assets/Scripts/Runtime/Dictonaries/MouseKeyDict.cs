@@ -6,10 +6,10 @@ namespace Runtime.Dictonaries
 {
     public class MouseKeyDict
     {
-        public static Dictionary<MouseType, int> Dict = new Dictionary<MouseType, int>()
+        public static Dictionary<HandType, int> Dict = new Dictionary<HandType, int>()
         {
-            {MouseType.Left, 1},
-            {MouseType.Right, 0}
+            {HandType.Left, 1},
+            {HandType.Right, 0}
         };
     }
 }

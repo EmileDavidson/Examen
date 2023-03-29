@@ -1325,7 +1325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3514823637c14f689405f8fd798aa8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseType: 0
+  handType: 0
   shoulderJoint: {fileID: 1752440831005446972}
 --- !u!114 &1752440831374571075
 MonoBehaviour:
@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3514823637c14f689405f8fd798aa8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseType: 1
+  handType: 1
   shoulderJoint: {fileID: 1752440832258017091}
 --- !u!1 &5153327649449743105 stripped
 GameObject:

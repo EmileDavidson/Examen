@@ -2,13 +2,14 @@
 using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Runtime.Player
 {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerGrab : MonoBehaviour
     {
-        [SerializeField] private MouseType mouseType;
+        [SerializeField] private HandType handType;
         [SerializeField] private ConfigurableJoint shoulderJoint;
 
         private GameObject _grabbedObject;
@@ -24,14 +25,14 @@ namespace Runtime.Player
 
         private void OnRightGrab(InputValue value)
         {
-            if (mouseType != MouseType.Right) return;
+            if (handType != HandType.Right) return;
             if(value.isPressed) HandleMousePressed();
             else HandleMouseRelease();
         }
         
         private void OnLeftGrab(InputValue value)
         {
-            if (mouseType != MouseType.Left) return;
+            if (handType != HandType.Left) return;
             if(value.isPressed) HandleMousePressed();
             else HandleMouseRelease();
         }
