@@ -6,7 +6,7 @@ description: How to create a good commit name and description.
 
 ### Commit Title
 
-The title of your commit should summarize what the change is about in a concise and descriptive manner. It should be brief, preferably no more than 50 characters. if possible we use imperative mood (e.g., "Add", "Fix", "Update", "Remove") if you are still working on it but want to commit it just to have a restart point you can add "WIP - {title}" and if the commit has errors you can do "UNSAFE WIP - {TITLE}"&#x20;
+The title of your commit should summarize what the change is about in a concise and descriptive manner. It should be brief, preferably no more than 50 characters. **if possible** we use imperative mood (e.g., "Add", "Fix", "Update", "Remove") if you are still working on it but want to commit it just to have a restart point you can add "WIP - {title}" and if the commit has errors you can do "UNSAFE WIP - {TITLE}"&#x20;
 
 Good Examples:
 
@@ -17,6 +17,8 @@ Good Examples:
 5. Remove deprecated code&#x20;
 6. WIP - Update player scripts to new input system
 7. UNSAFE WIP - Update player scripts to new input system
+8. Player can now move
+9. You can connect multiple users
 
 #### Bad Examples:
 
