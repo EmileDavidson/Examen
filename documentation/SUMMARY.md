@@ -2,12 +2,23 @@
 
 * [Home](README.md)
 
-## GitFlow
+## Wiki
 
-* [Gitflow](gitflow/gitflow/README.md)
-  * [Conventions](gitflow/gitflow/conventions/README.md)
-    * [Branch Types](gitflow/gitflow/conventions/branch-types.md)
-    * [Branch Naming](gitflow/gitflow/conventions/branch-naming.md)
-    * [Commiting](gitflow/gitflow/conventions/commiting.md)
-  * [How To's](gitflow/gitflow/how-tos/README.md)
-    * [GitHub Desktop](gitflow/gitflow/how-tos/github-desktop.md)
+* [Gitflow](wiki/gitflow/README.md)
+  * [Conventions](wiki/gitflow/conventions/README.md)
+    * [Branch Types](wiki/gitflow/conventions/branch-types.md)
+    * [Branch Naming](wiki/gitflow/conventions/branch-naming.md)
+    * [Commiting](wiki/gitflow/conventions/commiting.md)
+  * [How To's](wiki/gitflow/how-tos/README.md)
+    * [GitHub Desktop](wiki/gitflow/how-tos/github-desktop.md)
+* [Technical Design](wiki/technical-design/README.md)
+  * [Player](wiki/technical-design/player/README.md)
+    * [Ragdoll](wiki/technical-design/player/ragdoll.md)
+    * [Animations](wiki/technical-design/player/animations.md)
+* [Functional Design](wiki/functional-design.md)
+* [Pipeline](wiki/pipeline.md)
+* [Agile planning](wiki/agile-planning.md)
+* [PlayerTests](wiki/playertests.md)
+* [Notes](wiki/notes.md)
+
+## sources
