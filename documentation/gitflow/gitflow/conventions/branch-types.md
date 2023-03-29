@@ -12,6 +12,12 @@ there can only be **1** develop branch.
 
 The develop branch is used for ongoing development work. It's where all changes go, and it's important that this branch never contains errors or broken code. The development branch should always have the final version of the code.
 
+### documentation
+
+there can only be **1** documentation branch
+
+documentation branch is used for this gitbook and is synced we have this in a separate branch then develop since the develop branch is a protected branch an can not be merged and to
+
 ### feature/{name}
 
 Feature branches are used to work on specific features or tasks that are separate from ongoing development work. These branches are created off of the develop branch and are merged back in once the changes are complete.
