@@ -1,4 +1,5 @@
-﻿using Runtime.Enums;
+﻿using System;
+using Runtime.Enums;
 using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,24 +18,30 @@ namespace Runtime.Player
         private FixedJoint _grabbedObjectJoined;
 
         private bool _isGrabbingObject = false;
+        private bool _isGrabButtonPressed = false;
 
         private void Awake()
         {
             _rigidbody ??= GetComponent<Rigidbody>();
         }
 
+        private void Update()
+        {
+            if(_isGrabButtonPressed) HandlePressed();
+        }
+
         private void OnRightGrab(InputValue value)
         {
             if (handType != HandType.Right) return;
-            if(value.isPressed) HandlePressed();
-            else HandleRelease();
+            _isGrabButtonPressed = value.isPressed;
+            if(!value.isPressed) HandleRelease();
         }
         
         private void OnLeftGrab(InputValue value)
         {
             if (handType != HandType.Left) return;
-            if(value.isPressed) HandlePressed();
-            else HandleRelease();
+            _isGrabButtonPressed = value.isPressed;
+            if(!value.isPressed) HandleRelease();
         }
 
         private void HandleRelease()
