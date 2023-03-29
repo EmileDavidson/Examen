@@ -24,7 +24,11 @@ Feature branches are used to work on specific features or tasks that are separat
 
 ### hotfix/{name}
 
-Hotfix branches are used to quickly fix critical issues or bugs that need to be addressed outside of the normal development process. These branches are normally created off of the master branch and are merged back in once the issue is resolved.  but in our case it can also be used for the develop branch when fixing features that became broken because of merging or another reason.
+Hotfix branches are used to quickly fix critical issues or bugs that need to be addressed outside of the normal development process. These branches are created off of the master branch and are merged back in once the issue is resolved.&#x20;
+
+### fix/{name}
+
+fix branches are used to fix issues or bugs that need to be addressed. These branches are created off of the develop branch and are merged back in once the issue is resolved. these branches should not need to occur often since the features should be 'safe to import' but if needed here it is.
 
 ### import/{name}
 
