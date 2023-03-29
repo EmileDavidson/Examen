@@ -1,14 +1,15 @@
-﻿using Runtime.Dictonaries;
-using Runtime.Enums;
+﻿using Runtime.Enums;
 using Toolbox.MethodExtensions;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
-namespace Runtime
+namespace Runtime.Player
 {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerGrab : MonoBehaviour
     {
-        [SerializeField] private MouseType mouseType;
+        [SerializeField] private HandType handType;
         [SerializeField] private ConfigurableJoint shoulderJoint;
 
         private GameObject _grabbedObject;
@@ -22,18 +23,23 @@ namespace Runtime
             _rigidbody ??= GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        private void OnRightGrab(InputValue value)
         {
-            HandleMousePressed();
-            HandleMouseRelease();
+            if (handType != HandType.Right) return;
+            if(value.isPressed) HandlePressed();
+            else HandleRelease();
+        }
+        
+        private void OnLeftGrab(InputValue value)
+        {
+            if (handType != HandType.Left) return;
+            if(value.isPressed) HandlePressed();
+            else HandleRelease();
         }
 
-        private void HandleMouseRelease()
+        private void HandleRelease()
         {
-            if (!Input.GetMouseButtonUp(MouseKeyDict.Dict[mouseType])) return;
-            
             shoulderJoint.targetRotation = Quaternion.Euler(0f, 0f, 0f);
-            
             if (_grabbedObject is null) return;
 
             Destroy(_grabbedObjectJoined);
@@ -41,10 +47,8 @@ namespace Runtime
             _isGrabbingObject = false;
         }
 
-        private void HandleMousePressed()
+        private void HandlePressed()
         {
-            if (!Input.GetMouseButton(MouseKeyDict.Dict[mouseType])) return;
-            
             shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
 
             if(_isGrabbingObject) return;
