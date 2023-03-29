@@ -4,7 +4,9 @@ using UnityEngine;
 public class Grid<TGridObject>
 {
     private int width;
+    public int Width => width;
     private int height;
+    public int Height => height;
     private float cellSize;
     private Vector3 originPosition;
     private TGridObject[,] gridArray;
@@ -38,7 +40,7 @@ public class Grid<TGridObject>
         return (new Vector3(x, 0, y) + originPosition) * cellSize;
     }
 
-    public TGridObject GetValue(int x, int y)
+    public TGridObject GetGridObject(int x, int y)
     {
         if (x >= 0 && y >= 0 && x < width && y < height)
         {
