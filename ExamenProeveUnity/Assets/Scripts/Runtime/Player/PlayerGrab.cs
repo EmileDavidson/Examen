@@ -1,9 +1,9 @@
-﻿using Runtime.Dictonaries;
-using Runtime.Enums;
+﻿using Runtime.Enums;
 using Toolbox.MethodExtensions;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace Runtime
+namespace Runtime.Player
 {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerGrab : MonoBehaviour
@@ -22,18 +22,23 @@ namespace Runtime
             _rigidbody ??= GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        private void OnRightGrab(InputValue value)
         {
-            HandleMousePressed();
-            HandleMouseRelease();
+            if (mouseType != MouseType.Right) return;
+            if(value.isPressed) HandleMousePressed();
+            else HandleMouseRelease();
+        }
+        
+        private void OnLeftGrab(InputValue value)
+        {
+            if (mouseType != MouseType.Left) return;
+            if(value.isPressed) HandleMousePressed();
+            else HandleMouseRelease();
         }
 
         private void HandleMouseRelease()
         {
-            if (!Input.GetMouseButtonUp(MouseKeyDict.Dict[mouseType])) return;
-            
             shoulderJoint.targetRotation = Quaternion.Euler(0f, 0f, 0f);
-            
             if (_grabbedObject is null) return;
 
             Destroy(_grabbedObjectJoined);
@@ -43,8 +48,6 @@ namespace Runtime
 
         private void HandleMousePressed()
         {
-            if (!Input.GetMouseButton(MouseKeyDict.Dict[mouseType])) return;
-            
             shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
 
             if(_isGrabbingObject) return;
