@@ -1,3 +1,7 @@
+---
+description: All types of branches we could use or used in our project
+---
+
 # Branch Types
 
 ### m**ain**

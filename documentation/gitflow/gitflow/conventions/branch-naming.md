@@ -1,3 +1,7 @@
+---
+description: How to create a good branch name and the restrictions we use
+---
+
 # Branch Naming
 
 Branch naming follows a straightforward pattern, consisting of the branch type, a forward slash, and the branch name. The branch name should be entirely in lowercase letters and use dashes to separate words and clearly indicating the purpose of the branch.
