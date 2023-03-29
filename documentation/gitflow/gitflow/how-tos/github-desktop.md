@@ -6,7 +6,9 @@ description: >-
 
 # GitHub Desktop
 
-## ![](../../../.gitbook/assets/GitHubDesktop\_EIsheeTPgQ.png)Create Branch
+## Create Branch
+
+<figure><img src="../../../.gitbook/assets/GitHubDesktop_EIsheeTPgQ.png" alt=""><figcaption></figcaption></figure>
 
 1. Open Github Desktop on your computer.
 2. Click on the "current branch" button located at the top of the interface.

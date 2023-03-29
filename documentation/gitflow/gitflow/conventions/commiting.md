@@ -20,6 +20,8 @@ Good Examples:
 8. Player can now move
 9. You can connect multiple users
 
+> In these good examples, you can easily see what has been worked on or what is removed, added, fixed or updated even when imperative mood was not used you can clearly see what has been worked on.
+
 #### Bad Examples:
 
 1. "My first commit, please don't judge me"
