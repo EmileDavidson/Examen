@@ -50,6 +50,14 @@ public class Grid<T>
         }
         return default;
     }
+
+    public T GetPositionInGrid(Vector3 position)
+    {
+        Vector2 gridPosition = Vector2.zero;
+        if (position.x >= 0 && position.x < width) gridPosition.x = Mathf.Floor(position.x);
+        if (position.z >= 0 && position.z < height) gridPosition.y = Mathf.Floor(position.z);
+        return gridArray[(int)gridPosition.x, (int)gridPosition.y];
+    }
     
     public T[,] GetPath()
     {

@@ -11,6 +11,9 @@ public class PathFinding
     private List<PathNode> _openList;
     private List<PathNode> _closedList;
 
+    public Grid<PathNode> Grid => _grid;
+    
+
     public PathFinding(int width, int height)
     {
         _grid = new Grid<PathNode>(width, height, 1f, Vector3.zero, (x, y) => new PathNode(x, y));
