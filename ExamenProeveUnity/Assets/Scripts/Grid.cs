@@ -1,31 +1,33 @@
 using System;
 using UnityEngine;
 
-public class Grid<TGridObject>
+public class Grid<T>
 {
     private int width;
-    public int Width => width;
+
     private int height;
-    public int Height => height;
     private float cellSize;
     private Vector3 originPosition;
-    private TGridObject[,] gridArray;
+    private T[,] gridArray;
 
-    public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject)
+    public int Width => width;
+    public int Height => height;
+
+    public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<int, int, T> createGridObject)
     {
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
         this.originPosition = originPosition;
 
-        gridArray = new TGridObject[width, height];
+        gridArray = new T[width, height];
 
         bool showDebug = true;
         if (showDebug)
         {
             for (int x = 0; x < gridArray.GetLength(0); x++) {
                 for (int y = 0; y < gridArray.GetLength(1); y++) {
-                    gridArray[x, y] = createGridObject(this, x, y);
+                    gridArray[x, y] = createGridObject(x, y);
                     Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.green, 100f);
                     Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.green, 100f);
                 }
@@ -40,15 +42,17 @@ public class Grid<TGridObject>
         return (new Vector3(x, 0, y) + originPosition) * cellSize;
     }
 
-    public TGridObject GetGridObject(int x, int y)
+    public T GetGridObject(int x, int y)
     {
         if (x >= 0 && y >= 0 && x < width && y < height)
         {
             return gridArray[x, y];
         }
-        else
-        {
-            return default;
-        }
+        return default;
+    }
+    
+    public T[,] GetPath()
+    {
+        return gridArray;
     }
 }

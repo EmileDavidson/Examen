@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
-
 public class PathNode
 {
-    private Grid<PathNode> grid;
     private int x;
-    public int X => x;
     private int y;
-    public int Y => y;
+    private bool blockedNode;
 
     public int gCost;
     public int hCost;
@@ -17,15 +10,29 @@ public class PathNode
 
     public PathNode cameFromNode;
 
-    public PathNode(Grid<PathNode> grid, int x, int y)
+    public int X => x;
+    public int Y => y;
+    
+    public PathNode(int x, int y, bool blockedNode = false)
     {
-        this.grid = grid;
         this.x = x;
         this.y = y;
+        this.blockedNode = blockedNode;
     }
 
     public void CalculateFCost()
     {
         fCost = gCost + hCost;
+    }
+
+    public void SetBlocked(bool doBlock)
+    {
+        blockedNode = doBlock;
+    }
+
+    public bool IsBlocked()
+    {
+        if (blockedNode) return true;
+        return false;
     }
 }

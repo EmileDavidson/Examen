@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class PathFinding
@@ -9,13 +8,12 @@ public class PathFinding
     private const int _moveDiagonalCost = 14;
     
     private Grid<PathNode> _grid;
-    public Grid<PathNode> Grid => _grid;
     private List<PathNode> _openList;
     private List<PathNode> _closedList;
 
     public PathFinding(int width, int height)
     {
-        _grid = new Grid<PathNode>(width, height, 1f, Vector3.zero, (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+        _grid = new Grid<PathNode>(width, height, 1f, Vector3.zero, (x, y) => new PathNode(x, y));
     }
 
     public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
@@ -44,9 +42,9 @@ public class PathFinding
         while (_openList.Count > 0)
         {
             PathNode currentNode = GetLowestFCostNode(_openList);
-            if (startNode == endNode)
+            
+            if (currentNode == endNode)
             {
-                Debug.Log("reached final point");
                 return CalculatePath(endNode);
             }
 
@@ -56,6 +54,7 @@ public class PathFinding
             foreach (PathNode neighbourNode in GetNeighbourNodeList(currentNode))
             {
                 if (_closedList.Contains(neighbourNode)) continue;
+                if (neighbourNode.IsBlocked()) continue;
 
                 int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
                 if (tentativeGCost < neighbourNode.gCost)
@@ -105,7 +104,7 @@ public class PathFinding
         if (currentNode.Y - 1 >= 0) NeighbourList.Add(GetNode(currentNode.X, currentNode.Y - 1));
         //top
         if (currentNode.Y + 1 < _grid.Height) NeighbourList.Add(GetNode(currentNode.X, currentNode.Y + 1));
-
+        
         return NeighbourList;
     }
 
@@ -120,6 +119,7 @@ public class PathFinding
             currentNode = currentNode.cameFromNode;
         }
         path.Reverse();
+        
         return path;
     }
 
@@ -147,5 +147,10 @@ public class PathFinding
     private PathNode GetNode(int x, int y)
     {
         return _grid.GetGridObject(x, y);
+    }
+
+    public void BlockNode(int x, int y, bool blockNode)
+    {
+        _grid.GetGridObject(x, y).SetBlocked(blockNode);
     }
 }
