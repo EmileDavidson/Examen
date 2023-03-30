@@ -19,6 +19,14 @@
 * [Pipeline](wiki/pipeline.md)
 * [Agile planning](wiki/agile-planning.md)
 * [PlayerTests](wiki/playertests.md)
-* [Notes](wiki/notes.md)
+* [Notes](wiki/notes/README.md)
+  * [Daily Standups](wiki/notes/daily-standups/README.md)
+    * [Sprint 1](wiki/notes/daily-standups/sprint-1.md)
+    * [Sprint 2](wiki/notes/daily-standups/sprint-2.md)
+    * [Sprint 3](wiki/notes/daily-standups/sprint-3.md)
+  * [Retrospectives](wiki/notes/retrospectives/README.md)
+    * [Sprint 1](wiki/notes/retrospectives/sprint-1.md)
+    * [Sprint 2](wiki/notes/retrospectives/sprint-2.md)
+    * [Sprint 3](wiki/notes/retrospectives/sprint-3.md)
 
 ## sources
