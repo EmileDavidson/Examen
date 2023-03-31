@@ -32,9 +32,7 @@ Standup started at 9.30. Today Emile will improve the grabbing, making use of th
 
 ## Standup 31/03/2023:
 
-{% hint style="info" %}
-Standup is yet to be had
-{% endhint %}
+Today the standup started at 9.20. Emile will continue working on the directional grabbing for the player and after this is done he will work on the pipeline for our project. Vivian will look on the Trello for what things have yet to be modelled and will make this and will possibly if there’s time left today work on some VFX. Sterre will continue texturing the models for the produce and environmental things. Leikho will first import the first character model to Unity so that the programmers can implement this to our current character, and afterwards he will start working on the model of our second character. LaRhona will continue modelling the different kinds of produce that is used in the store. Wouter is going to give the customer AI an inventory so that they can eventually grab items from shelfs.
 {% endtab %}
 
 {% tab title="Week 3" %}
