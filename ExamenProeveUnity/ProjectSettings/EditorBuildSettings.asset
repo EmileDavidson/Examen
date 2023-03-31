@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 34db94bfa7c15204daeee0752bfc1100
+  - enabled: 1
+    path: Assets/Scenes/PlayerRagdoll.unity
+    guid: 23028a62576a9fb44be2d2fa4a57624e
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 6acd80384325fe1418e08001d0bfd70a, type: 2}
