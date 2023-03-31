@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,6 +14,7 @@ public class CustomerPathFinding : MonoBehaviour
     private PathFinding _pathFinding;
 
     private List<Shelf> _shelves;
+    private Shelf _targetShelf;
     private CustomerInventory _customerInventory;
 
     private Vector2Int _gridPosition;
@@ -39,7 +39,8 @@ public class CustomerPathFinding : MonoBehaviour
     {
         if (_shelves is not null)
         {
-            _targetGridPosition = _shelves[Random.Range(0, _shelves.Count)].InteractPosition;
+            _targetShelf = _shelves[Random.Range(0, _shelves.Count)];
+            _targetGridPosition = _targetShelf.InteractPosition;
         }
     }
 
@@ -66,10 +67,16 @@ public class CustomerPathFinding : MonoBehaviour
 
         if (_gridPosition == _targetGridPosition)
         {
-            _customerInventory.AddItem(temporaryItem);
+            _customerInventory.AddItem(_targetShelf.GrabItem());
             if (_customerInventory.GetInventory().Count < _customerInventory.maxInventorySize)
             {
-                _targetGridPosition = new Vector2Int(Random.Range(0, 10), Random.Range(0, 10));
+                Shelf potentialShelf = _shelves[Random.Range(0, _shelves.Count)];
+                while (potentialShelf.IsEmpty() || potentialShelf == _targetShelf)
+                {
+                    potentialShelf = _shelves[Random.Range(0, _shelves.Count)];
+                }
+                _targetShelf = potentialShelf;
+                _targetGridPosition = _targetShelf.InteractPosition;
             }
             else
             {
@@ -81,14 +88,13 @@ public class CustomerPathFinding : MonoBehaviour
     public void ReCalculatePath()
     {
         _path = _pathFinding.FindPath(_gridPosition.x, _gridPosition.y, _targetGridPosition.x, _targetGridPosition.y);
-        
-        if (_path is null) return;
-        
+
         DrawPathDebug(_path);
     }
 
     private void DrawPathDebug(List<PathNode> pathNodes)
     {
+        if (_path is null) return;
         foreach (PathNode pathNode in pathNodes)
         {
             if (_path.IndexOf(pathNode) + 1 >= pathNodes.Count) return;

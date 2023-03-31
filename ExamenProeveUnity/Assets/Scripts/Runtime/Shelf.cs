@@ -17,11 +17,23 @@ public class Shelf : MonoBehaviour
         }
     }
 
+    public bool IsEmpty()
+    {
+        if (inventory.Count >= 1)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public ProductScriptableObject GrabItem()
     {
         if (inventory.Count >= 1)
         {
-            return inventory[0];
+            ProductScriptableObject productToReturn = inventory[0];
+            inventory.RemoveAt(0);
+            return productToReturn;
         }
 
         return null;
