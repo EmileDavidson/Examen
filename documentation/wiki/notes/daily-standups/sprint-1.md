@@ -36,6 +36,12 @@ Today the standup started at 9.20. Emile will continue working on the directiona
 {% endtab %}
 
 {% tab title="Week 3" %}
+## Standup 03/04/2023:
+
+Today the standup started at 9.40. Leikho will make small fixes with the rig of our character and after that he will start texturing the character. LaRhona is going to model the car in which customers will arrive and after that will start modelling a planter box. Wouter will continue working on the customer AI so that it can deliver collected products to the cash area. Emile is going to make a blockout for our level so that we can have a better testing area with all components that are currently in the develop branch. Vivian is first going to finish core task 1, after which she will make more models for the environment. Sterre will texture the environment of the store so that we can get a more complete feel in our game.
+
+## Standup 05/04/2023:
+
 
 {% endtab %}
 {% endtabs %}
