@@ -21,4 +21,9 @@ public class CustomerInventory : MonoBehaviour
     {
         _inventory.RemoveAt(index);
     }
+
+    public void RemoveItem(ProductScriptableObject item)
+    {
+        _inventory.Remove(item);
+    }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,6 +14,7 @@ public class CustomerPathFinding : MonoBehaviour
     private Grid<PathNode> _grid;
     private PathFinding _pathFinding;
 
+    private List<CashRegister> _cashRegisters;
     private List<Shelf> _shelves;
     private Shelf _targetShelf;
     private CustomerInventory _customerInventory;
@@ -23,6 +25,7 @@ public class CustomerPathFinding : MonoBehaviour
 
     private void Awake()
     {
+        _cashRegisters = new List<CashRegister>(FindObjectsOfType<CashRegister>());
         _shelves = new List<Shelf>(FindObjectsOfType<Shelf>());
         _customerInventory = GetComponent<CustomerInventory>();
         _pathFinding = new PathFinding(10, 10);
@@ -70,35 +73,42 @@ public class CustomerPathFinding : MonoBehaviour
         hipJoint.targetRotation = Quaternion.RotateTowards(hipJoint.targetRotation, Quaternion.Euler(0f, targetAngle, 0f), rotationSpeed * Time.deltaTime);
         hipRb.position += _moveDirection / 5f;
 
-        if (_targetShelf is null) return;
-        if (_gridPosition == _targetShelf.InteractPosition)
+        if (_gridPosition == _targetGridPosition)
         {
-            StartCoroutine(WaitAtShelf());
-            _customerInventory.AddItem(_targetShelf.GrabItem());
-            if (_customerInventory.GetInventory().Count < _customerInventory.maxInventorySize)
+            if (_gridPosition == _targetShelf.InteractPosition && _targetShelf != null)
             {
-                List<Shelf> potentialShelves = new List<Shelf>();
-                foreach (Shelf shelf in _shelves)
+                StartCoroutine(WaitAtShelf());
+                _customerInventory.AddItem(_targetShelf.GrabItem());
+                if (_customerInventory.GetInventory().Count < _customerInventory.maxInventorySize)
                 {
-                    if (shelf.IsEmpty() || shelf == _targetShelf) continue;
-                    potentialShelves.Add(shelf);
-                }
+                    List<Shelf> potentialShelves = new List<Shelf>();
+                    foreach (Shelf shelf in _shelves)
+                    {
+                        if (shelf.IsEmpty() || shelf == _targetShelf) continue;
+                        potentialShelves.Add(shelf);
+                    }
 
-                if (potentialShelves.Count >= 1)
-                {
-                    _targetShelf = potentialShelves[Random.Range(0, potentialShelves.Count)];
-                    _targetGridPosition = _targetShelf.InteractPosition;
+                    if (potentialShelves.Count >= 1)
+                    {
+                        _targetShelf = potentialShelves[Random.Range(0, potentialShelves.Count)];
+                        _targetGridPosition = _targetShelf.InteractPosition;
+                    }
+                    else
+                    {
+                        _targetShelf = null;
+                        _targetGridPosition = _cashRegisters[0].InteractPosition;
+                    }
                 }
                 else
                 {
                     _targetShelf = null;
-                    _targetGridPosition = new Vector2Int(0, 0);
+                    _targetGridPosition = _cashRegisters[0].InteractPosition;
                 }
             }
-            else
+            else if (_gridPosition == _cashRegisters[0].InteractPosition)
             {
-                _targetShelf = null;
-                _targetGridPosition = new Vector2Int(0, 0);
+                print("yeye");
+                StartCoroutine(ScanProducts());
             }
         }
     }
@@ -132,5 +142,17 @@ public class CustomerPathFinding : MonoBehaviour
         hipRb.constraints = RigidbodyConstraints.None;
         hipRb.constraints = RigidbodyConstraints.FreezePositionY;
         _doPathfinding = true;
+    }
+
+    private IEnumerator ScanProducts()
+    {
+        print("reached register");
+        _doPathfinding = false;
+        foreach (ProductScriptableObject product in _customerInventory.GetInventory())
+        {
+            Instantiate(product, _cashRegisters[0].DropOffSpot, Quaternion.identity);
+            _customerInventory.RemoveItem(product);
+            yield return new WaitForSeconds(1f);
+        }
     }
 }
