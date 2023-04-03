@@ -150,8 +150,9 @@ public class CustomerPathFinding : MonoBehaviour
         _doPathfinding = false;
         foreach (ProductScriptableObject product in _customerInventory.GetInventory())
         {
-            product.gameObject.AddComponent<Rigidbody>();
-            Instantiate(product.gameObject, _cashRegisters[0].DropOffSpot, Quaternion.identity);
+            GameObject instantiatedProduct = Instantiate(product.gameObject, _cashRegisters[0].DropOffSpot, Quaternion.identity);
+            instantiatedProduct.gameObject.AddComponent<BoxCollider>();
+            instantiatedProduct.gameObject.AddComponent<Rigidbody>();
             yield return new WaitForSeconds(1f);
         }
         _customerInventory.RemoveAll();
