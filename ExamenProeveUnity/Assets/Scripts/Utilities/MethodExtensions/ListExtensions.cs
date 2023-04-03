@@ -19,6 +19,17 @@ namespace Toolbox.MethodExtensions
         {
             return target.Count == 0;
         }
+        
+        /// <summary>
+        /// Checks if the list is NOT empty 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static bool IsNotEmpty<T>(this IList<T> target)
+        {
+            return target.Count != 0;
+        }
     
         /// <summary>
         /// Shuffle the list 

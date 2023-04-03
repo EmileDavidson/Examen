@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
-    [SerializeField] private Vector2Int interactPosition;
+    [SerializeField] private Vector3Int interactPosition;
     [SerializeField] private List<ProductScriptableObject> inventory = new List<ProductScriptableObject>() {Capacity = 5};
     
-    public Vector2Int InteractPosition => interactPosition;
+    public Vector3Int InteractPosition => interactPosition;
     
     public void Restock(ProductScriptableObject item)
     {
