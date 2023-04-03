@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -75,23 +74,31 @@ public class CustomerPathFinding : MonoBehaviour
 
         if (_gridPosition == _targetGridPosition)
         {
-            if (_gridPosition == _targetShelf.InteractPosition && _targetShelf != null)
+            if (_targetShelf != null)
             {
-                StartCoroutine(WaitAtShelf());
-                _customerInventory.AddItem(_targetShelf.GrabItem());
-                if (_customerInventory.GetInventory().Count < _customerInventory.maxInventorySize)
+                if (_gridPosition == _targetShelf.InteractPosition)
                 {
-                    List<Shelf> potentialShelves = new List<Shelf>();
-                    foreach (Shelf shelf in _shelves)
+                    StartCoroutine(WaitAtShelf());
+                    _customerInventory.AddItem(_targetShelf.GrabItem());
+                    if (_customerInventory.GetInventory().Count < _customerInventory.maxInventorySize)
                     {
-                        if (shelf.IsEmpty() || shelf == _targetShelf) continue;
-                        potentialShelves.Add(shelf);
-                    }
+                        List<Shelf> potentialShelves = new List<Shelf>();
+                        foreach (Shelf shelf in _shelves)
+                        {
+                            if (shelf.IsEmpty() || shelf == _targetShelf) continue;
+                            potentialShelves.Add(shelf);
+                        }
 
-                    if (potentialShelves.Count >= 1)
-                    {
-                        _targetShelf = potentialShelves[Random.Range(0, potentialShelves.Count)];
-                        _targetGridPosition = _targetShelf.InteractPosition;
+                        if (potentialShelves.Count >= 1)
+                        {
+                            _targetShelf = potentialShelves[Random.Range(0, potentialShelves.Count)];
+                            _targetGridPosition = _targetShelf.InteractPosition;
+                        }
+                        else
+                        {
+                            _targetShelf = null;
+                            _targetGridPosition = _cashRegisters[0].InteractPosition;
+                        }
                     }
                     else
                     {
@@ -99,15 +106,9 @@ public class CustomerPathFinding : MonoBehaviour
                         _targetGridPosition = _cashRegisters[0].InteractPosition;
                     }
                 }
-                else
-                {
-                    _targetShelf = null;
-                    _targetGridPosition = _cashRegisters[0].InteractPosition;
-                }
             }
             else if (_gridPosition == _cashRegisters[0].InteractPosition)
             {
-                print("yeye");
                 StartCoroutine(ScanProducts());
             }
         }
@@ -146,13 +147,13 @@ public class CustomerPathFinding : MonoBehaviour
 
     private IEnumerator ScanProducts()
     {
-        print("reached register");
         _doPathfinding = false;
         foreach (ProductScriptableObject product in _customerInventory.GetInventory())
         {
-            Instantiate(product, _cashRegisters[0].DropOffSpot, Quaternion.identity);
-            _customerInventory.RemoveItem(product);
+            product.gameObject.AddComponent<Rigidbody>();
+            Instantiate(product.gameObject, _cashRegisters[0].DropOffSpot, Quaternion.identity);
             yield return new WaitForSeconds(1f);
         }
+        _customerInventory.RemoveAll();
     }
 }
