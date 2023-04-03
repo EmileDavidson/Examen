@@ -159,8 +159,6 @@ MonoBehaviour:
   inventory:
   - {fileID: 11400000, guid: 403a48fbe06e7774399c17b3b82f9918, type: 2}
   - {fileID: 11400000, guid: 403a48fbe06e7774399c17b3b82f9918, type: 2}
-  - {fileID: 11400000, guid: 403a48fbe06e7774399c17b3b82f9918, type: 2}
-  - {fileID: 11400000, guid: 403a48fbe06e7774399c17b3b82f9918, type: 2}
 --- !u!65 &242634973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -659,7 +657,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactPosition: {x: 3, y: 7}
   inventory:
-  - {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
   - {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
   - {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
 --- !u!1 &1355035786

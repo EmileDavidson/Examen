@@ -1,14 +1,14 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class CustomerPathFinding : MonoBehaviour
 {
-    [SerializeField] private ProductScriptableObject temporaryItem;
-    
     [SerializeField] private Rigidbody hipRb;
     [SerializeField] private ConfigurableJoint hipJoint;
-    
+
+    private bool _doPathfinding = true;
     private List<PathNode> _path;
     private Grid<PathNode> _grid;
     private PathFinding _pathFinding;
@@ -46,6 +46,11 @@ public class CustomerPathFinding : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_doPathfinding) PathFind();
+    }
+
+    private void PathFind()
+    {
         var targetAngle = Mathf.Atan2(_moveDirection.z, _moveDirection.x) * Mathf.Rad2Deg;
         float rotationSpeed = (hipJoint.targetRotation.eulerAngles - new Vector3(0f, targetAngle, 0f)).magnitude;
         Vector3 playerPos = hipRb.gameObject.transform.position;
@@ -62,24 +67,37 @@ public class CustomerPathFinding : MonoBehaviour
             }
         }
 
-        hipJoint.targetRotation = Quaternion.RotateTowards(hipJoint.targetRotation, Quaternion.Euler(0f, targetAngle, 0f), rotationSpeed);
+        hipJoint.targetRotation = Quaternion.RotateTowards(hipJoint.targetRotation, Quaternion.Euler(0f, targetAngle, 0f), rotationSpeed * Time.deltaTime);
         hipRb.position += _moveDirection / 5f;
 
-        if (_gridPosition == _targetGridPosition)
+        if (_targetShelf is null) return;
+        if (_gridPosition == _targetShelf.InteractPosition)
         {
+            StartCoroutine(WaitAtShelf());
             _customerInventory.AddItem(_targetShelf.GrabItem());
             if (_customerInventory.GetInventory().Count < _customerInventory.maxInventorySize)
             {
-                Shelf potentialShelf = _shelves[Random.Range(0, _shelves.Count)];
-                while (potentialShelf.IsEmpty() || potentialShelf == _targetShelf)
+                List<Shelf> potentialShelves = new List<Shelf>();
+                foreach (Shelf shelf in _shelves)
                 {
-                    potentialShelf = _shelves[Random.Range(0, _shelves.Count)];
+                    if (shelf.IsEmpty() || shelf == _targetShelf) continue;
+                    potentialShelves.Add(shelf);
                 }
-                _targetShelf = potentialShelf;
-                _targetGridPosition = _targetShelf.InteractPosition;
+
+                if (potentialShelves.Count >= 1)
+                {
+                    _targetShelf = potentialShelves[Random.Range(0, potentialShelves.Count)];
+                    _targetGridPosition = _targetShelf.InteractPosition;
+                }
+                else
+                {
+                    _targetShelf = null;
+                    _targetGridPosition = new Vector2Int(0, 0);
+                }
             }
             else
             {
+                _targetShelf = null;
                 _targetGridPosition = new Vector2Int(0, 0);
             }
         }
@@ -102,5 +120,17 @@ public class CustomerPathFinding : MonoBehaviour
                 
             Debug.DrawLine(new Vector3(pathNode.X + 0.5f, 0, pathNode.Y + 0.5f), new Vector3(nextNode.X + 0.5f, 0, nextNode.Y + 0.5f), Color.blue, 1f);
         }
+    }
+
+    private IEnumerator WaitAtShelf()
+    {
+        _doPathfinding = false;
+        Vector3 lookDirection = (_targetShelf.gameObject.transform.position - hipJoint.targetRotation.eulerAngles).normalized;
+        hipJoint.targetRotation = Quaternion.LookRotation(lookDirection);
+        hipRb.constraints = RigidbodyConstraints.FreezeAll;
+        yield return new WaitForSeconds(4f);
+        hipRb.constraints = RigidbodyConstraints.None;
+        hipRb.constraints = RigidbodyConstraints.FreezePositionY;
+        _doPathfinding = true;
     }
 }
