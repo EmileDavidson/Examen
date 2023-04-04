@@ -346,11 +346,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f97dd5ba4242aad41a58b6085336e9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivotPoint: {x: -45, y: 0.251, z: -25}
+  gridColor: {r: 0.4056604, g: 0.34640536, b: 0.109069064, a: 1}
+  pivotPoint: {x: -44.4, y: 0.251, z: -24.5}
   width: 90
-  height: 50
+  height: 1
+  depth: 50
   nodes: []
   onResetGrid:
+    m_PersistentCalls:
+      m_Calls: []
+  onGridChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onGridChangedWithNode:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &364197494
@@ -678,16 +686,6 @@ MonoBehaviour:
   inventory:
   - {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
   - {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
---- !u!54 &1127143689 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 2746452852061541117, guid: 1a3e17be9e544a745850d85389ccfdfe, type: 3}
-  m_PrefabInstance: {fileID: 4489165203235380981}
-  m_PrefabAsset: {fileID: 0}
---- !u!153 &1127143691 stripped
-ConfigurableJoint:
-  m_CorrespondingSourceObject: {fileID: 2746452852061541111, guid: 1a3e17be9e544a745850d85389ccfdfe, type: 3}
-  m_PrefabInstance: {fileID: 4489165203235380981}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142469597
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +898,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2746452852530597024, guid: 1a3e17be9e544a745850d85389ccfdfe, type: 3}
   m_PrefabInstance: {fileID: 4489165203235380981}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1558879852
+--- !u!114 &1558879857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -909,13 +907,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1558879851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c5c2586cee63054197d3f53426105a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 90cb350a91e6f694ea665daa1f7a9776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hipRb: {fileID: 1127143689}
-  hipJoint: {fileID: 1127143691}
-  grid: {fileID: 309537845}
-  _doPathfinding: 1
+  needsPath: 0
+  isFindingPath: 0
+  showGizmos: 0
+  myGrid: {fileID: 309537845}
+  onPathFound:
+    m_PersistentCalls:
+      m_Calls: []
+  onPathNotFound:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2094104529
 GameObject:
   m_ObjectHideFlags: 0

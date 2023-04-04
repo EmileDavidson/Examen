@@ -132,6 +132,17 @@ namespace Toolbox.MethodExtensions
         }
 
         /// <summary>
+        /// adds the item to the list if not null else returns the unchanged list.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="item"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void AddIfNotNull<T>(this IList<T> list, T item)
+        {
+            if (item != null) list.Add(item);
+        }
+
+        /// <summary>
         /// remove list from same type from current list
         /// </summary>
         /// <param name="list"></param>
