@@ -18,11 +18,10 @@ namespace Runtime.Grid.GridPathFinding
         [SerializeField] private bool showGizmos = true;
         [SerializeField] private MyGrid myGrid;
 
-        public UnityEvent<List<GridNode>> onPathFound = new();
-        public UnityEvent onPathNotFound = new();
+        public Path Path { get; private set; }
 
-        private GridNode _currentNode;
-        private GridNode _requestedNode;
+        public UnityEvent<Path> onPathFound = new();
+        public UnityEvent onPathNotFound = new();
 
         private const int MoveStraightCost = 10;
         private const int MoveDiagonalCost = 14;
@@ -57,7 +56,7 @@ namespace Runtime.Grid.GridPathFinding
         {
             _openList = new List<GridNode>();
             _closedList = new List<GridNode>();
-            Path = new List<GridNode>();
+            Path = new Path(new List<GridNode>(), null, null);
             
             onPathFound.AddListener((_) => { _isFindingPath = false;});
             onPathNotFound.AddListener(() => { _isFindingPath = false;});
@@ -74,8 +73,9 @@ namespace Runtime.Grid.GridPathFinding
         {
             myGrid.onGridChangedWithNode.AddListener(GridChangedUpdate);
             _needsPath = true;
-            _currentNode = currentNode;
-            _requestedNode = requestedNode;
+            Path.StartNode = currentNode;
+            Path.EndNode = requestedNode;
+            Path.CurrentIndex = 0;
             FindPathAsync(currentNode.GridPosition, requestedNode.GridPosition, (_) => { });
         }
 
@@ -86,7 +86,7 @@ namespace Runtime.Grid.GridPathFinding
         public void EndPathFinding()
         {
             myGrid.onGridChangedWithNode.RemoveListener(GridChangedUpdate);
-            Path.Clear();
+            Path.Reset();
             _openList.Clear();
             _closedList.Clear();
             _needsPath = false;
@@ -99,24 +99,24 @@ namespace Runtime.Grid.GridPathFinding
         /// <param name="node"></param>
         private void GridChangedUpdate(GridNode node)
         {
-            if (Path != null && !Path.Contains(node)) return;
+            if (Path != null && !Path.PathNodes.Contains(node)) return;
             if (!_needsPath) return;
 
-            Path = FindPath(_currentNode.GridPosition, _requestedNode.GridPosition);
+            Path = FindPath(Path.StartNode.GridPosition, Path.EndNode.GridPosition);
         }
 
         /// <summary>
         /// Async path finding
         /// </summary>
         /// <returns></returns>
-        private async void FindPathAsync(Vector3Int currentNodePos, Vector3Int requestedNodePos, Action<List<GridNode>> callback)
+        private async void FindPathAsync(Vector3Int currentNodePos, Vector3Int requestedNodePos, Action<Path> callback)
         {
             if (_isFindingPath)
             {
                 return;
             }
             
-            Task<List<GridNode>> task = new Task<List<GridNode>>(() => FindPath(currentNodePos, requestedNodePos));
+            Task<Path> task = new Task<Path>(() => FindPath(currentNodePos, requestedNodePos));
             _isFindingPath = true;
             task.Start();
             task.Exception?.Handle(e =>
@@ -132,13 +132,13 @@ namespace Runtime.Grid.GridPathFinding
         /// Path finding algorithm (A*)
         /// </summary>
         /// <returns></returns>
-        private List<GridNode> FindPath(Vector3Int currentNodePos, Vector3Int requestedNodePos)
+        private Path FindPath(Vector3Int currentNodePos, Vector3Int requestedNodePos)
         {
             _isFindingPath = true;
-            Path.Clear();
+            Path.Reset();
 
-            _currentNode = myGrid.GetNodeByPosition(currentNodePos);
-            _requestedNode = myGrid.GetNodeByPosition(requestedNodePos);
+            Path.StartNode = myGrid.GetNodeByPosition(currentNodePos);
+            Path.EndNode = myGrid.GetNodeByPosition(requestedNodePos);
             
             if(currentNodePos == requestedNodePos)
             {
@@ -146,24 +146,26 @@ namespace Runtime.Grid.GridPathFinding
                 return Path;
             }
 
-            if (_currentNode == null || _requestedNode == null)
+            if (Path.StartNode == null || Path.EndNode == null)
             {
                 onPathNotFound.Invoke();
                 return Path; 
             }
 
-            _openList = new List<GridNode> { _currentNode };
+            _openList = new List<GridNode> { Path.StartNode };
             _closedList = new List<GridNode>();
+            var startNodeIndex = Path.StartNode.Index;
+            var endNodeIndex = Path.EndNode.Index;
 
             _costArray = new PathFindingCost[myGrid.Height * myGrid.Width * myGrid.Depth];
 
             GridHelper.Grid3dLoop(myGrid.Width, myGrid.Height, myGrid.Depth,
                 (index, pos) => { _costArray[index] = new PathFindingCost(index, int.MaxValue, 0, null); });
 
-            _costArray[_currentNode.Index].Gcost = 0;
-            _costArray[_currentNode.Index].Hcost = GetDistance(_currentNode, _requestedNode);
-            _costArray[_currentNode.Index].Fcost =
-                _costArray[_currentNode.Index].Gcost + _costArray[_currentNode.Index].Hcost;
+            
+            _costArray[startNodeIndex].Gcost = 0;
+            _costArray[startNodeIndex].Hcost = GetDistance(Path.StartNode, Path.EndNode);
+            _costArray[startNodeIndex].Fcost = _costArray[startNodeIndex].Gcost + _costArray[startNodeIndex].Hcost;
 
             while (_openList.Count > 0)
             {
@@ -171,9 +173,9 @@ namespace Runtime.Grid.GridPathFinding
                 _openList.Remove(currentNodeInOpenList);
                 _closedList.Add(currentNodeInOpenList);
 
-                if (currentNodeInOpenList.Index == _requestedNode.Index)
+                if (currentNodeInOpenList.Index == endNodeIndex)
                 {
-                    Path = CalculatePath(_requestedNode);
+                    Path = CalculatePath(Path.EndNode);
                     onPathFound.Invoke(Path);
                     return Path;
                 }
@@ -190,7 +192,7 @@ namespace Runtime.Grid.GridPathFinding
                     if (tentativeGCost >= _costArray[neighbourNode.Index].Gcost) continue;
                     _costArray[neighbourNode.Index].CameFromNode = currentNodeInOpenList;
                     _costArray[neighbourNode.Index].Gcost = tentativeGCost;
-                    _costArray[neighbourNode.Index].Hcost = GetDistance(neighbourNode, _requestedNode);
+                    _costArray[neighbourNode.Index].Hcost = GetDistance(neighbourNode, Path.EndNode);
                     _costArray[neighbourNode.Index].Fcost = _costArray[neighbourNode.Index].Gcost +
                                                             _costArray[neighbourNode.Index].Hcost;
 
@@ -258,20 +260,20 @@ namespace Runtime.Grid.GridPathFinding
         /// </summary>
         /// <param name="endNode"></param>
         /// <returns></returns>
-        private List<GridNode> CalculatePath(GridNode endNode)
+        private Path CalculatePath(GridNode endNode)
         {
-            List<GridNode> path = new List<GridNode>();
-            path.Add(endNode);
+            Path newPath = new Path(new List<GridNode>(), Path.StartNode, Path.EndNode);
+            newPath.PathNodes.Add(endNode);
             PathFindingCost currentNode = _costArray[endNode.Index];
             while (currentNode.CameFromNode != null)
             {
-                path.Add(currentNode.CameFromNode);
+                newPath.PathNodes.Add(currentNode.CameFromNode);
                 currentNode = _costArray[currentNode.CameFromNode.Index];
             }
 
-            path.Reverse();
+            newPath.PathNodes.Reverse();
 
-            return path;
+            return newPath;
         }
 
         /// <summary>
@@ -319,7 +321,7 @@ namespace Runtime.Grid.GridPathFinding
             if (Path == null) return;
             if (!showGizmos) return;
 
-            foreach (var node in Path)
+            foreach (var node in Path.PathNodes)
             {
                 Gizmos.color = Color.green;
                 Gizmos.DrawCube(node.GridPosition + myGrid.PivotPoint, Vector3.one * .1f);
@@ -331,6 +333,5 @@ namespace Runtime.Grid.GridPathFinding
             return myGrid;
         }
         
-        public List<GridNode> Path { get; private set; }
     }
 }

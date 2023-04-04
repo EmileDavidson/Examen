@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
-using TMPro;
 using Toolbox.Attributes;
 using Toolbox.MethodExtensions;
 using UnityEngine;
@@ -22,13 +19,10 @@ namespace Runtime.Customer
         private List<CashRegister> _cashRegisters;
         
 
-        private int currentIndex = -1;
-        private bool _destinationReached = false;
 
         private void Awake()
         {
             pathFinding ??= GetComponent<PathFinding>();
-            currentIndex = 0;
             _cashRegisters = new List<CashRegister>(FindObjectsOfType<CashRegister>());
             _shelves = new List<Shelf>(FindObjectsOfType<Shelf>());
         }
@@ -36,6 +30,8 @@ namespace Runtime.Customer
         [Button]
         private void Start()
         {
+            pathFinding.Path.CurrentIndex = 0;
+            
             Vector3 position = transform.position;
             GridNode currentGridNode = pathFinding.GetGrid().GetNodeFromWorldPosition(new Vector3(position.x, 0, position.z));
 
@@ -49,19 +45,21 @@ namespace Runtime.Customer
 
         private void FixedUpdate()
         {
-            if (_destinationReached) return;
             if (pathFinding == null) return;
             if (pathFinding.GetGrid() == null) return;
-            if (pathFinding.Path == null || pathFinding.Path.IsEmpty()) return;
+            if (pathFinding.Path == null || pathFinding.Path.PathNodes.IsEmpty()) return;
+            if (pathFinding.Path.DestinationReached) return;
             
-            if (currentIndex == -1)
+            Path path = pathFinding.Path;
+            
+            if (path.CurrentIndex == -1)
             {
                 Debug.LogWarning("Could not found next path node");
                 return;
             }
             
             Vector3 playerPos = hipRb.gameObject.transform.position;
-            var nextPathNode = pathFinding.Path[currentIndex + 1];
+            var nextPathNode = path.Peek();
             var nextPos = nextPathNode.GetWorldPosition(pathFinding.GetGrid().PivotPoint);
             
             hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.01f);
@@ -73,13 +71,11 @@ namespace Runtime.Customer
             //
             
             //check if close enough 
-            if(Vector3.Distance(playerPos, nextPathNode.GetWorldPosition(pathFinding.GetGrid().PivotPoint)) < 0.1f)
-            {
-                currentIndex++;
-                if (currentIndex < pathFinding.Path.Count - 1) return;
-                currentIndex = -1;
-                _destinationReached = true;
-            }
+            if (!(Vector3.Distance(playerPos, nextPathNode.GetWorldPosition(pathFinding.GetGrid().PivotPoint)) < 0.1f)) return;
+            path.CurrentIndex++;
+            if (path.CurrentIndex < path.PathNodes.Count - 1) return;
+            path.CurrentIndex = -1;
+            path.DestinationReached = true;
         }
     }
 }
