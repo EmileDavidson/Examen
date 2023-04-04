@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2746452852530597025}
   - component: {fileID: 1943641651823900335}
   - component: {fileID: 4841531464757235048}
-  - component: {fileID: 4489165204107986647}
   - component: {fileID: 4489165204107986643}
   m_Layer: 0
   m_Name: CharacterWrapper
@@ -85,20 +84,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   collidersToIgnore: []
---- !u!114 &4489165204107986647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746452852530597024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c5c2586cee63054197d3f53426105a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hipRb: {fileID: 2746452852061541117}
-  hipJoint: {fileID: 2746452852061541111}
 --- !u!114 &4489165204107986643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d870ff24d85233740bdae8ee30f96831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: []
+  maxInventorySize: 0
 --- !u!1001 &1081974346997292776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1015,6 +1000,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2972010157092143200, guid: e78acc57068af8e4caa23159482d11f4, type: 3}
   m_PrefabInstance: {fileID: 1081974346997292776}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2746452852148489915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755431743775268488}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f896e662cb8f19439396c39076aece4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLimb: {fileID: 3568956259619342201}
 --- !u!114 &3052262589310922344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,19 +1027,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handType: 0
   shoulderJoint: {fileID: 2746452851980741572}
---- !u!114 &2746452852148489915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2755431743775268488}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f896e662cb8f19439396c39076aece4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLimb: {fileID: 3568956259619342201}
 --- !u!1 &3088402271010790157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2729115881299789285, guid: e78acc57068af8e4caa23159482d11f4, type: 3}

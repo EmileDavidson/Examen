@@ -9,9 +9,10 @@ namespace Runtime.Grid
     [Serializable]
     public class GridNode
     {
-        public Vector3Int GridPosition { get; set; }
-        public int Index { get; set;  }
-        public bool IsBlocked { get; set; }
+        [field: SerializeField] public bool IsBlocked { get; set; }
+        
+        [field: SerializeField] public  Vector3Int GridPosition {get; set;}
+        [field: SerializeField] public  int Index {get; set;}
 
         public GridNode(int index, int x, int y, int z, bool blockedNode = false)
         {
@@ -23,6 +24,11 @@ namespace Runtime.Grid
         public void SetBlocked(bool doBlock)
         {
             IsBlocked = doBlock;
+        }
+
+        public Vector3 GetWorldPosition(Vector3 gridPivot)
+        {
+            return GridPosition + gridPivot;
         }
     }
 }

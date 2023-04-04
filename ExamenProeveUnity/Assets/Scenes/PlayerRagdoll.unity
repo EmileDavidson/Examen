@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPosition: {x: 8, y: 5, z: 0}
+  interactPosition: {x: 8, y: 0, z: 5}
   inventory:
   - {fileID: 11400000, guid: 403a48fbe06e7774399c17b3b82f9918, type: 2}
 --- !u!65 &242634973
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPosition: {x: 3, y: 7, z: 0}
+  interactPosition: {x: 3, y: 0, z: 7}
   inventory:
   - {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
   - {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
@@ -799,6 +799,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1242182332 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2746452852061541117, guid: 1a3e17be9e544a745850d85389ccfdfe, type: 3}
+  m_PrefabInstance: {fileID: 4489165203235380981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!153 &1242182334 stripped
+ConfigurableJoint:
+  m_CorrespondingSourceObject: {fileID: 2746452852061541111, guid: 1a3e17be9e544a745850d85389ccfdfe, type: 3}
+  m_PrefabInstance: {fileID: 4489165203235380981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1355035786
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,9 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cb350a91e6f694ea665daa1f7a9776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needsPath: 0
-  isFindingPath: 0
-  showGizmos: 0
+  showGizmos: 1
   myGrid: {fileID: 309537845}
   onPathFound:
     m_PersistentCalls:
@@ -920,6 +928,21 @@ MonoBehaviour:
   onPathNotFound:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1558879861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558879851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299a012a5e0645548fe046a0d5fca84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hipRb: {fileID: 1242182332}
+  hipJoint: {fileID: 1242182334}
+  pathFinding: {fileID: 0}
 --- !u!1 &2094104529
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2746452852530597025, guid: 1a3e17be9e544a745850d85389ccfdfe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.414
       objectReference: {fileID: 0}
     - target: {fileID: 2746452852530597025, guid: 1a3e17be9e544a745850d85389ccfdfe, type: 3}
       propertyPath: m_LocalPosition.z

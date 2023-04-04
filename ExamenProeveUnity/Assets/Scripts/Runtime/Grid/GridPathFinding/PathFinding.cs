@@ -15,13 +15,11 @@ namespace Runtime.Grid.GridPathFinding
     /// </summary>
     public class PathFinding : MonoBehaviour
     {
-        [SerializeField] private bool needsPath;
-        [SerializeField] private bool isFindingPath;
         [SerializeField] private bool showGizmos = true;
         [SerializeField] private MyGrid myGrid;
 
         public UnityEvent<List<GridNode>> onPathFound = new();
-        public UnityEvent onPathNotFound = new UnityEvent();
+        public UnityEvent onPathNotFound = new();
 
         private GridNode _currentNode;
         private GridNode _requestedNode;
@@ -32,7 +30,9 @@ namespace Runtime.Grid.GridPathFinding
         private List<GridNode> _openList;
         private List<GridNode> _closedList;
         private PathFindingCost[] _costArray;
-        private List<GridNode> _path;
+
+        private bool _needsPath;
+        private bool _isFindingPath;
         
         /// <summary>
         /// OnDisable is called when the script instance is being disabled.
@@ -57,10 +57,10 @@ namespace Runtime.Grid.GridPathFinding
         {
             _openList = new List<GridNode>();
             _closedList = new List<GridNode>();
-            _path = new List<GridNode>();
+            Path = new List<GridNode>();
             
-            onPathFound.AddListener((_) => { isFindingPath = false;});
-            onPathNotFound.AddListener(() => { isFindingPath = false;});
+            onPathFound.AddListener((_) => { _isFindingPath = false;});
+            onPathNotFound.AddListener(() => { _isFindingPath = false;});
         }
 
         /// <summary>
@@ -69,10 +69,11 @@ namespace Runtime.Grid.GridPathFinding
         /// </summary>
         /// <param name="currentNode"></param>
         /// <param name="requestedNode"></param>
+        [Button(Mode = ButtonMode.EnabledInPlayMode)]
         public void StartPathfinding(GridNode currentNode, GridNode requestedNode)
         {
             myGrid.onGridChangedWithNode.AddListener(GridChangedUpdate);
-            needsPath = true;
+            _needsPath = true;
             _currentNode = currentNode;
             _requestedNode = requestedNode;
             FindPathAsync(currentNode.GridPosition, requestedNode.GridPosition, (_) => { });
@@ -81,14 +82,15 @@ namespace Runtime.Grid.GridPathFinding
         /// <summary>
         /// Stops the pathfinding from updating on changes and clears the path
         /// </summary>
+        [Button(Mode = ButtonMode.EnabledInPlayMode)]
         public void EndPathFinding()
         {
             myGrid.onGridChangedWithNode.RemoveListener(GridChangedUpdate);
-            _path.Clear();
+            Path.Clear();
             _openList.Clear();
             _closedList.Clear();
-            needsPath = false;
-            isFindingPath = false;
+            _needsPath = false;
+            _isFindingPath = false;
         }
 
         /// <summary>
@@ -97,10 +99,10 @@ namespace Runtime.Grid.GridPathFinding
         /// <param name="node"></param>
         private void GridChangedUpdate(GridNode node)
         {
-            if (_path != null && !_path.Contains(node)) return;
-            if (!needsPath) return;
+            if (Path != null && !Path.Contains(node)) return;
+            if (!_needsPath) return;
 
-            _path = FindPath(_currentNode.GridPosition, _requestedNode.GridPosition);
+            Path = FindPath(_currentNode.GridPosition, _requestedNode.GridPosition);
         }
 
         /// <summary>
@@ -109,13 +111,13 @@ namespace Runtime.Grid.GridPathFinding
         /// <returns></returns>
         private async void FindPathAsync(Vector3Int currentNodePos, Vector3Int requestedNodePos, Action<List<GridNode>> callback)
         {
-            if (isFindingPath)
+            if (_isFindingPath)
             {
                 return;
             }
             
             Task<List<GridNode>> task = new Task<List<GridNode>>(() => FindPath(currentNodePos, requestedNodePos));
-            isFindingPath = true;
+            _isFindingPath = true;
             task.Start();
             task.Exception?.Handle(e =>
             {
@@ -132,16 +134,22 @@ namespace Runtime.Grid.GridPathFinding
         /// <returns></returns>
         private List<GridNode> FindPath(Vector3Int currentNodePos, Vector3Int requestedNodePos)
         {
-            isFindingPath = true;
-            _path.Clear();
+            _isFindingPath = true;
+            Path.Clear();
 
             _currentNode = myGrid.GetNodeByPosition(currentNodePos);
             _requestedNode = myGrid.GetNodeByPosition(requestedNodePos);
+            
+            if(currentNodePos == requestedNodePos)
+            {
+                onPathNotFound.Invoke();
+                return Path;
+            }
 
             if (_currentNode == null || _requestedNode == null)
             {
                 onPathNotFound.Invoke();
-                return null; 
+                return Path; 
             }
 
             _openList = new List<GridNode> { _currentNode };
@@ -165,9 +173,9 @@ namespace Runtime.Grid.GridPathFinding
 
                 if (currentNodeInOpenList.Index == _requestedNode.Index)
                 {
-                    _path = CalculatePath(_requestedNode);
-                    onPathFound.Invoke(_path);
-                    return _path;
+                    Path = CalculatePath(_requestedNode);
+                    onPathFound.Invoke(Path);
+                    return Path;
                 }
 
                 foreach (GridNode neighbourNode in GetNeighbourList(currentNodeInOpenList))
@@ -194,7 +202,7 @@ namespace Runtime.Grid.GridPathFinding
             }
 
             onPathNotFound.Invoke();
-            return null;
+            return Path;
         }
 
         /// <summary>
@@ -308,14 +316,21 @@ namespace Runtime.Grid.GridPathFinding
         /// </summary>
         private void OnDrawGizmos()
         {
-            if (_path == null) return;
+            if (Path == null) return;
             if (!showGizmos) return;
 
-            foreach (var node in _path)
+            foreach (var node in Path)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawCube(node.GridPosition + myGrid.PivotPoint, Vector3.one);
+                Gizmos.DrawCube(node.GridPosition + myGrid.PivotPoint, Vector3.one * .1f);
             }
         }
+
+        public MyGrid GetGrid()
+        {
+            return myGrid;
+        }
+        
+        public List<GridNode> Path { get; private set; }
     }
 }

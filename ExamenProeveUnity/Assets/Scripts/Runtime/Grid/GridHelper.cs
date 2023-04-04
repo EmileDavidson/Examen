@@ -7,7 +7,7 @@ namespace Runtime.Grid
     {
         public static void Grid3dLoop(int width, int height, int depth, Action<int, Vector3Int> callback)
         {
-                int cellIndex = 0;
+            int cellIndex = 0;
             for (var gridZ = 0; gridZ < depth; gridZ++)
             {
                 for (var gridY = 0; gridY < height; gridY++)

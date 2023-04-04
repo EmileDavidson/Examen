@@ -39,6 +39,7 @@ namespace Runtime.Grid
         /// resets the grid and creates new one 
         /// </summary>
         /// <returns></returns>
+        [Button(Mode = ButtonMode.EnabledInPlayMode)]
         public MyGrid GenerateGrid()
         {
             ResetGrid();
@@ -54,6 +55,7 @@ namespace Runtime.Grid
         /// Resets the grid by clearing everything to default values.
         /// </summary>
         /// <returns></returns>
+        [Button(Mode = ButtonMode.EnabledInPlayMode)]
         public MyGrid ResetGrid()
         {
             onResetGrid.Invoke();
@@ -96,6 +98,20 @@ namespace Runtime.Grid
         }
 
         /// <summary>
+        /// Gets the index of the node at the given grid position in the grid. as out parameter.
+        /// returns if successful or not.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public bool TryGetIndexByPosition(Vector3Int pos, out int index)
+        {
+            var node = nodes.FirstOrDefault(node => node.GridPosition == pos);
+            index = node?.Index ?? 0;
+            return node != null;
+        }
+
+        /// <summary>
         /// Gets the node at the given grid position.
         /// </summary>
         /// <param name="position">the grid position</param>
@@ -114,6 +130,7 @@ namespace Runtime.Grid
         {
             var x = Mathf.RoundToInt(position.x - pivotPoint.x);
             var z = Mathf.RoundToInt(position.z - pivotPoint.z);
+
             return GetNodeByPosition(new Vector3Int(x, 0, z));
         }
 
