@@ -4,6 +4,7 @@ using Runtime.Grid.GridPathFinding;
 using Toolbox.Attributes;
 using Toolbox.MethodExtensions;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Runtime.Customer
@@ -14,11 +15,14 @@ namespace Runtime.Customer
         [SerializeField] private Rigidbody hipRb;
         [SerializeField] private ConfigurableJoint hipJoint;
         [SerializeField] private PathFinding pathFinding;
-
+        [SerializeField] private Animator targetAnimator;
+        private static readonly int Walk = Animator.StringToHash("Walk");
+        
         private List<Shelf> _shelves = new();
         private List<CashRegister> _cashRegisters;
+        private bool _walk = false;
         
-
+        public UnityEvent onDestinationReached = new UnityEvent();
 
         private void Awake()
         {
@@ -49,7 +53,6 @@ namespace Runtime.Customer
             if (pathFinding.GetGrid() == null) return;
             if (pathFinding.Path == null || pathFinding.Path.PathNodes.IsEmpty()) return;
             if (pathFinding.Path.DestinationReached) return;
-            
             Path path = pathFinding.Path;
             
             if (path.CurrentIndex == -1)
@@ -59,23 +62,29 @@ namespace Runtime.Customer
             }
             
             Vector3 playerPos = hipRb.gameObject.transform.position;
-            var nextPathNode = path.Peek();
+            var nextPathNode = path.GetNextNode();
             var nextPos = nextPathNode.GetWorldPosition(pathFinding.GetGrid().PivotPoint);
+
+            var gotoPosition = Vector3.MoveTowards(playerPos, nextPos, 0.01f);
+            var direction = (gotoPosition - playerPos).normalized;
             
-            hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.01f);
+            _walk = (direction.magnitude >= 0.1f);
+
+            if (_walk)
+            {
+                var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+                hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+                hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.01f);
+            }
             
-            //calculate the rotation angel and set hipjoint target rotation to it
-            // Vector3 direction = nextPos - playerPos;
-            // Quaternion lookRotation = Quaternion.LookRotation(direction);
-            // hipJoint.targetRotation = lookRotation;
-            //
-            
-            //check if close enough 
+            targetAnimator.SetBool(Walk, _walk);
+
             if (!(Vector3.Distance(playerPos, nextPathNode.GetWorldPosition(pathFinding.GetGrid().PivotPoint)) < 0.1f)) return;
             path.CurrentIndex++;
             if (path.CurrentIndex < path.PathNodes.Count - 1) return;
             path.CurrentIndex = -1;
             path.DestinationReached = true;
+            onDestinationReached.Invoke();
         }
     }
 }

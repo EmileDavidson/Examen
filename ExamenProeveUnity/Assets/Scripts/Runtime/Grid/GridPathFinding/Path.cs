@@ -37,7 +37,7 @@ namespace Runtime.Grid.GridPathFinding
         /// Peek in to the future! and get the next node in the path of it does not exist return null
         /// </summary>
         /// <returns></returns>
-        public GridNode Peek()
+        public GridNode GetNextNode()
         {
             return CurrentIndex + 1 < _path.Count ? _path[CurrentIndex + 1] : null;
         }

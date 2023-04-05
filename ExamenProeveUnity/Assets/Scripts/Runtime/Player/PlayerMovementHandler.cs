@@ -17,7 +17,6 @@ namespace Runtime.Player
         private bool _walk;
         private static readonly int Walk = Animator.StringToHash("Walk");
 
-        
         /// <summary>
         /// OnMovement is an event method from PlayerInput that is called when the player uses the move input action
         /// </summary>

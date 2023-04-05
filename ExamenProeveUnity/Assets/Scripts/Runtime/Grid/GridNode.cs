@@ -10,7 +10,6 @@ namespace Runtime.Grid
     public class GridNode
     {
         [field: SerializeField] public bool IsBlocked { get; set; }
-        
         [field: SerializeField] public  Vector3Int GridPosition {get; set;}
         [field: SerializeField] public  int Index {get; set;}
 

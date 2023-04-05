@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Toolbox.Attributes;
-using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -32,7 +31,7 @@ namespace Runtime.Grid.GridPathFinding
 
         private bool _needsPath;
         private bool _isFindingPath;
-        
+
         /// <summary>
         /// OnDisable is called when the script instance is being disabled.
         /// </summary>
@@ -57,9 +56,9 @@ namespace Runtime.Grid.GridPathFinding
             _openList = new List<GridNode>();
             _closedList = new List<GridNode>();
             Path = new Path(new List<GridNode>(), null, null);
-            
-            onPathFound.AddListener((_) => { _isFindingPath = false;});
-            onPathNotFound.AddListener(() => { _isFindingPath = false;});
+
+            onPathFound.AddListener((_) => { _isFindingPath = false; });
+            onPathNotFound.AddListener(() => { _isFindingPath = false; });
         }
 
         /// <summary>
@@ -99,8 +98,8 @@ namespace Runtime.Grid.GridPathFinding
         /// <param name="node"></param>
         private void GridChangedUpdate(GridNode node)
         {
-            if (Path != null && !Path.PathNodes.Contains(node)) return;
             if (!_needsPath) return;
+            if (Path != null && !Path.PathNodes.Contains(node)) return;
 
             Path = FindPath(Path.StartNode.GridPosition, Path.EndNode.GridPosition);
         }
@@ -115,9 +114,8 @@ namespace Runtime.Grid.GridPathFinding
             {
                 return;
             }
-            
+
             Task<Path> task = new Task<Path>(() => FindPath(currentNodePos, requestedNodePos));
-            _isFindingPath = true;
             task.Start();
             task.Exception?.Handle(e =>
             {
@@ -139,8 +137,8 @@ namespace Runtime.Grid.GridPathFinding
 
             Path.StartNode = myGrid.GetNodeByPosition(currentNodePos);
             Path.EndNode = myGrid.GetNodeByPosition(requestedNodePos);
-            
-            if(currentNodePos == requestedNodePos)
+
+            if (currentNodePos == requestedNodePos)
             {
                 onPathNotFound.Invoke();
                 return Path;
@@ -149,7 +147,7 @@ namespace Runtime.Grid.GridPathFinding
             if (Path.StartNode == null || Path.EndNode == null)
             {
                 onPathNotFound.Invoke();
-                return Path; 
+                return Path;
             }
 
             _openList = new List<GridNode> { Path.StartNode };
@@ -160,9 +158,9 @@ namespace Runtime.Grid.GridPathFinding
             _costArray = new PathFindingCost[myGrid.Height * myGrid.Width * myGrid.Depth];
 
             GridHelper.Grid3dLoop(myGrid.Width, myGrid.Height, myGrid.Depth,
-                (index, pos) => { _costArray[index] = new PathFindingCost(index, int.MaxValue, 0, null); });
+                (index, pos) => { _costArray[index] = new PathFindingCost(int.MaxValue, 0, null); });
 
-            
+
             _costArray[startNodeIndex].Gcost = 0;
             _costArray[startNodeIndex].Hcost = GetDistance(Path.StartNode, Path.EndNode);
             _costArray[startNodeIndex].Fcost = _costArray[startNodeIndex].Gcost + _costArray[startNodeIndex].Hcost;
@@ -180,21 +178,22 @@ namespace Runtime.Grid.GridPathFinding
                     return Path;
                 }
 
-                foreach (GridNode neighbourNode in GetNeighbourList(currentNodeInOpenList))
+                //remove all blocked nodes
+                var neighbourList = myGrid.GetNeighbourList(currentNodeInOpenList);
+                neighbourList.RemoveAll(node => node.IsBlocked);
+                foreach (GridNode neighbourNode in neighbourList)
                 {
                     if (_closedList.Contains(neighbourNode))
                     {
                         continue;
                     }
 
-                    int tentativeGCost = _costArray[currentNodeInOpenList.Index].Gcost +
-                                         GetDistance(currentNodeInOpenList, neighbourNode);
+                    int tentativeGCost = _costArray[currentNodeInOpenList.Index].Gcost + GetDistance(currentNodeInOpenList, neighbourNode);
                     if (tentativeGCost >= _costArray[neighbourNode.Index].Gcost) continue;
                     _costArray[neighbourNode.Index].CameFromNode = currentNodeInOpenList;
                     _costArray[neighbourNode.Index].Gcost = tentativeGCost;
                     _costArray[neighbourNode.Index].Hcost = GetDistance(neighbourNode, Path.EndNode);
-                    _costArray[neighbourNode.Index].Fcost = _costArray[neighbourNode.Index].Gcost +
-                                                            _costArray[neighbourNode.Index].Hcost;
+                    _costArray[neighbourNode.Index].Fcost = _costArray[neighbourNode.Index].Gcost + _costArray[neighbourNode.Index].Hcost;
 
                     if (!_openList.Contains(neighbourNode))
                     {
@@ -206,54 +205,7 @@ namespace Runtime.Grid.GridPathFinding
             onPathNotFound.Invoke();
             return Path;
         }
-
-        /// <summary>
-        /// returns a list of all the neighbour nodes
-        /// </summary>
-        /// <param name="currentNode"></param>
-        /// <returns></returns>
-        private List<GridNode> GetNeighbourList(GridNode currentNode)
-        {
-            List<GridNode> neighbourList = new List<GridNode>();
-
-            //left part
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 0, 0)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 0, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 0, -1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 1, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, -1, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 1, -1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, -1, -1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 1, 0)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, -1, 0)));
-
-            //right 
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 0, 0)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 0, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 0, -1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 1, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, -1, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 1, -1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, -1, -1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 1, 0)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, -1, 0)));
-
-            //center part
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 0, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 1, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, -1, 1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 1, 0)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, -1, 0)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 0, -1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 1, -1)));
-            neighbourList.AddIfNotNull(myGrid.GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, -1, -1)));
-
-            //remove all blocked nodes
-            neighbourList.RemoveAll(node => node.IsBlocked);
-
-            return neighbourList;
-        }
-
+        
         /// <summary>
         /// Calculates the path from the start node to the end node using the cameFromNode property
         /// and returns the path.
@@ -328,10 +280,14 @@ namespace Runtime.Grid.GridPathFinding
             }
         }
 
+
+        /// <summary>
+        /// Gets the grid. Used for the pathfinding
+        /// </summary>
+        /// <returns></returns>
         public MyGrid GetGrid()
         {
             return myGrid;
         }
-        
     }
 }

@@ -39,7 +39,7 @@ namespace Runtime.Grid
         /// resets the grid and creates new one 
         /// </summary>
         /// <returns></returns>
-        [Button(Mode = ButtonMode.EnabledInPlayMode)]
+        [Button]
         public MyGrid GenerateGrid()
         {
             ResetGrid();
@@ -48,6 +48,7 @@ namespace Runtime.Grid
                 GridNode node = new GridNode(index, gridPos.x, gridPos.y, gridPos.z, false);
                 nodes.Add(node);
             });
+            
             return this;
         }
 
@@ -145,8 +146,6 @@ namespace Runtime.Grid
             var node = nodes.FirstOrDefault(node => node.GridPosition == position);
             if (node == null) return;
             BlockNodeByIndex(node.Index);
-            onGridChanged.Invoke();
-            onGridChangedWithNode.Invoke(node);
         }
 
         /// <summary>
@@ -158,6 +157,52 @@ namespace Runtime.Grid
         {
             nodes[index]?.SetBlocked(true);
             onGridChanged.Invoke();
+            onGridChangedWithNode.Invoke(nodes[index]);
         }
+        
+                /// <summary>
+        /// returns a list of all the neighbour nodes
+        /// </summary>
+        /// <param name="currentNode"></param>
+        /// <returns></returns>
+        public List<GridNode> GetNeighbourList(GridNode currentNode)
+        {
+            List<GridNode> neighbourList = new List<GridNode>();
+
+            //left part
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 0, 0)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 0, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 0, -1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 1, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, -1, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 1, -1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, -1, -1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, 1, 0)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(-1, -1, 0)));
+
+            //right 
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 0, 0)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 0, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 0, -1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 1, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, -1, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 1, -1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, -1, -1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, 1, 0)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(1, -1, 0)));
+
+            //center part
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 0, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 1, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, -1, 1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 1, 0)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, -1, 0)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 0, -1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, 1, -1)));
+            neighbourList.AddIfNotNull(GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, -1, -1)));
+
+            return neighbourList;
+        }
+
     }
 }
