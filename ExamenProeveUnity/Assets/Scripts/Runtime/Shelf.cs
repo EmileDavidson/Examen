@@ -1,24 +1,26 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
-    [SerializeField] private Vector3Int interactPosition;
-    [SerializeField] private List<ProductScriptableObject> inventory = new List<ProductScriptableObject>() {Capacity = 5};
-    
-    public Vector3Int InteractPosition => interactPosition;
-    
+    [Tooltip("The index of the grid node where the player should stand to interact with the shelf")]
+    [SerializeField] private int gridIndex;
+    private readonly List<ProductScriptableObject> _inventory = new List<ProductScriptableObject>() { Capacity = 5 };
+
+    public int InteractionGridIndex => gridIndex;
+
     public void Restock(ProductScriptableObject item)
     {
-        for (int i = inventory.Count; i < inventory.Capacity; i++)
+        for (int i = _inventory.Count; i < _inventory.Capacity; i++)
         {
-            inventory.Add(item);
+            _inventory.Add(item);
         }
     }
 
     public bool IsEmpty()
     {
-        if (inventory.Count >= 1)
+        if (_inventory.Count >= 1)
         {
             return false;
         }
@@ -28,10 +30,10 @@ public class Shelf : MonoBehaviour
 
     public ProductScriptableObject GrabItem()
     {
-        if (inventory.Count >= 1)
+        if (_inventory.Count >= 1)
         {
-            ProductScriptableObject productToReturn = inventory[0];
-            inventory.RemoveAt(0);
+            ProductScriptableObject productToReturn = _inventory[0];
+            _inventory.RemoveAt(0);
             return productToReturn;
         }
 

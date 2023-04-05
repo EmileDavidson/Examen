@@ -100,6 +100,11 @@ namespace Runtime.Grid.GridPathFinding
         {
             if (!_needsPath) return;
             if (Path != null && !Path.PathNodes.Contains(node)) return;
+            if (Path == null)
+            {
+                Debug.LogError("Path is null but that should not happen here.");
+                return;
+            }
 
             Path = FindPath(Path.StartNode.GridPosition, Path.EndNode.GridPosition);
         }
@@ -179,7 +184,7 @@ namespace Runtime.Grid.GridPathFinding
                 }
 
                 //remove all blocked nodes
-                var neighbourList = myGrid.GetNeighbourList(currentNodeInOpenList);
+                var neighbourList = myGrid.GetDirectNeighbourList(currentNodeInOpenList);
                 neighbourList.RemoveAll(node => node.IsBlocked);
                 foreach (GridNode neighbourNode in neighbourList)
                 {
@@ -276,8 +281,15 @@ namespace Runtime.Grid.GridPathFinding
             foreach (var node in Path.PathNodes)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawCube(node.GridPosition + myGrid.PivotPoint, Vector3.one * .1f);
+                Gizmos.DrawCube( myGrid.GetWorldPositionOfNode(node.GridPosition), Vector3.one * .3f);
             }
+            
+            //draw the start and end node
+            if(Path.StartNode == null || Path.EndNode == null) return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawCube(myGrid.GetWorldPositionOfNode(Path.StartNode.GridPosition), Vector3.one * 1.1f);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawCube(myGrid.GetWorldPositionOfNode(Path.EndNode.GridPosition), Vector3.one * 1.1f);
         }
 
 

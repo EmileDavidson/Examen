@@ -28,7 +28,7 @@ namespace Runtime.Customer
         {
             pathFinding ??= GetComponent<PathFinding>();
             _cashRegisters = new List<CashRegister>(FindObjectsOfType<CashRegister>());
-            _shelves = new List<Shelf>(FindObjectsOfType<Shelf>());
+            _shelves = new List<Shelf>(FindObjectsOfType<Shelf>()); 
         }
 
         [Button]
@@ -41,8 +41,8 @@ namespace Runtime.Customer
 
 
             Shelf randomShelf = _shelves[Random.Range(0, _shelves.Count)];
-            Vector3Int targetGridPosition = randomShelf.InteractPosition;
-            GridNode targetGridNode = pathFinding.GetGrid().GetNodeFromWorldPosition(new Vector3(targetGridPosition.x, 0, targetGridPosition.z));
+            int targetIndex = randomShelf.InteractionGridIndex;
+            GridNode targetGridNode = pathFinding.GetGrid().nodes[targetIndex];
 
             pathFinding.StartPathfinding(currentGridNode, targetGridNode);
         }
@@ -63,23 +63,23 @@ namespace Runtime.Customer
             
             Vector3 playerPos = hipRb.gameObject.transform.position;
             var nextPathNode = path.GetNextNode();
-            var nextPos = nextPathNode.GetWorldPosition(pathFinding.GetGrid().PivotPoint);
+            var nextPos = pathFinding.GetGrid().GetWorldPositionOfNode(nextPathNode.GridPosition);
+            nextPos.y = playerPos.y;
 
-            var gotoPosition = Vector3.MoveTowards(playerPos, nextPos, 0.01f);
+            var gotoPosition = Vector3.MoveTowards(playerPos, nextPos, 0.1f);
             var direction = (gotoPosition - playerPos).normalized;
             
             _walk = (direction.magnitude >= 0.1f);
-
-            if (_walk)
-            {
-                var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
-                hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-                hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.01f);
-            }
+            var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+            hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+            hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.01f);
             
             targetAnimator.SetBool(Walk, _walk);
 
-            if (!(Vector3.Distance(playerPos, nextPathNode.GetWorldPosition(pathFinding.GetGrid().PivotPoint)) < 0.1f)) return;
+            if (!(Vector3.Distance(playerPos, pathFinding.GetGrid().GetWorldPositionOfNode(nextPathNode.GridPosition)) < 1f))
+            {
+                return;
+            }
             path.CurrentIndex++;
             if (path.CurrentIndex < path.PathNodes.Count - 1) return;
             path.CurrentIndex = -1;

@@ -24,10 +24,5 @@ namespace Runtime.Grid
         {
             IsBlocked = doBlock;
         }
-
-        public Vector3 GetWorldPosition(Vector3 gridPivot)
-        {
-            return GridPosition + gridPivot;
-        }
     }
 }

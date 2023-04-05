@@ -3151,7 +3151,6 @@ GameObject:
   - component: {fileID: 8043495966599613115}
   - component: {fileID: 8043495966599613112}
   - component: {fileID: 8043495966599613126}
-  - component: {fileID: 8043495966599613125}
   - component: {fileID: 8043495966599613114}
   - component: {fileID: 8043495966599613124}
   m_Layer: 0
@@ -3208,18 +3207,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01947525, y: 0.008988194, z: 0.01390462}
   m_Center: {x: 0.00005881219, y: 0.004241331, z: -0.001952303}
---- !u!75 &8043495966599613125
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8043495968001426660}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 80, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!153 &8043495966599613114
 ConfigurableJoint:
   m_ObjectHideFlags: 0
