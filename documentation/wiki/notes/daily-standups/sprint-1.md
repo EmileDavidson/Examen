@@ -42,6 +42,6 @@ Today the standup started at 9.40. Leikho will make small fixes with the rig of 
 
 ## Standup 05/04/2023:
 
-
+The standup started at 9.20. Vivian will work on the presentation for tomorrow. Sterre will texture the most important props today so we can import those into the game. Leikho will finish the texturing for the 1st character and when done will export this, and after the character is exported he will work on the 2nd character. LaRhona will model a planterbox today and after that is done she will model a sidewalk that our npc’s can walk over. Wouter will finish the blockout today and after it has been pushed to the develop branch, he will merge all existing scripts so that we have a temporary working level. Emile will finish the customer AI and will push this to develop so it can be merged with the blockout.
 {% endtab %}
 {% endtabs %}
