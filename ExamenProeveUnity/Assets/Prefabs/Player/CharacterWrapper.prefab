@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 2645165763287977559}
-  speed: 5
+  speed: 20
   hipJoint: {fileID: 1752440830908393999}
   hip: {fileID: 1752440830908393989}
   targetAnimator: {fileID: 1752440830711012888}
@@ -904,6 +904,10 @@ PrefabInstance:
     - target: {fileID: 2962996640432475157, guid: e78acc57068af8e4caa23159482d11f4, type: 3}
       propertyPath: m_AngularDrag
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962996640432475157, guid: e78acc57068af8e4caa23159482d11f4, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2962996640432475162, guid: e78acc57068af8e4caa23159482d11f4, type: 3}
       propertyPath: m_XMotion
