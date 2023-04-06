@@ -58,7 +58,7 @@ namespace Runtime.Grid.GridPathFinding
             myGrid ??= GameObject.Find("Floor").GetComponent<MyGrid>(); //TODO: FIX THIS SO ITS NOT A HARD DEPENDENCY TO THE FLOOR GAMEOBJECT
             _openList = new List<GridNode>();
             _closedList = new List<GridNode>();
-            Path = new Path(new List<GridNode>(), null, null);
+            Path = new Path(new List<int>(), null, null);
 
             onPathFound.AddListener((_) => { _isFindingPath = false; });
             onPathNotFound.AddListener(() => { _isFindingPath = false; });
@@ -107,7 +107,7 @@ namespace Runtime.Grid.GridPathFinding
         private void GridChangedUpdate(GridNode node)
         {
             if (!_needsPath) return;
-            if (Path != null && !Path.PathNodes.Contains(node)) return;
+            if (Path != null && !Path.PathNodes.Contains(node.Index)) return;
             if (Path == null)
             {
                 Debug.LogError("Path is null but that should not happen here.");
@@ -227,12 +227,12 @@ namespace Runtime.Grid.GridPathFinding
         /// <returns></returns>
         private Path CalculatePath(GridNode endNode)
         {
-            Path newPath = new Path(new List<GridNode>(), Path.StartNode, Path.EndNode);
-            newPath.PathNodes.Add(endNode);
+            Path newPath = new Path(new List<int>(), Path.StartNode, Path.EndNode);
+            newPath.PathNodes.Add(endNode.Index);
             PathFindingCost currentNode = _costArray[endNode.Index];
             while (currentNode.CameFromNode != null)
             {
-                newPath.PathNodes.Add(currentNode.CameFromNode);
+                newPath.PathNodes.Add(currentNode.CameFromNode.Index);
                 currentNode = _costArray[currentNode.CameFromNode.Index];
             }
 
@@ -286,10 +286,10 @@ namespace Runtime.Grid.GridPathFinding
             if (Path == null) return;
             if (!showGizmos) return;
 
-            foreach (var node in Path.PathNodes)
+            foreach (int node in Path.PathNodes)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawCube( myGrid.GetWorldPositionOfNode(node.GridPosition), Vector3.one * .3f);
+                Gizmos.DrawCube( myGrid.GetWorldPositionOfNode(myGrid.GetNodeByIndex(node).GridPosition), Vector3.one * .3f);
             }
             
             //draw the start and end node

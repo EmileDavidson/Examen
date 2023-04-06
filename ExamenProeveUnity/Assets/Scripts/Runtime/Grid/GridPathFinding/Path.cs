@@ -3,18 +3,22 @@ using UnityEngine;
 
 namespace Runtime.Grid.GridPathFinding
 {
+    /// <summary>
+    /// Path is the class that represents a path in the grid.
+    /// it stores a list of integers that represent the index of the gridnode in the grid.
+    /// </summary>
     public class Path
     {
         //variable declaration
-        private readonly List<GridNode> _path;
+        private readonly List<int> _path;
         public int CurrentIndex = 0;
         
         //getters setters
-        public List<GridNode> PathNodes => _path;
+        public List<int> PathNodes => _path;
         public GridNode StartNode { get; set; }
         public GridNode EndNode { get; set; }
 
-        public GridNode CurrentNode => _path[CurrentIndex];
+        public int CurrentNodeIndex => _path[CurrentIndex];
 
         public bool DestinationReached { get; set; } = false;
 
@@ -25,7 +29,7 @@ namespace Runtime.Grid.GridPathFinding
         /// <param name="nodes"></param>
         /// <param name="startNode"></param>
         /// <param name="endNode"></param>
-        public Path(List<GridNode> nodes, GridNode startNode, GridNode endNode)
+        public Path(List<int> nodes, GridNode startNode, GridNode endNode)
         {
             _path = nodes;
             StartNode = startNode;
@@ -37,9 +41,9 @@ namespace Runtime.Grid.GridPathFinding
         /// Peek in to the future! and get the next node in the path of it does not exist return null
         /// </summary>
         /// <returns></returns>
-        public GridNode GetNextNode()
+        public int GetNextNode()
         {
-            return CurrentIndex + 1 < _path.Count ? _path[CurrentIndex + 1] : null;
+            return CurrentIndex + 1 < _path.Count ? _path[CurrentIndex + 1] : -1;
         }
 
         /// <summary>

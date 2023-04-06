@@ -12,18 +12,15 @@ namespace Runtime.Customer
         [SerializeField] private Rigidbody hipRb;
         [SerializeField] private ConfigurableJoint hipJoint;
         [SerializeField] private Animator targetAnimator;
-        private Path _path;
+
+        private bool _isWaitingForTempBlock = false;
 
         private static readonly int Walk = Animator.StringToHash("Walk");
         private bool _walk = false;
-        
+
         public UnityEvent onDestinationReached = new UnityEvent();
 
-        public Path Path
-        {
-            get => _path;
-            set => _path = value;
-        }
+        public Path Path { get; set; }
 
         private void Awake()
         {
@@ -40,26 +37,47 @@ namespace Runtime.Customer
                 targetAnimator.SetBool(Walk, _walk);
                 return;
             }
-            
+
+            if (_isWaitingForTempBlock && grid.GetNodeByIndex(Path.PathNodes[Path.CurrentIndex + 1]).IsTempBlocked)
+            {
+                return;
+            }
+
             Vector3 playerPos = hipRb.gameObject.transform.position;
-            GridNode nextPathNode = Path.GetNextNode();
-            var nextPos = grid.GetWorldPositionOfNode(nextPathNode.GridPosition);
+            int nextPathNodeIndex = Path.GetNextNode();
+            var nextPos = grid.GetWorldPositionOfNode(grid.GetNodeByIndex(nextPathNodeIndex).GridPosition);
             nextPos.y = playerPos.y;
 
             var gotoPosition = Vector3.MoveTowards(playerPos, nextPos, 0.1f);
             var direction = (gotoPosition - playerPos).normalized;
-            
+
             _walk = (direction.magnitude >= 0.1f);
             var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
             hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-            hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.1f);
-            
+            hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.085f);
+
             targetAnimator.SetBool(Walk, _walk);
 
-            if (!(Vector3.Distance(playerPos, grid.GetWorldPositionOfNode(nextPathNode.GridPosition)) < 2f))
+            playerPos.y = 0; // ground the player position since we are on a 2D grid
+            if (!(Vector3.Distance(playerPos,
+                    grid.GetWorldPositionOfNode(grid.GetNodeByIndex(nextPathNodeIndex).GridPosition)) < .4f))
             {
                 return;
             }
+
+            if (grid.GetNodeByIndex(nextPathNodeIndex).IsTempBlocked)
+            {
+                _isWaitingForTempBlock = true;
+                _walk = false;
+                targetAnimator.SetBool(Walk, _walk);
+                return;
+            }
+
+            _isWaitingForTempBlock = false;
+
+            grid.GetNodeByIndex(nextPathNodeIndex).SetTempBlock(true);
+            grid.GetNodeByIndex(Path.PathNodes[Path.CurrentIndex]).SetTempBlock(false);
+
             Path.CurrentIndex++;
             if (Path.CurrentIndex < Path.PathNodes.Count - 1) return;
             Path.CurrentIndex = -1;

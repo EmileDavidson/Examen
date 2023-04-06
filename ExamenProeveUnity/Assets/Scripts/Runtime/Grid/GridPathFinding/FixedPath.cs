@@ -19,8 +19,7 @@ namespace Runtime.Grid.GridPathFinding
         [Button]
         private void Start()
         {
-            List<GridNode> pathNodes = grid.GetNodesFromIndexes(pathNodeIndexes);
-            _path = new Path(pathNodes, pathNodes[0], pathNodes.Last());
+            _path = new Path(pathNodeIndexes, grid.GetNodeByIndex(pathNodeIndexes[0]), grid.GetNodeByIndex(pathNodeIndexes.Last()));
         }
 
         private void OnDrawGizmos()

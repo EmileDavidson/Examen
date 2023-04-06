@@ -44,13 +44,13 @@ namespace Runtime.Customer
             _entryPath = WorldManager.Instance.entryPaths.RandomItem();
             _exitPath = WorldManager.Instance.exitPaths.RandomItem();
             
-            var finalNode = _entryPath.Path.PathNodes.Last();
-            var startNode = _entryPath.Path.PathNodes.First();
+            var finalNodeIndex = _entryPath.Path.PathNodes.Last();
+            var startNodeIndex = _entryPath.Path.PathNodes.First();
             
             TargetShelf = WorldManager.Instance.shelves.RandomItem();
             TargetCashRegister = WorldManager.Instance.checkouts.RandomItem();
 
-            _pathFinding.StartPathfinding(finalNode, _grid.nodes[TargetShelf.InteractionGridIndex]);
+            _pathFinding.StartPathfinding(_grid.GetNodeByIndex(finalNodeIndex), _grid.nodes[TargetShelf.InteractionGridIndex]);
 
             inventory ??= GetComponent<CustomerInventory>();
             movement ??= GetComponent<CustomerMovement>();

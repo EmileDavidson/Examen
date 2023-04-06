@@ -198,10 +198,5 @@ namespace Runtime.Grid
 
             return neighbourList;
         }
-
-        public List<GridNode> GetNodesFromIndexes(List<int> indexes)
-        {
-            return indexes.Select(index => nodes[index]).ToList();
-        }
     }
 }
