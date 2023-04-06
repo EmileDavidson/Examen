@@ -85,7 +85,7 @@ namespace Runtime.Grid
 
                 if (index == debugIndex || blockedNodesOnGenerate.Contains(index))
                 {
-                    Gizmos.color = Color.yellow;
+                    Gizmos.color = (index == debugIndex) ? Color.magenta : Color.yellow; 
                     Gizmos.DrawCube(GetWorldPositionOfNode(gridPos), size);
                     Gizmos.color = gridColor;
                 }
@@ -197,6 +197,11 @@ namespace Runtime.Grid
                 GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, -1, 0))); //downward
 
             return neighbourList;
+        }
+
+        public List<GridNode> GetNodesFromIndexes(List<int> indexes)
+        {
+            return indexes.Select(index => nodes[index]).ToList();
         }
     }
 }

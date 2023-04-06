@@ -1171,6 +1171,8 @@ GameObject:
   - component: {fileID: 8043495966970848883}
   - component: {fileID: 8043495966970848885}
   - component: {fileID: 8043495966970848881}
+  - component: {fileID: 2822542690542881327}
+  - component: {fileID: 2008414403410921536}
   m_Layer: 0
   m_Name: CH_Customer
   m_TagString: Untagged
@@ -1241,13 +1243,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299a012a5e0645548fe046a0d5fca84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grid: {fileID: 0}
   hipRb: {fileID: 8043495966599613112}
   hipJoint: {fileID: 8043495966599613114}
-  pathFinding: {fileID: 0}
   targetAnimator: {fileID: 8043495967309761209}
   onDestinationReached:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2822542690542881327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495966970848879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fd4a0dcbf94efea191a044b0fb0166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHip: {fileID: 8043495968001426660}
+  state: 0
+  inventory: {fileID: 2008414403410921536}
+  movement: {fileID: 8043495966970848881}
+--- !u!114 &2008414403410921536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495966970848879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d870ff24d85233740bdae8ee30f96831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxInventorySize: 0
 --- !u!1 &8043495966991941697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,7 +2063,7 @@ Transform:
   m_GameObject: {fileID: 8043495967277314243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.6488305, z: 0}
-  m_LocalScale: {x: 33.253105, y: 33.253105, z: 33.253105}
+  m_LocalScale: {x: 115, y: 115, z: 115}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8043495966599613115}

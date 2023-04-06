@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using Toolbox.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -45,6 +46,7 @@ namespace Runtime.Grid.GridPathFinding
         /// </summary>
         private void OnEnable()
         {
+            print("first");
             myGrid.onGridChangedWithNode.AddListener(GridChangedUpdate);
         }
 
@@ -53,12 +55,19 @@ namespace Runtime.Grid.GridPathFinding
         /// </summary>
         private void Awake()
         {
+            myGrid ??= GetComponent<MyGrid>();
+            myGrid ??= GameObject.Find("Floor").GetComponent<MyGrid>(); //TODO: FIX THIS SO ITS NOT A HARD DEPENDENCY TO THE FLOOR GAMEOBJECT
             _openList = new List<GridNode>();
             _closedList = new List<GridNode>();
             Path = new Path(new List<GridNode>(), null, null);
 
             onPathFound.AddListener((_) => { _isFindingPath = false; });
             onPathNotFound.AddListener(() => { _isFindingPath = false; });
+        }
+
+        public void StartPathfinding(GridNode currentNode, GridNode requestedNode)
+        {
+            StartPathfinding(currentNode, requestedNode, (_)=>{});
         }
 
         /// <summary>
@@ -68,14 +77,14 @@ namespace Runtime.Grid.GridPathFinding
         /// <param name="currentNode"></param>
         /// <param name="requestedNode"></param>
         [Button(Mode = ButtonMode.EnabledInPlayMode)]
-        public void StartPathfinding(GridNode currentNode, GridNode requestedNode)
+        public void StartPathfinding(GridNode currentNode, GridNode requestedNode, Action<Path> initalPathFound)
         {
             myGrid.onGridChangedWithNode.AddListener(GridChangedUpdate);
             _needsPath = true;
             Path.StartNode = currentNode;
             Path.EndNode = requestedNode;
             Path.CurrentIndex = 0;
-            FindPathAsync(currentNode.GridPosition, requestedNode.GridPosition, (_) => { });
+            FindPathAsync(currentNode.GridPosition, requestedNode.GridPosition, initalPathFound.Invoke);
         }
 
         /// <summary>

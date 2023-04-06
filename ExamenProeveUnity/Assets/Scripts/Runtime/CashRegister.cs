@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class CashRegister : MonoBehaviour
 {
-    [SerializeField] private Vector3Int interactPosition;
-    [SerializeField] private GameObject dropOffAnchor;
+    [Tooltip("The index of the grid node where the player should stand to interact with the shelf")]
+    [SerializeField] private int gridIndex;
+    
+    [SerializeField] private Transform dropOffAnchor;
     private Vector3 _dropOffSpot;
 
-    public Vector3Int InteractPosition => interactPosition;
     public Vector3 DropOffSpot => _dropOffSpot;
+    public int InteractionGridIndex => gridIndex;
 
     private void Awake()
     {
