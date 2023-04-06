@@ -59,7 +59,7 @@ namespace Runtime.Customer
         private void Start()
         {
             state = CustomerState.WalkingToEntrance;
-            movement.Path = _entryPath.Path;
+            movement.Path = _entryPath.Path.Copy();    ;
             movement.onDestinationReached.AddListener(ReachedTarget);
         }
 

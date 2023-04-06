@@ -53,5 +53,14 @@ namespace Runtime.Grid.GridPathFinding
             EndNode = null;
             DestinationReached = false;
         }
+
+        public Path Copy()
+        {
+            Path newPath = new Path(_path, StartNode, EndNode);
+            newPath.CurrentIndex = CurrentIndex;
+            newPath.DestinationReached = DestinationReached;
+
+            return newPath;
+        }
     }
 }

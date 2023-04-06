@@ -46,7 +46,6 @@ namespace Runtime.Grid.GridPathFinding
         /// </summary>
         private void OnEnable()
         {
-            print("first");
             myGrid.onGridChangedWithNode.AddListener(GridChangedUpdate);
         }
 
