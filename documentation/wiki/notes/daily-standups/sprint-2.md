@@ -1,3 +1,7 @@
+---
+description: The daily standups of the 2nd sprint
+---
+
 # Sprint 2
 
 {% tabs %}

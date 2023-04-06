@@ -1,3 +1,7 @@
+---
+description: The daily standups of the 3rd sprint
+---
+
 # Sprint 3
 
 {% tabs %}

@@ -1,3 +1,7 @@
+---
+description: The daily standups of the 1st sprint
+---
+
 # Sprint 1
 
 
