@@ -4,6 +4,10 @@ description: How to create a good commit name and description.
 
 # Commiting
 
+{% hint style="info" %}
+We know following the best practice is great, but it can be difficult and time-consuming. So, as long as the title clearly shows what is being worked on, that's good enough.
+{% endhint %}
+
 ### Commit Title
 
 The title of your commit should summarize what the change is about in a concise and descriptive manner. It should be brief, preferably no more than 50 characters. **if possible** we use imperative mood (e.g., "Add", "Fix", "Update", "Remove") if you are still working on it but want to commit it just to have a restart point you can add "WIP - {title}" and if the commit has errors you can do "UNSAFE WIP - {TITLE}"&#x20;
