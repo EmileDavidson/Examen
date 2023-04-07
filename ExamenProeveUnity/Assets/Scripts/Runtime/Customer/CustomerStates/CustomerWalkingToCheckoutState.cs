@@ -13,7 +13,7 @@ namespace Runtime.Customer.CustomerStates
         public override void OnStateStart()
         {
             MyGrid grid = Controller.Grid;
-            var endNodeIndex = Controller.TargetCashRegister.ExitPath.Path.PathNodes.First();
+            var endNodeIndex = Controller.ExitPath.Path.PathNodes.First();
             var startNode = grid.GetNodeFromWorldPosition(Controller.PlayerHip.transform.position);
             
             Controller.Movement.onDestinationReached.AddListener(FinishState);

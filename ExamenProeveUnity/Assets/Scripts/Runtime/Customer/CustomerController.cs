@@ -14,28 +14,27 @@ namespace Runtime.Customer
     /// </summary>
     public class CustomerController : MonoBehaviour
     {
-        [field: SerializeField] public GameObject PlayerHip { get; private set; } = null;
         [SerializeField] private CustomerState state = CustomerState.Spawned;
+        [SerializeField] private CustomerInventory inventory;
+        [SerializeField] private CustomerMovement movement;
+        [SerializeField] private GameObject playerHip = null;
 
-        [field: SerializeField] public CustomerInventory Inventory { get; private set; }
-        [field: SerializeField] public CustomerMovement Movement { get; private set; }
-
-        public FixedPath EntryPath { get; private set; }
-        
         public MyGrid Grid { get; private set; }
-        public CashRegister TargetCashRegister { get; set; }
-        
         public PathFinding PathFinding { get; private set; }
+        
+        public FixedPath EntryPath { get; private set; }
+        public FixedPath ExitPath { get; private set; }
+        
+        private CashRegister TargetCashRegister { get; set; }
         private readonly Dictionary<CustomerState, CustomerStateBase> _states = new();
-
-
+        
         private void Awake()
         {
             if (WorldManager.Instance.entryPaths.IsEmpty() || WorldManager.Instance.exitPaths.IsEmpty())
             {
                 Debug.LogError("No entry or exit paths found");
             }
-            
+
             _states.Add(CustomerState.Spawned, new CustomerSpawnedState(this));
             _states.Add(CustomerState.WalkingToEntrance, new CustomerWalkingToEntranceState(this));
             _states.Add(CustomerState.WalkingToProducts, new CustomerWalkingToProductState(this));
@@ -49,12 +48,13 @@ namespace Runtime.Customer
 
             PathFinding = GetComponent<PathFinding>();
 
-            EntryPath = WorldManager.Instance.entryPaths.RandomItem();
-
             TargetCashRegister = WorldManager.Instance.checkouts.RandomItem();
+            EntryPath ??= WorldManager.Instance.entryPaths.RandomItem();
+            ExitPath ??= TargetCashRegister.ExitPath;
 
-            Inventory ??= GetComponent<CustomerInventory>();
-            Movement ??= GetComponent<CustomerMovement>();
+
+            inventory ??= GetComponent<CustomerInventory>();
+            movement ??= GetComponent<CustomerMovement>();
         }
 
         private void Start()
@@ -72,8 +72,8 @@ namespace Runtime.Customer
             Destroy(this.gameObject);
         }
         
-        //getters & setters
-        
+        #region getters & setters
+
         public CustomerState State
         {
             get => state;
@@ -84,5 +84,13 @@ namespace Runtime.Customer
                 _states[state].OnStateStart();
             }
         }
+
+        public CustomerInventory Inventory => inventory;
+
+        public CustomerMovement Movement => movement;
+
+        public GameObject PlayerHip => playerHip;
+        
+        #endregion // getters & setters
     }
 }
