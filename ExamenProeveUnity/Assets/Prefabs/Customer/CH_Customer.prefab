@@ -851,7 +851,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8043495966576200593}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f896e662cb8f19439396c39076aece4, type: 3}
   m_Name: 
@@ -1231,6 +1231,15 @@ MonoBehaviour:
   onPathNotFound:
     m_PersistentCalls:
       m_Calls: []
+  onNewPathFound:
+    m_PersistentCalls:
+      m_Calls: []
+  onFindingNewPath:
+    m_PersistentCalls:
+      m_Calls: []
+  onFindingNewPathFailed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8043495966970848881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,10 +1271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fd4a0dcbf94efea191a044b0fb0166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHip: {fileID: 8043495968001426660}
+  <PlayerHip>k__BackingField: {fileID: 8043495968001426660}
   state: 0
-  inventory: {fileID: 2008414403410921536}
-  movement: {fileID: 8043495966970848881}
+  <Inventory>k__BackingField: {fileID: 2008414403410921536}
+  <Movement>k__BackingField: {fileID: 8043495966970848881}
 --- !u!114 &2008414403410921536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,7 +2601,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8043495967563876065}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f896e662cb8f19439396c39076aece4, type: 3}
   m_Name: 

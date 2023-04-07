@@ -22,6 +22,9 @@ namespace Runtime.Grid.GridPathFinding
 
         public UnityEvent<Path> onPathFound = new();
         public UnityEvent onPathNotFound = new();
+        public UnityEvent<Path> onNewPathFound = new();
+        public UnityEvent onFindingNewPath = new();
+        public UnityEvent<Path> onFindingNewPathFailed = new();
 
         private const int MoveStraightCost = 10;
         private const int MoveDiagonalCost = 14;
@@ -104,7 +107,7 @@ namespace Runtime.Grid.GridPathFinding
         /// Is triggered when the grid changes and updates the path if the changed node is in the path
         /// </summary>
         /// <param name="node"></param>
-        private void GridChangedUpdate(GridNode node)
+        private async void GridChangedUpdate(GridNode node)
         {
             if (!_needsPath) return;
             if (Path != null && !Path.PathNodes.Contains(node.Index)) return;
@@ -113,8 +116,14 @@ namespace Runtime.Grid.GridPathFinding
                 Debug.LogError("Path is null but that should not happen here.");
                 return;
             }
-
-            Path = FindPath(Path.StartNode.GridPosition, Path.EndNode.GridPosition);
+            
+            var oldPath = Path.Copy();
+            onFindingNewPath.Invoke();
+            FindPathAsync(Path.StartNode.GridPosition, Path.EndNode.GridPosition, (foundPath) =>
+            {
+                if(foundPath is null) onFindingNewPathFailed.Invoke(oldPath);
+                else onNewPathFound.Invoke(foundPath);                
+            });
         }
 
         /// <summary>

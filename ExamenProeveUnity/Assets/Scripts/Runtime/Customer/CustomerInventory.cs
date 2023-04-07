@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Runtime.Customer
 {
+    /// <summary>
+    /// The customer inventory is a list of items that the customer wants to buy. and that what it already has in its inventory.
+    /// </summary>
     public class CustomerInventory : MonoBehaviour
     {
         public int maxInventorySize;

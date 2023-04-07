@@ -14,7 +14,10 @@ namespace Runtime.Grid
         [SerializeField] private bool drawGizmos = true;
         [SerializeField] private int debugIndex = -1;
         [SerializeField] private Color gridColor = Color.blue;
-        [SerializeField, Tooltip("The nodes that need to be blocked on generate.")] private List<int> blockedNodesOnGenerate = new List<int>();
+
+        [SerializeField, Tooltip("The nodes that need to be blocked on generate.")]
+        private List<int> blockedNodesOnGenerate = new List<int>();
+
         [SerializeField] private Vector3 pivotPoint = new Vector3(0, 0, 0);
         [SerializeField] private int nodeSize = 2;
 
@@ -30,7 +33,7 @@ namespace Runtime.Grid
         public int Height => gridSize.y;
         public int Depth => gridSize.z;
 
-        public Vector3 PivotPoint => pivotPoint;    
+        public Vector3 PivotPoint => pivotPoint;
 
         private void Awake()
         {
@@ -48,7 +51,8 @@ namespace Runtime.Grid
             ResetGrid();
             GridHelper.Grid3dLoop(Width, Height, Depth, (index, gridPos) =>
             {
-                GridNode node = new GridNode(index, gridPos.x, gridPos.y, gridPos.z, blockedNodesOnGenerate.Contains(index));
+                GridNode node = new GridNode(index, gridPos.x, gridPos.y, gridPos.z,
+                    blockedNodesOnGenerate.Contains(index));
                 nodes.Add(node);
             });
 
@@ -73,7 +77,7 @@ namespace Runtime.Grid
         private void OnDrawGizmos()
         {
             if (!drawGizmos) return;
-            
+
             Gizmos.color = gridColor;
             GridHelper.Grid3dLoop(Width, Height, Depth, (index, gridPos) =>
             {
@@ -85,7 +89,7 @@ namespace Runtime.Grid
 
                 if (index == debugIndex || blockedNodesOnGenerate.Contains(index))
                 {
-                    Gizmos.color = (index == debugIndex) ? Color.magenta : Color.yellow; 
+                    Gizmos.color = (index == debugIndex) ? Color.magenta : Color.yellow;
                     Gizmos.DrawCube(GetWorldPositionOfNode(gridPos), size);
                     Gizmos.color = gridColor;
                 }
@@ -95,6 +99,12 @@ namespace Runtime.Grid
             if (nodes.IsEmpty()) return;
             Gizmos.color = Color.cyan;
             foreach (var node in nodes.Where(node => node.IsBlocked))
+            {
+                Gizmos.DrawCube(GetWorldPositionOfNode(node.GridPosition), Vector3.one);
+            }
+
+            Gizmos.color = Color.blue;
+            foreach (var node in nodes.Where(node => node.IsTempBlocked))
             {
                 Gizmos.DrawCube(GetWorldPositionOfNode(node.GridPosition), Vector3.one);
             }

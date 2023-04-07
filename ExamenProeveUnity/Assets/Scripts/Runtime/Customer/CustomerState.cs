@@ -1,5 +1,8 @@
 ﻿namespace Runtime.Customer
 {
+    /// <summary>
+    /// All states the customer can be in
+    /// </summary>
     public enum CustomerState
     {
         Spawned,
