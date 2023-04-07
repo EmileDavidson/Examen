@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Toolbox.MethodExtensions;
+using Unity.VisualScripting.FullSerializer;
+using UnityEngine;
 
 namespace Runtime.Customer.CustomerStates
 {
@@ -34,6 +36,8 @@ namespace Runtime.Customer.CustomerStates
 
         public override void FinishState()
         {
+            Controller.Grid.GetNodeByIndex(Controller.Movement.Path.PathNodes.Last()).SetTempBlock(false);
+            
             Controller.PathFinding.onNewPathFound.RemoveListener(PathUpdate);
             Controller.PathFinding.onFindingNewPathFailed.RemoveListener(PathFindingFailed);
             Controller.PathFinding.onFindingNewPath.RemoveListener(IsFindingNewPath);
