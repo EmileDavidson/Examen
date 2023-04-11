@@ -20,6 +20,12 @@ namespace Runtime.Grid
         /// </summary>
         [field: SerializeField]
         public bool IsTempBlocked { get; set; }
+        
+        /// <summary>
+        /// isLocationNode is not a walkable node but is a 'end location' for pathfinding
+        /// </summary>
+        [field: SerializeField]
+        public bool IsLocationNode { get; set; }
 
         /// <summary>
         /// The grid position of the node
@@ -65,6 +71,15 @@ namespace Runtime.Grid
         public void SetTempBlock(bool doTempBlock)
         {
             IsTempBlocked = doTempBlock;
+        }
+        
+        /// <summary>
+        /// set the node locationNode value to value 
+        /// </summary>
+        /// <param name="isLocationNode"></param>
+        public void SetLocationNode(bool isLocationNode)
+        {
+            IsLocationNode = isLocationNode;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Runtime.Customer.CustomerStates;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
@@ -18,6 +20,8 @@ namespace Runtime.Customer
         [SerializeField] private CustomerInventory inventory;
         [SerializeField] private CustomerMovement movement;
         [SerializeField] private GameObject playerHip = null;
+        
+        
 
         public MyGrid Grid { get; private set; }
         public PathFinding PathFinding { get; private set; }
@@ -27,7 +31,12 @@ namespace Runtime.Customer
         
         private CashRegister TargetCashRegister { get; set; }
         private readonly Dictionary<CustomerState, CustomerStateBase> _states = new();
+
+        private List<Grabbable> _myGrabbablePoints = new();
+        private int grabbedPoints = 0;
+        private bool wasGrabbed = false;
         
+
         private void Awake()
         {
             if (WorldManager.Instance.entryPaths.IsEmpty() || WorldManager.Instance.exitPaths.IsEmpty())
@@ -55,6 +64,21 @@ namespace Runtime.Customer
 
             inventory ??= GetComponent<CustomerInventory>();
             movement ??= GetComponent<CustomerMovement>();
+            _myGrabbablePoints = GetComponentsInChildren<Grabbable>().ToList();
+
+            foreach (var grabbable in _myGrabbablePoints)
+            {
+                grabbable.onGrabbed.AddListener(() =>
+                {
+                    grabbedPoints++;
+                    GrabValueChanged();
+                });
+                grabbable.onReleased.AddListener(() =>
+                {
+                    grabbedPoints--;
+                    GrabValueChanged();
+                });
+            }
         }
 
         private void Start()
@@ -70,6 +94,32 @@ namespace Runtime.Customer
         public void DestroyThisCustomer()
         {
             Destroy(this.gameObject);
+        }
+
+        private void GrabValueChanged()
+        {
+            //started to be grabbed
+            if (IsBeingGrabbed() && !wasGrabbed)
+            {
+                //release all temp blocked nodes from used path
+                movement.Path = null;
+                wasGrabbed = true;
+            }
+            
+            //stopped being grabbed
+            if (!IsBeingGrabbed() && wasGrabbed)
+            {
+                wasGrabbed = false;
+                PathFinding.RecalculatePath(Grid.GetNodeFromWorldPosition(playerHip.transform.position), (path) =>
+                {
+                    movement.Path = path;
+                });
+            }
+        }
+
+        private bool IsBeingGrabbed()
+        {
+            return grabbedPoints > 0;
         }
         
         #region getters & setters

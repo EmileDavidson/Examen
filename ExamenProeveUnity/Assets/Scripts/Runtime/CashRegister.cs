@@ -1,11 +1,12 @@
 using System;
 using Runtime.Grid.GridPathFinding;
+using Runtime.Interfaces;
 using UnityEngine;
 
-public class CashRegister : MonoBehaviour
+public class CashRegister : MonoBehaviour, IGridable
 {
     [Tooltip("The index of the grid node where the player should stand to interact with the shelf")]
-    [SerializeField] private int gridIndex;
+    [field: SerializeField] public int gridIndex { get; set; }
 
     [SerializeField] private FixedPath exitPath;
     
@@ -21,4 +22,5 @@ public class CashRegister : MonoBehaviour
     {
         _dropOffSpot = dropOffAnchor.transform.position;
     }
+
 }

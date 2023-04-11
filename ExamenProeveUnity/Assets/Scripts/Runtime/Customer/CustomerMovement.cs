@@ -1,4 +1,6 @@
-﻿using Runtime.Grid;
+﻿using System.Collections.Generic;
+using System.Security.Authentication.ExtendedProtection;
+using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Toolbox.MethodExtensions;
 using UnityEngine;
@@ -14,11 +16,25 @@ namespace Runtime.Customer
         [SerializeField] private Animator targetAnimator;
 
         public UnityEvent onDestinationReached = new UnityEvent();
-        public Path Path { get; set; }
-        
+        private Path _path;
+
         private static readonly int Walk = Animator.StringToHash("Walk");
         private bool _walk = false;
         
+        private List<int> blockingPoints = new();
+        
+        public Path Path
+        {
+            get => _path;
+            set
+            {
+                if (Equals(_path, value)) return;
+                blockingPoints.ForEach(element => grid.GetNodeByIndex(element).IsTempBlocked = false);
+                blockingPoints.Clear();
+                _path = value;
+            }
+        }
+
         /// <summary>
         /// Awake is called when the script instance is being loaded.
         /// </summary>
@@ -32,7 +48,7 @@ namespace Runtime.Customer
         /// </summary>
         private void FixedUpdate()
         {
-            if (Path == null || Path.CurrentIndex == -1 || grid.GetNodeByIndex(Path.GetNextNode()).IsTempBlocked || Path?.PathNodes == null || Path.PathNodes.IsEmpty())
+            if (Path?.PathNodes == null || Path.PathNodes.IsEmpty() || Path.CurrentIndex == -1 || grid.GetNodeByIndex(Path.GetNextNode()).IsTempBlocked)
             {
                 _walk = false;
                 targetAnimator.SetBool(Walk, _walk);
@@ -76,6 +92,9 @@ namespace Runtime.Customer
 
             grid.GetNodeByIndex(nextPathNodeIndex).SetTempBlock(true);
             grid.GetNodeByIndex(Path.PathNodes[Path.CurrentIndex]).SetTempBlock(false);
+            
+            blockingPoints.Add(nextPathNodeIndex);
+            blockingPoints.Remove(Path.PathNodes[Path.CurrentIndex]);
 
             Path.CurrentIndex++;
             if (Path.CurrentIndex < Path.PathNodes.Count - 1) return;

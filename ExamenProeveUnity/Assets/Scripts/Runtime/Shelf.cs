@@ -1,13 +1,13 @@
-using System;
 using System.Collections.Generic;
+using Runtime.Interfaces;
 using UnityEngine;
 
-public class Shelf : MonoBehaviour
+public class Shelf : MonoBehaviour, IGridable
 {
     [Tooltip("The index of the grid node where the player should stand to interact with the shelf")]
-    [SerializeField] private int gridIndex;
     private readonly List<ProductScriptableObject> _inventory = new List<ProductScriptableObject>() { Capacity = 5 };
-
+    
+    [field: SerializeField] public int gridIndex { get; set; }
     public int InteractionGridIndex => gridIndex;
 
     public void Restock(ProductScriptableObject item)
@@ -39,4 +39,5 @@ public class Shelf : MonoBehaviour
 
         return null;
     }
+
 }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TMPro;
 using Toolbox.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -101,6 +100,16 @@ namespace Runtime.Grid.GridPathFinding
             _closedList.Clear();
             _needsPath = false;
             _isFindingPath = false;
+        }
+
+        public void RecalculatePath(GridNode currentNode, Action<Path> calculationComplete)
+        {
+            if(_isFindingPath || !_needsPath) return;
+            FindPathAsync(currentNode.GridPosition, Path.EndNode.GridPosition, (path) =>
+            {
+                this.Path = path;
+                calculationComplete.Invoke(path);
+            });
         }
 
         /// <summary>
@@ -203,13 +212,12 @@ namespace Runtime.Grid.GridPathFinding
                 //remove all blocked nodes
                 var neighbourList = myGrid.GetDirectNeighbourList(currentNodeInOpenList);
                 neighbourList.RemoveAll(node => node.IsBlocked);
+                neighbourList.RemoveAll(node => node.IsLocationNode && node.Index != endNodeIndex);
+                
                 foreach (GridNode neighbourNode in neighbourList)
                 {
-                    if (_closedList.Contains(neighbourNode))
-                    {
-                        continue;
-                    }
-
+                    if (_closedList.Contains(neighbourNode)) continue;
+                    
                     int tentativeGCost = _costArray[currentNodeInOpenList.Index].Gcost + GetDistance(currentNodeInOpenList, neighbourNode);
                     if (tentativeGCost >= _costArray[neighbourNode.Index].Gcost) continue;
                     _costArray[neighbourNode.Index].CameFromNode = currentNodeInOpenList;

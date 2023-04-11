@@ -14,6 +14,7 @@ namespace Runtime.Player
         [SerializeField] private ConfigurableJoint shoulderJoint;
 
         private GameObject _grabbedObject;
+        private Grabbable _grabbedGrabbable;
         private Rigidbody _rigidbody;
         private FixedJoint _grabbedObjectJoined;
 
@@ -52,6 +53,8 @@ namespace Runtime.Player
             Destroy(_grabbedObjectJoined);
             _grabbedObject = null;
             _isGrabbingObject = false;
+            _grabbedGrabbable.onReleased?.Invoke();
+            _grabbedGrabbable = null;
         }
 
         private void HandlePressed()
@@ -63,13 +66,15 @@ namespace Runtime.Player
 
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
             _grabbedObjectJoined.connectedBody = _rigidbody;
+            _grabbedGrabbable.onGrabbed?.Invoke();
             _isGrabbingObject = true;
         }
         
         private void OnCollisionEnter(Collision collision)
         {
-            if (!collision.transform.HasComponent<Grabbable>()) return;
+            if (!collision.transform.TryGetComponent<Grabbable>(out var grabbable)) return;
             _grabbedObject = collision.transform.gameObject;
+            _grabbedGrabbable = grabbable;
         }
 
         private void OnCollisionExit(Collision other)
@@ -78,6 +83,7 @@ namespace Runtime.Player
             if (other.transform.gameObject != _grabbedObject) return;
             
             _grabbedObject = null;
+            _grabbedGrabbable = null;
         }
     }
 }

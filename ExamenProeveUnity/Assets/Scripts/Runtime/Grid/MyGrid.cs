@@ -37,8 +37,13 @@ namespace Runtime.Grid
 
         private void Awake()
         {
-            if (!nodes.IsEmpty() && nodes != null) return;
+            if (!ShouldGenerate()) return;
             GenerateGrid();
+        }
+
+        public bool ShouldGenerate()
+        {
+            return nodes.IsEmpty() || nodes == null;
         }
 
         /// <summary>

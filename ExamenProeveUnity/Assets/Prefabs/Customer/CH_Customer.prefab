@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8043495966043894387}
   - component: {fileID: 8043495966043894386}
   - component: {fileID: 8043495966043894385}
+  - component: {fileID: 6701013189473532804}
   m_Layer: 0
   m_Name: LowerArm.L
   m_TagString: Untagged
@@ -175,6 +176,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495966102053697}
+--- !u!114 &6701013189473532804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495966043894391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495966102053696
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +302,7 @@ GameObject:
   - component: {fileID: 8043495966266517975}
   - component: {fileID: 8043495966266517974}
   - component: {fileID: 8043495966266517973}
+  - component: {fileID: 8073002949766472847}
   m_Layer: 0
   m_Name: LowerLeg.L
   m_TagString: Untagged
@@ -445,6 +465,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495966991941698}
+--- !u!114 &8073002949766472847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495966266517963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495966268022501
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +527,7 @@ GameObject:
   - component: {fileID: 8043495966272733047}
   - component: {fileID: 8043495966272733046}
   - component: {fileID: 8043495966272733045}
+  - component: {fileID: 870197472888923049}
   m_Layer: 0
   m_Name: UpperLeg.R
   m_TagString: Untagged
@@ -651,6 +690,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495967998920056}
+--- !u!114 &870197472888923049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495966272733035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495966575269142
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +753,7 @@ GameObject:
   - component: {fileID: 8043495966576200594}
   - component: {fileID: 8043495966576200604}
   - component: {fileID: 8043495966576200595}
+  - component: {fileID: 6839211256252799204}
   m_Layer: 0
   m_Name: Shoulder.R
   m_TagString: Untagged
@@ -857,6 +915,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495967222428708}
+--- !u!114 &6839211256252799204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495966576200593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495966681793104
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +1072,7 @@ GameObject:
   - component: {fileID: 8043495966903997817}
   - component: {fileID: 8043495966903997816}
   - component: {fileID: 8043495966903997823}
+  - component: {fileID: 577919652643713280}
   m_Layer: 0
   m_Name: Torso
   m_TagString: Untagged
@@ -1159,6 +1236,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495968168747839}
+--- !u!114 &577919652643713280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495966903997821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495966970848879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,6 +1478,7 @@ GameObject:
   - component: {fileID: 8043495967040552272}
   - component: {fileID: 8043495967040552279}
   - component: {fileID: 8043495967040552278}
+  - component: {fileID: 5023991200473101172}
   m_Layer: 0
   m_Name: Hand.R
   m_TagString: Untagged
@@ -1544,6 +1640,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495967546901798}
+--- !u!114 &5023991200473101172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495967040552267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495967057091137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1671,7 @@ GameObject:
   - component: {fileID: 8043495967057091149}
   - component: {fileID: 8043495967057091148}
   - component: {fileID: 8043495967057091139}
+  - component: {fileID: 428209164764381615}
   m_Layer: 0
   m_Name: UpperLeg.L
   m_TagString: Untagged
@@ -1719,6 +1834,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495967602124564}
+--- !u!114 &428209164764381615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495967057091137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495967067380758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,6 +2279,7 @@ GameObject:
   - component: {fileID: 8043495967337425647}
   - component: {fileID: 8043495967337425646}
   - component: {fileID: 8043495967337425645}
+  - component: {fileID: 4020332113752040164}
   m_Layer: 0
   m_Name: LowerArm.R
   m_TagString: Untagged
@@ -2308,6 +2442,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495966681793105}
+--- !u!114 &4020332113752040164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495967337425635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495967373622125
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,6 +2598,7 @@ GameObject:
   - component: {fileID: 8043495967563876066}
   - component: {fileID: 8043495967563876076}
   - component: {fileID: 8043495967563876067}
+  - component: {fileID: 6455377542243988015}
   m_Layer: 0
   m_Name: Shoulder.L
   m_TagString: Untagged
@@ -2607,6 +2760,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495967146535708}
+--- !u!114 &6455377542243988015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495967563876065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495967602124555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,6 +2823,7 @@ GameObject:
   - component: {fileID: 8043495967631096281}
   - component: {fileID: 8043495967631096280}
   - component: {fileID: 8043495967631096287}
+  - component: {fileID: 7532530053551022482}
   m_Layer: 0
   m_Name: UpperArm.L
   m_TagString: Untagged
@@ -2814,6 +2986,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495967996039678}
+--- !u!114 &7532530053551022482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495967631096285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495967822070441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,6 +3113,7 @@ GameObject:
   - component: {fileID: 8043495967922000703}
   - component: {fileID: 8043495967922000702}
   - component: {fileID: 8043495967922000701}
+  - component: {fileID: 4762279110919654049}
   m_Layer: 0
   m_Name: UpperArm.R
   m_TagString: Untagged
@@ -3085,6 +3276,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495966575269143}
+--- !u!114 &4762279110919654049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495967922000691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495967993052781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3193,6 +3402,7 @@ GameObject:
   - component: {fileID: 8043495966599613126}
   - component: {fileID: 8043495966599613114}
   - component: {fileID: 8043495966599613124}
+  - component: {fileID: 207868100826963808}
   m_Layer: 0
   m_Name: Hip
   m_TagString: Untagged
@@ -3356,6 +3566,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495967905736920}
+--- !u!114 &207868100826963808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495968001426660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495968114785393
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,6 +3597,7 @@ GameObject:
   - component: {fileID: 8043495968114785405}
   - component: {fileID: 8043495968114785404}
   - component: {fileID: 8043495968114785395}
+  - component: {fileID: 1136717340783957389}
   m_Layer: 0
   m_Name: LowerLeg.R
   m_TagString: Untagged
@@ -3531,6 +3760,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495966160227640}
+--- !u!114 &1136717340783957389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495968114785393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495968123857354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3544,6 +3791,7 @@ GameObject:
   - component: {fileID: 8043495968123857367}
   - component: {fileID: 8043495968123857366}
   - component: {fileID: 8043495968123857365}
+  - component: {fileID: 2774392317161908783}
   m_Layer: 0
   m_Name: Hand.L
   m_TagString: Untagged
@@ -3705,6 +3953,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495967076696765}
+--- !u!114 &2774392317161908783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495968123857354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8043495968168747838
 GameObject:
   m_ObjectHideFlags: 0
@@ -3752,6 +4018,7 @@ GameObject:
   - component: {fileID: 8043495968181503247}
   - component: {fileID: 8043495968181503246}
   - component: {fileID: 8043495968181503245}
+  - component: {fileID: 2706580330579798454}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -3913,3 +4180,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 8043495966704564901}
+--- !u!114 &2706580330579798454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495968181503235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
