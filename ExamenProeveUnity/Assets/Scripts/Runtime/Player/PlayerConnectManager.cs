@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Runtime.Player
 {
@@ -10,7 +11,16 @@ namespace Runtime.Player
     public class PlayerConnectManager : MonoBehaviour
     {
         [SerializeField] private PlayerInputManager playerInputManager;
+
+        [SerializeField] private Color[] colors = new Color[2]
+        {
+            Color.red,
+            Color.blue
+        };
         
+        /// <summary>
+        /// Awake is called when the script instance is being loaded.
+        /// </summary>
         private void Awake()
         {
             playerInputManager ??= GetComponent<PlayerInputManager>();
@@ -29,8 +39,13 @@ namespace Runtime.Player
         /// <param name="input"></param>
         private void OnDeviceConnect(PlayerInput input)
         {
-            //we make the player persistent so we can switch to a game scene without losing the player
             DontDestroyOnLoad(input.gameObject);
+            
+            //todo: we only have one canvas with an image underneath the player for now so we can just set the color
+            //todo: but we should probably have a better way of doing this for if things change in the future.
+            var indicator = input.gameObject.GetComponentInChildren<Image>();
+            if (indicator == null) return;
+            indicator.color = colors[input.playerIndex];
         }
     }
 }
