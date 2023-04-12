@@ -46,7 +46,7 @@ namespace Runtime.Player
 
             if (_walk)
             {
-                var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+                var targetAngle = (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg) - 90;
                 hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
                 hip.AddForce(direction * speed);
             }

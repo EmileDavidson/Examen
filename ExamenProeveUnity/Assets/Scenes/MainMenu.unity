@@ -869,7 +869,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 1752440830437766232, guid: 472c7ec6efdd4074eb3d4a6d0e26b5f0, type: 3}
+  m_PlayerPrefab: {fileID: 7268764335705670053, guid: 4020faeddfe344c44a323c4666fde6d9, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -923,6 +923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputManager: {fileID: 943377561}
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
 --- !u!1 &946503120
 GameObject:
   m_ObjectHideFlags: 0
