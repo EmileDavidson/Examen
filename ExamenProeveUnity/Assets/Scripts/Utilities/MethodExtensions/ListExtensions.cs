@@ -19,6 +19,17 @@ namespace Toolbox.MethodExtensions
         {
             return target.Count == 0;
         }
+        
+        /// <summary>
+        /// Checks if the list is NOT empty 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static bool IsNotEmpty<T>(this IList<T> target)
+        {
+            return target.Count != 0;
+        }
     
         /// <summary>
         /// Shuffle the list 
@@ -118,6 +129,17 @@ namespace Toolbox.MethodExtensions
             {
                 list.Add(item);
             }
+        }
+
+        /// <summary>
+        /// adds the item to the list if not null else returns the unchanged list.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="item"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void AddIfNotNull<T>(this IList<T> list, T item)
+        {
+            if (item != null) list.Add(item);
         }
 
         /// <summary>

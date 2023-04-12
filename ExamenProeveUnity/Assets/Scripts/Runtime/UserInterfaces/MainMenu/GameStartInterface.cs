@@ -26,7 +26,6 @@ namespace Runtime.UserInterfaces.MainMenu
             if (playerInputManager is null) return;
             if(playerInputManager.playerCount < minimalPlayerCount)
             {
-                Debug.LogWarning("Not enough players connected");
                 return;
             }
             playerInputManager.DisableJoining();
