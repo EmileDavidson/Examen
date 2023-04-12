@@ -17,6 +17,7 @@ Notulist,
 Programmer 
 
 - Vivian:
+Scrum Master,
 Artist
 
 - Leiko:
@@ -26,5 +27,5 @@ Artist
 - Sterre: 
 Lead Artist
 
-- LaRhone:
+- LaRhona:
 Artist
