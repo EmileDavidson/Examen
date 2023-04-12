@@ -21,7 +21,7 @@ Artist
 
 - Leiko:
 Product Owner,
-artist
+Artist
 
 - Sterre: 
 Lead Artist
