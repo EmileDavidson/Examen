@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Runtime.Player
@@ -11,13 +13,14 @@ namespace Runtime.Player
         [SerializeField] private Rigidbody hip;
         [SerializeField] private Animator targetAnimator;
 
+        [SerializeField] private float minPowerValue = .1f;
+
         private float _horizontalMoveValue = 0f;
         private float _verticalMoveValue = 0f;
 
         private bool _walk;
         private static readonly int Walk = Animator.StringToHash("Walk");
 
-        
         /// <summary>
         /// OnMovement is an event method from PlayerInput that is called when the player uses the move input action
         /// </summary>
@@ -25,6 +28,9 @@ namespace Runtime.Player
         public void OnMovement(InputValue context)
         {
             var value = context.Get<Vector2>();
+            if (Math.Abs(value.x) < minPowerValue) value.x = 0;
+            if (Math.Abs(value.y) < minPowerValue) value.y = 0;
+            
             _horizontalMoveValue = value.x;
             _verticalMoveValue = value.y;
         }
