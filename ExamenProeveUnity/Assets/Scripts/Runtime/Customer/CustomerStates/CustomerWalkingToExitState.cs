@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UnityEngine;
 
 namespace Runtime.Customer.CustomerStates
 {
@@ -19,7 +20,7 @@ namespace Runtime.Customer.CustomerStates
         {
             Controller.Movement.onDestinationReached.RemoveListener(FinishState);
             Controller.Grid.GetNodeByIndex(Controller.ExitPath.Path.PathNodes.Last()).IsTempBlocked = false;
-            Controller.DestroyThisCustomer();
+            Object.Destroy(Controller.gameObject);
         }
     }
 }

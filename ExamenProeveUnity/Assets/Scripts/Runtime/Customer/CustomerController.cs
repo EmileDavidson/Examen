@@ -91,11 +91,6 @@ namespace Runtime.Customer
             _states[state].OnStateUpdate();
         }
 
-        public void DestroyThisCustomer()
-        {
-            Destroy(this.gameObject);
-        }
-
         private void GrabValueChanged()
         {
             //started to be grabbed
