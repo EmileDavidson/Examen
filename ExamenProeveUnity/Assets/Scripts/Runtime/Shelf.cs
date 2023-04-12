@@ -18,26 +18,12 @@ public class Shelf : MonoBehaviour, IGridable
         }
     }
 
-    public bool IsEmpty()
-    {
-        if (_inventory.Count >= 1)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     public ProductScriptableObject GrabItem()
     {
-        if (_inventory.Count >= 1)
-        {
-            ProductScriptableObject productToReturn = _inventory[0];
-            _inventory.RemoveAt(0);
-            return productToReturn;
-        }
-
-        return null;
+        if (_inventory.Count < 1) return null;
+        ProductScriptableObject productToReturn = _inventory[0];
+        _inventory.RemoveAt(0);
+        return productToReturn;
     }
 
 }
