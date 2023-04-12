@@ -16,7 +16,6 @@ namespace Runtime.Grid.GridPathFinding
         private Path _path;
         public List<int> pathNodeIndexes = new List<int>();
 
-        [Button]
         private void Start()
         {
             _path = new Path(pathNodeIndexes, grid.GetNodeByIndex(pathNodeIndexes[0]), grid.GetNodeByIndex(pathNodeIndexes.Last()));

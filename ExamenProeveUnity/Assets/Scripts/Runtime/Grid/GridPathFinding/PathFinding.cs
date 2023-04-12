@@ -169,13 +169,13 @@ namespace Runtime.Grid.GridPathFinding
             Path.StartNode = myGrid.GetNodeByPosition(currentNodePos);
             Path.EndNode = myGrid.GetNodeByPosition(requestedNodePos);
 
-            if (currentNodePos == requestedNodePos)
+            if (Path.StartNode == null || Path.EndNode == null)
             {
                 onPathNotFound.Invoke();
                 return Path;
             }
-
-            if (Path.StartNode == null || Path.EndNode == null)
+            
+            if (currentNodePos == requestedNodePos)
             {
                 onPathNotFound.Invoke();
                 return Path;
