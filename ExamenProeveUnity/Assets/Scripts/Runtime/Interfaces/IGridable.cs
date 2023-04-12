@@ -4,6 +4,6 @@ namespace Runtime.Interfaces
 {
     public interface IGridable
     {
-        [field: SerializeField] public int gridIndex { get; set; }
+        public int gridIndex { get; set; }
     }
 }

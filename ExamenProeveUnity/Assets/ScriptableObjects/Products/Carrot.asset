@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fa890643da664eb23d46de7607cbd, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 919132149155446097, guid: b2e0624142d74744da42cbb015bdee70, type: 3}
+  type: 17
+  prefab: {fileID: 0}
+  icon: {fileID: 0}
   price: 30

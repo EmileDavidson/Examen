@@ -4,6 +4,7 @@ using System.Linq;
 using Runtime.Customer.CustomerStates;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
+using Runtime.Managers;
 using Toolbox.MethodExtensions;
 using UnityEngine;
 
@@ -68,12 +69,12 @@ namespace Runtime.Customer
 
             foreach (var grabbable in _myGrabbablePoints)
             {
-                grabbable.onGrabbed.AddListener(() =>
+                grabbable.OnGrabbed.AddListener(() =>
                 {
                     grabbedPoints++;
                     GrabValueChanged();
                 });
-                grabbable.onReleased.AddListener(() =>
+                grabbable.OnReleased.AddListener(() =>
                 {
                     grabbedPoints--;
                     GrabValueChanged();

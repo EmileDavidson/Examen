@@ -29,6 +29,14 @@ namespace Runtime.Player
         private void Update()
         {
             if(_isGrabButtonPressed) HandlePressed();
+
+            //check if the object is destroyed if so release it
+            if (_isGrabbingObject && _grabbedObject == null)
+            {
+                _isGrabbingObject = false;
+                _grabbedGrabbable.OnReleased?.Invoke();
+                _grabbedGrabbable = null;
+            }
         }
 
         private void OnRightGrab(InputValue value)
@@ -53,7 +61,7 @@ namespace Runtime.Player
             Destroy(_grabbedObjectJoined);
             _grabbedObject = null;
             _isGrabbingObject = false;
-            _grabbedGrabbable.onReleased?.Invoke();
+            _grabbedGrabbable.OnReleased?.Invoke();
             _grabbedGrabbable = null;
         }
 
@@ -66,7 +74,7 @@ namespace Runtime.Player
 
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
             _grabbedObjectJoined.connectedBody = _rigidbody;
-            _grabbedGrabbable.onGrabbed?.Invoke();
+            _grabbedGrabbable.OnGrabbed?.Invoke();
             _isGrabbingObject = true;
         }
         

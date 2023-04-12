@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Interfaces;
-using Utilities.MethodExtensions;
 using Toolbox.Utils.Runtime;
+using Utilities.MethodExtensions;
 
-namespace Runtime.Grid
+namespace Runtime.Managers
 {
     public class WorldManager : MonoSingleton<WorldManager>
     {
