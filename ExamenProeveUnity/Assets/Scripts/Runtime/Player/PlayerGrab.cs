@@ -68,7 +68,12 @@ namespace Runtime.Player
 
         private void HandlePressed()
         {
-            shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
+            shoulderJoint.targetRotation = handType switch
+            {
+                HandType.Right => Quaternion.Euler(0f, 90f, 0f),
+                HandType.Left => Quaternion.Euler(0f, -90f, 0f),
+                _ => shoulderJoint.targetRotation
+            };
 
             if (_isGrabbingObject) return;
             if (_grabbedObject is null) return;
