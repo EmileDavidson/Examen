@@ -46,12 +46,31 @@ namespace Runtime.Player
 
             if (_walk)
             {
+                ConstrainPlayer(false);
                 var targetAngle = (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg) - 90;
                 hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-                hip.AddForce(direction * speed);
+                // hip.AddForce(direction * speed, ForceMode.Force);
+                hip.velocity += direction * speed;
+                hip.velocity = Vector3.ClampMagnitude(hip.velocity, speed);
+            }
+            else
+            {
+                ConstrainPlayer(true);
             }
 
             targetAnimator.SetBool(Walk, _walk);
+        }
+        
+        private void ConstrainPlayer(bool setConstrained)
+        {
+            if (setConstrained)
+            {
+                hip.constraints = RigidbodyConstraints.FreezeAll;
+                return;
+            }
+
+            hip.constraints = RigidbodyConstraints.None;
+            hip.constraints = RigidbodyConstraints.FreezePositionY;
         }
     }
 }
