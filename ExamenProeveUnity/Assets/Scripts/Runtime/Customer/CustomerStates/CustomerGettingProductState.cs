@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Runtime.Customer.CustomerStates
 {
-    public class CustomerGettingProductState: CustomerStateBase
+    public class CustomerGettingProductState : CustomerStateBase
     {
         private const int WaitTime = 4000;
 
@@ -16,10 +16,11 @@ namespace Runtime.Customer.CustomerStates
             Controller.Grid.GetNodeByIndex(Controller.CurrentTargetShelf.InteractionGridIndex).SetTempBlock(false);
 
             var removedProduct = Controller.CurrentTargetShelf.RemoveItem();
-            Debug.Log(removedProduct);
-            if(!removedProduct) FinishState();
-            
-            Controller.Inventory.AddItem(Controller.CurrentTargetShelf.Item);
+            if (!removedProduct) FinishState();
+
+            var item = Controller.CurrentTargetShelf.Item;
+            if (item == null) FinishState();
+            Controller.Inventory.AddItem(item);
 
             FinishState();
         }
