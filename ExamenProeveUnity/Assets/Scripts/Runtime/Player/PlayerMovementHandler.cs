@@ -42,18 +42,15 @@ namespace Runtime.Player
         {
             Vector3 direction = new Vector3(_horizontalMoveValue, 0f, _verticalMoveValue).normalized;
             _walk = (direction.magnitude >= 0.1f);
-
+            
+            ConstrainPlayer(!_walk);
+            
             if (_walk)
             {
-                ConstrainPlayer(false);
                 var targetAngle = (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg) - 90;
                 hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
                 hip.velocity += direction * speed;
                 hip.velocity = Vector3.ClampMagnitude(hip.velocity, speed);
-            }
-            else
-            {
-                ConstrainPlayer(true);
             }
 
             targetAnimator.SetBool(Walk, _walk);
