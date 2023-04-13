@@ -14,42 +14,41 @@ namespace Runtime
     public class Shelf : MonoBehaviour, IGridable
     {
         [SerializeField] private int maxInventorySize = 5;
+        [SerializeField] private int _itemCount;
         [SerializeField] private ProductScriptableObject _item;
         [SerializeField] private List<GameObject> _displayedItems = new List<GameObject>();
         [SerializeField] private TMP_Text itemCountText;
         [SerializeField] private Canvas canvas;
-    
+
         [Tooltip("The index of the grid node where the player should stand to interact with the shelf")]
-        [field: SerializeField] 
+        [field: SerializeField]
         public int gridIndex { get; set; }
-    
+
         public int InteractionGridIndex => gridIndex;
         public ProductScriptableObject Item => _item;
         public int ItemCount => _itemCount;
-    
-        private int _itemCount;
-    
-        public UnityEvent onItemAdded = new();
-        public UnityEvent onItemRemoved = new();
-        public UnityEvent onInventorySizeChange = new();
-        
+
+
+        [HideInInspector] public UnityEvent onItemAdded = new();
+        [HideInInspector] public UnityEvent onItemRemoved = new();
+        [HideInInspector] public UnityEvent onInventorySizeChange = new();
+
         private void Awake()
         {
             _displayedItems.ForEach(item => item.SetActive(false));
             for (int i = 0; i < _itemCount; i++)
             {
-                if(!_displayedItems.ContainsSlot(i)) continue;
-                _displayedItems[i].SetActive(true);
+                _displayedItems[i]?.SetActive(true);
             }
 
             if (canvas != null)
             {
                 canvas.enabled = false;
             }
-            
-            if(itemCountText != null)
+
+            if (itemCountText != null)
             {
-                itemCountText.text = _itemCount.ToString();
+                itemCountText.text = _itemCount + "/" + maxInventorySize;
             }
         }
 
@@ -61,7 +60,7 @@ namespace Runtime
             _itemCount = maxInventorySize;
             onItemAdded.Invoke();
             onInventorySizeChange.Invoke();
-            
+
             _displayedItems.ForEach(item => item.SetActive(true));
         }
 
@@ -73,7 +72,7 @@ namespace Runtime
             _itemCount = 0;
             onItemRemoved.Invoke();
             onInventorySizeChange.Invoke();
-            
+
             _displayedItems.ForEach(item => item.SetActive(false));
         }
 
@@ -82,39 +81,33 @@ namespace Runtime
         /// </summary>
         public void AddItem()
         {
-            if(_itemCount >= maxInventorySize) return;
-            
+            if (_itemCount >= maxInventorySize) return;
+
             onItemAdded.Invoke();
             onInventorySizeChange.Invoke();
 
             _itemCount++;
 
             int slot = _itemCount + 1;
-            var contains = _displayedItems.ContainsSlot(slot);
-            if (contains)
-            {
-                _displayedItems[slot].SetActive(true);
-            }
+            _displayedItems[slot]?.SetActive(true);
         }
 
         /// <summary>
         /// Removes an item from the shelf
         /// </summary>
-        public void RemoveItem()
+        public bool RemoveItem()
         {
-            if(_itemCount <= 0) return;
-            
+            if (_itemCount <= 0) return false;
+
             onItemRemoved.Invoke();
             onInventorySizeChange.Invoke();
 
             _itemCount--;
-            
+
             int slot = _itemCount - 1;
-            var contains = _displayedItems.ContainsSlot(slot);
-            if (contains)
-            {
-                _displayedItems[slot].SetActive(true);
-            }
+            _displayedItems[slot]?.SetActive(false);
+
+            return true;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -123,14 +116,14 @@ namespace Runtime
             if (!isProduct) return;
 
             if (product.productScriptableObject is null || _item is null) return;
-            if (product.productScriptableObject.type != _item.type) return;
-            
-            if(_itemCount >= maxInventorySize) return;
-            
+            if (product.productScriptableObject.Type != _item.Type) return;
+
+            if (_itemCount >= maxInventorySize) return;
+
             Destroy(product.gameObject);
             AddItem();
         }
-        
+
         private void OnTriggerStay(Collider other)
         {
             if (other.transform.CompareTag("Player"))
@@ -138,7 +131,7 @@ namespace Runtime
                 HandlePlayerCollisionEnter();
             }
         }
-        
+
         private void OnTriggerExit(Collider other)
         {
             if (other.transform.CompareTag("Player"))

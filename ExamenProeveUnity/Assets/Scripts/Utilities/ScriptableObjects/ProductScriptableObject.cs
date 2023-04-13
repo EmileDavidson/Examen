@@ -4,9 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Product", order = 1)]
 public class ProductScriptableObject : ScriptableObject
 {
-    public ProductType type = ProductType.Unknown;
-    public GameObject prefab;
-    public Sprite icon; 
-    
-    public int price;
+    [field: SerializeField] public ProductType Type { get; private set; } = ProductType.Unknown;
+    [field: SerializeField] public GameObject Prefab { get; private set; }
+    [field: SerializeField] public Sprite Icon { get; private set; }
+
+    [field: SerializeField] public int Price { get; private set; }
 }
