@@ -114,7 +114,7 @@
                 {
                     "name": "",
                     "id": "14b07144-603e-4c32-990a-9c9954f0755e",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -136,7 +136,7 @@
                 {
                     "name": "",
                     "id": "c1323a5e-59b0-4955-954a-bca342155d82",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
