@@ -57,7 +57,7 @@ namespace Runtime.Grid.GridPathFinding
         private void Awake()
         {
             myGrid ??= GetComponent<MyGrid>();
-            myGrid ??= GameObject.Find("Floor")
+            myGrid ??= GameObject.Find("Floor")?
                 .GetComponent<MyGrid>(); //TODO: FIX THIS SO ITS NOT A HARD DEPENDENCY TO THE FLOOR GAMEOBJECT
             _openList = new List<GridNode>();
             _closedList = new List<GridNode>();

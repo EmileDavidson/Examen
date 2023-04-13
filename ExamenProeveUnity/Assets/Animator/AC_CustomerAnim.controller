@@ -56,7 +56,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AC_CharacterAnimator
+  m_Name: AC_CustomerAnim
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Walk
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cea4bc96836b9104698e21ebad01a21d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 743adb5c671955f46a96cec6a7330ea4, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -143,7 +143,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 914705847784080956}
-    m_Position: {x: 300, y: 320, z: 0}
+    m_Position: {x: 300, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2525378967061216685}
     m_Position: {x: 370, y: 120, z: 0}

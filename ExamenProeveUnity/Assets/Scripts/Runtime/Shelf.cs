@@ -89,7 +89,10 @@ namespace Runtime
             _itemCount++;
 
             int slot = _itemCount + 1;
-            _displayedItems[slot]?.SetActive(true);
+            if (_displayedItems.ContainsSlot(slot))
+            {
+                _displayedItems[slot]?.SetActive(true);
+            }
         }
 
         /// <summary>
@@ -105,7 +108,10 @@ namespace Runtime
             _itemCount--;
 
             int slot = _itemCount - 1;
-            _displayedItems[slot]?.SetActive(false);
+            if (_displayedItems.ContainsSlot(slot))
+            {
+                _displayedItems[slot]?.SetActive(false);
+            }
 
             return true;
         }
