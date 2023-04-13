@@ -1,6 +1,4 @@
 ﻿using System;
-using OpenCover.Framework.Model;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +7,7 @@ namespace Runtime.Player
     public class PlayerMovementHandler : MonoBehaviour
     {
         [SerializeField] private PlayerInput playerInput;
-        [SerializeField] private float speed = 5f;
+        [SerializeField] private float speed = 10f;
         [SerializeField] private ConfigurableJoint hipJoint;
         [SerializeField] private Rigidbody hip;
         [SerializeField] private Animator targetAnimator;

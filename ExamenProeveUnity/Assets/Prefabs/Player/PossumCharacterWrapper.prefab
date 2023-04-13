@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 7268764335705670054}
-  speed: 7
+  speed: 10
   hipJoint: {fileID: 7268764334928939201}
   hip: {fileID: 7268764334928939229}
   targetAnimator: {fileID: 7268764334635291536}
