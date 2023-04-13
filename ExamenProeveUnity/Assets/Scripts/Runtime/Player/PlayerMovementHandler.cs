@@ -65,7 +65,7 @@ namespace Runtime.Player
             RigidbodyConstraints constraints = hip.constraints;
             if (setConstrained)
             {
-                constraints = RigidbodyConstraints.FreezeAll;
+                constraints = RigidbodyConstraints.FreezePosition;
             }
             else
             {
