@@ -69,7 +69,6 @@ namespace Runtime.Player
             }
             else
             {
-                constraints = RigidbodyConstraints.None;
                 constraints = RigidbodyConstraints.FreezePositionY;
             }
 
