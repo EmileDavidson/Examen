@@ -20,6 +20,7 @@ namespace Runtime.Customer.CustomerStates
         {
             var finalEntryNodeIndex = Controller.EntryPath.Path.PathNodes.Last();
             var targetShelf = WorldManager.Instance.shelves.RandomItem();
+            Controller.CurrentTargetShelf = targetShelf;
             
             MyGrid grid = Controller.Grid;
             var startNode = grid.GetNodeByIndex(finalEntryNodeIndex);

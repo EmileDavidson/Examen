@@ -177,15 +177,15 @@ PrefabInstance:
     - target: {fileID: -8545123390407216422, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: -5766826967619679961, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: 611692084406072946, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2d284c093e079c44b9b4b42f1a9b9158, type: 2}
+      objectReference: {fileID: 2100000, guid: d48d24b29bc56bd4e9387b6764ed8710, type: 2}
     - target: {fileID: 919132149155446097, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Name
       value: SM_Koelkast (2)
@@ -197,11 +197,11 @@ PrefabInstance:
     - target: {fileID: 6775244571155206984, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: 7312979054153986402, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
 --- !u!4 &2187996 stripped
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 0}
@@ -444,7 +445,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2228a832bb35eb145a817adf31a30880, type: 2}
+      objectReference: {fileID: 2100000, guid: 3ff6db6ffb895e64fa4eb29792288a61, type: 2}
     - target: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
       propertyPath: m_Name
       value: SM_Stelling (1)
@@ -478,6 +479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 0}
@@ -1065,6 +1067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 4
   _item: {fileID: 11400000, guid: 76b02abf182ebbc42a6cd93110c6be6a, type: 2}
   _displayedItems:
   - {fileID: 729307077}
@@ -1272,7 +1275,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 35d0a7dbefd100b4384b2c3c29ed5e68, type: 2}
+      objectReference: {fileID: 2100000, guid: 95200ee9566044d42a669b88f864d3b2, type: 2}
     - target: {fileID: 919132149155446097, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Name
       value: SM_FruitBanana (1)
@@ -1394,7 +1397,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 35d0a7dbefd100b4384b2c3c29ed5e68, type: 2}
+      objectReference: {fileID: 2100000, guid: 95200ee9566044d42a669b88f864d3b2, type: 2}
     - target: {fileID: 919132149155446097, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Name
       value: SM_FruitBanana (1)
@@ -1685,15 +1688,15 @@ PrefabInstance:
     - target: {fileID: -8545123390407216422, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: -5766826967619679961, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: 611692084406072946, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2d284c093e079c44b9b4b42f1a9b9158, type: 2}
+      objectReference: {fileID: 2100000, guid: d48d24b29bc56bd4e9387b6764ed8710, type: 2}
     - target: {fileID: 919132149155446097, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Name
       value: SM_Koelkast
@@ -1705,11 +1708,11 @@ PrefabInstance:
     - target: {fileID: 6775244571155206984, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: 7312979054153986402, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
 --- !u!4 &262608872 stripped
@@ -1735,6 +1738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 0}
@@ -2110,6 +2114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 236210746}
@@ -2555,7 +2560,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (2)
@@ -2725,7 +2730,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+      objectReference: {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
     - target: {fileID: 919132149155446097, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Name
       value: SM_FruitApple (3)
@@ -2794,7 +2799,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (5)
@@ -2988,7 +2993,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+  - {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3694,6 +3699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 764871603}
@@ -3940,6 +3946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 591480191}
@@ -4003,6 +4010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 322377522}
@@ -4101,6 +4109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 183457071}
@@ -4386,6 +4395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 1980307786}
@@ -4584,6 +4594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 4
+  _itemCount: 4
   _item: {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
   _displayedItems:
   - {fileID: 2090682490}
@@ -4694,7 +4705,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 35d0a7dbefd100b4384b2c3c29ed5e68, type: 2}
+      objectReference: {fileID: 2100000, guid: 95200ee9566044d42a669b88f864d3b2, type: 2}
     - target: {fileID: 919132149155446097, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Name
       value: SM_FruitBanana
@@ -4816,7 +4827,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 35d0a7dbefd100b4384b2c3c29ed5e68, type: 2}
+      objectReference: {fileID: 2100000, guid: 95200ee9566044d42a669b88f864d3b2, type: 2}
     - target: {fileID: 919132149155446097, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Name
       value: SM_FruitBanana (3)
@@ -5049,7 +5060,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2228a832bb35eb145a817adf31a30880, type: 2}
+      objectReference: {fileID: 2100000, guid: 3ff6db6ffb895e64fa4eb29792288a61, type: 2}
     - target: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
       propertyPath: m_Name
       value: SM_Stelling
@@ -5083,6 +5094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 0}
@@ -5448,6 +5460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 909594234}
@@ -5546,7 +5559,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (4)
@@ -5619,7 +5632,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: e5a7ed842cf0002479aa6aded657e2f7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 92d9f57bb41d67341b6d864380af7ed1, type: 2}
+      objectReference: {fileID: 2100000, guid: 4855bdc7f0a93bc4ea0b6776e9a311e9, type: 2}
     - target: {fileID: 919132149155446097, guid: e5a7ed842cf0002479aa6aded657e2f7, type: 3}
       propertyPath: m_Name
       value: SM_DeurR
@@ -5697,7 +5710,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+      objectReference: {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
     - target: {fileID: 919132149155446097, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Name
       value: SM_FruitApple (2)
@@ -5766,7 +5779,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2228a832bb35eb145a817adf31a30880, type: 2}
+      objectReference: {fileID: 2100000, guid: 3ff6db6ffb895e64fa4eb29792288a61, type: 2}
     - target: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
       propertyPath: m_Name
       value: SM_Stelling (3)
@@ -5800,6 +5813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 0}
@@ -5962,6 +5976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 705795542}
@@ -6183,7 +6198,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (3)
@@ -6252,7 +6267,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (1)
@@ -6487,7 +6502,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak
@@ -7479,7 +7494,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (2)
@@ -7807,7 +7822,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 35d0a7dbefd100b4384b2c3c29ed5e68, type: 2}
+      objectReference: {fileID: 2100000, guid: 95200ee9566044d42a669b88f864d3b2, type: 2}
     - target: {fileID: 919132149155446097, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Name
       value: SM_FruitBanana (4)
@@ -8089,7 +8104,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+  - {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8423,7 +8438,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (4)
@@ -8453,6 +8468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 183457071}
@@ -9383,7 +9399,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 35d0a7dbefd100b4384b2c3c29ed5e68, type: 2}
+      objectReference: {fileID: 2100000, guid: 95200ee9566044d42a669b88f864d3b2, type: 2}
     - target: {fileID: 919132149155446097, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Name
       value: SM_FruitBanana (3)
@@ -9808,15 +9824,15 @@ PrefabInstance:
     - target: {fileID: -8545123390407216422, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: -5766826967619679961, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: 611692084406072946, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2d284c093e079c44b9b4b42f1a9b9158, type: 2}
+      objectReference: {fileID: 2100000, guid: d48d24b29bc56bd4e9387b6764ed8710, type: 2}
     - target: {fileID: 919132149155446097, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Name
       value: SM_Koelkast (1)
@@ -9828,11 +9844,11 @@ PrefabInstance:
     - target: {fileID: 6775244571155206984, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     - target: {fileID: 7312979054153986402, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f63e5a4aa78f054cae90226c34db6a9, type: 2}
+      objectReference: {fileID: 2100000, guid: ca860079be6d3714a94819196b13f140, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ff3a4fc34928b647bdaf5209d740b89, type: 3}
 --- !u!4 &1461217445 stripped
@@ -9858,6 +9874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 0}
@@ -9938,7 +9955,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+      objectReference: {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
     - target: {fileID: 919132149155446097, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Name
       value: SM_FruitApple (5)
@@ -10063,7 +10080,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: e5a7ed842cf0002479aa6aded657e2f7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 92d9f57bb41d67341b6d864380af7ed1, type: 2}
+      objectReference: {fileID: 2100000, guid: 4855bdc7f0a93bc4ea0b6776e9a311e9, type: 2}
     - target: {fileID: 919132149155446097, guid: e5a7ed842cf0002479aa6aded657e2f7, type: 3}
       propertyPath: m_Name
       value: SM_DeurR
@@ -10530,7 +10547,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak
@@ -10966,7 +10983,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (5)
@@ -11476,7 +11493,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+  - {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12068,7 +12085,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 35d0a7dbefd100b4384b2c3c29ed5e68, type: 2}
+      objectReference: {fileID: 2100000, guid: 95200ee9566044d42a669b88f864d3b2, type: 2}
     - target: {fileID: 919132149155446097, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Name
       value: SM_FruitBanana (2)
@@ -12479,7 +12496,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+      objectReference: {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
     - target: {fileID: 919132149155446097, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Name
       value: SM_FruitApple (1)
@@ -12778,7 +12795,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (3)
@@ -12940,7 +12957,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2228a832bb35eb145a817adf31a30880, type: 2}
+      objectReference: {fileID: 2100000, guid: 3ff6db6ffb895e64fa4eb29792288a61, type: 2}
     - target: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
       propertyPath: m_Name
       value: SM_Stelling (2)
@@ -12974,6 +12991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 5
+  _itemCount: 0
   _item: {fileID: 0}
   _displayedItems: []
   itemCountText: {fileID: 0}
@@ -13059,7 +13077,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e4b5d406ed924442a21af0def4e6f2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 93b7691be0b0fb7408be296cbbf4fa74, type: 2}
     - target: {fileID: 919132149155446097, guid: 87656a98d6970ea408bfc10b8700abd2, type: 3}
       propertyPath: m_Name
       value: SM_Groentebak (1)
@@ -13132,7 +13150,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+      objectReference: {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
     - target: {fileID: 919132149155446097, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
       propertyPath: m_Name
       value: SM_FruitApple (4)
@@ -13196,7 +13214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6988ef0927cd0bc4ebe2425732d4f207, type: 2}
+  - {fileID: 2100000, guid: 9c1ef325aa4689544ad3e52d6d7a61d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13326,7 +13344,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 35d0a7dbefd100b4384b2c3c29ed5e68, type: 2}
+      objectReference: {fileID: 2100000, guid: 95200ee9566044d42a669b88f864d3b2, type: 2}
     - target: {fileID: 919132149155446097, guid: c0b89e35b9a86894fa7ceef8507bace3, type: 3}
       propertyPath: m_Name
       value: SM_FruitBanana (2)
@@ -13405,6 +13423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 4
+  _itemCount: 0
   _item: {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
   _displayedItems:
   - {fileID: 785953033}

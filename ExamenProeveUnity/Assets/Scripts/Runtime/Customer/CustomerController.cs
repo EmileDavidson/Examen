@@ -21,14 +21,13 @@ namespace Runtime.Customer
         [SerializeField] private CustomerInventory inventory;
         [SerializeField] private CustomerMovement movement;
         [SerializeField] private GameObject playerHip = null;
-        
-        
 
         public MyGrid Grid { get; private set; }
         public PathFinding PathFinding { get; private set; }
         
         public FixedPath EntryPath { get; private set; }
         public FixedPath ExitPath { get; private set; }
+        public Shelf CurrentTargetShelf { get; set; }
         
         private CashRegister TargetCashRegister { get; set; }
         private readonly Dictionary<CustomerState, CustomerStateBase> _states = new();
@@ -61,7 +60,6 @@ namespace Runtime.Customer
             TargetCashRegister = WorldManager.Instance.checkouts.RandomItem();
             EntryPath ??= WorldManager.Instance.entryPaths.RandomItem();
             ExitPath ??= TargetCashRegister.ExitPath;
-
 
             inventory ??= GetComponent<CustomerInventory>();
             movement ??= GetComponent<CustomerMovement>();
