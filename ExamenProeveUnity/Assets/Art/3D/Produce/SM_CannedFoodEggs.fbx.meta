@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 8297f247ed8fd4e4581a467270b4c1ae
+guid: 8db11fdd54804d344bad24690078203f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Box
+    second: {fileID: 2100000, guid: 464886a33c3bfad4d8c8abea8f9c68d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultPolygonShader1
+    second: {fileID: 2100000, guid: 68616425e7adb474a90bba9e65104725, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
