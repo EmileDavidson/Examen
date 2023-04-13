@@ -38,6 +38,7 @@ namespace Runtime
             _displayedItems.ForEach(item => item.SetActive(false));
             for (int i = 0; i < _itemCount; i++)
             {
+                if(!_displayedItems.ContainsSlot(i)) continue;
                 _displayedItems[i]?.SetActive(true);
             }
 

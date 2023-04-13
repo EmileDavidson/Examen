@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 
 namespace Runtime.Customer.CustomerStates
 {
     public class CustomerDroppingProductsState : CustomerStateBase
     {
-
+        private const int WaitTime = 4000;
+        
         public CustomerDroppingProductsState(CustomerController controller) : base(controller)
         {
         }
@@ -14,7 +16,11 @@ namespace Runtime.Customer.CustomerStates
         
         public override async void OnStateStart()
         {
-            await Task.Delay(4000);
+            int cashRegisterNodeIndex = Controller.ExitPath.pathNodeIndexes.First();
+            Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(true);
+            await Task.Delay(WaitTime);
+            Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false);
+            
             FinishState();
         }
 
