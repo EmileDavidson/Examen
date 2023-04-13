@@ -32,8 +32,7 @@ namespace Runtime
         public UnityEvent onItemAdded = new();
         public UnityEvent onItemRemoved = new();
         public UnityEvent onInventorySizeChange = new();
-
-
+        
         private void Awake()
         {
             _displayedItems.ForEach(item => item.SetActive(false));
@@ -55,9 +54,9 @@ namespace Runtime
         }
 
         /// <summary>
-        /// Fulls the shelf with the given item
+        /// Fills the shelf with the given item
         /// </summary>
-        public void Full()
+        public void Fill()
         {
             _itemCount = maxInventorySize;
             onItemAdded.Invoke();
