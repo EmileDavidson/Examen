@@ -28,21 +28,30 @@ namespace Runtime.Player
 
         private void Update()
         {
-            if(_isGrabButtonPressed) HandlePressed();
+            //check if the object is destroyed if so release it
+            if (_isGrabbingObject && _grabbedObject == null)
+            {
+                _isGrabbingObject = false;
+                _grabbedGrabbable.OnReleased?.Invoke();
+                _grabbedGrabbable = null;
+                _grabbedObject = null;
+            }
+
+            if (_isGrabButtonPressed) HandlePressed();
         }
 
         private void OnRightGrab(InputValue value)
         {
             if (handType != HandType.Right) return;
             _isGrabButtonPressed = value.isPressed;
-            if(!value.isPressed) HandleRelease();
+            if (!value.isPressed) HandleRelease();
         }
-        
+
         private void OnLeftGrab(InputValue value)
         {
             if (handType != HandType.Left) return;
             _isGrabButtonPressed = value.isPressed;
-            if(!value.isPressed) HandleRelease();
+            if (!value.isPressed) HandleRelease();
         }
 
         private void HandleRelease()
@@ -53,7 +62,7 @@ namespace Runtime.Player
             Destroy(_grabbedObjectJoined);
             _grabbedObject = null;
             _isGrabbingObject = false;
-            _grabbedGrabbable.onReleased?.Invoke();
+            _grabbedGrabbable.OnReleased?.Invoke();
             _grabbedGrabbable = null;
         }
 
@@ -61,15 +70,15 @@ namespace Runtime.Player
         {
             shoulderJoint.targetRotation = Quaternion.Euler(90f, 0f, 0f);
 
-            if(_isGrabbingObject) return;
+            if (_isGrabbingObject) return;
             if (_grabbedObject is null) return;
 
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
             _grabbedObjectJoined.connectedBody = _rigidbody;
-            _grabbedGrabbable.onGrabbed?.Invoke();
+            _grabbedGrabbable.OnGrabbed?.Invoke();
             _isGrabbingObject = true;
         }
-        
+
         private void OnCollisionEnter(Collision collision)
         {
             if (!collision.transform.TryGetComponent<Grabbable>(out var grabbable)) return;
@@ -81,7 +90,7 @@ namespace Runtime.Player
         {
             if (_isGrabbingObject) return;
             if (other.transform.gameObject != _grabbedObject) return;
-            
+
             _grabbedObject = null;
             _grabbedGrabbable = null;
         }

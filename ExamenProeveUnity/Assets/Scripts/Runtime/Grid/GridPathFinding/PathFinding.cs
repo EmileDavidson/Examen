@@ -116,7 +116,7 @@ namespace Runtime.Grid.GridPathFinding
         /// Is triggered when the grid changes and updates the path if the changed node is in the path
         /// </summary>
         /// <param name="node"></param>
-        private async void GridChangedUpdate(GridNode node)
+        private void GridChangedUpdate(GridNode node)
         {
             if (!_needsPath) return;
             if (Path != null && !Path.PathNodes.Contains(node.Index)) return;
