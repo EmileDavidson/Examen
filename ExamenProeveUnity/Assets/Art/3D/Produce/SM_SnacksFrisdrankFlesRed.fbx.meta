@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 348cf0ef54e94af47b02e1c5823922d2
+guid: d3f8b9371f003d94c8c7c0291ea6f8e1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Bottle
+    second: {fileID: 2100000, guid: da2c9f69a2ad03649b7b2dd526de96c0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

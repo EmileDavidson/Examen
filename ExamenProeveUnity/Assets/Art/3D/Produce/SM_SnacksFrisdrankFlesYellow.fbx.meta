@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 986c99f53625e07438e7c900b4ea0bef
+guid: 32367805c6ea45446966ef8c359d3fb2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultPolygonShader
-    second: {fileID: 2100000, guid: 3a25e1cf2d3a3c7449a398132f9364e2, type: 2}
+      name: M_Bottle
+    second: {fileID: 2100000, guid: 66f27e273c992bf48816fe8a29386f97, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -93,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 100
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
