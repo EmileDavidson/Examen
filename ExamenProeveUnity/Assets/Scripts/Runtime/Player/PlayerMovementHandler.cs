@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,7 @@ namespace Runtime.Player
         [SerializeField] private PlayerInput playerInput;
         [SerializeField] private float speed = 10f;
         [SerializeField] private ConfigurableJoint hipJoint;
-        [SerializeField] private Rigidbody hip;
+        [SerializeField] private Rigidbody hipRigidbody;
         [SerializeField] private Animator targetAnimator;
 
         [SerializeField] private float minPowerValue = .1f;
@@ -44,13 +45,13 @@ namespace Runtime.Player
             _walk = (direction.magnitude >= 0.1f);
             
             ConstrainPlayer(!_walk);
-            
+
             if (_walk)
             {
                 var targetAngle = (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg) - 90;
                 hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-                hip.velocity += direction * speed;
-                hip.velocity = Vector3.ClampMagnitude(hip.velocity, speed);
+                hipRigidbody.velocity += direction * speed;
+                hipRigidbody.velocity = Vector3.ClampMagnitude(hipRigidbody.velocity, speed);
             }
 
             targetAnimator.SetBool(Walk, _walk);
@@ -62,17 +63,22 @@ namespace Runtime.Player
         /// <param name="setConstrained"></param>
         private void ConstrainPlayer(bool setConstrained)
         {
-            RigidbodyConstraints constraints = hip.constraints;
+            RigidbodyConstraints constraints = hipRigidbody.constraints;
             if (setConstrained)
             {
                 constraints = RigidbodyConstraints.FreezePosition;
             }
             else
             {
-                constraints = RigidbodyConstraints.FreezePositionY;
+                if (_horizontalMoveValue is not 0f && _verticalMoveValue is not 0f)
+                    constraints = RigidbodyConstraints.FreezePositionY;
+                else if (_horizontalMoveValue is not 0f)
+                    constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
+                else if (_verticalMoveValue is not 0f)
+                    constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
             }
 
-            hip.constraints = constraints;
+            hipRigidbody.constraints = constraints;
         }
     }
 }
