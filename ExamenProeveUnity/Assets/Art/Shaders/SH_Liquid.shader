@@ -8,6 +8,8 @@ Shader "Game/Liquid"
 	{
 		_Float0("Float 0", Float) = 0
 		_WobbleZ("WobbleZ", Float) = 0
+		_WobbleX("WobbleX", Float) = 0
+		_Vector2("Vector 2", Vector) = (0,0,0,0)
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
@@ -17,7 +19,7 @@ Shader "Game/Liquid"
 		Cull Off
 		CGPROGRAM
 		#include "UnityShaderVariables.cginc"
-		#pragma target 3.0
+		#pragma target 2.0
 		#pragma multi_compile_instancing
 		#pragma surface surf Unlit keepalpha addshadow fullforwardshadows 
 		struct Input
@@ -25,11 +27,14 @@ Shader "Game/Liquid"
 			float3 worldPos;
 		};
 
+		uniform float3 _Vector2;
 		uniform float _Float0;
 
 		UNITY_INSTANCING_BUFFER_START(GameLiquid)
 			UNITY_DEFINE_INSTANCED_PROP(float, _WobbleZ)
 #define _WobbleZ_arr GameLiquid
+			UNITY_DEFINE_INSTANCED_PROP(float, _WobbleX)
+#define _WobbleX_arr GameLiquid
 		UNITY_INSTANCING_BUFFER_END(GameLiquid)
 
 
@@ -62,10 +67,12 @@ Shader "Game/Liquid"
 		{
 			float _WobbleZ_Instance = UNITY_ACCESS_INSTANCED_PROP(_WobbleZ_arr, _WobbleZ);
 			float3 ase_vertex3Pos = mul( unity_WorldToObject, float4( i.worldPos , 1 ) );
-			float3 rotatedValue19 = RotateAroundAxis( float3( 0,0,0 ), ase_vertex3Pos, normalize( float3( 0,0,1 ) ), 90.0 );
+			float3 rotatedValue19 = RotateAroundAxis( _Vector2, ase_vertex3Pos, float3(1,0,0), 90.0 );
+			float _WobbleX_Instance = UNITY_ACCESS_INSTANCED_PROP(_WobbleX_arr, _WobbleX);
+			float3 rotatedValue41 = RotateAroundAxis( _Vector2, ase_vertex3Pos, float3(0,0,1), 90.0 );
 			float3 ase_worldPos = i.worldPos;
 			float4 transform35 = mul(unity_ObjectToWorld,float4( 0,0,0,1 ));
-			float3 temp_cast_2 = (step( ( float4( ( _WobbleZ_Instance * rotatedValue19 ) , 0.0 ) + ( float4( ase_worldPos , 0.0 ) - transform35 ) ).y , _Float0 )).xxx;
+			float3 temp_cast_2 = (step( ( float4( ( ( _WobbleZ_Instance * rotatedValue19 ) + ( _WobbleX_Instance * rotatedValue41 ) ) , 0.0 ) + ( float4( ase_worldPos , 0.0 ) - transform35 ) ).y , _Float0 )).xxx;
 			o.Emission = temp_cast_2;
 			o.Alpha = 1;
 		}
@@ -84,23 +91,40 @@ Node;AmplifyShaderEditor.SimpleAddOpNode;20;-221.53,190.1727;Inherit;True;2;2;0;
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;6;-477.6406,97.913;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
 Node;AmplifyShaderEditor.ObjectToWorldTransfNode;35;-777.8566,324.03;Inherit;False;1;0;FLOAT4;0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleAddOpNode;23;-229.3339,27.00799;Inherit;True;2;2;0;FLOAT3;0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
-Node;AmplifyShaderEditor.RotateAboutAxisNode;19;-678.6997,-328.4131;Inherit;False;True;4;0;FLOAT3;0,0,1;False;1;FLOAT;90;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.PosVertexDataNode;24;-914.5073,-210.3262;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;40;-439.275,-322.9334;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.StepOpNode;10;389.5388,93.25549;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0.03;False;1;FLOAT;0
-Node;AmplifyShaderEditor.StandardSurfaceOutputNode;2;643.6365,43.74874;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;Game/Liquid;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Off;0;False;;0;False;;False;0;False;;0;False;;False;0;Custom;0.5;True;True;0;False;TransparentCutout;;Transparent;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;0;0;False;;0;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;0;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;2;643.6365,43.74874;Float;False;True;-1;0;ASEMaterialInspector;0;0;Unlit;Game/Liquid;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Off;0;False;;0;False;;False;0;False;;0;False;;False;0;Custom;0.5;True;True;0;False;TransparentCutout;;Transparent;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;0;0;False;;0;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;0;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.RangedFloatNode;11;202.0122,195.401;Inherit;False;Property;_Float0;Float 0;1;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;26;-702.2368,-493.6684;Inherit;False;InstancedProperty;_WobbleZ;WobbleZ;2;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;44;-691.8548,-418.3708;Inherit;False;InstancedProperty;_WobbleX;WobbleX;3;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;43;-297.2771,-356.8912;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;46;-121.9996,-429.8643;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.Vector3Node;47;-1037.545,-757.8741;Inherit;False;Constant;_Vector0;Vector 0;4;0;Create;True;0;0;0;False;0;False;1,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.Vector3Node;48;-932.4658,-349.2534;Inherit;False;Constant;_Vector1;Vector 0;4;0;Create;True;0;0;0;False;0;False;0,0,1;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.RotateAboutAxisNode;19;-781.8366,-640.2727;Inherit;False;False;4;0;FLOAT3;1,0,0;False;1;FLOAT;90;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.RotateAboutAxisNode;41;-702.7023,-214.2945;Inherit;False;False;4;0;FLOAT3;0,0,1;False;1;FLOAT;90;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.PosVertexDataNode;42;-971.3917,-66.81476;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.Vector3Node;49;-1117.886,-197.5325;Inherit;False;Property;_Vector2;Vector 2;4;0;Create;True;0;0;0;False;0;False;0,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;40;-357.7119,-676.2928;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.RangedFloatNode;26;-788.3737,-814.5279;Inherit;False;InstancedProperty;_WobbleZ;WobbleZ;2;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.PosVertexDataNode;24;-1003.644,-517.1858;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 WireConnection;8;0;23;0
 WireConnection;6;0;3;0
 WireConnection;6;1;35;0
-WireConnection;23;0;40;0
+WireConnection;23;0;46;0
 WireConnection;23;1;6;0
-WireConnection;19;3;24;0
-WireConnection;40;0;26;0
-WireConnection;40;1;19;0
 WireConnection;10;0;8;1
 WireConnection;10;1;11;0
 WireConnection;2;2;10;0
+WireConnection;43;0;44;0
+WireConnection;43;1;41;0
+WireConnection;46;0;40;0
+WireConnection;46;1;43;0
+WireConnection;19;0;47;0
+WireConnection;19;2;49;0
+WireConnection;19;3;24;0
+WireConnection;41;0;48;0
+WireConnection;41;2;49;0
+WireConnection;41;3;42;0
+WireConnection;40;0;26;0
+WireConnection;40;1;19;0
 ASEEND*/
-//CHKSM=6A18E3DB3D6BE2D99384B3EA3492C641559FDEFB
+//CHKSM=3F4040D1682C075E724E68DECA521DE272CC6C90
