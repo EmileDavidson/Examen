@@ -8,13 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Liquid
-  m_Shader: {fileID: 4800000, guid: f78e52daa3740d748ac6f3c3edeeedd0, type: 3}
+  m_Shader: {fileID: 4800000, guid: 1c5819d6f07df94428c9c833a0832a71, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2999
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -74,6 +74,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float0: 0.3
     - _GlobalShadowStrenght: 0.46
     - _GlossMapScale: 1
     - _Glossiness: 0
@@ -88,10 +89,13 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WobbleX: 0
+    - _WobbleZ: 0
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MixColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Vector2: {r: -0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
