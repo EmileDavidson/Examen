@@ -95,7 +95,6 @@ Shader "Game/Liquid"
 }
 /*ASEBEGIN
 Version=19105
-Node;AmplifyShaderEditor.ColorNode;16;234.2724,-145.5465;Inherit;False;Constant;_MainColor;MainColor;2;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.BreakToComponentsNode;8;6.916167,76.70583;Inherit;False;FLOAT4;1;0;FLOAT4;0,0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15
 Node;AmplifyShaderEditor.WorldPosInputsNode;3;-968.8868,110.9455;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.SimpleAddOpNode;20;-221.53,190.1727;Inherit;True;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
@@ -132,6 +131,7 @@ Node;AmplifyShaderEditor.SimpleAddOpNode;68;504.9127,112.3471;Inherit;False;2;2;
 Node;AmplifyShaderEditor.TFHCRemapNode;70;426.8687,441.6987;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.5;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.Vector2Node;71;214.8686,481.6987;Inherit;False;Property;_Vector3;Vector 3;6;0;Create;True;0;0;0;False;0;False;0,1;0,1;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.RangedFloatNode;54;-1273.646,869.4272;Inherit;False;Constant;_Float1;Float 1;6;0;Create;True;0;0;0;False;0;False;180;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;16;234.2724,-145.5465;Inherit;False;Constant;_MainColor;MainColor;2;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 WireConnection;8;0;23;0
 WireConnection;6;0;3;0
 WireConnection;6;1;35;0
@@ -171,4 +171,4 @@ WireConnection;70;0;67;0
 WireConnection;70;3;71;1
 WireConnection;70;4;71;2
 ASEEND*/
-//CHKSM=36997634A0EA5F9D4527551F9888EFFB27822355
+//CHKSM=4AB560B901934BDF97B138F5FC19B9960B86B130
