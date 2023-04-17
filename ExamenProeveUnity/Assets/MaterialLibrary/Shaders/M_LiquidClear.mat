@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Liquid
+  m_Name: M_LiquidClear
   m_Shader: {fileID: 4800000, guid: 1c5819d6f07df94428c9c833a0832a71, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -96,7 +96,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0, g: 0, b: 0, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0.2901961}
     - _MixColor: {r: 1, g: 1, b: 1, a: 1}
     - _ObjectRotation: {r: 0, g: 0, b: 0, a: 0}
     - _PivotOffset: {r: 0, g: 0, b: 0, a: 0}
