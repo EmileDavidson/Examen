@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Authentication.ExtendedProtection;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
@@ -11,6 +12,8 @@ namespace Runtime.Customer
 {
     public class CustomerMovement : MonoBehaviour
     {
+        [SerializeField] private CustomerController controller;
+
         [SerializeField] private MyGrid grid;
         [SerializeField] private Rigidbody hipRb;
         [SerializeField] private ConfigurableJoint hipJoint;
@@ -42,12 +45,22 @@ namespace Runtime.Customer
             }
         }
 
+        private void OnDisable()
+        {
+            foreach (var blockingPoint in blockingPoints)
+            {
+                grid.GetNodeByIndex(blockingPoint).IsTempBlocked = false;
+            }
+            blockingPoints.Clear();
+        }
+
         /// <summary>
         /// Awake is called when the script instance is being loaded.
         /// </summary>
         private void Awake()
         {
             grid ??= WorldManager.Instance.worldGrid;
+            controller ??= GetComponent<CustomerController>();
         }
 
         /// <summary>
@@ -66,6 +79,7 @@ namespace Runtime.Customer
             {
                 _walk = false;
                 targetAnimator.SetBool(Walk, _walk);
+                ConstrainMovement(!controller.IsGrabbed);
                 return;
             }
 
@@ -82,6 +96,9 @@ namespace Runtime.Customer
 
             nextPos.y = playerPos.y;
 
+            targetAnimator.SetBool(Walk, _walk);
+            ConstrainMovement(!_walk);
+
             //handle walk 
             var gotoPosition = Vector3.MoveTowards(playerPos, nextPos, 0.1f);
             var direction = (gotoPosition - playerPos).normalized;
@@ -91,8 +108,6 @@ namespace Runtime.Customer
             var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
             hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
             hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.085f);
-
-            targetAnimator.SetBool(Walk, _walk);
 
             ValidateNextPointReached(playerPos, nextPathNodeIndex);
         }
@@ -131,6 +146,18 @@ namespace Runtime.Customer
             Path.CurrentIndex = -1;
             Path.DestinationReached = true;
             onDestinationReached.Invoke();
+        }
+
+        /// <summary>
+        /// Sets the correct restraining to the player when stopping or starting to move
+        /// </summary>
+        /// <param name="setConstrained"></param>
+        private void ConstrainMovement(bool setConstrained)
+        {
+            var constraints =
+                setConstrained ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.FreezePositionY;
+
+            hipRb.constraints = constraints;
         }
     }
 }

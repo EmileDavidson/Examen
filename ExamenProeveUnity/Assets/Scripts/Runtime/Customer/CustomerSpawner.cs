@@ -14,7 +14,7 @@ namespace Runtime.Customer
         /// <summary>
         /// Spawns a customer at the spawn point.
         /// </summary>
-        [Button(Mode = ButtonMode.EnabledInPlayMode)]
+        [Button]
         private void SpawnPrefab()
         {
             Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
