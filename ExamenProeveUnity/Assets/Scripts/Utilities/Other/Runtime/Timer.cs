@@ -13,7 +13,6 @@ public class Timer
     private bool _isFinished = false;
     
     public UnityEvent onTimerFinished = new();
-    public UnityEvent onTimerFinishing = new();
     public UnityEvent<float> onTimerUpdate = new();
 
     public Timer(float timeInSeconds)
@@ -35,15 +34,8 @@ public class Timer
         }
     }
 
-    public void ForceFinish()
-    {
-        if (_isFinished) return;
-        FinishTimer();
-    }
-
     private void FinishTimer()
     {
-        onTimerFinishing.Invoke();
         _isFinished = true;
         onTimerFinished.Invoke();
     }
