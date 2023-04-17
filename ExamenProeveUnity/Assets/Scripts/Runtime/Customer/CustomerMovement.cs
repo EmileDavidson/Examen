@@ -122,8 +122,7 @@ namespace Runtime.Customer
         private void ValidateNextPointReached(Vector3 playerPos, int nextPathNodeIndex)
         {
             playerPos.y = 0;
-            if (!(Vector3.Distance(playerPos,
-                    grid.GetWorldPositionOfNode(grid.GetNodeByIndex(nextPathNodeIndex).GridPosition)) < .4f))
+            if (!(Vector3.Distance(playerPos, grid.GetWorldPositionOfNode(grid.GetNodeByIndex(nextPathNodeIndex).GridPosition)) < .4f))
             {
                 return;
             }
@@ -138,7 +137,7 @@ namespace Runtime.Customer
             grid.GetNodeByIndex(_path.CurrentIndex).SetTempBlock(true);
 
             blockingPoints.Add(nextPathNodeIndex);
-            blockingPoints.Remove(Path.PathNodes[Path.CurrentIndex]);
+            blockingPoints.Add(Path.PathNodes[Path.CurrentIndex]);
 
             Path.CurrentIndex++;
             if (Path.CurrentIndex < Path.PathNodes.Count - 1) return;

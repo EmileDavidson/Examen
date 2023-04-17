@@ -1,3 +1,6 @@
+using System.Collections;
+using Runtime.Customer.CustomerStates;
+using Runtime.Managers;
 using Toolbox.Attributes;
 using UnityEngine;
 
@@ -15,9 +18,24 @@ namespace Runtime.Customer
         /// Spawns a customer at the spawn point.
         /// </summary>
         [Button]
-        private void SpawnPrefab()
+        private void Spawn()
         {
             Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
+        }
+
+        [Button]
+        private void BatchSpawn(int spawnAmount)
+        {
+            StartCoroutine(TimedBatchSpawnCoroutine(spawnAmount));
+        }
+
+        private IEnumerator TimedBatchSpawnCoroutine(int spawnAmount, float spawnDelay = 1f)
+        {
+            for (int i = 0; i < spawnAmount; i++)
+            {
+                Spawn();
+                yield return new WaitForSeconds(spawnDelay);
+            }
         }
     }
 }
