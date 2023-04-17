@@ -12,6 +12,7 @@ Shader "Game/Liquid"
 		_WobbleX("WobbleX", Float) = 0
 		_PivotOffset("PivotOffset", Vector) = (0,0,0,0)
 		_ObjectRotation("ObjectRotation", Vector) = (0,0,0,0)
+		_Rotationoffset("Rotation offset", Float) = 0.12
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
@@ -33,6 +34,7 @@ Shader "Game/Liquid"
 		uniform float4 _MainColor;
 		uniform float3 _PivotOffset;
 		uniform float4 _ObjectRotation;
+		uniform float _Rotationoffset;
 		uniform float _Float0;
 
 		UNITY_INSTANCING_BUFFER_START(GameLiquid)
@@ -82,7 +84,7 @@ Shader "Game/Liquid"
 			float4 break56 = (float4( 0,0,0,0 ) + (_ObjectRotation - float4( 0,0,0,0 )) * (float4( 1,1,1,1 ) - float4( 0,0,0,0 )) / (temp_cast_3 - float4( 0,0,0,0 )));
 			float temp_output_1_0_g3 = break56.x;
 			float temp_output_1_0_g2 = break56.z;
-			float temp_output_10_0 = step( ( ( float4( ( ( _WobbleZ_Instance * rotatedValue19 ) + ( _WobbleX_Instance * rotatedValue41 ) ) , 0.0 ) + ( float4( ase_worldPos , 0.0 ) - transform35 ) ).y + (0.0 + (saturate( ( saturate( (0.0 + (( ( abs( ( ( temp_output_1_0_g3 - floor( ( temp_output_1_0_g3 + 0.5 ) ) ) * 2 ) ) * 2 ) - 1.0 ) - -1.0) * (1.0 - 0.0) / (1.0 - -1.0)) ) + saturate( (0.0 + (( ( abs( ( ( temp_output_1_0_g2 - floor( ( temp_output_1_0_g2 + 0.5 ) ) ) * 2 ) ) * 2 ) - 1.0 ) - -1.0) * (1.0 - 0.0) / (1.0 - -1.0)) ) ) ) - 0.0) * (0.12 - 0.0) / (0.5 - 0.0)) ) , _Float0 );
+			float temp_output_10_0 = step( ( ( float4( ( ( _WobbleZ_Instance * rotatedValue19 ) + ( _WobbleX_Instance * rotatedValue41 ) ) , 0.0 ) + ( float4( ase_worldPos , 0.0 ) - transform35 ) ).y + (0.0 + (saturate( ( saturate( (0.0 + (( ( abs( ( ( temp_output_1_0_g3 - floor( ( temp_output_1_0_g3 + 0.5 ) ) ) * 2 ) ) * 2 ) - 1.0 ) - -1.0) * (1.0 - 0.0) / (1.0 - -1.0)) ) + saturate( (0.0 + (( ( abs( ( ( temp_output_1_0_g2 - floor( ( temp_output_1_0_g2 + 0.5 ) ) ) * 2 ) ) * 2 ) - 1.0 ) - -1.0) * (1.0 - 0.0) / (1.0 - -1.0)) ) ) ) - 0.0) * (_Rotationoffset - 0.0) / (0.5 - 0.0)) ) , _Float0 );
 			o.Alpha = ( temp_output_10_0 * _MainColor.a );
 		}
 
@@ -163,7 +165,6 @@ Shader "Game/Liquid"
 Version=19105
 Node;AmplifyShaderEditor.BreakToComponentsNode;8;6.916167,76.70583;Inherit;False;FLOAT4;1;0;FLOAT4;0,0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15
 Node;AmplifyShaderEditor.WorldPosInputsNode;3;-968.8868,110.9455;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.SimpleAddOpNode;20;-221.53,190.1727;Inherit;True;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;6;-477.6406,97.913;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
 Node;AmplifyShaderEditor.ObjectToWorldTransfNode;35;-777.8566,324.03;Inherit;False;1;0;FLOAT4;0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleAddOpNode;23;-229.3339,27.00799;Inherit;True;2;2;0;FLOAT3;0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
@@ -198,6 +199,7 @@ Node;AmplifyShaderEditor.TFHCRemapNode;70;426.8687,441.6987;Inherit;False;5;0;FL
 Node;AmplifyShaderEditor.Vector4Node;51;-1273.693,653.7673;Inherit;False;Property;_ObjectRotation;ObjectRotation;5;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.Vector3Node;49;-1136.886,-175.5325;Inherit;False;Property;_PivotOffset;PivotOffset;4;0;Create;True;0;0;0;False;0;False;0,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;72;980.8812,469.8116;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;74;243.859,517.2729;Inherit;False;Property;_Rotationoffset;Rotation offset;6;0;Create;True;0;0;0;False;0;False;0.12;0.12;0;0;0;1;FLOAT;0
 WireConnection;8;0;23;0
 WireConnection;6;0;3;0
 WireConnection;6;1;35;0
@@ -235,7 +237,8 @@ WireConnection;10;1;11;0
 WireConnection;68;0;8;1
 WireConnection;68;1;70;0
 WireConnection;70;0;67;0
+WireConnection;70;4;74;0
 WireConnection;72;0;10;0
 WireConnection;72;1;16;4
 ASEEND*/
-//CHKSM=D3103253F2052B624C5ED92E73778A30C9A33A64
+//CHKSM=8A087478B5FC301EF3B7AA8F69C71ED528874CAB
