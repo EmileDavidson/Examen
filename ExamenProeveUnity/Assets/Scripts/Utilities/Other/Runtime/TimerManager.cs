@@ -21,12 +21,17 @@ namespace Utilities.Other.Runtime
         {
             _longestTimer = timers.OrderByDescending(timer => timer.WantedTime).First();
             _shortestTimer = timers.OrderBy(timer => timer.WantedTime).First();
-
+            
             _superTimer = new Timer(_longestTimer.WantedTime);
+            
+            timers.ForEach(timer => timer.onTimerFinished.AddListener(() =>
+            {
+                Debug.Log(" timer finished ");
+            }));
   
             _superTimer.onTimerUpdate.AddListener((_) =>
             {
-                timers.ForEach(timer => timer.Update(_superTimer.WantedTime));
+                timers.ForEach(timer => timer.Update(Time.deltaTime));
             });
 
             //A bit of context here: I want to force finish all the timers since the super timer is the same time as the longest timer 

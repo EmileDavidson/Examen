@@ -18,13 +18,13 @@ namespace Runtime.Customer
         /// Spawns a customer at the spawn point.
         /// </summary>
         [Button]
-        private void Spawn()
+        public void Spawn()
         {
             Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
         }
 
         [Button]
-        private void BatchSpawn(int spawnAmount)
+        public void BatchSpawn(int spawnAmount)
         {
             StartCoroutine(TimedBatchSpawnCoroutine(spawnAmount));
         }

@@ -8,7 +8,7 @@ namespace Runtime.Customer.CustomerStates
 {
     public class CustomerDroppingProductsState : CustomerStateBase
     {
-        private const int WaitTime = 4000;
+        private const int WaitTime = 4;
         private Timer _timer; 
         
         public CustomerDroppingProductsState(CustomerController controller) : base(controller)

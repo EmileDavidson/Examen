@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -15,9 +16,9 @@ public class Timer
     public UnityEvent onTimerFinishing = new();
     public UnityEvent<float> onTimerUpdate = new();
 
-    public Timer(float timeInMilliseconds)
+    public Timer(float timeInSeconds)
     {
-        wantedTime = timeInMilliseconds / 1000;
+        wantedTime = timeInSeconds;
         _currentTime = 0;
     }
 
@@ -26,6 +27,7 @@ public class Timer
         if (_isFinished) return;
         
         _currentTime += deltaTime;
+
         onTimerUpdate.Invoke(_currentTime / wantedTime);
         if (_currentTime >= wantedTime)
         {

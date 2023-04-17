@@ -9,7 +9,7 @@ namespace Runtime.Customer.CustomerStates
 {
     public class CustomerGettingProductState : CustomerStateBase
     {
-        private const int WaitTime = 1000;
+        private const int WaitTime = 1;
         private Timer _timer;
 
         public override void OnStateStart()
