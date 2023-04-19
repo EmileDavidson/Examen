@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 62b654670e7122747b70cdc9375b921d
+guid: 439a8f086afcba14e80be71027b9bc68
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 0fbaab69d533e2243b6a989c20e91a57, type: 2}
+      name: M_Ontbijtkoek
+    second: {fileID: 2100000, guid: 62f9085c88d9fdb4c8f41a855672a632, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_OntbijtkoekBag
+    second: {fileID: 2100000, guid: b58f830b467423e46b0f297c299bcb2f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 62b654670e7122747b70cdc9375b921d
+guid: f1d8ad823fa89a648832bc8dd7675063
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 0fbaab69d533e2243b6a989c20e91a57, type: 2}
+      name: M_CashBeltendBelt
+    second: {fileID: 2100000, guid: 75194643149be6d43b40ff9c45c2688f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Cashbeltend
+    second: {fileID: 2100000, guid: 163b7531e68ca724998689de25559005, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

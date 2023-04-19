@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 1c8c0a649d23cbe4999ac4eab34d50ba
+guid: 82320ab83b471a148846da83aed1d629
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Cashscanner
+    second: {fileID: 2100000, guid: 415f6304db1b9f14eb1e06e78776f495, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_CashscannerBelt
+    second: {fileID: 2100000, guid: 75194643149be6d43b40ff9c45c2688f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

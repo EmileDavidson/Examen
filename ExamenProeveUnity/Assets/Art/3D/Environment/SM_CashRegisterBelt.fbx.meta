@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 518c52a5bee2094458e07131c9f4f5cb
+guid: 46bea80a7d9ef75439e87dd392fb4229
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_CashBeltBelt
+    second: {fileID: 2100000, guid: 75194643149be6d43b40ff9c45c2688f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Cashbelt
+    second: {fileID: 2100000, guid: 4ffa3080ee7c7904b874c4101add1020, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
