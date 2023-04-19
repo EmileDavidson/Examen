@@ -4,6 +4,8 @@ description: The daily standups of the 2nd sprint
 
 # Sprint 2
 
+
+
 {% tabs %}
 {% tab title="Week 1" %}
 ## Standup 12/04/2023:
@@ -20,7 +22,13 @@ Today the standup started at 9.15 AM. Vivian will look at the layout of the leve
 {% endtab %}
 
 {% tab title="Week 2" %}
+## **17/04:**&#x20;
 
+The standup started at 9.20 AM. Wouter will work on the directional player grabbing so it will be easier for the player to grab objects. Emile will work on the system that spawns customers in waves. Vivian will create the materials for the different drinks in the game and continue to work on the new level layout. Sterre will texture the outside props, cash register and also the bread and spreads. Leikho will finish the texture for the bee, our second player character in the game. LaRhona will continue to work on more money/coin designs and will later share these with the team so we can vote on which on will look best.&#x20;
+
+## **19/04:**
+
+The standup started at 9.20 AM. Vivian will finish the new layout for the level today. And when finished with that Vivian will texture the floor and walls of the store. Sterre will start with texturing the cash register, and when Vivian is done with the layout Sterre will give feedback. Wouter will work on the product scanning at the checkout for the player. Emile will work on the delivery truck so that the players can actually restock the store and we will have a more complete gameplay loop.
 {% endtab %}
 
 {% tab title="Week 3" %}
