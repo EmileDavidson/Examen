@@ -1,46 +1,47 @@
 ﻿using System;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
-[Serializable]
-public class Timer
+namespace Utilities.Other.Runtime
 {
-    [field: SerializeField] private float wantedTime;
-    
-    private float _currentTime;
-    private bool _isFinished = false;
-    
-    public UnityEvent onTimerFinished = new();
-    public UnityEvent<float> onTimerUpdate = new();
-
-    public Timer(float timeInSeconds)
+    [Serializable]
+    public class Timer
     {
-        wantedTime = timeInSeconds;
-        _currentTime = 0;
-    }
+        [field: SerializeField] private float wantedTime;
+    
+        private float _currentTime;
+        private bool _isFinished = false;
+    
+        public UnityEvent onTimerFinished = new();
+        public UnityEvent<float> onTimerUpdate = new();
 
-    public void Update(float deltaTime)
-    {
-        if (_isFinished) return;
-        
-        _currentTime += deltaTime;
-
-        onTimerUpdate.Invoke(_currentTime / wantedTime);
-        if (_currentTime >= wantedTime)
+        public Timer(float timeInSeconds)
         {
-            FinishTimer();
+            wantedTime = timeInSeconds;
+            _currentTime = 0;
         }
+
+        public void Update(float deltaTime)
+        {
+            if (_isFinished) return;
+        
+            _currentTime += deltaTime;
+
+            onTimerUpdate.Invoke(_currentTime / wantedTime);
+            if (_currentTime >= wantedTime)
+            {
+                FinishTimer();
+            }
+        }
+
+        private void FinishTimer()
+        {
+            _isFinished = true;
+            onTimerFinished.Invoke();
+        }
+
+        public float WantedTime => wantedTime;
+
+        public bool IsFinished => _isFinished;
     }
-
-    private void FinishTimer()
-    {
-        _isFinished = true;
-        onTimerFinished.Invoke();
-    }
-
-    public float WantedTime => wantedTime;
-
-    public bool IsFinished => _isFinished;
 }

@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 3958982226309639659}
   - component: {fileID: 8589210294425209420}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1780,6 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299a012a5e0645548fe046a0d5fca84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
   grid: {fileID: 0}
   hipRb: {fileID: 8043495966599613112}
   hipJoint: {fileID: 8043495966599613114}
@@ -1804,8 +1805,8 @@ MonoBehaviour:
   movement: {fileID: 8043495966970848881}
   playerHip: {fileID: 8043495968001426660}
   timeBar: {fileID: 6961119643108868701}
-  itemSprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
-  wantedItemImage: {fileID: 8589210294425209420}
+  sprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
+  icon: {fileID: 8589210294425209420}
 --- !u!114 &2008414403410921536
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,9 +26,9 @@ namespace Runtime.Customer
         [SerializeField] private CustomerMovement movement;
         [SerializeField] private GameObject playerHip = null;
         [SerializeField] private BarHandler timeBar;
-        [FormerlySerializedAs("itemSprites")] [SerializeField] private Sprites sprites;
+        [SerializeField] private Sprites sprites;
 
-        [FormerlySerializedAs("wantedItemImage")] [SerializeField] private Image icon;
+        [SerializeField] private Image icon;
 
         public MyGrid Grid { get; private set; }
         public PathFinding PathFinding { get; private set; }

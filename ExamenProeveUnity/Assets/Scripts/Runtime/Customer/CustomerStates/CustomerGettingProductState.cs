@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Utilities.ScriptableObjects;
+using Timer = Utilities.Other.Runtime.Timer;
 
 namespace Runtime.Customer.CustomerStates
 {
@@ -25,15 +26,9 @@ namespace Runtime.Customer.CustomerStates
                 Controller.TimeBar.HideBar();
 
                 var removedProduct = Controller.CurrentTargetShelf.RemoveItem();
-                if (!removedProduct)
-                {
-                    Controller.Icon.sprite = Controller.Sprites.GetSprite(SpriteType.Sad);
-                    FinishState();
-                    return;
-                }
-
                 var item = Controller.CurrentTargetShelf.Item;
-                if (item == null)
+                
+                if (!removedProduct || item is null)
                 {
                     Controller.Icon.sprite = Controller.Sprites.GetSprite(SpriteType.Sad);
                     FinishState();
