@@ -12,10 +12,10 @@ public class LookatCamera : MonoBehaviour
     public bool lookY;
     public bool lookZ;
 
-    private void Awake()
+    
+    private void Start()
     {
-        camera ??= Camera.main;
-
+        if(camera == null) camera = Camera.main;
         if (camera == null)
         {
             Debug.LogError("Camera not found");

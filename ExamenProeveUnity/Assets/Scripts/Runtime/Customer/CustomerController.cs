@@ -5,8 +5,12 @@ using Runtime.Customer.CustomerStates;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
+using Runtime.UserInterfaces.Utils;
 using Toolbox.MethodExtensions;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
+using Utilities.ScriptableObjects;
 
 namespace Runtime.Customer
 {
@@ -21,6 +25,10 @@ namespace Runtime.Customer
         [SerializeField] private CustomerInventory inventory;
         [SerializeField] private CustomerMovement movement;
         [SerializeField] private GameObject playerHip = null;
+        [SerializeField] private BarHandler timeBar;
+        [SerializeField] private Sprites sprites;
+
+        [SerializeField] private Image icon;
 
         public MyGrid Grid { get; private set; }
         public PathFinding PathFinding { get; private set; }
@@ -35,7 +43,9 @@ namespace Runtime.Customer
         private List<Grabbable> _myGrabbablePoints = new();
         private int grabbedPoints = 0;
         private bool wasGrabbed = false;
+
         
+
 
         private void Awake()
         {
@@ -135,6 +145,14 @@ namespace Runtime.Customer
 
         public GameObject PlayerHip => playerHip;
         
+        public BarHandler TimeBar => timeBar;
+
+        public Image Icon => icon;
+
+        public Sprites Sprites => sprites;
+        
+        public bool IsGrabbed => grabbedPoints > 0;
+
         #endregion // getters & setters
     }
 }
