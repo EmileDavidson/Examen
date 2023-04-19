@@ -36,8 +36,8 @@ namespace Runtime.Customer
         public FixedPath EntryPath { get; private set; }
         public FixedPath ExitPath { get; private set; }
         public Shelf CurrentTargetShelf { get; set; }
+        public CashRegister TargetCashRegister { get; set; }
         
-        private CashRegister TargetCashRegister { get; set; }
         private readonly Dictionary<CustomerState, CustomerStateBase> _states = new();
 
         private List<Grabbable> _myGrabbablePoints = new();
@@ -60,7 +60,6 @@ namespace Runtime.Customer
             _states.Add(CustomerState.GettingProducts, new CustomerGettingProductState(this));
             _states.Add(CustomerState.WalkingToCheckout, new CustomerWalkingToCheckoutState(this));
             _states.Add(CustomerState.DroppingProducts, new CustomerDroppingProductsState(this));
-            _states.Add(CustomerState.FinishingShopping, new CustomerFinishedShoppingState(this));
             _states.Add(CustomerState.WalkingToExit, new CustomerWalkingToExitState(this));
 
             Grid = WorldManager.Instance.worldGrid;

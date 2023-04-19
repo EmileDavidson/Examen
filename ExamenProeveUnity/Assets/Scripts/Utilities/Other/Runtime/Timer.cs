@@ -11,6 +11,7 @@ namespace Utilities.Other.Runtime
     
         private float _currentTime;
         private bool _isFinished = false;
+        private bool _canceled = false;
     
         public UnityEvent onTimerFinished = new();
         public UnityEvent<float> onTimerUpdate = new();
@@ -23,7 +24,7 @@ namespace Utilities.Other.Runtime
 
         public void Update(float deltaTime)
         {
-            if (_isFinished) return;
+            if (_isFinished || Canceled) return;
         
             _currentTime += deltaTime;
 
@@ -43,5 +44,11 @@ namespace Utilities.Other.Runtime
         public float WantedTime => wantedTime;
 
         public bool IsFinished => _isFinished;
+
+        public bool Canceled
+        {
+            get => _canceled;
+            set => _canceled = value;
+        }
     }
 }

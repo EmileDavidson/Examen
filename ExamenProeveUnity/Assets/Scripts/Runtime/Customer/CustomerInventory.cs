@@ -20,6 +20,7 @@ namespace Runtime.Customer
     
         public void RemoveItem(int index)
         {
+            if (index > _items.Count) return;
             _items.RemoveAt(index);
         }
 

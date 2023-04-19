@@ -11,7 +11,6 @@
         GettingProducts,
         WalkingToCheckout,
         DroppingProducts,
-        FinishingShopping,
         WalkingToExit,
     }
 }
