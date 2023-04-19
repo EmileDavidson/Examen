@@ -70,12 +70,22 @@ namespace Runtime.Player
             }
             else
             {
-                if (_horizontalMoveValue != 0f && _verticalMoveValue != 0f)
+                bool isMovingHorizontally = _horizontalMoveValue != 0f;
+                bool isMovingVertically = _verticalMoveValue != 0f;
+
+
+                if (isMovingHorizontally && isMovingVertically)
+                {
                     constraints = RigidbodyConstraints.FreezePositionY;
-                else if (_horizontalMoveValue != 0f)
+                }
+                else if (isMovingHorizontally)
+                {
                     constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
-                else if (_verticalMoveValue != 0f)
+                }
+                else if (isMovingVertically)
+                {
                     constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+                }
             }
 
             hipRigidbody.constraints = constraints;
