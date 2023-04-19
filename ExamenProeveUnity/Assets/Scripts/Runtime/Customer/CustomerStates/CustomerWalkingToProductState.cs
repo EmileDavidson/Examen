@@ -19,12 +19,10 @@ namespace Runtime.Customer.CustomerStates
         public override void OnStateStart()
         {
             var finalEntryNodeIndex = Controller.EntryPath.Path.PathNodes.Last();
-            var targetShelf = WorldManager.Instance.shelves.RandomItem();
-            Controller.CurrentTargetShelf = targetShelf;
-            
+
             MyGrid grid = Controller.Grid;
             var startNode = grid.GetNodeByIndex(finalEntryNodeIndex);
-            var endNode = grid.GetNodeByIndex(targetShelf.InteractionGridIndex);            
+            var endNode = grid.GetNodeByIndex(Controller.CurrentTargetShelf.InteractionGridIndex);            
             
             Controller.Movement.onDestinationReached.AddListener(FinishState);
             Controller.PathFinding.StartPathfinding(startNode, endNode, (path) =>

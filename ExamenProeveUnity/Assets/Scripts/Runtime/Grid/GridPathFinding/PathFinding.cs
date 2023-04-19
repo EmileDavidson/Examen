@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Toolbox.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Runtime.Grid.GridPathFinding
 {
@@ -34,6 +35,7 @@ namespace Runtime.Grid.GridPathFinding
 
         private bool _needsPath;
         private bool _isFindingPath;
+
 
         /// <summary>
         /// OnDisable is called when the script instance is being disabled.

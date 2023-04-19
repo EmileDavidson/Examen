@@ -20,7 +20,8 @@ namespace Toolbox.Attributes
 
         public override void OnInspectorGUI()
         {
-                DrawDefaultInspector();
+            if (target == null) { return; }
+            DrawDefaultInspector();
             _buttonsDrawer.DrawButtons(targets);
         }
     }

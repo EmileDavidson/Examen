@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Runtime.Enums;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Interfaces;
@@ -25,6 +26,8 @@ namespace Runtime.Managers
             checkouts = new List<CashRegister>(FindObjectsOfType<CashRegister>());
             _gridables = ObjectExtensions.FindObjectByInterface<IGridable>();
             
+            shelves.RemoveAll(shelf => shelf.Item is null || shelf.Item.Type == ProductType.Unknown);
+
             if (worldGrid == null) return;
             if (worldGrid.ShouldGenerate())
             {
