@@ -1,10 +1,6 @@
-﻿using System;
-using Runtime.Enums;
-using Toolbox.MethodExtensions;
-using UnityEditor;
+﻿using Runtime.Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Runtime.Player
 {
@@ -45,6 +41,11 @@ namespace Runtime.Player
             if (_isGrabButtonPressed) HandlePressed();
         }
 
+        /// <summary>
+        /// OnRightGrab is an event method from PlayerInput that sets the grabButton
+        /// boolean if the player grabs with their right hand
+        /// </summary>
+        /// <param name="value"></param>
         private void OnRightGrab(InputValue value)
         {
             if (handType != HandType.Right) return;
@@ -52,6 +53,11 @@ namespace Runtime.Player
             if (!value.isPressed) HandleRelease();
         }
 
+        /// <summary>
+        /// OnLeftGrab is an event method from PlayerInput that sets the grabButton
+        /// boolean if the player grabs with their left hand
+        /// </summary>
+        /// <param name="value"></param>
         private void OnLeftGrab(InputValue value)
         {
             if (handType != HandType.Left) return;
@@ -75,6 +81,9 @@ namespace Runtime.Player
             };
         }
 
+        /// <summary>
+        /// Handles the releasing of objects and resetting the arm position of player
+        /// </summary>
         private void HandleRelease()
         {
             shoulderJoint.targetRotation = Quaternion.Euler(0, 0, 0);
@@ -87,6 +96,9 @@ namespace Runtime.Player
             _grabbedGrabbable = null;
         }
 
+        /// <summary>
+        /// Handles the grabbing of objects and setting the arm position of player
+        /// </summary>
         private void HandlePressed()
         {
             shoulderJoint.targetRotation = grabDirection;
@@ -100,22 +112,6 @@ namespace Runtime.Player
             _grabbedGrabbable.OnGrabbed?.Invoke();
             _isGrabbingObject = true;
         }
-
-        // private void OnCollisionEnter(Collision collision)
-        // {
-        //     if (!collision.transform.TryGetComponent<Grabbable>(out var grabbable)) return;
-        //     _grabbedObject = collision.transform.gameObject;
-        //     _grabbedGrabbable = grabbable;
-        // }
-        //
-        // private void OnCollisionExit(Collision other)
-        // {
-        //     if (_isGrabbingObject) return;
-        //     if (other.transform.gameObject != _grabbedObject) return;
-        //
-        //     _grabbedObject = null;
-        //     _grabbedGrabbable = null;
-        // }
 
         private void OnTriggerEnter(Collider collision)
         {

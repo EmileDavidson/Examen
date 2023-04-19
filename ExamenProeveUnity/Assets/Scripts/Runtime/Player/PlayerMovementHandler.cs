@@ -70,11 +70,11 @@ namespace Runtime.Player
             }
             else
             {
-                if (_horizontalMoveValue is not 0f && _verticalMoveValue is not 0f)
+                if (_horizontalMoveValue != 0f && _verticalMoveValue != 0f)
                     constraints = RigidbodyConstraints.FreezePositionY;
-                else if (_horizontalMoveValue is not 0f)
+                else if (_horizontalMoveValue != 0f)
                     constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;
-                else if (_verticalMoveValue is not 0f)
+                else if (_verticalMoveValue != 0f)
                     constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
             }
 
