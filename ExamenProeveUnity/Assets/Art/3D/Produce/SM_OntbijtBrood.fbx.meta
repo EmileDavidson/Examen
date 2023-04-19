@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: f40ea0eb6aa44564593865dc7e5ebd7d
+guid: 3b75ff97170774c46875a6e690cf3bac
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Bread
+    second: {fileID: 2100000, guid: f540baeb219bb7f439251bc8d0d73e0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_BreadBag
+    second: {fileID: 2100000, guid: afdec418555e2df43b6bbdbe3a0a7e6c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

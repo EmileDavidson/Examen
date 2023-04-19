@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 518c52a5bee2094458e07131c9f4f5cb
+guid: 439a8f086afcba14e80be71027b9bc68
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Ontbijtkoek
+    second: {fileID: 2100000, guid: 62f9085c88d9fdb4c8f41a855672a632, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_OntbijtkoekBag
+    second: {fileID: 2100000, guid: b58f830b467423e46b0f297c299bcb2f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
