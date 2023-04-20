@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Carrot
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 17
-  <Prefab>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 860419384795998465, guid: d5ebf86ece6c72e4b9e39c31ba6472c2, type: 3}
   <Price>k__BackingField: 15
   icon: {fileID: 21300000, guid: b5671a5827d6f8e43b12a1e48d4d05c0, type: 3}

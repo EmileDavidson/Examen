@@ -9,32 +9,29 @@ namespace Runtime.Customer.CustomerStates
 {
     public class CustomerDroppingProductsState : CustomerStateBase
     {
-        private const int WaitTime = 4;
-        private Timer _timer; 
-        
+        private const int WaitTime = 10;
+        private Timer _timer;
+        private CashRegister _register;
+
         public CustomerDroppingProductsState(CustomerController controller) : base(controller)
         {
         }
 
-        //todo: currently just waits 4 seconds but should drop an item on the cash register drop spot if the previous item was scanned.
-        //todo: but this is not implemented yet.
-        
-        public override  void OnStateStart()
+        public override void OnStateStart()
         {
             if (Controller.Inventory.Items.IsEmpty())
             {
                 FinishState();
                 return;
             }
-            
+
+            _register = Controller.TargetCashRegister;
             int cashRegisterNodeIndex = Controller.ExitPath.pathNodeIndexes.First();
             Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(true);
+            _register.InstantiateProduct(Controller.Inventory.Items[0]);
             _timer = new Timer(WaitTime);
 
-            _timer.onTimerUpdate.AddListener((value) =>
-            {
-                Controller.TimeBar.Scale = value;
-            });
+            _timer.onTimerUpdate.AddListener((value) => { Controller.TimeBar.Scale = value; });
 
             _timer.onTimerFinished.AddListener(() =>
             {
@@ -43,6 +40,31 @@ namespace Runtime.Customer.CustomerStates
 
                 FinishState();
             });
+
+            _register.onProductScanned.AddListener(OnProductsScanned);
+        }
+
+        private void OnProductsScanned()
+        {
+            int cashRegisterNodeIndex = Controller.ExitPath.pathNodeIndexes.First();
+            bool isEmtpy = Controller.Inventory.Items.IsEmpty();
+
+            if (!isEmtpy)
+            {
+                GameManager.Instance.Money += Controller.Inventory.Items[0].Price;
+                Controller.Inventory.RemoveItem(0);
+                isEmtpy = Controller.Inventory.Items.IsEmpty();
+            }
+
+            if (isEmtpy)
+            {
+                Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false);
+                Controller.TimeBar.HideBar();
+                _timer.Canceled = true;
+                FinishState();
+                return;
+            }
+            _register.InstantiateProduct(Controller.Inventory.Items[0]);
         }
 
         public override void OnStateUpdate()
@@ -53,7 +75,8 @@ namespace Runtime.Customer.CustomerStates
 
         public override void FinishState()
         {
-            Controller.State = CustomerState.FinishingShopping;
+            _register.onProductScanned.RemoveListener(OnProductsScanned);
+            Controller.State = CustomerState.WalkingToExit;
         }
     }
 }

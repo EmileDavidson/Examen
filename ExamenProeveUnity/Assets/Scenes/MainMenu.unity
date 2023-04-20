@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9572005df1a438296f5f16a79bdc9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimalPlayerCount: 2
+  minimalPlayerCount: 1
   playerInputManager: {fileID: 943377561}
   startButton: {fileID: 361744952}
 --- !u!1 &1967273746
