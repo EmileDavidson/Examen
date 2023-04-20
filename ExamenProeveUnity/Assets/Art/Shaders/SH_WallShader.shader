@@ -85,7 +85,7 @@ Shader "Game/wall"
 			float simplePerlin2D69 = snoise( ase_worldPos.xy*3.39 );
 			simplePerlin2D69 = simplePerlin2D69*0.5 + 0.5;
 			float smoothstepResult81 = smoothstep( 0.0 , 0.1 , simplePerlin2D69);
-			float4 lerpResult66 = lerp( _Color2 , _Color3 , saturate( ( saturate( ( simplePerlin2D88 + 0.51 ) ) * smoothstepResult81 ) ));
+			float4 lerpResult66 = lerp( _Color2 , _Color3 , saturate( ( saturate( ( simplePerlin2D88 + 0.8 ) ) * smoothstepResult81 ) ));
 			float3 ase_worldNormal = i.worldNormal;
 			float4 lerpResult13 = lerp( lerpResult53 , lerpResult66 , ( 1.0 - ase_worldNormal.y ));
 			o.Emission = lerpResult13.rgb;
@@ -203,7 +203,6 @@ Node;AmplifyShaderEditor.SaturateNode;78;-1002.978,163.2946;Inherit;True;1;0;FLO
 Node;AmplifyShaderEditor.NoiseGeneratorNode;61;-2036.426,-265.0069;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;0.4;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;85;-1222.659,183.0151;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode;88;-1935.835,219.7352;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;0.1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;86;-1596.958,107.2796;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.51;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SaturateNode;87;-1414.029,104.628;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SmoothstepOpNode;81;-1576.646,206.7912;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.ColorNode;54;-896.2258,-34.97316;Inherit;False;Property;_BorderColor;BorderColor;4;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -222,6 +221,7 @@ Node;AmplifyShaderEditor.TextureCoordinatesNode;19;-1948.603,1033.182;Inherit;Fa
 Node;AmplifyShaderEditor.SinOpNode;31;-1505.046,1111.529;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.PowerNode;32;-1121.046,1111.529;Inherit;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;2;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleMinOpNode;37;-753.0463,1127.529;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;86;-1596.958,107.2796;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.8;False;1;FLOAT;0
 WireConnection;13;0;53;0
 WireConnection;13;1;66;0
 WireConnection;13;2;12;0
@@ -251,7 +251,6 @@ WireConnection;61;0;60;0
 WireConnection;85;0;87;0
 WireConnection;85;1;81;0
 WireConnection;88;0;80;0
-WireConnection;86;0;88;0
 WireConnection;87;0;86;0
 WireConnection;81;0;69;0
 WireConnection;89;0;55;0
@@ -268,5 +267,6 @@ WireConnection;31;0;30;0
 WireConnection;32;0;48;0
 WireConnection;37;0;35;0
 WireConnection;37;1;35;1
+WireConnection;86;0;88;0
 ASEEND*/
-//CHKSM=1DA23CD670DB0FFC084818B90EB58400E06DE7B8
+//CHKSM=C514E7D6B4F34959627088D7CDDFAAFCE997C22A

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SH_WallShader
+  m_Name: M_WallShader
   m_Shader: {fileID: 4800000, guid: cb9877a7a77217e47b3494140c4fcca6, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -46,7 +46,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BorderSize: 0.17
+    - _BorderSize: 0.69
     - __dirty: 0
-    m_Colors: []
+    m_Colors:
+    - _BorderColor: {r: 1, g: 0.90375847, b: 0.8160377, a: 0}
+    - _Color2: {r: 0.4745906, g: 0.645762, b: 0.745283, a: 0}
+    - _Color3: {r: 0.58348167, g: 0.8301887, b: 0.72955817, a: 1}
+    - _Vector0: {r: 0.1, g: 0.109, b: 0, a: 0}
+    - _WallInsideColor: {r: 0.447, g: 0.447, b: 0.447, a: 0}
   m_BuildTextureStacks: []
