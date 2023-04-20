@@ -17,9 +17,6 @@ namespace Runtime.Customer.CustomerStates
         {
         }
 
-        //todo: currently just waits 10 seconds but should drop an item on the cash register drop spot if the previous item was scanned.
-        //todo: but this is not implemented yet.
-
         public override void OnStateStart()
         {
             if (Controller.Inventory.Items.IsEmpty())
@@ -50,24 +47,24 @@ namespace Runtime.Customer.CustomerStates
         private void OnProductsScanned()
         {
             int cashRegisterNodeIndex = Controller.ExitPath.pathNodeIndexes.First();
+            bool isEmtpy = Controller.Inventory.Items.IsEmpty();
 
-            if (!Controller.Inventory.Items.IsEmpty())
+            if (!isEmtpy)
             {
                 GameManager.Instance.Money += Controller.Inventory.Items[0].Price;
                 Controller.Inventory.RemoveItem(0);
+                isEmtpy = Controller.Inventory.Items.IsEmpty();
             }
 
-            if (Controller.Inventory.Items.IsEmpty())
+            if (isEmtpy)
             {
                 Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false);
                 Controller.TimeBar.HideBar();
                 _timer.Canceled = true;
                 FinishState();
+                return;
             }
-            else
-            {
-                _register.InstantiateProduct(Controller.Inventory.Items[0]);
-            }
+            _register.InstantiateProduct(Controller.Inventory.Items[0]);
         }
 
         public override void OnStateUpdate()
