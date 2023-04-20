@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Watermelon
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 10
-  <Prefab>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 6280586459222501979, guid: 7d73dc963e8b2cb49904ce64f929561d, type: 3}
   <Price>k__BackingField: 30
   icon: {fileID: 0}

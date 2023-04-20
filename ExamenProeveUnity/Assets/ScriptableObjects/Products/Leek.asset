@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Leek
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 18
-  <Prefab>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 1369058523498146559, guid: 3225bc625288ea141b991196a5c49da6, type: 3}
   <Price>k__BackingField: 20
   icon: {fileID: 0}
