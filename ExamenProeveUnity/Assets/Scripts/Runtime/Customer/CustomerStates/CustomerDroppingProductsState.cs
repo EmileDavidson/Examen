@@ -70,6 +70,7 @@ namespace Runtime.Customer.CustomerStates
         public override void OnStateUpdate()
         {
             base.OnStateUpdate();
+            if (_timer is null) return;
             _timer.Update(Time.deltaTime);
         }
 
