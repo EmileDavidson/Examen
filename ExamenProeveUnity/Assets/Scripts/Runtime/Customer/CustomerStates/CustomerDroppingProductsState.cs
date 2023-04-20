@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Runtime.Managers;
 using Toolbox.MethodExtensions;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -47,16 +48,17 @@ namespace Runtime.Customer.CustomerStates
         private void OnProductsScanned()
         {
             int cashRegisterNodeIndex = Controller.ExitPath.pathNodeIndexes.First();
-            bool isEmtpy = Controller.Inventory.Items.IsEmpty();
+            
+            bool isEmpty = Controller.Inventory.Items.IsEmpty();
+            bool willBeEmpty = Controller.Inventory.Items.Count - 1 <= 0;
 
-            if (!isEmtpy)
+            if (!isEmpty)
             {
-                GameManager.Instance.Money += Controller.Inventory.Items[0].Price;
+                LevelManager.Instance.Money += Controller.Inventory.Items[0].Price;
                 Controller.Inventory.RemoveItem(0);
-                isEmtpy = Controller.Inventory.Items.IsEmpty();
             }
 
-            if (isEmtpy)
+            if (willBeEmpty)
             {
                 Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false);
                 Controller.TimeBar.HideBar();
@@ -64,6 +66,7 @@ namespace Runtime.Customer.CustomerStates
                 FinishState();
                 return;
             }
+            
             _register.InstantiateProduct(Controller.Inventory.Items[0]);
         }
 
