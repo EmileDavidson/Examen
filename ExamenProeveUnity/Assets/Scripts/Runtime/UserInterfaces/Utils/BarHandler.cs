@@ -10,7 +10,7 @@ namespace Runtime.UserInterfaces.Utils
     public class BarHandler : MonoBehaviour
     {
         [SerializeField] private bool hideOnAwake = true;
-        
+
         [SerializeField] private Image imageToScale;
         [SerializeField] private Image background;
         [SerializeField] private AnimationCurve curve = AnimationCurve.Linear(0, 0, 1, 1);

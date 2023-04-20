@@ -5,7 +5,6 @@ namespace Runtime.Customer.CustomerStates
 {
     public class CustomerWalkingToExitState: CustomerStateBase
     {
-
         public CustomerWalkingToExitState(CustomerController controller) : base(controller)
         {
         }

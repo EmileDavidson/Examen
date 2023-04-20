@@ -22,5 +22,7 @@
         Cabage,
         Carrot,
         Leek,
+        Hagelslag,
+        Jar,
     }
 }
