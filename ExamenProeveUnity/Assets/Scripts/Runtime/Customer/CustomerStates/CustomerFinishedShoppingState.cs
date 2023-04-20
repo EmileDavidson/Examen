@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Runtime.Managers;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Runtime.Customer.CustomerStates
             int totalCost = 0;
 
             Controller.Inventory.Items.ForEach(item => totalCost += item.Price);
-            GameManager.Instance.Money += totalCost;
+            LevelManager.Instance.Money += totalCost;
             
             FinishState();
         }

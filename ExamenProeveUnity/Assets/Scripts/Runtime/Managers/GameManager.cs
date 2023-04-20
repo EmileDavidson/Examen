@@ -1,40 +1,27 @@
-using Toolbox.Utils.Runtime;
+﻿using Toolbox.Utils.Runtime;
 using UnityEngine;
-using UnityEngine.Events;
 
-namespace Runtime
+namespace Runtime.Managers
 {
-    public class GameManager : MonoSingleton<GameManager>
+    public class GameManager : PersistentMonoSingleton<GameManager>
     {
-        [SerializeField] private int score = 0;
-        [SerializeField] private int minScore = -100;
-        [SerializeField] private int maxScore = 100;
-    
-        private int _money = 0;
-    
-        public UnityEvent onMoneyChange = new();
-        public UnityEvent onScoreChange = new();
+        public GameObject pauseMenuCanvas;
+        [SerializeField] private bool _isPaused = false;
 
-        public int Money
+        protected override void Awake()
         {
-            get => _money;
-            set
-            {
-                _money = value;
-                onMoneyChange?.Invoke();
-            }
+            base.Awake();
+            IsPaused = false;
         }
 
-        public int Score
+
+        public bool IsPaused
         {
-            get => score;
+            get => _isPaused;
             set
             {
-                if(value > maxScore) value = maxScore;
-                if(value < minScore) value = minScore;
-            
-                score = value;
-                onScoreChange?.Invoke();
+                pauseMenuCanvas.SetActive(value);
+                _isPaused = value;
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Runtime.Managers;
+using TMPro;
 using UnityEngine;
 
 namespace Runtime.UserInterfaces
@@ -12,7 +13,7 @@ namespace Runtime.UserInterfaces
         /// </summary>
         private void Awake()
         {
-            GameManager.Instance.onMoneyChange.AddListener(UpdateMoneyText);
+            LevelManager.Instance.onMoneyChange.AddListener(UpdateMoneyText);
             UpdateMoneyText();
         }
         
@@ -32,7 +33,7 @@ namespace Runtime.UserInterfaces
         /// <returns></returns>
         private string GetMoneyString()
         {
-            return GameManager.Instance.Money.ToString();
+            return LevelManager.Instance.Money.ToString();
         }
     }
 }

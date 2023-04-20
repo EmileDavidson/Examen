@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Runtime.Managers;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,7 @@ namespace Runtime.UserInterfaces.MainMenu
         /// </summary>
         public void StartButtonPressed()
         {
+            if (GameManager.Instance.IsPaused) return;
             if (playerInputManager is null) return;
             if(playerInputManager.playerCount < minimalPlayerCount)
             {
