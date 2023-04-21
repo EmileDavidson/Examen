@@ -104,7 +104,11 @@ namespace Runtime.Customer
             //started to be grabbed
             if (IsBeingGrabbed() && !wasGrabbed)
             {
-                //release all temp blocked nodes from used path
+                foreach (var movementBlockingPoint in movement.BlockingPoints)
+                {
+                    Grid.GetNodeByIndex(movementBlockingPoint).SetTempBlock(false, ID);
+                }
+                movement.BlockingPoints.Clear();
                 movement.CanMove = false;
                 wasGrabbed = true;
             }
