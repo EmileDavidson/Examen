@@ -9,7 +9,7 @@
 * Use intermediate variables to simplify complicated expressions. If you have a complicated expression, it can be easier to understand if you split it into sub-expressions, that are assigned to intermediate variables, with names describing the meaning of the sub-expression within the parent expression. For example:
 
 ```cs
-if ((Blah->BlahP->WindowExists->Etc && Stuff) && !(bPlayerExists && bGameStarted && bPlayerStillHasPawn && IsTuesday())))
+if ((Blah.BlahP.WindowExists.Etc && Stuff) && !(bPlayerExists && bGameStarted && bPlayerStillHasPawn && IsTuesday())))
 {
     DoSomething();
 }
@@ -18,25 +18,10 @@ if ((Blah->BlahP->WindowExists->Etc && Stuff) && !(bPlayerExists && bGameStarted
 `should be replaced with`
 
 ```cs
-const bool bIsLegalWindow = Blah->BlahP->WindowExists->Etc && Stuff;
+const bool bIsLegalWindow = Blah.BlahP.WindowExists.Etc && Stuff;
 const bool bIsPlayerDead = bPlayerExists && bGameStarted && bPlayerStillHasPawn && IsTuesday();
 if (bIsLegalWindow && !bIsPlayerDead)
 {
     DoSomething();
 }
 ```
-
-* Avoid using anonymous literals in function calls. Prefer named constants which describe their meaning:
-
-```cs
-// Old style
-Trigger(TEXT("Soldier"), 5, true);.
-
-// New style
-string objectName = "Soldier";
-float cooldownInSeconds = 5;
-bool vulnerableDuringCooldown = true;
-Trigger(objectName, cooldownInSeconds, vulnerableDuringCooldown);
-```
-
-This makes intent more obvious to a casual reader as it avoids the need to look up the function declaration to understand it.
