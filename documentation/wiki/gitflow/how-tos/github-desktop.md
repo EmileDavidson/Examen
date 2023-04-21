@@ -19,9 +19,9 @@ description: >-
 7. GitHub Desktop will automatically switch to your new branch and allow you to start working on it.
 8. When you are ready to publish your changes to the remote repository, click on the "publish branch" button located next to the "current branch" button.
 
-<figure><img src="../../../.gitbook/assets/GitHubDesktop_u1tZPUab3a.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/GitHubDesktop_u1tZPUab3a (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/GitHubDesktop_2D6RiBGHoC.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/GitHubDesktop_2D6RiBGHoC (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 When you clicked 'create branch' when you were not on the develop branch you see the following popup make sure to select the 'develop' branch before you click the create branch button&#x20;
 
@@ -29,7 +29,7 @@ When you clicked 'create branch' when you were not on the develop branch you see
 
 When you clicked 'create branch' and you where already on the develop branch you don't have to do anything since it will automatically be from the develop branch.
 
-![](../../../.gitbook/assets/GitHubDesktop\_iLSyudSqFQ.png)
+![](<../../../.gitbook/assets/GitHubDesktop\_iLSyudSqFQ (2) (1).png>)
 
 
 

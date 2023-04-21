@@ -120,6 +120,6 @@ M --> N(Delete merged branch)
 
 
 
-[^1]: ![](<../../.gitbook/assets/image (2) (3).png>)
+[^1]: ![](<../../.gitbook/assets/image (2) (2) (1).png>)
 
 [^2]: ![](<../../.gitbook/assets/image (1) (1).png>)
