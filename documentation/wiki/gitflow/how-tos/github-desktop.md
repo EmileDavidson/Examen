@@ -29,7 +29,7 @@ When you clicked 'create branch' when you were not on the develop branch you see
 
 When you clicked 'create branch' and you where already on the develop branch you don't have to do anything since it will automatically be from the develop branch.
 
-![](<../../../.gitbook/assets/GitHubDesktop\_iLSyudSqFQ (2) (1).png>)
+![](<../../../.gitbook/assets/GitHubDesktop\_iLSyudSqFQ (2).png>)
 
 
 
