@@ -34,6 +34,9 @@ The standup started at 9.20 AM. Vivian will finish the new layout for the level 
 
 Today the standup started at 9.15 AM. Vivian is going to finish the textures for the floor and walls in the store and will implement these afterwards. Sterre will texture the sidewalk, planter-box and car. And afterwards she will rework old textures and improve them. Leikho will work on the customer model today and will try to finish it. Wouter will fix small and easy to fix bugs in the game such as the shelves in the produce section which don’t show the correct amount of produce in them. Emile will work on the audio system for the game. He will work on a slider so we can set the correct volume and a basic system that can play audio via unity events.
 
+## Standup 21/04/2023:
+
+The standup started at 9.15 AM. All artists will not be working today as they are all at an artist event called ‘Playgrounds’. Emile will be working the player spawn locations so the players won’t glitch inside each other when spawning. And will work on fixing the customer AI after that. Wouter will be working on adding audio to the game and creating the system that will play the audio as well. The audio that we will try to implement will be the background music, scanning sound (for checkout) and more sounds if there’s time left.
 {% endtab %}
 
 {% tab title="Week 3" %}
