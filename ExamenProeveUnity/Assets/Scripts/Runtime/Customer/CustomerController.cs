@@ -22,6 +22,7 @@ namespace Runtime.Customer
     /// </summary>
     public class CustomerController : MonoBehaviour
     {
+        [SerializeField] private Guid _id = Guid.NewGuid();
         [SerializeField] private CustomerState state = CustomerState.Spawned;
         [SerializeField] private CustomerInventory inventory;
         [SerializeField] private CustomerMovement movement;
@@ -157,6 +158,8 @@ namespace Runtime.Customer
         public Sprites Sprites => sprites;
 
         public bool IsGrabbed => grabbedPoints > 0;
+
+        public Guid ID => _id;
 
         #endregion // getters & setters
     }

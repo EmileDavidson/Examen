@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using Toolbox.MethodExtensions;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Runtime.Grid
@@ -13,19 +16,19 @@ namespace Runtime.Grid
         /// Blocked nodes are nodes that are generally not unblocked  
         /// </summary>
         [field: SerializeField]
-        public bool IsBlocked { get; set; }
+        public bool IsBlocked { get; private set; }
 
         /// <summary>
         /// TempBlocked nodes are nodes that are blocked for a short period of time 
         /// </summary>
         [field: SerializeField]
-        public bool IsTempBlocked { get; set; }
+        public bool IsTempBlocked { get; private set; }
         
         /// <summary>
         /// isLocationNode is not a walkable node but is a 'end location' for pathfinding
         /// </summary>
         [field: SerializeField]
-        public bool IsLocationNode { get; set; }
+        public bool IsLocationNode { get; private set; }
 
         /// <summary>
         /// The grid position of the node
@@ -38,6 +41,9 @@ namespace Runtime.Grid
         /// </summary>
         [field: SerializeField]
         public int Index { get; set; }
+
+        [field: SerializeField]
+        public List<string> TempBlockedBy { get; set; } = new List<string>();
 
         /// <summary>
         /// Constructor
@@ -68,9 +74,20 @@ namespace Runtime.Grid
         /// Set the tempBlocked to given value.
         /// </summary>
         /// <param name="doTempBlock"></param>
-        public void SetTempBlock(bool doTempBlock)
+        public void SetTempBlock(bool doTempBlock, Guid id)
         {
-            IsTempBlocked = doTempBlock;
+            //remove or add the id to the list
+            if(doTempBlock && !TempBlockedBy.Contains(id.ToString())) TempBlockedBy.Add(id.ToString());
+            else if(!doTempBlock) TempBlockedBy.Remove(id.ToString());
+            
+            //set the value if we want to unblock it check if it is not blocked by another 
+            if (doTempBlock)
+            {
+                IsTempBlocked = true;
+                return;
+            }
+            
+            IsTempBlocked = TempBlockedBy.Count > 0;
         }
         
         /// <summary>
@@ -81,5 +98,11 @@ namespace Runtime.Grid
         {
             IsLocationNode = isLocationNode;
         }
+
+        public bool IsBlockedBy(Guid id)
+        {
+            return TempBlockedBy.Contains(id.ToString());
+        }
+
     }
 }

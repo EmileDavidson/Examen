@@ -36,7 +36,7 @@ namespace Runtime.Customer.CustomerStates
 
         public override void FinishState()
         {
-            Controller.Grid.GetNodeByIndex(Controller.Movement.Path.PathNodes.Last()).SetTempBlock(false);
+            Controller.Grid.GetNodeByIndex(Controller.Movement.Path.PathNodes.Last()).SetTempBlock(false, Controller.ID);
             
             Controller.PathFinding.onNewPathFound.RemoveListener(PathUpdate);
             Controller.PathFinding.onFindingNewPathFailed.RemoveListener(PathFindingFailed);

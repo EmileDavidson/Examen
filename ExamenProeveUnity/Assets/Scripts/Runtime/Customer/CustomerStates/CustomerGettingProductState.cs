@@ -16,13 +16,13 @@ namespace Runtime.Customer.CustomerStates
         public override void OnStateStart()
         {
             _timer = new Timer(WaitTime);
-            Controller.Grid.GetNodeByIndex(Controller.CurrentTargetShelf.InteractionGridIndex).SetTempBlock(true);
+            Controller.Grid.GetNodeByIndex(Controller.CurrentTargetShelf.InteractionGridIndex).SetTempBlock(true, Controller.ID);
 
             _timer.onTimerUpdate.AddListener((value) => { Controller.TimeBar.Scale = value; });
 
             _timer.onTimerFinished.AddListener(() =>
             {
-                Controller.Grid.GetNodeByIndex(Controller.CurrentTargetShelf.InteractionGridIndex).SetTempBlock(false);
+                Controller.Grid.GetNodeByIndex(Controller.CurrentTargetShelf.InteractionGridIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
 
                 var removedProduct = Controller.CurrentTargetShelf.RemoveItem();
