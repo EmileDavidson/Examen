@@ -140,9 +140,6 @@ namespace Runtime.Customer
             
             Path.CurrentIndex++;
             if (Path.CurrentIndex < Path.PathNodes.Count - 1) return;
-            
-            print("setting temp blocked again");
-
 
             Path.CurrentIndex = -1;
             Path.DestinationReached = true;
