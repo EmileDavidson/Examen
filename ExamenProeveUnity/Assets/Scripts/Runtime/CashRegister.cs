@@ -22,6 +22,7 @@ public class CashRegister : MonoBehaviour, IGridable
 
     public FixedPath ExitPath => exitPath;
 
+    public UnityEvent onScanned = new();
     public UnityEvent onProductScanned = new();
 
     private void Awake()
@@ -36,6 +37,7 @@ public class CashRegister : MonoBehaviour, IGridable
 
     private void OnTriggerEnter(Collider collision)
     {
+        if (!collision.gameObject.CompareTag("Player")) onScanned.Invoke();
         if (collision.gameObject != _productToBeScanned) return;
         
         onProductScanned.Invoke();
