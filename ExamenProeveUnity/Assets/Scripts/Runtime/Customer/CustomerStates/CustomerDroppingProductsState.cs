@@ -28,7 +28,7 @@ namespace Runtime.Customer.CustomerStates
 
             _register = Controller.TargetCashRegister;
             int cashRegisterNodeIndex = Controller.ExitPath.pathNodeIndexes.First();
-            Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(true);
+            Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(true, Controller.ID);
             _register.InstantiateProduct(Controller.Inventory.Items[0]);
             _timer = new Timer(WaitTime);
 
@@ -36,7 +36,7 @@ namespace Runtime.Customer.CustomerStates
 
             _timer.onTimerFinished.AddListener(() =>
             {
-                Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false);
+                Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
 
                 FinishState();
@@ -60,7 +60,7 @@ namespace Runtime.Customer.CustomerStates
 
             if (willBeEmpty)
             {
-                Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false);
+                Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
                 _timer.Canceled = true;
                 FinishState();

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Authentication.ExtendedProtection;
+﻿using System.Collections.Generic;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
@@ -24,10 +22,10 @@ namespace Runtime.Customer
         private Path _path;
 
         private static readonly int Walk = Animator.StringToHash("Walk");
-        private bool _walk = false;
+        private bool _walk;
         private bool _canMove = true;
 
-        private HashSet<int> blockingPoints = new();
+        private readonly HashSet<int> _blockingPoints = new();
 
         public Path Path
         {
@@ -36,23 +34,23 @@ namespace Runtime.Customer
             {
                 if (Equals(_path, value)) return;
 
-                foreach (var blockingPoint in blockingPoints)
+                foreach (var blockingPoint in _blockingPoints)
                 {
-                    grid.GetNodeByIndex(blockingPoint).IsTempBlocked = false;
+                    grid.GetNodeByIndex(blockingPoint).SetTempBlock(false, controller.ID);
                 }
 
-                blockingPoints.Clear();
+                _blockingPoints.Clear();
                 _path = value;
             }
         }
 
         private void OnDisable()
         {
-            foreach (var blockingPoint in blockingPoints)
+            foreach (var blockingPoint in _blockingPoints)
             {
-                grid.GetNodeByIndex(blockingPoint).IsTempBlocked = false;
+                grid.GetNodeByIndex(blockingPoint).SetTempBlock(false, controller.ID);
             }
-            blockingPoints.Clear();
+            _blockingPoints.Clear();
         }
 
         /// <summary>
@@ -70,31 +68,31 @@ namespace Runtime.Customer
         private void FixedUpdate()
         {
             if (!_canMove) return;
-            bool isValidationFalse = Path is null;
-            if (!isValidationFalse && Path.PathNodes is null) isValidationFalse = true;
-            if (!isValidationFalse && Path.PathNodes.IsEmpty()) isValidationFalse = true;
-            if (!isValidationFalse && Path.CurrentIndex == -1) isValidationFalse = true;
-            if (!isValidationFalse && grid.GetNodeByIndex(Path.GetNextNode()).IsTempBlocked &&
-                !blockingPoints.Contains(_path.GetNextNode())) isValidationFalse = true;
-
-            if (isValidationFalse)
+            var pathExists = Path?.PathNodes != null && !Path.PathNodes.IsEmpty() && Path.CurrentIndex != -1;
+            if (!pathExists)
             {
-                _walk = false;
-                targetAnimator.SetBool(Walk, _walk);
-                ConstrainMovement(!controller.IsGrabbed);
+                StopMovement();
                 return;
             }
+            
+            var isTempBlocked = (grid.GetNodeByIndex(Path.GetNextNodeIndex()).IsTempBlocked);
+            var isBlockedByMe = (grid.GetNodeByIndex(Path.GetNextNodeIndex()).IsBlockedBy(controller.ID));
 
-
+            if (isTempBlocked && !isBlockedByMe)
+            {
+                StopMovement();
+                return;
+            }
+            
             Vector3 playerPos = hipRb.gameObject.transform.position;
-            int nextPathNodeIndex = Path.GetNextNode();
+            int nextPathNodeIndex = Path.GetNextNodeIndex();
             var nextPos = grid.GetWorldPositionOfNode(grid.GetNodeByIndex(nextPathNodeIndex).GridPosition);
 
-            grid.GetNodeByIndex(_path.CurrentIndex).SetTempBlock(true);
-            grid.GetNodeByIndex(nextPathNodeIndex).SetTempBlock(true);
+            grid.GetNodeByIndex(_path.CurrentIndex).SetTempBlock(true, controller.ID);
+            grid.GetNodeByIndex(nextPathNodeIndex).SetTempBlock(true, controller.ID);
 
-            blockingPoints.Add(_path.CurrentIndex);
-            blockingPoints.Add(nextPathNodeIndex);
+            _blockingPoints.Add(_path.CurrentIndex);
+            _blockingPoints.Add(nextPathNodeIndex);
 
             nextPos.y = playerPos.y;
 
@@ -129,18 +127,17 @@ namespace Runtime.Customer
                 return;
             }
 
-            //unblock all 
-            foreach (var blockedIndex in blockingPoints)
+            foreach (var blockedIndex in _blockingPoints)
             {
-                grid.GetNodeByIndex(blockedIndex).SetTempBlock(false);
+                grid.GetNodeByIndex(blockedIndex).SetTempBlock(false, controller.ID);
             }
+            
+            grid.GetNodeByIndex(nextPathNodeIndex).SetTempBlock(true, controller.ID);
+            grid.GetNodeByIndex(_path.CurrentIndex).SetTempBlock(true, controller.ID);
 
-            grid.GetNodeByIndex(nextPathNodeIndex).SetTempBlock(true);
-            grid.GetNodeByIndex(_path.CurrentIndex).SetTempBlock(true);
-
-            blockingPoints.Add(nextPathNodeIndex);
-            blockingPoints.Add(Path.PathNodes[Path.CurrentIndex]);
-
+            _blockingPoints.Add(nextPathNodeIndex);
+            _blockingPoints.Add(Path.PathNodes[Path.CurrentIndex]);
+            
             Path.CurrentIndex++;
             if (Path.CurrentIndex < Path.PathNodes.Count - 1) return;
 
@@ -159,6 +156,13 @@ namespace Runtime.Customer
                 setConstrained ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.FreezePositionY;
 
             hipRb.constraints = constraints;
+        }
+
+        private void StopMovement()
+        {
+            _walk = false;
+            targetAnimator.SetBool(Walk, _walk);
+            ConstrainMovement(!controller.IsGrabbed);
         }
 
         public bool CanMove
