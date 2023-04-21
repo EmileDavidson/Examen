@@ -34,7 +34,7 @@ namespace Runtime.UserInterfaces.MainMenu
             startButton.interactable = false;
             
             //switch scene
-            SceneManager.LoadScene("Scenes/PlayerRagdoll");
+            SceneManager.LoadScene("BasicStoreScene");
         }
     }
 }
