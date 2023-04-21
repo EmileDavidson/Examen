@@ -100,14 +100,7 @@ namespace Runtime.Grid
                 }
             });
 
-            //draw blocked nodes in red
             if (nodes.IsEmpty()) return;
-            Gizmos.color = Color.cyan;
-            foreach (var node in nodes.Where(node => node.IsBlocked))
-            {
-                Gizmos.DrawCube(GetWorldPositionOfNode(node.GridPosition), Vector3.one);
-            }
-
             Gizmos.color = Color.blue;
             foreach (var node in nodes.Where(node => node.IsTempBlocked))
             {

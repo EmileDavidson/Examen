@@ -18,7 +18,7 @@ namespace Runtime.Customer.CustomerStates
         public override void FinishState()
         {
             Controller.Movement.onDestinationReached.RemoveListener(FinishState);
-            Controller.Grid.GetNodeByIndex(Controller.ExitPath.Path.PathNodes.Last()).IsTempBlocked = false;
+            Controller.Grid.GetNodeByIndex(Controller.ExitPath.Path.PathNodes.Last()).SetTempBlock(false, Controller.ID);
             Object.Destroy(Controller.gameObject);
         }
     }
