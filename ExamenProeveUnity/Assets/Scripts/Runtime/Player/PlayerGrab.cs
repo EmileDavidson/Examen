@@ -1,5 +1,6 @@
 ﻿using Runtime.Enums;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Runtime.Player
@@ -20,6 +21,8 @@ namespace Runtime.Player
 
         private bool _isGrabbingObject = false;
         private bool _isGrabButtonPressed = false;
+
+        public UnityEvent onGrab;
 
         private void Awake()
         {
@@ -110,6 +113,7 @@ namespace Runtime.Player
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
             _grabbedObjectJoined.connectedBody = _rigidbody;
             _grabbedGrabbable.OnGrabbed?.Invoke();
+            onGrab.Invoke();
             _isGrabbingObject = true;
         }
 

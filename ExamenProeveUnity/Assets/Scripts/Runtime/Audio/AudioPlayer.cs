@@ -21,12 +21,21 @@ public class AudioPlayer : MonoBehaviour
     {
         if (audioIndex > audioClips.Count - 1) return;
         _audioSource.PlayOneShot(audioClips[audioIndex]);
-        print("played audio: " + audioClips[audioIndex].name);
     }
 
     public void PlayRandom()
     {
         if (audioClips.IsEmpty()) return;
         PlayAudio(Random.Range(0, audioClips.Count));
+    }
+
+    public void Pause(bool paused)
+    {
+        if (paused)
+        {
+            _audioSource.Pause();
+            return;
+        }
+        _audioSource.Play();
     }
 }
