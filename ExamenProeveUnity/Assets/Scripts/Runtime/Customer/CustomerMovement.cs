@@ -25,6 +25,7 @@ namespace Runtime.Customer
 
         private static readonly int Walk = Animator.StringToHash("Walk");
         private bool _walk = false;
+        private bool _canMove = true;
 
         private HashSet<int> blockingPoints = new();
 
@@ -68,6 +69,7 @@ namespace Runtime.Customer
         /// </summary>
         private void FixedUpdate()
         {
+            if (!_canMove) return;
             bool isValidationFalse = Path is null;
             if (!isValidationFalse && Path.PathNodes is null) isValidationFalse = true;
             if (!isValidationFalse && Path.PathNodes.IsEmpty()) isValidationFalse = true;
@@ -157,6 +159,12 @@ namespace Runtime.Customer
                 setConstrained ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.FreezePositionY;
 
             hipRb.constraints = constraints;
+        }
+
+        public bool CanMove
+        {
+            get => _canMove;
+            set => _canMove = value;
         }
     }
 }

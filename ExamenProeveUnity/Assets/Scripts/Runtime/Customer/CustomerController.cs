@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Runtime.Customer.CustomerStates;
+using Runtime.Enums;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
@@ -32,19 +33,17 @@ namespace Runtime.Customer
 
         public MyGrid Grid { get; private set; }
         public PathFinding PathFinding { get; private set; }
-        
+
         public FixedPath EntryPath { get; private set; }
         public FixedPath ExitPath { get; private set; }
         public Shelf CurrentTargetShelf { get; set; }
         public CashRegister TargetCashRegister { get; set; }
-        
+
         private readonly Dictionary<CustomerState, CustomerStateBase> _states = new();
 
         private List<Grabbable> _myGrabbablePoints = new();
         private int grabbedPoints = 0;
         private bool wasGrabbed = false;
-
-        
 
 
         private void Awake()
@@ -105,17 +104,24 @@ namespace Runtime.Customer
             if (IsBeingGrabbed() && !wasGrabbed)
             {
                 //release all temp blocked nodes from used path
-                movement.Path = null;
+                movement.CanMove = false;
                 wasGrabbed = true;
             }
-            
+
             //stopped being grabbed
             if (!IsBeingGrabbed() && wasGrabbed)
             {
                 wasGrabbed = false;
+                if (movement.Path.PathType == PathType.Fixed)
+                {
+                    movement.CanMove = true;
+                    return;
+                }
+
                 PathFinding.RecalculatePath(Grid.GetNodeFromWorldPosition(playerHip.transform.position), (path) =>
                 {
                     movement.Path = path;
+                    movement.CanMove = true;
                 });
             }
         }
@@ -124,7 +130,7 @@ namespace Runtime.Customer
         {
             return grabbedPoints > 0;
         }
-        
+
         #region getters & setters
 
         public CustomerState State
@@ -143,13 +149,13 @@ namespace Runtime.Customer
         public CustomerMovement Movement => movement;
 
         public GameObject PlayerHip => playerHip;
-        
+
         public BarHandler TimeBar => timeBar;
 
         public Image Icon => icon;
 
         public Sprites Sprites => sprites;
-        
+
         public bool IsGrabbed => grabbedPoints > 0;
 
         #endregion // getters & setters

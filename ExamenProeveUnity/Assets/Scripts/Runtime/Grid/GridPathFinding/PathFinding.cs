@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Runtime.Enums;
 using Toolbox.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -63,7 +64,7 @@ namespace Runtime.Grid.GridPathFinding
                 .GetComponent<MyGrid>(); //TODO: FIX THIS SO ITS NOT A HARD DEPENDENCY TO THE FLOOR GAMEOBJECT
             _openList = new List<GridNode>();
             _closedList = new List<GridNode>();
-            Path = new Path(new List<int>(), null, null);
+            Path = new Path(new List<int>(), null, null, PathType.Generated);
 
             onPathFound.AddListener((_) => { _isFindingPath = false; });
             onPathNotFound.AddListener(() => { _isFindingPath = false; });
@@ -253,7 +254,7 @@ namespace Runtime.Grid.GridPathFinding
         /// <returns></returns>
         private Path CalculatePath(GridNode endNode)
         {
-            Path newPath = new Path(new List<int>(), Path.StartNode, Path.EndNode);
+            Path newPath = new Path(new List<int>(), Path.StartNode, Path.EndNode, PathType.Generated);
             newPath.PathNodes.Add(endNode.Index);
             PathFindingCost currentNode = _costArray[endNode.Index];
             while (currentNode.CameFromNode != null)
