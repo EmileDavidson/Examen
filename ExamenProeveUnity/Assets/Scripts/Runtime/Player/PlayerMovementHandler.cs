@@ -13,8 +13,8 @@ namespace Runtime.Player
         [SerializeField] private Rigidbody hipRigidbody;
         [SerializeField] private Animator targetAnimator;
 
-        [SerializeField] private float minPowerValue = .1f;
-
+        [SerializeField] private float minPowerValue = .2f;
+     
         private float _horizontalMoveValue = 0f;
         private float _verticalMoveValue = 0f;
 
