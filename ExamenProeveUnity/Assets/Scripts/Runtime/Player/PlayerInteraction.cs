@@ -53,6 +53,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnInteractionButton(InputValue inputValue)
     {
+        if (!inputValue.isPressed) return;
         if (_activeInteractable is null) return;
         _activeInteractable.OnInteractionClicked();
 
