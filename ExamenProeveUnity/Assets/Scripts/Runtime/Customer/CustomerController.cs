@@ -8,6 +8,7 @@ using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
 using Runtime.UserInterfaces.Utils;
 using Toolbox.MethodExtensions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -117,6 +118,12 @@ namespace Runtime.Customer
             if (!IsBeingGrabbed() && wasGrabbed)
             {
                 wasGrabbed = false;
+                if (movement.Path == null)
+                {
+                    movement.CanMove = true;
+                    return;
+                }
+                
                 if (movement.Path.PathType == PathType.Fixed)
                 {
                     movement.CanMove = true;
