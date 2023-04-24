@@ -12,6 +12,14 @@ namespace Runtime.Customer.CustomerStates
         public override void OnStateStart()
         {
             Controller.Movement.onDestinationReached.AddListener(FinishState);
+            Controller.onGrabRelease.AddListener(RecalculatePath);
+            if (Controller.ExitPath.Path.Copy() is not null) RecalculatePath();
+        }
+
+        private void RecalculatePath()
+        {
+            if (Controller.Movement.Path is not null) return;
+            Controller.Movement.CanMove = true;
             Controller.Movement.Path = Controller.ExitPath.Path.Copy();
         }
 

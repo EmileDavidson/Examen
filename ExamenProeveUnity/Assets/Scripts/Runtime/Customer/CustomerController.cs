@@ -9,6 +9,7 @@ using Runtime.Managers;
 using Runtime.UserInterfaces.Utils;
 using Toolbox.MethodExtensions;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities.ScriptableObjects;
@@ -39,6 +40,8 @@ namespace Runtime.Customer
         public FixedPath ExitPath { get; private set; }
         public Shelf CurrentTargetShelf { get; set; }
         public CashRegister TargetCashRegister { get; set; }
+
+        public UnityEvent onGrabRelease;
 
         private readonly Dictionary<CustomerState, CustomerStateBase> _states = new();
 
@@ -117,7 +120,8 @@ namespace Runtime.Customer
             if (!IsBeingGrabbed() && wasGrabbed)
             {
                 wasGrabbed = false;
-                if (movement.Path.PathType == PathType.Fixed)
+                onGrabRelease.Invoke();
+                if (movement.Path is not null && movement.Path.PathType == PathType.Fixed)
                 {
                     movement.CanMove = true;
                     return;
