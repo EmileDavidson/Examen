@@ -105,7 +105,7 @@ namespace Runtime.Player
             shoulderJoint.targetRotation = grabDirection;
 
             if (_isGrabbingObject) return;
-            if (_grabbedObject is null) return;
+            if (_grabbedObject == null) return;
 
             _grabbedObject.transform.position = grabbedPivot.transform.position;
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
