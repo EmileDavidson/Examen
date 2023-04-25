@@ -54,7 +54,7 @@ namespace Runtime.Customer.CustomerStates
 
             if (!isEmpty)
             {
-                LevelManager.Instance.Money += Controller.Inventory.Items[0].Price;
+                LevelManager.Instance.Money += Controller.Inventory.Items[0].SellPrice;
                 Controller.Inventory.RemoveItem(0);
             }
 

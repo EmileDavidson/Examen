@@ -40,7 +40,7 @@ public class BuyProduct : MonoBehaviour
 
     public void OrderProduct()
     {
-        LevelManager.Instance.Money -= _selectedProduct.Price;
+        LevelManager.Instance.Money -= _selectedProduct.BuyPrice;
         Instantiate(buyableProducts[_cycleIndex].Prefab, deliverPosition.transform.position, Quaternion.identity);
     }
 
@@ -54,6 +54,6 @@ public class BuyProduct : MonoBehaviour
     private void UpdateCashText()
     {
         moneyText.text = $"${LevelManager.Instance.Money}";
-        priceText.text = $"${_selectedProduct.Price}";
+        priceText.text = $"${_selectedProduct.BuyPrice}";
     }
 }
