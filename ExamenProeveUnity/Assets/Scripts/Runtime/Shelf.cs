@@ -87,9 +87,9 @@ namespace Runtime
             onItemAdded.Invoke();
             onInventorySizeChange.Invoke();
 
+            int slot = _itemCount - 1;
             _itemCount++;
 
-            int slot = _itemCount + 1;
             if (_displayedItems.ContainsSlot(slot))
             {
                 _displayedItems[slot]?.SetActive(true);
