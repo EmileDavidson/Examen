@@ -181,7 +181,7 @@ namespace Toolbox.MethodExtensions
         }
 
         /// <summary>
-        /// GetPossibleIndex checks if index is within list range. returns index that is within range
+        /// GetPossibleIndex returns index that is within range of the list
         /// </summary>
         /// <param name="list"></param>
         /// <param name="index"></param>
