@@ -92,10 +92,11 @@ namespace Runtime.Player
             shoulderJoint.targetRotation = Quaternion.Euler(0, 0, 0);
             if (_grabbedObject is null) return;
 
+            _grabbedGrabbable.OnReleased?.Invoke();
             Destroy(_grabbedObjectJoined);
+            
             _grabbedObject = null;
             _isGrabbingObject = false;
-            _grabbedGrabbable.OnReleased?.Invoke();
             _grabbedGrabbable = null;
         }
 
@@ -107,7 +108,7 @@ namespace Runtime.Player
             shoulderJoint.targetRotation = grabDirection;
 
             if (_isGrabbingObject) return;
-            if (_grabbedObject is null) return;
+            if (_grabbedObject == null) return;
 
             _grabbedObject.transform.position = grabbedPivot.transform.position;
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
@@ -120,6 +121,8 @@ namespace Runtime.Player
         private void OnTriggerEnter(Collider collision)
         {
             if (!collision.transform.TryGetComponent<Grabbable>(out var grabbable)) return;
+            if (_isGrabbingObject) return;
+            
             _grabbedObject = collision.transform.gameObject;
             _grabbedGrabbable = grabbable;
         }

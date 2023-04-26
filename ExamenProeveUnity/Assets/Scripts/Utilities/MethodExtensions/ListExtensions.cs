@@ -179,5 +179,19 @@ namespace Toolbox.MethodExtensions
         {
             return oldList.Select(oldItem => oldItem as TU).ToList();
         }
+
+        /// <summary>
+        /// GetPossibleIndex returns index that is within range of the list
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="index"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static int GetPossibleIndex<T>(this IList<T> list, int index)
+        {
+            if (index >= list.Count) return 0;
+            if (index < 0) return list.Count - 1;
+            return index;
+        }
     }
 }

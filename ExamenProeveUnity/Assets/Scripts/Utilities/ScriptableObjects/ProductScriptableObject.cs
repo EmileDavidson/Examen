@@ -6,7 +6,8 @@ public class ProductScriptableObject : ScriptableObject
 {
     [field: SerializeField] public ProductType Type { get; private set; } = ProductType.Unknown;
     [field: SerializeField] public GameObject Prefab { get; private set; }
-    [field: SerializeField] public int Price { get; private set; }
+    [field: SerializeField] public int BuyPrice { get; private set; }
+    [field: SerializeField] public int SellPrice { get; private set; }
     
     [field: SerializeField] private Sprite icon;
 

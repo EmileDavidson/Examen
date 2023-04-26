@@ -8,6 +8,7 @@ using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
 using Runtime.UserInterfaces.Utils;
 using Toolbox.MethodExtensions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -104,7 +105,11 @@ namespace Runtime.Customer
             //started to be grabbed
             if (IsBeingGrabbed() && !wasGrabbed)
             {
-                //release all temp blocked nodes from used path
+                foreach (var movementBlockingPoint in movement.BlockingPoints)
+                {
+                    Grid.GetNodeByIndex(movementBlockingPoint).SetTempBlock(false, ID);
+                }
+                movement.BlockingPoints.Clear();
                 movement.CanMove = false;
                 wasGrabbed = true;
             }
@@ -113,6 +118,12 @@ namespace Runtime.Customer
             if (!IsBeingGrabbed() && wasGrabbed)
             {
                 wasGrabbed = false;
+                if (movement.Path == null)
+                {
+                    movement.CanMove = true;
+                    return;
+                }
+                
                 if (movement.Path.PathType == PathType.Fixed)
                 {
                     movement.CanMove = true;

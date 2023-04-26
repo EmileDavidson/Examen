@@ -170,5 +170,7 @@ namespace Runtime.Customer
             get => _canMove;
             set => _canMove = value;
         }
+
+        public HashSet<int> BlockingPoints => _blockingPoints;
     }
 }

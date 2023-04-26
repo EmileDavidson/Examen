@@ -221,5 +221,13 @@ namespace Toolbox.MethodExtensions
             float yDiff = vec2.y - vec1.y;
             return xDiff * xDiff + yDiff * yDiff;
         }
+
+        public static float DistanceXZ(this Vector3 vec1, Vector3 vec2)
+        {
+            Vector2 firstVector2 = new Vector2(vec1.x, vec1.z);
+            Vector2 secondVector2 = new Vector2(vec2.x, vec2.z);
+
+            return Vector2.Distance(firstVector2, secondVector2);
+        }
     }
 }
