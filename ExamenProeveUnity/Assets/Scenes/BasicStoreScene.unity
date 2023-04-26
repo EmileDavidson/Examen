@@ -4074,8 +4074,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrderScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 7025007042392690812, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
+      propertyPath: deliverAnchor
+      value: 
+      objectReference: {fileID: 287379603}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
+--- !u!4 &287379603 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7025007042039098789, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
+  m_PrefabInstance: {fileID: 287379602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &290406116
 PrefabInstance:
   m_ObjectHideFlags: 0

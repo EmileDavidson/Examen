@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using Runtime.Managers;
 using TMPro;
+using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuyProduct : MonoBehaviour
+public class ProductOrdering : MonoBehaviour
 {
     [SerializeField] private Image productDisplay;
-    [SerializeField] private GameObject deliverPosition;
+    [SerializeField] private Transform deliverAnchor;
     [SerializeField] private List<ProductScriptableObject> buyableProducts;
 
     [SerializeField] private TMP_Text moneyText;
@@ -28,20 +29,20 @@ public class BuyProduct : MonoBehaviour
 
     public void NextItem()
     {
-        _cycleIndex = _cycleIndex + 1 > buyableProducts.Count - 1 ? 0 : _cycleIndex + 1;
+        _cycleIndex = buyableProducts.GetPossibleIndex(_cycleIndex + 1);
         UpdateSelection();
     }
     
     public void PreviousItem()
     {
-        _cycleIndex = _cycleIndex - 1 < 0 ? buyableProducts.Count - 1 : _cycleIndex - 1 ;
+        _cycleIndex = buyableProducts.GetPossibleIndex(_cycleIndex - 1);
         UpdateSelection();
     }
 
     public void OrderProduct()
     {
         LevelManager.Instance.Money -= _selectedProduct.BuyPrice;
-        Instantiate(buyableProducts[_cycleIndex].Prefab, deliverPosition.transform.position, Quaternion.identity);
+        Instantiate(buyableProducts[_cycleIndex].Prefab, deliverAnchor.transform.position, Quaternion.identity);
     }
 
     private void UpdateSelection()

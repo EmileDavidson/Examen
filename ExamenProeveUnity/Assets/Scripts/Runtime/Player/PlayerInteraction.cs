@@ -33,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour
         _interactables = _interactables.Where(interactable => interactable != null).ToList();
         
          _activeInteractable = _interactables
-            .OrderBy(element => DistanceXZ(element.transform.position, this.transform.position))?.First();
+            .OrderBy(element => element.transform.position.DistanceXZ(this.transform.position))?.First();
 
     }
     
@@ -41,30 +41,21 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (!value.isPressed) return;
         if (_activeInteractable is null) return;
-        _activeInteractable.OnRightShoulderClicked();
+        _activeInteractable.onRightShoulderClicked.Invoke();
     }
 
     private void OnLeftShoulder(InputValue value)
     {
         if (!value.isPressed) return;
         if (_activeInteractable is null) return;
-        _activeInteractable.OnLeftShoulderClicked();
+        _activeInteractable.onLeftShoulderClicked.Invoke();
     }
 
     private void OnInteractionButton(InputValue inputValue)
     {
         if (!inputValue.isPressed) return;
         if (_activeInteractable is null) return;
-        _activeInteractable.OnInteractionClicked();
+        _activeInteractable.onInteractionClicked.Invoke();
 
-    }
-    
-    //todo: move this to helper class or method extensions
-    public float DistanceXZ(Vector3 first, Vector3 second)
-    {
-        Vector2 firstVector2 = new Vector2(first.x, first.z);
-        Vector2 secondVector2 = new Vector2(second.x, second.z);
-
-        return Vector2.Distance(firstVector2, secondVector2);
     }
 }
