@@ -4,7 +4,7 @@
 
 How do you animate an ragdoll but also keep it use physics when colliding partly and or when a part of its body is connected to an object in the world.&#x20;
 
-You can't just use the animator to animate it directly sine it will not care about physics and or it will try to get back to its target rotation, position set on the joint or animating using script saying 'shoulder rotation go to this and upper arm go to this rotation' would take to long to do&#x20;
+You can't just use the animator to animate it directly since it will not care about physics and or it will try to get back to its target rotation, position set on the joint or animating using script saying 'shoulder rotation go to this and upper arm go to this rotation' would take to long to do&#x20;
 
 ## Our Solution(s)
 
