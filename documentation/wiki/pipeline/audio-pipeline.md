@@ -8,7 +8,7 @@
 
 ## Software
 
-Most sound comes from the internet and if we need to edit it we use [Audacity](https://www.image-line.com/), if for some reason we made our own audio for something we use [FL Studio](https://www.image-line.com/)
+Most sound comes from the internet and if we need to edit it we use [Audacity](https://www.image-line.com/), if for some reason we made our own audio for something, we use [FL Studio](https://www.image-line.com/)
 
 ## Order
 

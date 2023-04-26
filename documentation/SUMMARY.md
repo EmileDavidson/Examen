@@ -19,7 +19,7 @@
   * [Game](wiki/functional-design/game.md)
   * [Players](wiki/functional-design/players.md)
   * [Customer](wiki/functional-design/customer.md)
-* [Unity Engine Guide](wiki/unity-engine-guide/README.md)
+* [Unity Style Guide](wiki/unity-engine-guide/README.md)
   * [Principles](wiki/unity-engine-guide/principles/README.md)
     * [Important Terminology](wiki/unity-engine-guide/principles/important-terminology.md)
     * [Forbidden Characters](wiki/unity-engine-guide/principles/forbidden-characters.md)
