@@ -8,7 +8,7 @@ description: >-
 
 ## Create Branch
 
-<figure><img src="../../../.gitbook/assets/GitHubDesktop_EIsheeTPgQ.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/GitHubDesktop_EIsheeTPgQ (1).png" alt=""><figcaption></figcaption></figure>
 
 1. Open Github Desktop on your computer.
 2. Click on the "current branch" button located at the top of the interface.
@@ -19,9 +19,9 @@ description: >-
 7. GitHub Desktop will automatically switch to your new branch and allow you to start working on it.
 8. When you are ready to publish your changes to the remote repository, click on the "publish branch" button located next to the "current branch" button.
 
-<figure><img src="../../../.gitbook/assets/GitHubDesktop_u1tZPUab3a (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/GitHubDesktop_u1tZPUab3a (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/GitHubDesktop_2D6RiBGHoC (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/GitHubDesktop_2D6RiBGHoC (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 When you clicked 'create branch' when you were not on the develop branch you see the following popup make sure to select the 'develop' branch before you click the create branch button&#x20;
 
@@ -29,7 +29,7 @@ When you clicked 'create branch' when you were not on the develop branch you see
 
 When you clicked 'create branch' and you where already on the develop branch you don't have to do anything since it will automatically be from the develop branch.
 
-![](<../../../.gitbook/assets/GitHubDesktop\_iLSyudSqFQ (2).png>)
+![](<../../../.gitbook/assets/GitHubDesktop\_iLSyudSqFQ (1).png>)
 
 
 
@@ -39,7 +39,7 @@ Making changes in GitHub Desktop is a straightforward process. To review the fil
 
 Once you have verified that all the changes you intended to make are reflected in the files, you can proceed to (3) and provide a commit name, and (4) add a description of what you have modified. It is important to adhere to the naming conventions when naming your commit. Finally, click on the button located in the bottom-left corner of the interface that says 'commit to {branch name}'. Congratulations, your work is now committed and sent to GitHub!
 
-<figure><img src="../../../.gitbook/assets/GitHubDesktop_EIsheeTPgQ (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/GitHubDesktop_EIsheeTPgQ.png" alt=""><figcaption></figcaption></figure>
 
 ## Create pull request&#x20;
 
