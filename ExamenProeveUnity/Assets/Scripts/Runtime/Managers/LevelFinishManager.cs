@@ -1,41 +1,44 @@
-using System;
 using Runtime.Customer;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelFinishManager : MonoBehaviour
+namespace Runtime.Managers
 {
-    [SerializeField] private GameObject endScreenCanvas;
-
-    private bool _lastCustomersSpawned = false;
-
-    public void onLastCustomersSpawned()
+    [ExecuteInEditMode]
+    public class LevelFinishManager : MonoBehaviour
     {
-        _lastCustomersSpawned = true;
-    }
+        [SerializeField] private GameObject endScreenCanvas;
 
-    private void Awake()
-    {
-        endScreenCanvas.SetActive(false);
-        CustomersManager.Instance.onCustomerRemoved.AddListener(HandleLevelFinished);
-    }
+        private bool _lastCustomersSpawned = false;
 
-    private void HandleLevelFinished()
-    {
-        if (!_lastCustomersSpawned) return;
-        if (!IsLevelFinished()) return;
+        public void onLastCustomersSpawned()
+        {
+            _lastCustomersSpawned = true;
+        }
 
-        endScreenCanvas.SetActive(true);
-    }
+        private void Awake()
+        {
+            endScreenCanvas.SetActive(false);
+            CustomersManager.Instance.onCustomerRemoved.AddListener(HandleLevelFinished);
+        }
 
-    private bool IsLevelFinished()
-    {
-        //check if there are still customers in the store
-        return !CustomersManager.Instance.AreCustomersInStore();
-    }
+        private void HandleLevelFinished()
+        {
+            if (!_lastCustomersSpawned) return;
+            if (!IsLevelFinished()) return;
 
-    public void GotoMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
+            endScreenCanvas.SetActive(true);
+        }
+
+        private bool IsLevelFinished()
+        {
+            //check if there are still customers in the store
+            return !CustomersManager.Instance.AreCustomersInStore();
+        }
+
+        public void GotoMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
