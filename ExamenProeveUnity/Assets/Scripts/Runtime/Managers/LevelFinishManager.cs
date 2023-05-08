@@ -35,10 +35,5 @@ namespace Runtime.Managers
             //check if there are still customers in the store
             return !CustomersManager.Instance.AreCustomersInStore();
         }
-
-        public void GotoMainMenu()
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
     }
 }

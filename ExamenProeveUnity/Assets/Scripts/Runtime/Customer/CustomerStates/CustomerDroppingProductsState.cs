@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Runtime.Enums;
 using Runtime.Managers;
 using Toolbox.MethodExtensions;
 using Unity.VisualScripting.FullSerializer;
@@ -38,6 +39,7 @@ namespace Runtime.Customer.CustomerStates
             {
                 Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
+                Controller.Icon.sprite = Controller.Sprites.GetSprite(SpriteType.Neutral);
 
                 FinishState();
             });
