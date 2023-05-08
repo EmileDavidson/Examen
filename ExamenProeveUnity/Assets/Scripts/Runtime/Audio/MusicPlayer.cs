@@ -17,17 +17,25 @@ public class MusicPlayer : MonoBehaviour
         _audioSource = gameObject.GetOrAddComponent<AudioSource>();
         gameManager.onPlayPause.AddListener(() =>
         {
-            if (gameManager.IsPaused) PauseMusic();
-            else PlayMusic();
+            if (gameManager.IsPaused)
+            {
+                PauseMusic();
+                return;
+            }
+            PlayMusic();
         });
     }
 
     private void PlayMusic()
     {
-        if (_audioSource.clip is null)
-        {
-            if (musicClips.Count >= 1) _audioSource.clip = musicClips[0];
+        bool hasAudioClips = musicClips.Count >= 1;
+        bool hasActiveClip = _audioSource.clip is not null;
+
+        if(hasAudioClips && !hasActiveClip) {
+            _audioSource.clip = musicClips[0];
         }
+
+        if(_audioSource.clip is null) return;
         _audioSource.Play();
     }
 
