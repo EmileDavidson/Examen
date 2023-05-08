@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Utilities.Other.Runtime
 {
@@ -11,18 +12,15 @@ namespace Utilities.Other.Runtime
     public class TimerManager : MonoBehaviour
     {
         [SerializeField] private List<Timer> timers = new List<Timer>();
-        
+        [SerializeField] private Timer superTimer;
         private Timer _longestTimer;
-        private Timer _shortestTimer;
-        private Timer _superTimer;
 
         private void Awake()
         {
             _longestTimer = timers.OrderByDescending(timer => timer.WantedTime).First();
-            _shortestTimer = timers.OrderBy(timer => timer.WantedTime).First();
             
-            _superTimer = new Timer(_longestTimer.WantedTime);
-            _superTimer.onTimerUpdate.AddListener((_) =>
+            superTimer.SetWantedTime(_longestTimer.WantedTime, true);
+            superTimer.onTimerUpdate.AddListener((_) =>
             {
                 timers.ForEach(timer => timer.Update(Time.deltaTime));
             });
@@ -30,8 +28,8 @@ namespace Utilities.Other.Runtime
 
         private void Update()
         {
-            if (_superTimer.IsFinished) return;
-            _superTimer.Update(Time.deltaTime);
+            if (superTimer.IsFinished) return;
+            superTimer.Update(Time.deltaTime);
         }
     }
 }

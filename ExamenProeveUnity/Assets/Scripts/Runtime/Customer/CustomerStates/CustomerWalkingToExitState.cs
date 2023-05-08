@@ -19,7 +19,7 @@ namespace Runtime.Customer.CustomerStates
         {
             Controller.Movement.onDestinationReached.RemoveListener(FinishState);
             Controller.Grid.GetNodeByIndex(Controller.ExitPath.Path.PathNodes.Last()).SetTempBlock(false, Controller.ID);
-            Object.Destroy(Controller.gameObject);
+            CustomersManager.Instance.RemoveCustomer(Controller);
         }
     }
 }
