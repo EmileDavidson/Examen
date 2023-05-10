@@ -87,12 +87,13 @@ namespace Runtime
             onItemAdded.Invoke();
             onInventorySizeChange.Invoke();
 
+            int slot = _itemCount - 1;
             _itemCount++;
 
-            int slot = _itemCount + 1;
             if (_displayedItems.ContainsSlot(slot))
             {
                 _displayedItems[slot]?.SetActive(true);
+                UpdateItemCountText();
             }
         }
 
@@ -112,6 +113,7 @@ namespace Runtime
             if (_displayedItems.ContainsSlot(slot))
             {
                 _displayedItems[slot]?.SetActive(false);
+                UpdateItemCountText();
             }
 
             return true;
@@ -156,8 +158,12 @@ namespace Runtime
         private void HandlePlayerCollisionEnter()
         {
             if (itemCountText is null) return;
-            itemCountText.text = _itemCount + "/" + maxInventorySize;
             canvas.enabled = true;
+        }
+
+        private void UpdateItemCountText()
+        {
+            itemCountText.text = _itemCount + "/" + maxInventorySize;
         }
     }
 }
