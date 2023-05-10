@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Toolbox.MethodExtensions;
 using Toolbox.Utils.Runtime;
@@ -13,6 +14,13 @@ namespace Runtime.Managers
         /// All spawn locations for the players. gets used in order of the list.
         /// </summary>
         [SerializeField] private List<Transform> spawnLocations = new List<Transform>();
+
+        [SerializeField] private List<int> scorePercentagePerRating = new List<int>()
+        {
+            50,
+            75,
+            90
+        };
 
         /// <summary>
         /// Score of the player in the current level. 
@@ -72,12 +80,35 @@ namespace Runtime.Managers
             private set => _score = Mathf.Clamp(value, _minScore, _maxScore);
         }
 
+        public int MinScore => _minScore;
+        public int MaxScore => _maxScore;
+
         public void AddScore(int given, int min, int max)
         {
             _score += given;
             _minScore += min;
             _maxScore += max;
             onScoreChange?.Invoke();
+        }
+
+        public int GetScorePercentage()
+        {
+            int calculateScore = _score + Math.Abs(_minScore);
+            int maxScore = _maxScore + Math.Abs(_minScore);
+            
+            return Mathf.RoundToInt((float) calculateScore / maxScore * 100);   
+        }
+        
+        public int GetStarRating()
+        {
+            int percentage = GetScorePercentage();
+            int rating = 0;
+            foreach (var ratePercentage in scorePercentagePerRating)
+            {
+                if (percentage > ratePercentage) rating++;
+            }
+            
+            return rating;
         }
     }
 }

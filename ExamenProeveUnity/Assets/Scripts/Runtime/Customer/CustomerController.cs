@@ -45,7 +45,7 @@ namespace Runtime.Customer
         private List<Grabbable> _myGrabbablePoints = new();
         private int grabbedPoints = 0;
         private bool wasGrabbed = false;
-        private SpriteType _emojiType = SpriteType.Neutral;
+        private EmojiType _emojiType = EmojiType.Neutral;
 
 
         private void Awake()
@@ -172,7 +172,7 @@ namespace Runtime.Customer
 
         public Guid ID => _id;
 
-        public SpriteType EmojiType
+        public EmojiType EmojiType
         {
             get => _emojiType;
             set

@@ -28,6 +28,11 @@ namespace Runtime.Managers
             if (!IsLevelFinished()) return;
 
             endScreenCanvas.SetActive(true);
+            print(LevelManager.Instance.Score);
+            print(LevelManager.Instance.MinScore);
+            print(LevelManager.Instance.MaxScore);
+            print(LevelManager.Instance.GetScorePercentage());
+            print(LevelManager.Instance.GetStarRating());
         }
 
         private bool IsLevelFinished()

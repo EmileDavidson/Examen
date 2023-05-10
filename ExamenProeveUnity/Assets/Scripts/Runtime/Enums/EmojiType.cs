@@ -1,6 +1,6 @@
 ﻿namespace Runtime.Enums
 {
-    public enum SpriteType
+    public enum EmojiType
     {
         Angry,
         Happy,

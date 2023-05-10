@@ -1,9 +1,6 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
-using Runtime.Enums;
 using Runtime.Managers;
 using Toolbox.MethodExtensions;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Utilities.Other.Runtime;
 
@@ -39,7 +36,8 @@ namespace Runtime.Customer.CustomerStates
             {
                 Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
-                Controller.EmojiType = SpriteType.Neutral;
+
+                Controller.EmojiType = Controller.EmojiSprites.GetPrevious(Controller.EmojiType);
 
                 FinishState();
             });
@@ -50,7 +48,7 @@ namespace Runtime.Customer.CustomerStates
         private void OnProductsScanned()
         {
             int cashRegisterNodeIndex = Controller.ExitPath.pathNodeIndexes.First();
-            
+
             bool isEmpty = Controller.Inventory.Items.IsEmpty();
             bool willBeEmpty = Controller.Inventory.Items.Count - 1 <= 0;
 
@@ -68,7 +66,7 @@ namespace Runtime.Customer.CustomerStates
                 FinishState();
                 return;
             }
-            
+
             _register.InstantiateProduct(Controller.Inventory.Items[0]);
         }
 
@@ -81,7 +79,11 @@ namespace Runtime.Customer.CustomerStates
 
         public override void FinishState()
         {
-            _register.onProductScanned.RemoveListener(OnProductsScanned);
+            if (_register is not null && _register.onProductScanned is not null)
+            {
+                _register.onProductScanned?.RemoveListener(OnProductsScanned);
+            }
+
             Controller.State = CustomerState.WalkingToExit;
         }
     }

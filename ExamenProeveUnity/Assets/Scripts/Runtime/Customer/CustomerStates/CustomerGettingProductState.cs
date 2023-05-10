@@ -27,16 +27,16 @@ namespace Runtime.Customer.CustomerStates
 
                 var removedProduct = Controller.CurrentTargetShelf.RemoveItem();
                 var item = Controller.CurrentTargetShelf.Item;
-                
+
                 if (!removedProduct || item is null)
                 {
-                    Controller.EmojiType = SpriteType.Sad;
+                    Controller.EmojiType = Controller.EmojiSprites.GetPrevious(Controller.EmojiType, 2);
                     FinishState();
                     return;
                 }
 
                 Controller.Inventory.AddItem(item);
-                Controller.EmojiType = SpriteType.Happy;
+                Controller.EmojiType = Controller.EmojiSprites.GetNext(Controller.EmojiType);
 
                 FinishState();
             });
