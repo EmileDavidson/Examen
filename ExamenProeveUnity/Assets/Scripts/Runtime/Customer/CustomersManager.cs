@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Runtime.Managers;
 using Toolbox.Attributes;
 using Toolbox.Utils.Runtime;
 using UnityEngine;
@@ -50,6 +51,9 @@ namespace Runtime.Customer
         {
             var customer = _customers.Find(c => c == controller);
             if (customer == null) return;
+            
+            controller.Sprites.GetScoreFromSprite(controller.EmojiType, out int max, out int min, out int score);
+            LevelManager.Instance.AddScore(score, min, max);
             
             Destroy(customer.gameObject);
             _customers.Remove(customer);

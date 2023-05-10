@@ -2759,6 +2759,14 @@ MonoBehaviour:
     onTimerUpdate:
       m_PersistentCalls:
         m_Calls: []
+  superTimer:
+    wantedTime: 0
+    onTimerFinished:
+      m_PersistentCalls:
+        m_Calls: []
+    onTimerUpdate:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &233948194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c86b2c70b8c5fc4e8a42b58966baa73, type: 3}
@@ -19457,9 +19465,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914184a707f3c674781a062f4b8437c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnLocations: []
   score: 0
-  minScore: -100
-  maxScore: 100
+  minScore: 0
+  maxScore: 0
   onMoneyChange:
     m_PersistentCalls:
       m_Calls: []

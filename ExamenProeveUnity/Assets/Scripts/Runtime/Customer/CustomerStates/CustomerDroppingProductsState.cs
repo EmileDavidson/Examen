@@ -39,7 +39,7 @@ namespace Runtime.Customer.CustomerStates
             {
                 Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
-                Controller.Icon.sprite = Controller.Sprites.GetSprite(SpriteType.Neutral);
+                Controller.EmojiType = SpriteType.Neutral;
 
                 FinishState();
             });

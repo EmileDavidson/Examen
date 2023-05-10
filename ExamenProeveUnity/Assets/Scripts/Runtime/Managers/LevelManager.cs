@@ -9,14 +9,31 @@ namespace Runtime.Managers
 {
     public class LevelManager : MonoSingleton<LevelManager>
     {
+        /// <summary>
+        /// All spawn locations for the players. gets used in order of the list.
+        /// </summary>
         [SerializeField] private List<Transform> spawnLocations = new List<Transform>();
 
-        [SerializeField] private int score = 0;
-        [SerializeField] private int minScore = -100;
-        [SerializeField] private int maxScore = 100;
-    
+        /// <summary>
+        /// Score of the player in the current level. 
+        /// </summary>
+        private int _score = 0;
+
+        /// <summary>
+        /// The min amount of score the player can have.
+        /// </summary>
+        private int _minScore = 0;
+
+        /// <summary>
+        /// The max amount of score the player can have.
+        /// </summary>
+        private int _maxScore = 0;
+
+        /// <summary>
+        /// The money the player has in this level
+        /// </summary>
         private int _money = 0;
-    
+
         public UnityEvent onMoneyChange = new();
         public UnityEvent onScoreChange = new();
 
@@ -31,7 +48,7 @@ namespace Runtime.Managers
             var players = FindObjectsOfType<PlayerInput>();
             if (spawnLocations.IsEmpty()) return;
             if (players is null || players.IsEmpty()) return;
-            
+
             foreach (var playerInput in players)
             {
                 playerInput.transform.position = spawnLocations.Get(playerInput.playerIndex).position;
@@ -51,15 +68,16 @@ namespace Runtime.Managers
 
         public int Score
         {
-            get => score;
-            set
-            {
-                if(value > maxScore) value = maxScore;
-                if(value < minScore) value = minScore;
-            
-                score = value;
-                onScoreChange?.Invoke();
-            }
+            get => _score;
+            private set => _score = Mathf.Clamp(value, _minScore, _maxScore);
+        }
+
+        public void AddScore(int given, int min, int max)
+        {
+            _score += given;
+            _minScore += min;
+            _maxScore += max;
+            onScoreChange?.Invoke();
         }
     }
 }

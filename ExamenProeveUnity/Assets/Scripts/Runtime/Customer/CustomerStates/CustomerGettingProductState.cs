@@ -30,13 +30,13 @@ namespace Runtime.Customer.CustomerStates
                 
                 if (!removedProduct || item is null)
                 {
-                    Controller.Icon.sprite = Controller.Sprites.GetSprite(SpriteType.Sad);
+                    Controller.EmojiType = SpriteType.Sad;
                     FinishState();
                     return;
                 }
 
                 Controller.Inventory.AddItem(item);
-                Controller.Icon.sprite = Controller.Sprites.GetSprite(SpriteType.Happy);
+                Controller.EmojiType = SpriteType.Happy;
 
                 FinishState();
             });

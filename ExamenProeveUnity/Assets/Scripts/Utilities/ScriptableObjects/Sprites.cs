@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Runtime.Enums;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace Utilities.ScriptableObjects
         public Sprite neutralSprite;
 
         private Dictionary<SpriteType, Sprite> _sprites;
+        private Dictionary<SpriteType, int> _spriteScore;
 
         private void InitializeSpriteDict()
         {
@@ -23,6 +25,14 @@ namespace Utilities.ScriptableObjects
                 { SpriteType.Angry, angrySprite },
                 { SpriteType.Neutral, neutralSprite },
                 { SpriteType.Sad, sadSprite },
+            };
+
+            _spriteScore ??= new Dictionary<SpriteType, int>()
+            {
+                { SpriteType.Happy, 2 },
+                { SpriteType.Neutral, 0 },
+                { SpriteType.Sad, -1 },
+                { SpriteType.Angry, -2 },
             };
         }
 
@@ -35,6 +45,20 @@ namespace Utilities.ScriptableObjects
             sprite ??= Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
 
             return sprite;
+        }
+
+        /// <summary>
+        /// returns 3 ints the max score you can get from any of the sprites
+        /// the min score you can get from any of the sprites and the score you got from the sprite
+        /// </summary>
+        /// <returns></returns>
+        public void GetScoreFromSprite(SpriteType sprite, out int max, out int min, out int givenScore)
+        {
+            InitializeSpriteDict();
+
+            max = _spriteScore.Values.Max();
+            min = _spriteScore.Values.Min();
+            givenScore = _spriteScore[sprite];
         }
     }
 }
