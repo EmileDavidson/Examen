@@ -8,9 +8,7 @@ using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
 using Runtime.UserInterfaces.Utils;
 using Toolbox.MethodExtensions;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities.ScriptableObjects;
 

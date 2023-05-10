@@ -11,7 +11,7 @@ namespace Runtime.Managers
 
         private bool _lastCustomersSpawned = false;
 
-        public void onLastCustomersSpawned()
+        public void OnLastCustomersSpawned()
         {
             _lastCustomersSpawned = true;
         }

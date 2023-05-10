@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using Toolbox.Attributes;
 using Toolbox.Utils.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
+using Utilities.MethodExtensions;
+using Utilities.Other.Runtime;
 
 namespace Runtime.Customer
 {
@@ -10,6 +13,8 @@ namespace Runtime.Customer
     /// </summary>
     public class CustomersManager : MonoSingleton<CustomersManager>
     {
+        [SerializeField] private TimerManager spawnTimerManager;
+        
         private List<CustomerController> _customers = new();
 
         public UnityEvent onCustomerAdded = new UnityEvent();

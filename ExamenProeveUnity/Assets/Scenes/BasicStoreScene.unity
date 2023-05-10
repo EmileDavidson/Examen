@@ -3180,7 +3180,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1000781320}
           m_TargetAssemblyTypeName: LevelFinishManager, Assembly-CSharp
-          m_MethodName: onLastCustomersSpawned
+          m_MethodName: OnLastCustomersSpawned
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

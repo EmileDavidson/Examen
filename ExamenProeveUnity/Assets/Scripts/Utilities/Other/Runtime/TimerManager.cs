@@ -31,5 +31,10 @@ namespace Utilities.Other.Runtime
             if (superTimer.IsFinished) return;
             superTimer.Update(Time.deltaTime);
         }
+
+        public List<Timer> GetTimers()
+        {
+            return timers;
+        }
     }
 }
