@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Utilities.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Sprites", menuName = "ScriptableObjects/ItemSprites", order = 1)]
-    public class Sprites : ScriptableObject
+    [CreateAssetMenu(fileName = "EmojiSprites", menuName = "ScriptableObjects/EmojiSprites", order = 1)]
+    public class EmojiSprites : ScriptableObject
     {
         public Sprite defaultSprite;
         public Sprite happySprite;

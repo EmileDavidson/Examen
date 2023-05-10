@@ -9,6 +9,7 @@ using Runtime.Managers;
 using Runtime.UserInterfaces.Utils;
 using Toolbox.MethodExtensions;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities.ScriptableObjects;
 
@@ -27,7 +28,7 @@ namespace Runtime.Customer
         [SerializeField] private CustomerMovement movement;
         [SerializeField] private GameObject playerHip = null;
         [SerializeField] private BarHandler timeBar;
-        [SerializeField] private Sprites sprites;
+        [FormerlySerializedAs("sprites")] [SerializeField] private EmojiSprites emojiSprites;
 
         [SerializeField] private Image icon;
 
@@ -165,7 +166,7 @@ namespace Runtime.Customer
 
         public Image Icon => icon;
 
-        public Sprites Sprites => sprites;
+        public EmojiSprites EmojiSprites => emojiSprites;
 
         public bool IsGrabbed => grabbedPoints > 0;
 
@@ -176,7 +177,7 @@ namespace Runtime.Customer
             get => _emojiType;
             set
             {
-                icon.sprite = sprites.GetSprite(value);
+                icon.sprite = emojiSprites.GetSprite(value);
                 _emojiType = value;
             }
         }

@@ -2,7 +2,6 @@
 {
     public enum SpriteType
     {
-        //Emojis
         Angry,
         Happy,
         Sad,
