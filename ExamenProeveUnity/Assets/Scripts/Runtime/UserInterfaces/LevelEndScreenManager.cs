@@ -27,7 +27,7 @@ namespace Runtime.UserInterfaces
             for (int i = 0; i < rating; i++)
             {
                 if (!stars.ContainsSlot(i)) return;
-                stars[i].color = Color.green;
+                stars[i].color = Color.yellow;
             }
         }
 
