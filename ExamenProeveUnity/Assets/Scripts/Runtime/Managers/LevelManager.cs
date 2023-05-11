@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Runtime.Enums;
 using Toolbox.MethodExtensions;
 using Toolbox.Utils.Runtime;
 using UnityEngine;
@@ -23,19 +25,9 @@ namespace Runtime.Managers
         };
 
         /// <summary>
-        /// Score of the player in the current level. 
+        /// Type, score, minScore, maxScore 
         /// </summary>
-        private int _score = 0;
-
-        /// <summary>
-        /// The min amount of score the player can have.
-        /// </summary>
-        private int _minScore = 0;
-
-        /// <summary>
-        /// The max amount of score the player can have.
-        /// </summary>
-        private int _maxScore = 0;
+        private Dictionary<ScoreType, Tuple<int, int, int>> _score = new Dictionary<ScoreType, Tuple<int, int, int>>();
 
         /// <summary>
         /// The money the player has in this level
@@ -74,41 +66,71 @@ namespace Runtime.Managers
             }
         }
 
-        public int Score
+        public void AddScore(int addScore, int minScore, int maxScore, ScoreType type = ScoreType.General)
         {
-            get => _score;
-            private set => _score = Mathf.Clamp(value, _minScore, _maxScore);
+            if (_score.ContainsKey(type))
+            {
+                _score[type] = new Tuple<int, int, int>(_score[type].Item1 + addScore, _score[type].Item2 + minScore, _score[type].Item3 + maxScore);
+                onScoreChange.Invoke();
+                return;
+            }   
+            
+            _score[type] = new Tuple<int, int, int>(addScore, minScore, maxScore);
+            onScoreChange.Invoke();
         }
 
-        public int MinScore => _minScore;
-        public int MaxScore => _maxScore;
-
-        public void AddScore(int given, int min, int max)
+        public Tuple<int, int, int> GetAllScore(ScoreType type)
         {
-            _score += given;
-            _minScore += min;
-            _maxScore += max;
-            onScoreChange?.Invoke();
+            return _score[type];
         }
 
-        public int GetScorePercentage()
+        public int GetScore(ScoreType type)
         {
-            int calculateScore = _score + Math.Abs(_minScore);
-            int maxScore = _maxScore + Math.Abs(_minScore);
+            return _score[type].Item1;
+        }
+
+        public int GetMinScore(ScoreType type)
+        {
+            return _score[type].Item2;
+        }
+
+        
+        public int GetMaxScore(ScoreType type)
+        {
+            return _score[type].Item3;
+        }
+
+        public int GetScorePercentage(ScoreType type)
+        {
+            int calculateScore = GetScore(type) + Math.Abs(GetMinScore(type));
+            int maxScore = GetMaxScore(type) + Math.Abs(GetMinScore(type));
             
             return Mathf.RoundToInt((float) calculateScore / maxScore * 100);   
+        }
+
+        public int GetTotalScorePercentage()
+        {
+            int count = _score.Count;
+            int addedPercentage = 0;
+            foreach (var keyValue in _score)
+            {
+                var key = keyValue.Key;
+                var value = keyValue.Value;
+                addedPercentage += GetScorePercentage(key);
+            }
+
+            return addedPercentage / count;
         }
         
         public int GetStarRating()
         {
-            int percentage = GetScorePercentage();
-            int rating = 0;
-            foreach (var ratePercentage in scorePercentagePerRating)
-            {
-                if (percentage > ratePercentage) rating++;
-            }
-            
-            return rating;
+            int percentage = GetTotalScorePercentage();
+            return scorePercentagePerRating.Count(ratePercentage => percentage > ratePercentage);
+        }
+        
+        public List<ScoreType> GetAllUsedScoreTypes()
+        {
+            return _score.Keys.ToList();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Runtime.UserInterfaces
         
         private void OnEnable()
         {
-            var percentage = LevelManager.Instance.GetScorePercentage();
+            var percentage = LevelManager.Instance.GetTotalScorePercentage();
             var rating = LevelManager.Instance.GetStarRating();
             
             scoreText.text = $"{percentage}%";

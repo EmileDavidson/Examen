@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Runtime.Enums;
 using Runtime.Managers;
 using Toolbox.Attributes;
 using Toolbox.Utils.Runtime;
@@ -53,7 +54,7 @@ namespace Runtime.Customer
             if (customer == null) return;
             
             controller.EmojiSprites.GetScoreFromSprite(controller.EmojiType, out int max, out int min, out int score);
-            LevelManager.Instance.AddScore(score, min, max);
+            LevelManager.Instance.AddScore(score, min, max, ScoreType.CustomerHappiness);
             
             Destroy(customer.gameObject);
             _customers.Remove(customer);
