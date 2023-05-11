@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Runtime;
 using Runtime.Managers;
@@ -57,7 +56,19 @@ public class ProductOrdering : MonoBehaviour
     {
         LevelManager.Instance.Money -= _selectedProduct.BuyPrice;
         _orderList.AddProductToOrder(_selectedProduct.Type);
-        Instantiate(buyableProducts[_cycleIndex].Prefab, deliverAnchor.transform.position, Quaternion.identity);
+    }
+
+    [Button]
+    public void DeliverProducts()
+    {
+        foreach (var orderListProduct in _orderList.Products)
+        {
+            for (int i = 0; i < orderListProduct.Value; i++)
+            {
+                Instantiate(orderListProduct.Key.Prefab, deliverAnchor.position, Quaternion.identity);
+            }
+            _orderList.RemoveProductFromOrder(orderListProduct.Key.Type, orderListProduct.Value);
+        }
     }
 
     private void UpdateSelection()

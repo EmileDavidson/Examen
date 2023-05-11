@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Runtime.Enums;
@@ -37,7 +36,7 @@ namespace Runtime
         public void AddProductToOrder(ProductType type, int amount = 1)
         {
             var keyValuePair = _products.First(element => element.Key.Type == type);
-            _products[keyValuePair.Key] += 1;
+            _products[keyValuePair.Key] += amount;
             onOrderListChanged.Invoke();
         }
 
@@ -45,7 +44,7 @@ namespace Runtime
         {
             var keyValuePair = _products.First(element => element.Key.Type == type);
             if (_products[keyValuePair.Key] <= 0) return;
-            _products[keyValuePair.Key] -= 1;
+            _products[keyValuePair.Key] -= amount;
             onOrderListChanged.Invoke();
         }
 
