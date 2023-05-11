@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Runtime;
+using Runtime.Enums;
 using Runtime.Managers;
 using TMPro;
 using Toolbox.Attributes;
@@ -61,14 +63,25 @@ public class ProductOrdering : MonoBehaviour
     [Button]
     public void DeliverProducts()
     {
+        var removedProducts = new List<Tuple<ProductType, int>>();
         foreach (var orderListProduct in _orderList.Products)
         {
             for (int i = 0; i < orderListProduct.Value; i++)
             {
                 Instantiate(orderListProduct.Key.Prefab, deliverAnchor.position, Quaternion.identity);
             }
-            _orderList.RemoveProductFromOrder(orderListProduct.Key.Type, orderListProduct.Value);
+            
+            removedProducts.Add(new Tuple<ProductType, int>(orderListProduct.Key.Type, orderListProduct.Value));
         }
+
+        foreach (var tuple in removedProducts)
+        {
+            ProductType type = tuple.Item1;
+            int amount = tuple.Item2;
+            
+            _orderList.RemoveProductFromOrder(type, amount);
+        }
+        removedProducts.Clear();
     }
 
     private void UpdateSelection()
