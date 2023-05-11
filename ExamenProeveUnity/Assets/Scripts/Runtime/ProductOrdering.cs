@@ -41,12 +41,15 @@ public class ProductOrdering : MonoBehaviour
         UpdateSelection();
     }
 
+    [Button]
     public void NextItem()
     {
         _cycleIndex = buyableProducts.GetPossibleIndex(_cycleIndex + 1);
         UpdateSelection();
     }
     
+    
+    [Button]
     public void PreviousItem()
     {
         _cycleIndex = buyableProducts.GetPossibleIndex(_cycleIndex - 1);

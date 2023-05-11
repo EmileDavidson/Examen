@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fa890643da664eb23d46de7607cbd, type: 3}
   m_Name: Leek
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 18
+  <Type>k__BackingField: 20
   <Prefab>k__BackingField: {fileID: 1369058523498146559, guid: 3225bc625288ea141b991196a5c49da6, type: 3}
   <BuyPrice>k__BackingField: 3
   <SellPrice>k__BackingField: 5
