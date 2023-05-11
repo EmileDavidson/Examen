@@ -16,4 +16,4 @@ MonoBehaviour:
   <Prefab>k__BackingField: {fileID: 2022442741143934828, guid: bbc20528cdf9ee04d866b79dbaca3124, type: 3}
   <BuyPrice>k__BackingField: 5
   <SellPrice>k__BackingField: 7
-  icon: {fileID: 21300000, guid: 722a04dffe69484459c864610d44b452, type: 3}
+  icon: {fileID: 21300000, guid: 9ffa8fd59e4d3d24199516c12c28333b, type: 3}
