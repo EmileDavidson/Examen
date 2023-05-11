@@ -8,7 +8,6 @@ using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
 using Runtime.UserInterfaces.Utils;
 using Toolbox.MethodExtensions;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -29,7 +28,7 @@ namespace Runtime.Customer
         [SerializeField] private CustomerMovement movement;
         [SerializeField] private GameObject playerHip = null;
         [SerializeField] private BarHandler timeBar;
-        [SerializeField] private Sprites sprites;
+        [FormerlySerializedAs("sprites")] [SerializeField] private EmojiSprites emojiSprites;
 
         [SerializeField] private Image icon;
 
@@ -46,6 +45,7 @@ namespace Runtime.Customer
         private List<Grabbable> _myGrabbablePoints = new();
         private int grabbedPoints = 0;
         private bool wasGrabbed = false;
+        private EmojiType _emojiType = EmojiType.Neutral;
 
 
         private void Awake()
@@ -166,11 +166,21 @@ namespace Runtime.Customer
 
         public Image Icon => icon;
 
-        public Sprites Sprites => sprites;
+        public EmojiSprites EmojiSprites => emojiSprites;
 
         public bool IsGrabbed => grabbedPoints > 0;
 
         public Guid ID => _id;
+
+        public EmojiType EmojiType
+        {
+            get => _emojiType;
+            set
+            {
+                icon.sprite = emojiSprites.GetSprite(value);
+                _emojiType = value;
+            }
+        }
 
         #endregion // getters & setters
     }
