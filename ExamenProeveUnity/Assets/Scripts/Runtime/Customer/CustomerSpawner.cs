@@ -20,7 +20,7 @@ namespace Runtime.Customer
         [Button]
         public void Spawn()
         {
-            Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
+            CustomersManager.Instance.AddCustomer(customerPrefab, spawnPoint.position, Quaternion.identity);
         }
 
         [Button]
