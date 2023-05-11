@@ -2013,7 +2013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 2
-  m_MaxPlayerCount: 2
+  m_MaxPlayerCount: 1
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
@@ -3108,7 +3108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9572005df1a438296f5f16a79bdc9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimalPlayerCount: 2
+  minimalPlayerCount: 1
   playerInputManager: {fileID: 943377561}
   startButton: {fileID: 361744952}
 --- !u!1 &1885300624
