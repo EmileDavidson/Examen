@@ -157,6 +157,7 @@ namespace Utilities.MethodExtensions
 
         /// <summary>
         /// ContainsSlot checks if the given number is between the list size.
+        /// so it can be get or set.
         /// </summary>
         /// <param name="list"></param>
         /// <param name="index"></param>

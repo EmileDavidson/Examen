@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Runtime.Enums;
+using Runtime.Environment;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Interfaces;
@@ -17,14 +18,14 @@ namespace Runtime.Managers
 
         public List<FixedPath> entryPaths = new();
         public List<FixedPath> exitPaths = new();
-        private List<IGridable> _gridables = new();
+        private List<IGridAble> _gridables = new();
 
         protected override void Awake()
         {
             base.Awake();
             shelves = new List<Shelf>(FindObjectsOfType<Shelf>());
             checkouts = new List<CashRegister>(FindObjectsOfType<CashRegister>());
-            _gridables = ObjectExtensions.FindObjectByInterface<IGridable>();
+            _gridables = ObjectExtensions.FindObjectByInterface<IGridAble>();
             
             shelves.RemoveAll(shelf => shelf.Item is null || shelf.Item.Type == ProductType.Unknown);
 
@@ -36,7 +37,7 @@ namespace Runtime.Managers
 
             foreach (var gridable in _gridables)
             {
-                worldGrid.GetNodeByIndex(gridable.gridIndex)?.SetLocationNode(true);
+                worldGrid.GetNodeByIndex(gridable.GridIndex)?.SetLocationNode(true);
             }
         }
     }

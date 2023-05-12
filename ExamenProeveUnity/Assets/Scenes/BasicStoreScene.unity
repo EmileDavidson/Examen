@@ -226,10 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 754
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: c9d4c804e1519b74397c7e05960f11a8, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: c9d4c804e1519b74397c7e05960f11a8, type: 2}
+  displayedItems:
   - {fileID: 1945758224}
   - {fileID: 1937579880}
   - {fileID: 1400432769}
@@ -238,7 +239,6 @@ MonoBehaviour:
   - {fileID: 535451300}
   itemCountText: {fileID: 367494074}
   canvas: {fileID: 1707955546}
-  <gridIndex>k__BackingField: 754
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -248,6 +248,19 @@ MonoBehaviour:
   onInventorySizeChange:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &2187999
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2187997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2788921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,7 +424,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -789,7 +804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -1611,10 +1628,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 761
   maxInventorySize: 9
-  _itemCount: 9
-  _item: {fileID: 11400000, guid: cf9eeb816a0c4594c99bbf7f732d4f25, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: cf9eeb816a0c4594c99bbf7f732d4f25, type: 2}
+  displayedItems:
   - {fileID: 2102307516}
   - {fileID: 963770612}
   - {fileID: 1013190831}
@@ -1626,7 +1644,6 @@ MonoBehaviour:
   - {fileID: 1873845409}
   itemCountText: {fileID: 1197185900}
   canvas: {fileID: 703006995}
-  <gridIndex>k__BackingField: 761
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -2512,7 +2529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -3751,10 +3770,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 757
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 2d434e47dd2a3a948a279ec6420fe560, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 2d434e47dd2a3a948a279ec6420fe560, type: 2}
+  displayedItems:
   - {fileID: 1908905049}
   - {fileID: 500492525}
   - {fileID: 410234547}
@@ -3763,7 +3783,6 @@ MonoBehaviour:
   - {fileID: 2010333367}
   itemCountText: {fileID: 1655366870}
   canvas: {fileID: 1622685165}
-  <gridIndex>k__BackingField: 757
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -3773,6 +3792,19 @@ MonoBehaviour:
   onInventorySizeChange:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &262608875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262608873}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &263079121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3864,10 +3896,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 446
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 5f899c53ba428d0499bc06d1a92c5a66, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 5f899c53ba428d0499bc06d1a92c5a66, type: 2}
+  displayedItems:
   - {fileID: 1347648026}
   - {fileID: 1901616137}
   - {fileID: 1091750148}
@@ -3876,7 +3909,6 @@ MonoBehaviour:
   - {fileID: 331642834}
   itemCountText: {fileID: 1866929457}
   canvas: {fileID: 1533665782}
-  <gridIndex>k__BackingField: 446
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -4407,9 +4439,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawGizmos: 1
-  debugIndex: 446
+  debugIndex: 791
   gridColor: {r: 0.01049304, g: 1, b: 0, a: 1}
-  blockedNodesOnGenerate: 0000000001000000020000000300000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002e00000046000000510000005800000069000000740000007b0000008c000000970000009e000000af000000ba000000c1000000d2000000dd000000e4000000f500000000010000010100000201000003010000040100000501000006010000070100000b0100000c0100000d0100000e0100000f0100001001000011010000120100001301000014010000150100001601000017010000180100003a0100003b0100005d0100005e01000080010000810100008c0100008d010000a3010000a4010000af010000b0010000c6010000c7010000d2010000d3010000d6010000d7010000d8010000d9010000da010000db010000dc010000e1010000e2010000e3010000e4010000e5010000e6010000e7010000e8010000e9010000ea010000f9010000fa010000fb010000fc010000fd010000fe010000ff0100000402000005020000060200000702000008020000090200000a0200000b0200000c0200000d0200001c0200001d0200001e0200001f0200002002000021020000220200002f020000300200003f02000040020000410200004202000043020000440200004502000052020000530200003702000038020000390200003a0200003b0200003c0200005a0200005b0200005c0200005d0200005e0200005f020000620200006402000065020000660200006702000068020000750200007602000081020000820200009802000099020000a0020000a1020000a2020000a3020000a4020000a5020000bb020000bc020000c3020000c4020000c5020000c6020000c7020000c8020000de020000df02000001030000020300001c0300001d0300001e0300001f03000020030000210300002203000023030000240300002503000030030000330300003403000035030000360300003703000038030000390300003a0300003b0300003c0300003f030000400300004103000042030000430300004403000045030000460300004703000048030000490300004a0300004b0300004c0300004d0300004e0300004f030000500300005103000052030000530300005403000055030000560300005703000058030000590300005a0300005b0300005c0300005d0300005e0300005f030000600300006103000062030000630300006403000065030000660300006703000068030000690300006a03000010030000110300001203000013030000140300001503000016030000170300001803000019030000f5010000f6010000
+  blockedNodesOnGenerate: 0000000001000000020000000300000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002e00000046000000510000005800000069000000740000007b0000008c000000970000009e000000af000000ba000000c1000000d2000000dd000000e4000000f500000000010000010100000201000003010000040100000501000006010000070100000b0100000c0100000d0100000e0100000f0100001001000011010000120100001301000014010000150100001601000017010000180100003a0100003b0100005d0100005e01000080010000810100008c0100008d010000a3010000a4010000af010000b0010000c6010000c7010000d2010000d3010000d6010000d7010000d8010000d9010000da010000db010000dc010000e1010000e2010000e3010000e4010000e5010000e6010000e7010000e8010000e9010000ea010000f9010000fa010000fb010000fc010000fd010000fe010000ff0100000402000005020000060200000702000008020000090200000a0200000b0200000c0200000d0200001c0200001d0200001e0200001f0200002002000021020000220200002f020000300200003f02000040020000410200004202000043020000440200004502000052020000530200003702000038020000390200003a0200003b0200003c0200005a0200005b0200005c0200005d0200005e0200005f020000620200006402000065020000660200006702000068020000750200007602000081020000820200009802000099020000a0020000a1020000a2020000a3020000a4020000a5020000bb020000bc020000c3020000c4020000c5020000c6020000c7020000c8020000de020000df02000001030000020300001c0300001d0300001e0300001f03000020030000210300002203000023030000240300002503000030030000330300003403000035030000360300003703000038030000390300003a0300003b0300003c0300003f030000400300004103000042030000430300004403000045030000460300004703000048030000490300004a0300004b0300004c0300004d0300004e0300004f030000500300005103000052030000530300005403000055030000560300005703000058030000590300005a0300005b0300005c0300005d0300005e0300005f030000600300006103000062030000630300006403000065030000660300006703000068030000690300006a030000f5010000f6010000
   pivotPoint: {x: -34, y: 0.26, z: -23.6}
   nodeSize: 2
   gridSize: {x: 35, y: 1, z: 25}
@@ -11065,7 +11097,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -12368,10 +12402,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 451
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 48c00431441a1ff4dbc3ab12a6ec30e2, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 48c00431441a1ff4dbc3ab12a6ec30e2, type: 2}
+  displayedItems:
   - {fileID: 1329328340}
   - {fileID: 177151092}
   - {fileID: 1897462304}
@@ -12380,7 +12415,6 @@ MonoBehaviour:
   - {fileID: 227462237}
   itemCountText: {fileID: 2125970722}
   canvas: {fileID: 1627388218}
-  <gridIndex>k__BackingField: 451
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -12679,7 +12713,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -12906,17 +12942,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 440
   maxInventorySize: 4
-  _itemCount: 4
-  _item: {fileID: 11400000, guid: 76b02abf182ebbc42a6cd93110c6be6a, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 76b02abf182ebbc42a6cd93110c6be6a, type: 2}
+  displayedItems:
   - {fileID: 2008951686}
   - {fileID: 1844928691}
   - {fileID: 176254712}
   - {fileID: 640869073}
   itemCountText: {fileID: 764871603}
   canvas: {fileID: 462952073}
-  <gridIndex>k__BackingField: 440
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -13227,17 +13263,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 646
   maxInventorySize: 4
-  _itemCount: 4
-  _item: {fileID: 11400000, guid: 403a48fbe06e7774399c17b3b82f9918, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 403a48fbe06e7774399c17b3b82f9918, type: 2}
+  displayedItems:
   - {fileID: 192923484}
   - {fileID: 611156238}
   - {fileID: 974009268}
   - {fileID: 769387004}
   itemCountText: {fileID: 591480191}
   canvas: {fileID: 1075158719}
-  <gridIndex>k__BackingField: 646
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -13651,17 +13687,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 648
   maxInventorySize: 4
-  _itemCount: 4
-  _item: {fileID: 11400000, guid: 04c0857b70e8da849acc39e9b451639a, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 04c0857b70e8da849acc39e9b451639a, type: 2}
+  displayedItems:
   - {fileID: 160746133}
   - {fileID: 1009891463}
   - {fileID: 1832353961}
   - {fileID: 1210229953}
   itemCountText: {fileID: 183457071}
   canvas: {fileID: 901302791}
-  <gridIndex>k__BackingField: 648
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -13719,13 +13755,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 0
   maxInventorySize: 5
-  _itemCount: 0
-  _item: {fileID: 0}
-  _displayedItems: []
+  itemCount: 0
+  item: {fileID: 0}
+  displayedItems: []
   itemCountText: {fileID: 1356838719}
   canvas: {fileID: 997944347}
-  <gridIndex>k__BackingField: 622
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -13815,7 +13851,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -13933,7 +13971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d0a8dac2cdd614fbafa88864afe746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <gridIndex>k__BackingField: 745
+  <GridIndex>k__BackingField: 745
   exitPath: {fileID: 45335784}
   dropOffAnchor: {fileID: 2059436343}
   onScanned:
@@ -14491,7 +14529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -14610,7 +14650,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -14766,10 +14808,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 448
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 5c37ee9bfb0cf594fa72c375a508e2c9, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 5c37ee9bfb0cf594fa72c375a508e2c9, type: 2}
+  displayedItems:
   - {fileID: 156226723}
   - {fileID: 163213537}
   - {fileID: 1671677229}
@@ -14778,7 +14821,6 @@ MonoBehaviour:
   - {fileID: 1063307768}
   itemCountText: {fileID: 142461585}
   canvas: {fileID: 69740860}
-  <gridIndex>k__BackingField: 448
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -14990,7 +15032,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -15312,17 +15356,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 438
   maxInventorySize: 4
-  _itemCount: 4
-  _item: {fileID: 11400000, guid: 63a58f224c6e64c428d11e76c6cfbad5, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 63a58f224c6e64c428d11e76c6cfbad5, type: 2}
+  displayedItems:
   - {fileID: 1858932570}
   - {fileID: 625672254}
   - {fileID: 1688562884}
   - {fileID: 116133998}
   itemCountText: {fileID: 909594234}
   canvas: {fileID: 1318650354}
-  <gridIndex>k__BackingField: 438
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -15449,10 +15493,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 453
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 74605eadef57c714f8f9dc3cbdb218d8, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 74605eadef57c714f8f9dc3cbdb218d8, type: 2}
+  displayedItems:
   - {fileID: 156350838}
   - {fileID: 1358327314}
   - {fileID: 258582755}
@@ -15461,7 +15506,6 @@ MonoBehaviour:
   - {fileID: 1052749777}
   itemCountText: {fileID: 1116607711}
   canvas: {fileID: 1528756501}
-  <gridIndex>k__BackingField: 453
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -16474,7 +16518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -16662,7 +16708,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -17911,7 +17959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -18545,10 +18595,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 450
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 8604f9973af55604fb95aa753c414117, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 8604f9973af55604fb95aa753c414117, type: 2}
+  displayedItems:
   - {fileID: 885664557}
   - {fileID: 910388260}
   - {fileID: 1813330783}
@@ -18557,7 +18608,6 @@ MonoBehaviour:
   - {fileID: 699552584}
   itemCountText: {fileID: 1512872929}
   canvas: {fileID: 903813970}
-  <gridIndex>k__BackingField: 450
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -18860,7 +18910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -19207,10 +19259,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 763
   maxInventorySize: 9
-  _itemCount: 9
-  _item: {fileID: 11400000, guid: 8475e10e456b99f48aa7b8b5e8330d80, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 8475e10e456b99f48aa7b8b5e8330d80, type: 2}
+  displayedItems:
   - {fileID: 583973242}
   - {fileID: 2143243638}
   - {fileID: 432278383}
@@ -19222,7 +19275,6 @@ MonoBehaviour:
   - {fileID: 934194284}
   itemCountText: {fileID: 1194120352}
   canvas: {fileID: 1730858605}
-  <gridIndex>k__BackingField: 763
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -20152,10 +20204,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 768
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 6a969609bd4998041b6120096a3afb48, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 6a969609bd4998041b6120096a3afb48, type: 2}
+  displayedItems:
   - {fileID: 389356800}
   - {fileID: 94016495}
   - {fileID: 657815422}
@@ -20164,7 +20217,6 @@ MonoBehaviour:
   - {fileID: 2039196189}
   itemCountText: {fileID: 546032106}
   canvas: {fileID: 1232526968}
-  <gridIndex>k__BackingField: 768
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -20326,7 +20378,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -20991,10 +21045,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 650
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 9286d94117e51dd438c5430b9731cda1, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 9286d94117e51dd438c5430b9731cda1, type: 2}
+  displayedItems:
   - {fileID: 552340758}
   - {fileID: 1601074091}
   - {fileID: 202079927}
@@ -21003,7 +21058,6 @@ MonoBehaviour:
   - {fileID: 1797722681}
   itemCountText: {fileID: 183457071}
   canvas: {fileID: 189015327}
-  <gridIndex>k__BackingField: 650
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -21395,7 +21449,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -21621,13 +21677,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 0
   maxInventorySize: 5
-  _itemCount: 0
-  _item: {fileID: 0}
-  _displayedItems: []
+  itemCount: 0
+  item: {fileID: 0}
+  displayedItems: []
   itemCountText: {fileID: 55932223}
   canvas: {fileID: 575219644}
-  <gridIndex>k__BackingField: 622
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -21947,10 +22003,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 750
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 74b1e2f4c0e8ec24c9b90bf43d4650b7, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 74b1e2f4c0e8ec24c9b90bf43d4650b7, type: 2}
+  displayedItems:
   - {fileID: 488167726}
   - {fileID: 1211841723}
   - {fileID: 583054444}
@@ -21959,7 +22016,6 @@ MonoBehaviour:
   - {fileID: 595143960}
   itemCountText: {fileID: 444250226}
   canvas: {fileID: 749025929}
-  <gridIndex>k__BackingField: 750
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -21969,6 +22025,19 @@ MonoBehaviour:
   onInventorySizeChange:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &1348339810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348339808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1352618408
 GameObject:
   m_ObjectHideFlags: 0
@@ -24043,7 +24112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -24236,7 +24307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -25038,7 +25111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -25157,7 +25232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -26306,7 +26383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -26522,7 +26601,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 364197496}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -27291,10 +27372,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 766
   maxInventorySize: 6
-  _itemCount: 6
-  _item: {fileID: 11400000, guid: 49ac09792d8564149a8135e1a462b483, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 49ac09792d8564149a8135e1a462b483, type: 2}
+  displayedItems:
   - {fileID: 1903144479}
   - {fileID: 1604711484}
   - {fileID: 1578150124}
@@ -27303,7 +27385,6 @@ MonoBehaviour:
   - {fileID: 852873974}
   itemCountText: {fileID: 1873320907}
   canvas: {fileID: 29029856}
-  <gridIndex>k__BackingField: 766
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -28297,10 +28378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 765
   maxInventorySize: 9
-  _itemCount: 9
-  _item: {fileID: 11400000, guid: 63c96614a3bbb9048bcbaa99cf56391e, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 63c96614a3bbb9048bcbaa99cf56391e, type: 2}
+  displayedItems:
   - {fileID: 966133188}
   - {fileID: 259754790}
   - {fileID: 311131474}
@@ -28312,7 +28394,6 @@ MonoBehaviour:
   - {fileID: 610735247}
   itemCountText: {fileID: 919240412}
   canvas: {fileID: 767441063}
-  <gridIndex>k__BackingField: 765
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []
@@ -29506,7 +29587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d0a8dac2cdd614fbafa88864afe746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <gridIndex>k__BackingField: 535
+  <GridIndex>k__BackingField: 535
   exitPath: {fileID: 1857036460}
   dropOffAnchor: {fileID: 630140094}
   onScanned:
@@ -31149,17 +31230,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <GridIndex>k__BackingField: 436
   maxInventorySize: 4
-  _itemCount: 4
-  _item: {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
-  _displayedItems:
+  itemCount: 2
+  item: {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
+  displayedItems:
   - {fileID: 1656867067}
   - {fileID: 1230981688}
   - {fileID: 1771323774}
   - {fileID: 2005016259}
   itemCountText: {fileID: 1795637065}
   canvas: {fileID: 648468859}
-  <gridIndex>k__BackingField: 436
   onItemAdded:
     m_PersistentCalls:
       m_Calls: []

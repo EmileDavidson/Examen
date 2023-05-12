@@ -4,38 +4,50 @@ using UnityEngine;
 using Utilities.MethodExtensions;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(AudioSource))]
-public class AudioPlayer : MonoBehaviour
+namespace Runtime.Audio
 {
-    [SerializeField] private List<AudioClip> audioClips = new();
-
-    private AudioSource _audioSource;
-
-    private void Awake()
+    [RequireComponent(typeof(AudioSource))]
+    public class AudioPlayer : MonoBehaviour
     {
-        _audioSource = gameObject.GetOrAddComponent<AudioSource>();
-    }
+        [SerializeField] private List<AudioClip> audioClips = new();
 
-    [Button]
-    public void PlayAudio(int audioIndex)
-    {
-        if (audioIndex > audioClips.Count - 1) return;
-        _audioSource.PlayOneShot(audioClips[audioIndex]);
-    }
+        private AudioSource _audioSource;
 
-    public void PlayRandom()
-    {
-        if (audioClips.IsEmpty()) return;
-        PlayAudio(Random.Range(0, audioClips.Count));
-    }
-
-    public void Pause(bool paused)
-    {
-        if (paused)
+        /// <summary>
+        /// Awake is called when the script instance is being loaded.
+        /// </summary>
+        private void Awake()
         {
-            _audioSource.Pause();
-            return;
+            _audioSource = gameObject.GetOrAddComponent<AudioSource>();
         }
-        _audioSource.Play();
+
+        /// <summary>
+        /// Plays the audio clip at the given index.
+        /// if the index is out of range, nothing happens.
+        /// </summary>
+        /// <param name="audioIndex"></param>
+        [Button]
+        public void PlayAudio(int audioIndex)
+        {
+            if (audioIndex > audioClips.Count - 1) return;
+            _audioSource.PlayOneShot(audioClips[audioIndex]);
+        }
+
+        /// <summary>
+        /// Plays a random audio clip from the list. if there are no items play nothing.
+        /// </summary>
+        public void PlayRandom()
+        {
+            if (audioClips.IsEmpty()) return;
+            PlayAudio(Random.Range(0, audioClips.Count));
+        }
+
+        /// <summary>
+        /// Toggles playing the audio source. (paused, playing) 
+        /// </summary>
+        public void TogglePlaying()
+        {
+            _audioSource.TogglePlaying();
+        }
     }
 }
