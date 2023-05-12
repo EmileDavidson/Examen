@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: dae15745727dd2643be75e7a7c5b36f5
+guid: 3e13b617b3bfd8345a72951895f9b733
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Flowerpot
+    second: {fileID: 2100000, guid: e19b3cb10c6cada419bca619f9e98c8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 52178850c45d8fa44ba3c1efb6621476, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +98,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 100
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
