@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public class Grabbable : MonoBehaviour, IGrabbable
 {
+    [SerializeField] private bool snapToPivot = false;
+    
     public readonly UnityEvent OnGrabbed = new UnityEvent();
     public readonly UnityEvent OnReleased = new UnityEvent();
 
@@ -23,4 +25,6 @@ public class Grabbable : MonoBehaviour, IGrabbable
             _isGrabbed = false;
         });
     }
+
+    public bool SnapToPivot => snapToPivot;
 }
