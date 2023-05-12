@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Toolbox.Attributes;
-using Toolbox.MethodExtensions;
 using UnityEngine;
+using Utilities.MethodExtensions;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AudioSource))]

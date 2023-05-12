@@ -1,12 +1,12 @@
-﻿using JetBrains.Annotations;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Toolbox.Utils.Runtime
+namespace Utilities.Other.Runtime
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
         private static T _instance;
-        private static GameObject _singletonContainer;
+        private GameObject _singletonContainer;
         
         /// <summary>
         /// The singleton instance referring to the class
@@ -21,7 +21,7 @@ namespace Toolbox.Utils.Runtime
                 if (_instance != null) return _instance;
 
                 GameObject singletonObject = new GameObject("Singleton: " + typeof(T).Name);
-                singletonObject.transform.parent = GetOrCreateSingletonContainer.transform;
+                singletonObject.transform.parent = _instance.GetOrCreateSingletonContainer.transform;
                 _instance = singletonObject.AddComponent<T>();
                 return _instance;
             }
@@ -30,7 +30,7 @@ namespace Toolbox.Utils.Runtime
         /// <summary>
         /// Container for all singletons created if they didn't exists yet
         /// </summary>
-        public static GameObject GetOrCreateSingletonContainer
+        private GameObject GetOrCreateSingletonContainer
         {
             get
             {

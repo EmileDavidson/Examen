@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Toolbox.MethodExtensions
+namespace Utilities.MethodExtensions
 {
     public static class GameObjectExtensions
     {

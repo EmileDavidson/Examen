@@ -1,7 +1,7 @@
 ﻿using Runtime.Managers;
-using Toolbox.MethodExtensions;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using Utilities.MethodExtensions;
 
 namespace Runtime.Customer.CustomerStates
 {
