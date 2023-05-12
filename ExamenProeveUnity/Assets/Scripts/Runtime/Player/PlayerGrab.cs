@@ -94,7 +94,7 @@ namespace Runtime.Player
 
             _grabbedGrabbable.OnReleased?.Invoke();
             Destroy(_grabbedObjectJoined);
-            
+
             _grabbedObject = null;
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
@@ -110,7 +110,10 @@ namespace Runtime.Player
             if (_isGrabbingObject) return;
             if (_grabbedObject == null) return;
 
-            _grabbedObject.transform.position = grabbedPivot.transform.position;
+            if (_grabbedGrabbable.SnapToPivot)
+            {
+                _grabbedObject.transform.position = grabbedPivot.transform.position;
+            }
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
             _grabbedObjectJoined.connectedBody = _rigidbody;
             _grabbedGrabbable.OnGrabbed?.Invoke();
@@ -122,7 +125,7 @@ namespace Runtime.Player
         {
             if (!collision.transform.TryGetComponent<Grabbable>(out var grabbable)) return;
             if (_isGrabbingObject) return;
-            
+
             _grabbedObject = collision.transform.gameObject;
             _grabbedGrabbable = grabbable;
         }

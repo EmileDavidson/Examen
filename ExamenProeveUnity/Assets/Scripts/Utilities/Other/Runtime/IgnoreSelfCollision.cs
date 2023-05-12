@@ -16,7 +16,6 @@ namespace Utilities.Other.Runtime
 
             if (collidersToIgnore is null || collidersToIgnore.IsEmpty()) return;
 
-            collidersToIgnore ??= GetComponentsInChildren<Collider>();
             foreach (var col in collidersToIgnore)
             {
                 foreach (var otherCollider in collidersToIgnore)
