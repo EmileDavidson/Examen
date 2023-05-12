@@ -42,14 +42,17 @@ this is the basic setup now you can create a prefab from this wrapper  so it can
 The Next step would be to copy the rotation from the AnimatedCharacter to the TargetRotation of the ActiveCharacter ConfigurableJoints we do this by creating a script that takes a target transform and put it on all character parts containting ConfigurableJoints this script will then set the TargetRotation of the ConfigurableJoint to the rotation of the AnimatedCharacters Transforms part&#x20;
 
 {% hint style="danger" %}
-Note that you can not simply set the TargetRotation to the transform value but you need to Inverse to TargetLimbs rotation and multiply it to the start rotation of your ragdoll body part for now I won't go into why but this is how you should do it.&#x20;
+Note that you can not simply set the TargetRotation to the transform value but you need to Inverse to TargetLimbs rotation and multiply it to the start rotation of your ragdoll body part.
+
+
+
+&#x20;I will not go too in-depth but just know that it has something to do with world space and local space
 {% endhint %}
 
 #### Script to copy transform to TargetRotation:
 
-```
-    public class CopyLimb : MonoBehaviour
-    {
+<pre class="language-csharp"><code class="lang-csharp"><strong>    public class CopyLimb : MonoBehaviour
+</strong>    {
         [SerializeField] private Transform targetLimb;
     
         private ConfigurableJoint _configurableJoint;
@@ -57,7 +60,7 @@ Note that you can not simply set the TargetRotation to the transform value but y
         
         void Start()
         {
-            _configurableJoint = GetComponent<ConfigurableJoint>();
+            _configurableJoint = GetComponent&#x3C;ConfigurableJoint>();
             _targetInitialRotation = targetLimb.transform.localRotation;
         }
 
@@ -69,4 +72,15 @@ Note that you can not simply set the TargetRotation to the transform value but y
             return Quaternion.Inverse(targetLimb.localRotation) * _targetInitialRotation;
         }
     }
-```
+</code></pre>
+
+### Step 3
+
+The last step would be to check if it is working try clicking play in the unity editor and rotating one or more body parts of the animated character if everything is working correctly this should show the rotation being copied to the active character now you can animate your character by rotation. &#x20;
+
+<figure><img src="../../../.gitbook/assets/Unity_BXkFhrfcny.gif" alt=""><figcaption></figcaption></figure>
+
+
+
+
+

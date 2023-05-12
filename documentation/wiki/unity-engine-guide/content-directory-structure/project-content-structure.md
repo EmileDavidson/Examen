@@ -16,7 +16,7 @@
 │    ├── world2                  
 │    │    ├── Level1.scene
 │    │    └── Level2.scene
-│    └── Testing                  &#x3C;-- Testing scenes scene naming should end with 'test'
+│    └── Testing              &#x3C;-- Testing scenes scene naming should end with 'test'
 │         ├── VFXTest.scene
 │         └── PlayerMovementTest.scene
 │
@@ -34,16 +34,16 @@
 ├── Prefabs                
 │
 ├── Scripts
-│    ├── Runtime                  &#x3C;- All scripts that are runtime scripts aka monoBehaviours 
+│    ├── Runtime          &#x3C;- All scripts that are runtime scripts aka monoBehaviours 
 │    │    ├── Player
 │    │    ├── Inventory
 │    │    ├── Interaction
 │    │    └── Enviroment 
-│    ├── Editor                   &#x3C;-- All scripts that are used in the editor 
+│    ├── Editor           &#x3C;-- All scripts that are used in the editor 
 │    │    ├── Player
 │    │    ├── Inventory
 │    │    └── Interaction
-│    └── Utilities                &#x3C;-- All scripts that are neither used for runtime or Editor but can be used for both.
+│    └── Utilities        &#x3C;-- All scripts that are used as tools, or scripts that can run independent  
 │
 ├── Sound                     
 │    ├── Characters
