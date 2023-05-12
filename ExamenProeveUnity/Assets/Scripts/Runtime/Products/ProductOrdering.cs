@@ -15,6 +15,7 @@ public class ProductOrdering : MonoBehaviour
     [SerializeField] private Image productDisplay;
     [SerializeField] private ProductOrderList _orderList;
     [SerializeField] private Transform deliverAnchor;
+    [SerializeField] private Truck truck;
 
     [SerializeField] private List<ProductScriptableObject> buyableProducts = new();
     [SerializeField] private TMP_Text moneyText;
@@ -37,6 +38,7 @@ public class ProductOrdering : MonoBehaviour
         onBuyableProductsChanged.Invoke();
 
         LevelManager.Instance.onMoneyChange.AddListener(UpdateCashText);
+        truck.onDoorsOpened.AddListener(DeliverProducts);
         
         UpdateSelection();
     }

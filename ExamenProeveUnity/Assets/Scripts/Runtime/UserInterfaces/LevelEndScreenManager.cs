@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using AmplifyShaderEditor;
+﻿using System.Collections.Generic;
 using Runtime.Managers;
 using TMPro;
 using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
 namespace Runtime.UserInterfaces

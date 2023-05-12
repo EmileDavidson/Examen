@@ -3220,7 +3220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9572005df1a438296f5f16a79bdc9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimalPlayerCount: 1
+  minimalPlayerCount: 2
   playerInputManager: {fileID: 943377561}
   startButton: {fileID: 361744952}
 --- !u!1 &1885300624

@@ -1,4 +1,5 @@
-﻿using Runtime.Enums;
+﻿using System;
+using Runtime.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -13,6 +14,7 @@ namespace Runtime.Player
         [SerializeField] private GameObject grabbedPivot;
 
         private Quaternion grabDirection;
+        private Guid playerId;
 
         private GameObject _grabbedObject;
         private Grabbable _grabbedGrabbable;
@@ -26,6 +28,7 @@ namespace Runtime.Player
 
         private void Awake()
         {
+            playerId = GetComponentInParent<Entity>().Uuid;
             _rigidbody ??= GetComponent<Rigidbody>();
             grabDirection = (handType == HandType.Right) ? Quaternion.Euler(0, 90, 0) : Quaternion.Euler(0, -90, 0);
         }
@@ -95,6 +98,7 @@ namespace Runtime.Player
             _grabbedGrabbable.OnReleased?.Invoke();
             Destroy(_grabbedObjectJoined);
 
+            if (!_grabbedGrabbable.IsGrabbed) _grabbedGrabbable.RemoveGrabbedBy(playerId);
             _grabbedObject = null;
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
@@ -110,6 +114,7 @@ namespace Runtime.Player
             if (_isGrabbingObject) return;
             if (_grabbedObject == null) return;
 
+            _grabbedGrabbable.AddGrabbedBy(playerId);
             if (_grabbedGrabbable.SnapToPivot)
             {
                 _grabbedObject.transform.position = grabbedPivot.transform.position;

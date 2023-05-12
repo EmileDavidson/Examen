@@ -58,4 +58,18 @@ public class PlayerInteraction : MonoBehaviour
         _activeInteractable.onInteractionClicked.Invoke();
 
     }
+
+    private void OnRightGrab(InputValue value)
+    {
+        if (!value.isPressed) return;
+        if (_activeInteractable is null) return;
+        _activeInteractable.onRightGrab.Invoke();
+    }
+    
+    private void OnLeftGrab(InputValue value)
+    {
+        if (!value.isPressed) return;
+        if (_activeInteractable is null) return;
+        _activeInteractable.onLeftGrab.Invoke();
+    }
 }

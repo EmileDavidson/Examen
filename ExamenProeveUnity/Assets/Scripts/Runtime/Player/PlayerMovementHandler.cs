@@ -51,7 +51,7 @@ namespace Runtime.Player
                 var targetAngle = (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg) - 90;
                 hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-                var difference =  direction * speed;
+                var difference =  direction * speed * Time.deltaTime;
                 hipRigidbody.AddForce( difference, ForceMode.VelocityChange );
             }
 
