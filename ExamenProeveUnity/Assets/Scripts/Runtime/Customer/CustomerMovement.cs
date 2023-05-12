@@ -108,7 +108,6 @@ namespace Runtime.Customer
             var targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
             hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
             hipRb.gameObject.transform.position = Vector3.MoveTowards(playerPos, nextPos, 0.085f);
-            // hipRb.MovePosition(Vector3.MoveTowards(playerPos, nextPos, 2));
 
             ValidateNextPointReached(playerPos, nextPathNodeIndex);
         }
