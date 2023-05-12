@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 803217051078137108}
   - component: {fileID: -7543394938196908981}
   - component: {fileID: 783204188414254207}
+  - component: {fileID: 2038388693538758975}
   m_Layer: 0
   m_Name: PossumCharacterWrapper
   m_TagString: Untagged
@@ -488,6 +489,22 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 5335b63f3c52ea74fb9b74129cbb0e4a, type: 3}
   - {fileID: 8300000, guid: a1ee009fd3a7d0840b73f3f9ebc35581, type: 3}
+--- !u!114 &2038388693538758975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268764335705670053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1f7ec672a725f40a5bded2b9b9115e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  includeChildren: 1
+  clearOnAwake: 1
+  newIterationCount: 200
+  rigidBodiesToChange: []
 --- !u!1001 &2588153548053961489
 PrefabInstance:
   m_ObjectHideFlags: 0

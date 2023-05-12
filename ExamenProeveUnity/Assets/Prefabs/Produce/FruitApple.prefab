@@ -141,3 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 1
