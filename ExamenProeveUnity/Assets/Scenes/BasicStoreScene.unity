@@ -3340,13 +3340,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230516661}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6496e3c1b58d44948e0b77a3db6c6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timers:
-  - wantedTime: 5
+  - wantedTime: 10
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -3365,7 +3365,7 @@ MonoBehaviour:
     onTimerUpdate:
       m_PersistentCalls:
         m_Calls: []
-  - wantedTime: 20
+  - wantedTime: 40
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -3384,7 +3384,7 @@ MonoBehaviour:
     onTimerUpdate:
       m_PersistentCalls:
         m_Calls: []
-  - wantedTime: 28
+  - wantedTime: 60
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -3403,7 +3403,7 @@ MonoBehaviour:
     onTimerUpdate:
       m_PersistentCalls:
         m_Calls: []
-  - wantedTime: 35
+  - wantedTime: 90
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -3422,7 +3422,7 @@ MonoBehaviour:
     onTimerUpdate:
       m_PersistentCalls:
         m_Calls: []
-  - wantedTime: 48
+  - wantedTime: 150
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -3441,7 +3441,7 @@ MonoBehaviour:
     onTimerUpdate:
       m_PersistentCalls:
         m_Calls: []
-  - wantedTime: 60
+  - wantedTime: 220
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -24274,15 +24274,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52b05c825e4cad942af2d1cff3537eb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.10405
+      value: 56.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52b05c825e4cad942af2d1cff3537eb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.93
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52b05c825e4cad942af2d1cff3537eb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.847174
+      value: -16.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52b05c825e4cad942af2d1cff3537eb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24348,8 +24348,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10e8124dd1328e43a6660abb93a4e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersNeeded: 2
+  speed: 15
+  playersNeeded: 1
+  startPos: {x: 56.9, y: 4, z: -16.5}
+  endPos: {x: 27, y: 4, z: -16.5}
+  onArrive:
+    m_PersistentCalls:
+      m_Calls: []
   onDoorsOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  onDepart:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &1493613132
@@ -24381,6 +24390,84 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapToPivot: 0
+--- !u!114 &1493613134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493613128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6496e3c1b58d44948e0b77a3db6c6440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timers:
+  - wantedTime: 30
+    onTimerFinished:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1493613130}
+          m_TargetAssemblyTypeName: Truck, Assembly-CSharp
+          m_MethodName: Arrive
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onTimerUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+  - wantedTime: 80
+    onTimerFinished:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1493613130}
+          m_TargetAssemblyTypeName: Truck, Assembly-CSharp
+          m_MethodName: Arrive
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onTimerUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+  - wantedTime: 150
+    onTimerFinished:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1493613130}
+          m_TargetAssemblyTypeName: Truck, Assembly-CSharp
+          m_MethodName: Arrive
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onTimerUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+  superTimer:
+    wantedTime: 0
+    onTimerFinished:
+      m_PersistentCalls:
+        m_Calls: []
+    onTimerUpdate:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &1510737209
 PrefabInstance:
   m_ObjectHideFlags: 0
