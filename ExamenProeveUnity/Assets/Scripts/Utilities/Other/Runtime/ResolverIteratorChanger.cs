@@ -13,14 +13,7 @@ namespace Utilities.Other.Runtime
    
         private void Awake()
         {
-            if(clearOnAwake) rigidBodiesToChange.Clear();
-
-            var foundBodies = includeChildren ? GetComponentsInChildren<Rigidbody>() : GetComponents<Rigidbody>();
-            foreach (var foundBody in foundBodies)
-            {
-                if(rigidBodiesToChange.Contains(foundBody)) continue;
-                rigidBodiesToChange.Add(foundBody);
-            }
+            GetRigidBodies(clearOnAwake);
             
             if (rigidBodiesToChange is null || rigidBodiesToChange.Count <= 0) return;
             foreach (var rigid in rigidBodiesToChange)
