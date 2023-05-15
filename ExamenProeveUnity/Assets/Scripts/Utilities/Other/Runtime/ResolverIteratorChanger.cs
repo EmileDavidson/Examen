@@ -14,14 +14,19 @@ namespace Utilities.Other.Runtime
         private void Awake()
         {
             GetRigidBodies(clearOnAwake);
-            
+            HandleRigidbodies();
+        }
+
+        [Button(Mode = ButtonMode.EnabledInPlayMode)]
+        private void HandleRigidbodies()
+        {
             if (rigidBodiesToChange is null || rigidBodiesToChange.Count <= 0) return;
             foreach (var rigid in rigidBodiesToChange)
             {
                 rigid.solverIterations = newIterationCount;
             }
         }
-    
+
         [Button]
         private void GetRigidBodies(bool clearOldList = false)
         {

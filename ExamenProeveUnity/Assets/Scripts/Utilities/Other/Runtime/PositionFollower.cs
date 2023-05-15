@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Runtime
+namespace Utilities.Other.Runtime
 {
     public class PositionFollower : MonoBehaviour
     {
@@ -14,11 +13,12 @@ namespace Runtime
         [SerializeField] private bool trackZ = true;
         
         [SerializeField] private bool moveInstantly = true;
-        
-        [SerializeField] private float maxDistanceAway = 0.1f;
 
         private Transform _myTransform;
 
+        /// <summary>
+        /// Awake gets all the info needed for the script to work
+        /// </summary>
         private void Awake()
         {
             _myTransform = transform;
@@ -45,15 +45,6 @@ namespace Runtime
             }
             
             transform.position = smoothedPosition;
-        }
-
-        /// <summary>
-        /// The offset from the target's position.
-        /// </summary>
-        public Vector3 Offset
-        {
-            get => offset;
-            set => offset = value;
         }
     }
 }

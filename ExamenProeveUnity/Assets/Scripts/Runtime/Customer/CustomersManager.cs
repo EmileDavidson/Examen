@@ -2,11 +2,11 @@
 using Runtime.Enums;
 using Runtime.Managers;
 using Toolbox.Attributes;
-using Toolbox.Utils.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 using Utilities.MethodExtensions;
 using Utilities.Other.Runtime;
+using Utilities.Other.Runtime.Timer;
 
 namespace Runtime.Customer
 {
