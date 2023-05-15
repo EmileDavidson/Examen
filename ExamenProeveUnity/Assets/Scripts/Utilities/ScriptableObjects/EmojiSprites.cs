@@ -9,6 +9,7 @@ namespace Utilities.ScriptableObjects
     [CreateAssetMenu(fileName = "EmojiSprites", menuName = "ScriptableObjects/EmojiSprites", order = 1)]
     public class EmojiSprites : ScriptableObject
     {
+        [Header("Sprites")]
         public Sprite defaultSprite;
         public Sprite happySprite;
         public Sprite sadSprite;
@@ -18,6 +19,9 @@ namespace Utilities.ScriptableObjects
         private Dictionary<EmojiType, Sprite> _sprites;
         private Dictionary<EmojiType, int> _spriteScore;
 
+        /// <summary>
+        /// Initializes the sprite dictionaries if they are null.
+        /// </summary>
         private void InitializeSpriteDict()
         {
             _sprites ??= new Dictionary<EmojiType, Sprite>()
@@ -37,13 +41,17 @@ namespace Utilities.ScriptableObjects
             };
         }
 
+        /// <summary>
+        /// Gets sprite from the emoji type. If the sprite is null it will return the default sprite.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public Sprite GetSprite(EmojiType type)
         {
             InitializeSpriteDict();
 
             _sprites.TryGetValue(type, out var sprite);
-            sprite ??= defaultSprite;
-            sprite ??= Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
+            sprite ??= GetDefaultSprite();
 
             return sprite;
         }
@@ -78,9 +86,10 @@ namespace Utilities.ScriptableObjects
         }
 
         /// <summary>
-        /// Get previous emoji get the previous emoji towards being angry if you are angry you stay angry
+        /// Runs GetPrevious multiple times to get the emoji that is the given amount of times previous
         /// </summary>
         /// <param name="emoji"></param>
+        /// <param name="times"></param>
         /// <returns></returns>
         public EmojiType GetPrevious(EmojiType emoji, int times)
         {
@@ -106,6 +115,17 @@ namespace Utilities.ScriptableObjects
             if (index == -1) return emoji;
             if (index <= 0) return EmojiType.Happy;
             return _spriteScore.Keys.ToList()[index - 1];
+        }
+
+        /// <summary>
+        /// Creates a default sprite if 
+        /// </summary>
+        /// <returns></returns>
+        private Sprite GetDefaultSprite()
+        {
+            if(defaultSprite != null) return defaultSprite;
+            defaultSprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
+            return defaultSprite;
         }
     }
 }

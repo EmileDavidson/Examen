@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using AmplifyShaderEditor;
 using Runtime.Managers;
 using TMPro;
-using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Utilities.MethodExtensions;
 using Image = UnityEngine.UI.Image;
 
 namespace Runtime.UserInterfaces

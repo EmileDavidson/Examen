@@ -1701,6 +1701,7 @@ GameObject:
   - component: {fileID: 8043495966970848881}
   - component: {fileID: 2822542690542881327}
   - component: {fileID: 2008414403410921536}
+  - component: {fileID: 3211096205853997013}
   m_Layer: 0
   m_Name: CH_Customer
   m_TagString: Untagged
@@ -1805,7 +1806,7 @@ MonoBehaviour:
   movement: {fileID: 8043495966970848881}
   playerHip: {fileID: 8043495968001426660}
   timeBar: {fileID: 6961119643108868701}
-  sprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
+  emojiSprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
   icon: {fileID: 8589210294425209420}
 --- !u!114 &2008414403410921536
 MonoBehaviour:
@@ -1819,6 +1820,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d870ff24d85233740bdae8ee30f96831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3211096205853997013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043495966970848879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1f7ec672a725f40a5bded2b9b9115e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  includeChildren: 1
+  clearOnAwake: 0
+  newIterationCount: 200
+  rigidBodiesToChange:
+  - {fileID: 8043495967021035849}
+  - {fileID: 8043495966599613112}
+  - {fileID: 8043495966903997822}
+  - {fileID: 8043495968181503240}
+  - {fileID: 8043495967563876077}
+  - {fileID: 8043495967631096286}
+  - {fileID: 8043495966043894384}
+  - {fileID: 8043495968123857360}
+  - {fileID: 8043495966576200605}
+  - {fileID: 8043495967922000700}
+  - {fileID: 8043495967337425644}
+  - {fileID: 8043495967040552273}
+  - {fileID: 8043495967057091138}
+  - {fileID: 8043495966266517968}
+  - {fileID: 8043495966272733044}
+  - {fileID: 8043495968114785406}
 --- !u!1 &8043495966991941697
 GameObject:
   m_ObjectHideFlags: 0

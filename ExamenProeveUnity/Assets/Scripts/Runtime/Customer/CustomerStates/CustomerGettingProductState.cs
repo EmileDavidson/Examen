@@ -1,10 +1,5 @@
-﻿using System.Threading.Tasks;
-using Runtime.Enums;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
-using UnityEngine;
-using Utilities.ScriptableObjects;
-using Timer = Utilities.Other.Runtime.Timer;
+﻿using UnityEngine;
+using Utilities.Other.Runtime.Timer;
 
 namespace Runtime.Customer.CustomerStates
 {

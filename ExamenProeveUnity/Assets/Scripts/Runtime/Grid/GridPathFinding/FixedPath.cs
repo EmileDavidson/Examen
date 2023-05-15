@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Runtime.Enums;
 using Toolbox.Attributes;
-using Toolbox.MethodExtensions;
 using UnityEngine;
 
 namespace Runtime.Grid.GridPathFinding

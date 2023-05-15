@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Toolbox.MethodExtensions
+namespace Utilities.MethodExtensions
 {
     public static class StringExtensions
     {

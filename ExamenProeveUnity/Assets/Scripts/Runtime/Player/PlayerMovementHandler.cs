@@ -20,7 +20,7 @@ namespace Runtime.Player
 
         private bool _walk;
         private static readonly int Walk = Animator.StringToHash("Walk");
-
+        
         /// <summary>
         /// OnMovement is an event method from PlayerInput that is called when the player uses the move input action
         /// </summary>
@@ -50,8 +50,9 @@ namespace Runtime.Player
             {
                 var targetAngle = (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg) - 90;
                 hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-                hipRigidbody.velocity += direction * speed;
-                hipRigidbody.velocity = Vector3.ClampMagnitude(hipRigidbody.velocity, speed);
+
+                var difference =  direction * speed;
+                hipRigidbody.AddForce( difference, ForceMode.VelocityChange );
             }
 
             targetAnimator.SetBool(Walk, _walk);

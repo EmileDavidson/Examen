@@ -4,9 +4,9 @@ using System.Configuration.Assemblies;
 using System.Globalization;
 using System.Reflection;
 using System.Reflection.Emit;
-using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Utilities.MethodExtensions;
 
 namespace Toolbox.Attributes
 {

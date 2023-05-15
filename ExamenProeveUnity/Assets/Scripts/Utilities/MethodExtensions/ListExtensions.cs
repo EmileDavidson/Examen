@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.FullSerializer;
-using UnityEngine;
 using Random = System.Random;
 
-namespace Toolbox.MethodExtensions
+namespace Utilities.MethodExtensions
 {
     public static class ListExtensions
     {
@@ -159,6 +157,7 @@ namespace Toolbox.MethodExtensions
 
         /// <summary>
         /// ContainsSlot checks if the given number is between the list size.
+        /// so it can be get or set.
         /// </summary>
         /// <param name="list"></param>
         /// <param name="index"></param>
