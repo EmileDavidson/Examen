@@ -15,7 +15,7 @@ if ((Blah.BlahP.WindowExists.Etc && Stuff) && !(bPlayerExists && bGameStarted &&
 }
 ```
 
-`should be replaced with`
+should be replaced with
 
 ```cs
 const bool bIsLegalWindow = Blah.BlahP.WindowExists.Etc && Stuff;
