@@ -8,7 +8,7 @@ namespace Runtime
     
         private ConfigurableJoint _configurableJoint;
         private Quaternion _targetInitialRotation;
-        // Start is called before the first frame update
+        
         void Start()
         {
             _configurableJoint = GetComponent<ConfigurableJoint>();

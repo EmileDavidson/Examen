@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Runtime;
-using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utilities.MethodExtensions;
 
 public class PlayerInteraction : MonoBehaviour
 {

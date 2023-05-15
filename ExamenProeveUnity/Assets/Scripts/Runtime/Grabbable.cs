@@ -5,38 +5,41 @@ using Runtime.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Grabbable : MonoBehaviour, IGrabbable
+namespace Runtime
 {
-    [SerializeField] private bool snapToPivot = false;
-    
-    public readonly UnityEvent OnGrabbed = new UnityEvent();
-    public readonly UnityEvent OnReleased = new UnityEvent();
-
-    private List<Guid> _grabbedBy = new();
-
-    private bool _isGrabbed = false;
-    public bool IsGrabbed => _isGrabbed;
-
-    private void Awake()
+    /// <summary>
+    /// Grabbable is a script you can put on objects that can be grabbed by the player.
+    /// note that the gameobject needs a collider that is a trigger for this to work.
+    /// </summary>
+    public class Grabbable : MonoBehaviour, IGrabbable
     {
-        _isGrabbed = false;
-        
-        OnGrabbed?.AddListener(() =>
-        {
-            _isGrabbed = true;
-        });
-        OnReleased?.AddListener(() =>
+        [SerializeField] private bool snapToPivot = false;
+        private bool _isGrabbed = false;
+        private List<Guid> _grabbedBy = new();
+
+        public readonly UnityEvent OnGrabbed = new UnityEvent();
+        public readonly UnityEvent OnReleased = new UnityEvent();
+
+        private void Awake()
         {
             _isGrabbed = false;
-        });
-    }
+
+            OnGrabbed?.AddListener(() =>
+            {
+                _isGrabbed = true;
+            });
+            OnReleased?.AddListener(() =>
+            {
+                _isGrabbed = false;
+            });
+        }
 
     public void AddGrabbedBy(Guid entity)
     {
         if (_grabbedBy.Contains(entity)) return;
         _grabbedBy.Add(entity);
     }
-    
+
     public void RemoveGrabbedBy(Guid entity)
     {
         _grabbedBy.Remove(entity);
@@ -45,4 +48,8 @@ public class Grabbable : MonoBehaviour, IGrabbable
     public bool SnapToPivot => snapToPivot;
 
     public List<Guid> GrabbedBy => _grabbedBy;
+
+      public bool SnapToPivot => snapToPivot;
+      public bool IsGrabbed => _isGrabbed;
+    }
 }

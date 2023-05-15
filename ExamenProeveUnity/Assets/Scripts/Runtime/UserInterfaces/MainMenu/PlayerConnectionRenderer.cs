@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using TMPro;
-using Toolbox.MethodExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utilities.MethodExtensions;
 
 namespace Runtime.UserInterfaces.MainMenu
 {

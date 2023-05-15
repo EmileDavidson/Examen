@@ -1,8 +1,10 @@
 ﻿using System.Linq;
+using Runtime.Environment;
 using Runtime.Managers;
-using Toolbox.MethodExtensions;
 using UnityEngine;
+using Utilities.MethodExtensions;
 using Utilities.Other.Runtime;
+using Utilities.Other.Runtime.Timer;
 
 namespace Runtime.Customer.CustomerStates
 {
@@ -62,7 +64,7 @@ namespace Runtime.Customer.CustomerStates
             {
                 Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
-                _timer.Canceled = true;
+                _timer.Cancel();
                 FinishState();
                 return;
             }

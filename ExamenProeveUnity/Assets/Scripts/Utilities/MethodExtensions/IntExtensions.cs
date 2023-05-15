@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Toolbox.MethodExtensions
+namespace Utilities.MethodExtensions
 {
     public static class IntExtensions
     {

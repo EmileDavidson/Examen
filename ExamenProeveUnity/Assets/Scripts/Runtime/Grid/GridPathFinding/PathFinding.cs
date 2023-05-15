@@ -313,17 +313,15 @@ namespace Runtime.Grid.GridPathFinding
             if (Path == null) return;
             if (!showGizmos) return;
 
+            Gizmos.color = Color.green;
+            
             foreach (int node in Path.PathNodes)
             {
-                Gizmos.color = Color.green;
                 Gizmos.DrawCube(myGrid.GetWorldPositionOfNode(myGrid.GetNodeByIndex(node).GridPosition), Vector3.one * .3f);
             }
 
-            //draw the start and end node
             if (Path.StartNode == null || Path.EndNode == null) return;
-            Gizmos.color = Color.green;
             Gizmos.DrawCube(myGrid.GetWorldPositionOfNode(Path.StartNode.GridPosition), Vector3.one * 1.3f);
-            Gizmos.color = Color.green;
             Gizmos.DrawCube(myGrid.GetWorldPositionOfNode(Path.EndNode.GridPosition), Vector3.one * 1.3f);
         }
 
