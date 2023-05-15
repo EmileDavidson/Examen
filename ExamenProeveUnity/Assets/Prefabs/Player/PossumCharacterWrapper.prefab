@@ -259,7 +259,6 @@ MonoBehaviour:
   trackY: 0
   trackZ: 1
   moveInstantly: 1
-  maxDistanceAway: 0.1
 --- !u!1 &7268764335705670053
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   collidersToIgnore: []
+  clearOnAwake: 0
 --- !u!114 &7268764335705670057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4866,6 +4866,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b30d8cfe1aefc748833e71079537d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGrabs:
+  - {fileID: 2925654787818499327}
+  - {fileID: 4628534999385993174}
 --- !u!4 &8107775977500366270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1466851787602205971, guid: 9942a7ed56bcfc14d851b9d906b86920, type: 3}

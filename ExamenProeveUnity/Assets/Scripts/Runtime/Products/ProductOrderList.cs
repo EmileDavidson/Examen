@@ -26,7 +26,7 @@ namespace Runtime
                     {
                         continue;
                     }
-
+            
                     _products[productOrderingBuyableProduct] = 0;
                     onProductsAdded.Invoke();
                 }

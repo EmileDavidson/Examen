@@ -4,6 +4,7 @@ using Runtime;
 using Runtime.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
+using Utilities.MethodExtensions;
 
 namespace Runtime
 {
@@ -13,43 +14,39 @@ namespace Runtime
     /// </summary>
     public class Grabbable : MonoBehaviour, IGrabbable
     {
-        [SerializeField] private bool snapToPivot = false;
-        private bool _isGrabbed = false;
-        private List<Guid> _grabbedBy = new();
+        [SerializeField] private bool snapToPivot;
+
+        private bool _isGrabbed;
+        private bool _isInteractable;
+        private readonly List<Guid> _grabbedBy = new();
 
         public readonly UnityEvent OnGrabbed = new UnityEvent();
         public readonly UnityEvent OnReleased = new UnityEvent();
 
         private void Awake()
         {
+            _isInteractable = gameObject.HasComponent<Interactable>();
             _isGrabbed = false;
 
-            OnGrabbed?.AddListener(() =>
-            {
-                _isGrabbed = true;
-            });
-            OnReleased?.AddListener(() =>
-            {
-                _isGrabbed = false;
-            });
+            OnGrabbed?.AddListener(() => { _isGrabbed = true; });
+            OnReleased?.AddListener(() => { _isGrabbed = false; });
         }
 
-    public void AddGrabbedBy(Guid entity)
-    {
-        if (_grabbedBy.Contains(entity)) return;
-        _grabbedBy.Add(entity);
-    }
+        public void AddGrabbedBy(Guid entity)
+        {
+            if (_grabbedBy.Contains(entity)) return;
+            _grabbedBy.Add(entity);
+        }
 
-    public void RemoveGrabbedBy(Guid entity)
-    {
-        _grabbedBy.Remove(entity);
-    }
+        public void RemoveGrabbedBy(Guid entity)
+        {
+            _grabbedBy.Remove(entity);
+        }
 
-    public bool SnapToPivot => snapToPivot;
 
-    public List<Guid> GrabbedBy => _grabbedBy;
-
-      public bool SnapToPivot => snapToPivot;
-      public bool IsGrabbed => _isGrabbed;
+        public List<Guid> GrabbedBy => _grabbedBy;
+        public bool SnapToPivot => snapToPivot;
+        public bool IsGrabbed => _isGrabbed;
+        public bool IsInteractable => _isInteractable;
     }
 }

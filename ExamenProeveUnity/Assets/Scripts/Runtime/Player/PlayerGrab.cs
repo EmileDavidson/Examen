@@ -119,6 +119,7 @@ namespace Runtime.Player
             {
                 _grabbedObject.transform.position = grabbedPivot.transform.position;
             }
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), _grabbedObject.GetComponent<Collider>());
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
             _grabbedObjectJoined.connectedBody = _rigidbody;
             _grabbedGrabbable.OnGrabbed?.Invoke();
@@ -143,5 +144,7 @@ namespace Runtime.Player
             _grabbedObject = null;
             _grabbedGrabbable = null;
         }
+
+        public Grabbable GrabbedGrabbable => _grabbedGrabbable;
     }
 }

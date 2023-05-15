@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using Runtime;
 using Runtime.Enums;
 using Runtime.Managers;
+using Runtime.Products;
 using TMPro;
 using Toolbox.Attributes;
-using Toolbox.MethodExtensions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Utilities.MethodExtensions;
 
 public class ProductOrdering : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class ProductOrdering : MonoBehaviour
     [SerializeField] private ProductOrderList _orderList;
     [SerializeField] private Transform deliverAnchor;
     [SerializeField] private Truck truck;
+    [SerializeField] private GameObject boxPrefab;
 
     [SerializeField] private List<ProductScriptableObject> buyableProducts = new();
     [SerializeField] private TMP_Text moneyText;
@@ -72,10 +75,12 @@ public class ProductOrdering : MonoBehaviour
         var removedProducts = new List<Tuple<ProductType, int>>();
         foreach (var orderListProduct in _orderList.Products)
         {
-            for (int i = 0; i < orderListProduct.Value; i++)
-            {
-                Instantiate(orderListProduct.Key.Prefab, deliverAnchor.position, Quaternion.identity);
-            }
+            if (orderListProduct.Value <= 0) continue;
+            
+            GameObject boxObj = Instantiate(boxPrefab, deliverAnchor.position, Quaternion.identity);
+            Box box = boxObj.GetOrAddComponent<Box>();
+            box.Content = orderListProduct.Key;
+            box.ItemCount = orderListProduct.Value;
             
             removedProducts.Add(new Tuple<ProductType, int>(orderListProduct.Key.Type, orderListProduct.Value));
         }
