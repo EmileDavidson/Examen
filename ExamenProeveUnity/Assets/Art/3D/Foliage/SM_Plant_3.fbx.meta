@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 52b05c825e4cad942af2d1cff3537eb3
+guid: 3e13b617b3bfd8345a72951895f9b733
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert9
-    second: {fileID: 2100000, guid: 55d617e7351996d4aa73e6369c4fb455, type: 2}
+      name: M_Flowerpot
+    second: {fileID: 2100000, guid: e19b3cb10c6cada419bca619f9e98c8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 52178850c45d8fa44ba3c1efb6621476, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
