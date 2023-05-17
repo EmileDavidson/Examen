@@ -25337,6 +25337,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7997118870621794929, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: timers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997118870621794929, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: timers.Array.data[1].wantedTime
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997118870621794929, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: timers.Array.data[2].onTimerFinished.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7997118870621794933, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
       propertyPath: productOrdering
       value: 
