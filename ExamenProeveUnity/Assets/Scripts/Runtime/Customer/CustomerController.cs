@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AmplifyShaderEditor;
 using Runtime.Customer.CustomerStates;
 using Runtime.Enums;
 using Runtime.Environment;
@@ -8,10 +10,13 @@ using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
 using Runtime.UserInterfaces.Utils;
+using Toolbox.Attributes;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities.MethodExtensions;
+using Utilities.Other;
 using Utilities.ScriptableObjects;
 
 namespace Runtime.Customer
@@ -23,18 +28,20 @@ namespace Runtime.Customer
     /// </summary>
     public class CustomerController : MonoBehaviour
     {
-        [SerializeField] private Guid _id = Guid.NewGuid();
+        [SerializeField] private readonly Guid _id = Guid.NewGuid();
         [SerializeField] private CustomerState state = CustomerState.Spawned;
         [SerializeField] private CustomerInventory inventory;
         [SerializeField] private CustomerMovement movement;
-        [SerializeField] private GameObject playerHip = null;
+        [SerializeField] private GameObject hip = null;
         [SerializeField] private BarHandler timeBar;
-        [FormerlySerializedAs("sprites")] [SerializeField] private EmojiSprites emojiSprites;
+
+        [FormerlySerializedAs("sprites")] [SerializeField]
+        private EmojiSprites emojiSprites;
 
         [SerializeField] private Image icon;
 
         public MyGrid Grid { get; private set; }
-        public PathFinding PathFinding { get; private set; }
+        public AStarPathFinding AStarPathFinding { get; private set; }
 
         public FixedPath EntryPath { get; private set; }
         public FixedPath ExitPath { get; private set; }
@@ -47,6 +54,7 @@ namespace Runtime.Customer
         private int grabbedPoints = 0;
         private bool wasGrabbed = false;
         private EmojiType _emojiType = EmojiType.Neutral;
+        private Rigidbody hipRb;
 
 
         private void Awake()
@@ -55,6 +63,8 @@ namespace Runtime.Customer
             {
                 Debug.LogError("No entry or exit paths found");
             }
+            
+            hipRb = hip.GetComponent<Rigidbody>();
 
             _states.Add(CustomerState.Spawned, new CustomerSpawnedState(this));
             _states.Add(CustomerState.WalkingToEntrance, new CustomerWalkingToEntranceState(this));
@@ -66,7 +76,7 @@ namespace Runtime.Customer
 
             Grid = WorldManager.Instance.worldGrid;
 
-            PathFinding = GetComponent<PathFinding>();
+            AStarPathFinding = GetComponent<AStarPathFinding>();
 
             TargetCashRegister = WorldManager.Instance.checkouts.RandomItem();
             EntryPath ??= WorldManager.Instance.entryPaths.RandomItem();
@@ -110,6 +120,7 @@ namespace Runtime.Customer
                 {
                     Grid.GetNodeByIndex(movementBlockingPoint).SetTempBlock(false, ID);
                 }
+
                 movement.BlockingPoints.Clear();
                 movement.CanMove = false;
                 wasGrabbed = true;
@@ -119,25 +130,25 @@ namespace Runtime.Customer
             if (!IsBeingGrabbed() && wasGrabbed)
             {
                 wasGrabbed = false;
-                if (movement.Path == null)
-                {
-                    movement.CanMove = true;
-                    return;
-                }
-                
-                if (movement.Path.PathType == PathType.Fixed)
-                {
-                    movement.CanMove = true;
-                    return;
-                }
-
-                PathFinding.RecalculatePath(Grid.GetNodeFromWorldPosition(playerHip.transform.position), (path) =>
-                {
-                    movement.Path = path;
-                    movement.CanMove = true;
-                });
+                if (movement.WantsToMove == false) return;
+                StartCoroutine(FindPathAfterGrab());
             }
         }
+
+        //no longer grabbed so keep checking the velocity and if it's 0 then get the path
+        public IEnumerator FindPathAfterGrab()
+        {
+            yield return new WaitUntil(() => hipRb.velocity.magnitude <= .5);
+            var fromNode = Grid.GetNodeFromWorldPosition(hip.transform.position);
+            var toNode = movement.Path?.EndNode;
+            
+            AStarPathFinding.FindPath(fromNode, toNode, (path) =>
+            {
+                movement.Path = path;
+                movement.CanMove = true;
+            }, () => {});
+        }
+
 
         private bool IsBeingGrabbed()
         {
@@ -155,13 +166,13 @@ namespace Runtime.Customer
                 state = value;
                 _states[state].OnStateStart();
             }
-        }
+        }   
 
         public CustomerInventory Inventory => inventory;
 
         public CustomerMovement Movement => movement;
 
-        public GameObject PlayerHip => playerHip;
+        public GameObject Hip => hip;
 
         public BarHandler TimeBar => timeBar;
 

@@ -10,6 +10,7 @@ namespace Runtime.Customer.CustomerStates
 
         public override void OnStateStart()
         {
+            Controller.Movement.WantsToMove = false;
             _timer = new Timer(WaitTime);
             Controller.Grid.GetNodeByIndex(Controller.CurrentTargetShelf.InteractionGridIndex).SetTempBlock(true, Controller.ID);
 

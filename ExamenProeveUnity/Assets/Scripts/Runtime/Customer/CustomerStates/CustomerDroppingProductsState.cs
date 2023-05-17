@@ -20,6 +20,7 @@ namespace Runtime.Customer.CustomerStates
 
         public override void OnStateStart()
         {
+            Controller.Movement.WantsToMove = false;
             if (Controller.Inventory.Items.IsEmpty())
             {
                 FinishState();

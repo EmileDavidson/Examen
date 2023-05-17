@@ -12,28 +12,21 @@ namespace Runtime.Customer.CustomerStates
 
         public override void OnStateStart()
         {
+            Controller.Movement.WantsToMove = true;
             MyGrid grid = Controller.Grid;
             var endNodeIndex = Controller.ExitPath.Path.PathNodes.First();
-            var startNode = grid.GetNodeFromWorldPosition(Controller.PlayerHip.transform.position);
+            var startNode = grid.GetNodeFromWorldPosition(Controller.Hip.transform.position);
+            var endNode = grid.GetNodeByIndex(endNodeIndex);
             
             Controller.Movement.onDestinationReached.AddListener(FinishState);
-            Controller.PathFinding.StartPathfinding(startNode, grid.GetNodeByIndex(endNodeIndex), (path) =>
+            Controller.AStarPathFinding.FindPath(startNode, endNode, (path) =>
             {
                 Controller.Movement.Path = path.Copy();
-            });
-            Controller.PathFinding.onNewPathFound.AddListener(PathUpdate);
-            Controller.PathFinding.onFindingNewPathFailed.AddListener(PathFindingFailed);
-            Controller.PathFinding.onFindingNewPath.AddListener(IsFindingNewPath);
+            }, ()=>{});
         }
 
         public override void FinishState()
         {
-            Controller.PathFinding.onNewPathFound.RemoveListener(PathUpdate);
-            Controller.PathFinding.onFindingNewPathFailed.RemoveListener(PathFindingFailed);
-            Controller.PathFinding.onFindingNewPath.RemoveListener(IsFindingNewPath);
-            
-            Controller.PathFinding.EndPathFinding();
-
             Controller.Movement.Path = null;
             Controller.Movement.onDestinationReached.RemoveListener(FinishState);
             Controller.State = CustomerState.DroppingProducts;

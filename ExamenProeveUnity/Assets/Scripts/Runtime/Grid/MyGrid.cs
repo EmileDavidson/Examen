@@ -206,5 +206,10 @@ namespace Runtime.Grid
 
             return neighbourList;
         }
+        
+        public int GetTotalNodeCount()
+        {
+            return Height * Width * Depth;
+        }
     }
 }
