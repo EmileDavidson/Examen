@@ -14,7 +14,7 @@ namespace Runtime.Player
         [SerializeField] private GameObject grabbedPivot;
 
         private Quaternion grabDirection;
-        private Guid playerId;
+        private Entity _playerEntity;
 
         private GameObject _grabbedObject;
         private Grabbable _grabbedGrabbable;
@@ -28,7 +28,7 @@ namespace Runtime.Player
 
         private void Awake()
         {
-            playerId = GetComponentInParent<Entity>().Uuid;
+            _playerEntity = GetComponentInParent<Entity>();
             _rigidbody ??= GetComponent<Rigidbody>();
             grabDirection = (handType == HandType.Right) ? Quaternion.Euler(0, 90, 0) : Quaternion.Euler(0, -90, 0);
         }
@@ -98,7 +98,7 @@ namespace Runtime.Player
             _grabbedGrabbable.OnReleased?.Invoke();
             Destroy(_grabbedObjectJoined);
 
-            if (!_grabbedGrabbable.IsGrabbed) _grabbedGrabbable.RemoveGrabbedBy(playerId);
+            _grabbedGrabbable.RemoveGrabbedBy(_playerEntity.Uuid);
             _grabbedObject = null;
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
@@ -114,7 +114,7 @@ namespace Runtime.Player
             if (_isGrabbingObject) return;
             if (_grabbedObject == null) return;
 
-            _grabbedGrabbable.AddGrabbedBy(playerId);
+            _grabbedGrabbable.AddGrabbedBy(_playerEntity.Uuid);
             if (_grabbedGrabbable.SnapToPivot)
             {
                 _grabbedObject.transform.position = grabbedPivot.transform.position;

@@ -40,6 +40,7 @@ namespace Runtime
 
         public void RemoveGrabbedBy(Guid entity)
         {
+            if (_isGrabbed) return;
             _grabbedBy.Remove(entity);
         }
 

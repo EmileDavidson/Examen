@@ -17,11 +17,13 @@ namespace Runtime.Products
         [SerializeField] private List<TMP_Text> countTexts;
 
         private Grabbable _grabbable;
+        private Interactable _interactable;
 
         private void Awake()
         {
-            gameObject.TryGetComponent<Grabbable>(out _grabbable);
-            gameObject.GetComponent<Interactable>().onInteractionClicked.AddListener(OpenBox);
+            _grabbable ??= gameObject.GetComponent<Grabbable>();
+            _interactable = gameObject.GetComponent<Interactable>();
+            _interactable.onInteractionClicked.AddListener(OpenBox);
             
             if (content == null) return;
             
@@ -41,10 +43,20 @@ namespace Runtime.Products
 
         private void UpdateUI()
         {
+            UpdateImages();
+            UpdateText();
+        }
+
+        private void UpdateImages()
+        {
             foreach (var img in images)
             {
                 img.sprite = content.Icon;
             }
+        }
+
+        private void UpdateText()
+        {
             foreach (var txt in countTexts)
             {
                 txt.text = $"x{itemCount}";

@@ -13,14 +13,13 @@ public class Truck : MonoBehaviour
     [SerializeField] private ProductOrdering productOrdering;
     private Vector3 _targetPos;
 
+    private bool _atDestination = true;
+    private int _playersGrabbing;
+    private Grabbable _grabbable;
+    
     public UnityEvent onArrive;
     public UnityEvent onDoorsOpened;
     public UnityEvent onDepart;
-
-    private bool _atDestination = true;
-    private int _playersGrabbing;
-
-    private Grabbable _grabbable;
     
     private void Awake()
     {

@@ -30,8 +30,8 @@ public class ProductOrdering : MonoBehaviour
     private ProductScriptableObject _selectedProduct;
     private int _playersInRange;
     private bool _isDelivering;
-
     private int _cycleIndex;
+    
     public UnityEvent onBuyableProductsChanged = new();
     public UnityEvent onDeliveryDone = new();
 

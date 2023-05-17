@@ -17,20 +17,22 @@ namespace Runtime
 
         private void Awake()
         {
-            _productOrdering.onBuyableProductsChanged.AddListener(() =>
+            _productOrdering.onBuyableProductsChanged.AddListener(PredefineItemList);
+        }
+
+        private void PredefineItemList()
+        {
+            foreach (var productOrderingBuyableProduct in _productOrdering.BuyableProducts)
             {
-                foreach (var productOrderingBuyableProduct in _productOrdering.BuyableProducts)
+                if (productOrderingBuyableProduct.Type == ProductType.Unknown) continue;
+                if (_products.ContainsKey(productOrderingBuyableProduct))
                 {
-                    if (productOrderingBuyableProduct.Type == ProductType.Unknown) continue;
-                    if (_products.ContainsKey(productOrderingBuyableProduct))
-                    {
-                        continue;
-                    }
-            
-                    _products[productOrderingBuyableProduct] = 0;
-                    onProductsAdded.Invoke();
+                    continue;
                 }
-            });
+            
+                _products[productOrderingBuyableProduct] = 0;
+                onProductsAdded.Invoke();
+            }
         }
 
         public void AddProductToOrder(ProductType type, int amount = 1)

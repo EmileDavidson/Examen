@@ -22,30 +22,32 @@ namespace Runtime
                 return;
             }
 
-            _orderList.onProductsAdded.AddListener(() =>
+            _orderList.onProductsAdded.AddListener(UpdateItemInformation);
+        }
+
+        private void UpdateItemInformation()
+        {
+            _orderList = GetComponent<ProductOrderList>();
+            _orderList.onOrderListChanged.AddListener(LoadData);
+
+            foreach (var orderListProduct in _orderList.Products)
             {
-                _orderList = GetComponent<ProductOrderList>();
-                _orderList.onOrderListChanged.AddListener(LoadData);
-
-                foreach (var orderListProduct in _orderList.Products)
+                if (listItems.Any(element => element.Product.Type == orderListProduct.Key.Type))
                 {
-                    if (listItems.Any(element => element.Product.Type == orderListProduct.Key.Type))
-                    {
-                        continue;
-                    }
-
-                    var itemObject = Instantiate(listItemPrefab, listItemContainer.transform);
-                    itemObject.SetActive(true);
-                    OrderItem orderItem = itemObject.GetComponent<OrderItem>();
-                    orderItem.Product = orderListProduct.Key;
-                    orderItem.SetIcon(orderListProduct.Key.Icon);
-                    orderItem.SetText(orderListProduct.Key.Type + ": x" + orderListProduct.Value);
-
-                    listItems.Add(orderItem);
+                    continue;
                 }
 
-                LoadData();
-            });
+                var itemObject = Instantiate(listItemPrefab, listItemContainer.transform);
+                itemObject.SetActive(true);
+                OrderItem orderItem = itemObject.GetComponent<OrderItem>();
+                orderItem.Product = orderListProduct.Key;
+                orderItem.SetIcon(orderListProduct.Key.Icon);
+                orderItem.SetText(orderListProduct.Key.Type + ": x" + orderListProduct.Value);
+
+                listItems.Add(orderItem);
+            }
+
+            LoadData();
         }
 
         private void LoadData()

@@ -6,9 +6,10 @@ namespace Runtime
 {
     public class OrderItem : MonoBehaviour
     {
-        private ProductScriptableObject _product;
         [SerializeField] private Image image;
         [SerializeField] private TMP_Text text;
+        
+        private ProductScriptableObject _product;
 
         public OrderItem(ProductScriptableObject type)
         {
