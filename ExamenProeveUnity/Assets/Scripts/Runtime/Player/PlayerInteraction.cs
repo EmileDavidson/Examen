@@ -67,7 +67,7 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
-        List<Grabbable> grabbables = interactiveGrabbedElements.Select(element => element.GrabbedGrabbable).ToList();
+        List<Grabbable> grabbables = interactiveGrabbedElements.Select(element => element.GrabbedGrabbable).Distinct().ToList();
         foreach (var grabbable in grabbables)
         {
             grabbable.gameObject.GetComponent<Interactable>().onInteractionClicked.Invoke();

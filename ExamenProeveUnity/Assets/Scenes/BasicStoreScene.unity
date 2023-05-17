@@ -3349,13 +3349,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230516661}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6496e3c1b58d44948e0b77a3db6c6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timers:
-  - wantedTime: 5
+  - wantedTime: 10
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -3374,7 +3374,7 @@ MonoBehaviour:
     onTimerUpdate:
       m_PersistentCalls:
         m_Calls: []
-  - wantedTime: 20
+  - wantedTime: 40
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -3393,7 +3393,7 @@ MonoBehaviour:
     onTimerUpdate:
       m_PersistentCalls:
         m_Calls: []
-  - wantedTime: 12.5
+  - wantedTime: 110
     onTimerFinished:
       m_PersistentCalls:
         m_Calls:
@@ -3405,6 +3405,44 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onTimerUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+  - wantedTime: 140
+    onTimerFinished:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 230516662}
+          m_TargetAssemblyTypeName: Runtime.Customer.CustomerSpawner, Assembly-CSharp
+          m_MethodName: BatchSpawn
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onTimerUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+  - wantedTime: 190
+    onTimerFinished:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 230516662}
+          m_TargetAssemblyTypeName: Runtime.Customer.CustomerSpawner, Assembly-CSharp
+          m_MethodName: BatchSpawn
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -4149,14 +4187,13 @@ PrefabInstance:
     - target: {fileID: 7025007042392690812, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
       propertyPath: deliverAnchor
       value: 
-      objectReference: {fileID: 287379603}
+      objectReference: {fileID: 485458821}
+    - target: {fileID: 7025007042392690812, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
+      propertyPath: launchDirection.x
+      value: -220
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
---- !u!4 &287379603 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7025007042039098789, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
-  m_PrefabInstance: {fileID: 287379602}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &290406116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11345,6 +11382,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4336444193012337968, guid: 296c670f83c1eb7469980f7a909666ef, type: 3}
   m_PrefabInstance: {fileID: 475607331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &485458821 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485458821, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+  m_PrefabInstance: {fileID: 1624631262}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &488167724
 PrefabInstance:
@@ -19186,6 +19228,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5903146, y: 1.8750004, z: 2.5000012}
   m_Center: {x: -0.002961517, y: 0.93749994, z: -0.00000029802328}
+--- !u!114 &1099805980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7025007042392690812, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
+  m_PrefabInstance: {fileID: 287379602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00551ec2239595e41ae2698ac1c8d20b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1103749238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25284,6 +25337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7997118870621794933, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: productOrdering
+      value: 
+      objectReference: {fileID: 1099805980}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
 --- !u!114 &1624631263 stripped

@@ -904,37 +904,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &7025007042039098786
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7025007042039098789}
-  m_Layer: 0
-  m_Name: DeliveryPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7025007042039098789
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7025007042039098786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.55, y: 0, z: -6.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7025007042392690813}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7025007042308264709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,8 +1069,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7025007042039098789}
+  m_Children: []
   m_Father: {fileID: 7025007041363956578}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1117,10 +1085,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00551ec2239595e41ae2698ac1c8d20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxDeliverDelay: 0.5
+  launchDirection: {x: 0, y: 0, z: 0}
   productDisplay: {fileID: 7025007041443270678}
   _orderList: {fileID: 951060341}
-  deliverAnchor: {fileID: 7025007042039098789}
+  deliverAnchor: {fileID: 0}
   truck: {fileID: 0}
+  boxPrefab: {fileID: 0}
   buyableProducts:
   - {fileID: 11400000, guid: 13e1cd002d5a008438c94b52e4f30e6d, type: 2}
   - {fileID: 11400000, guid: 63a58f224c6e64c428d11e76c6cfbad5, type: 2}
@@ -1144,6 +1115,9 @@ MonoBehaviour:
   moneyText: {fileID: 7025007040877435180}
   priceText: {fileID: 7025007042308264711}
   onBuyableProductsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeliveryDone:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &7025007042392690815

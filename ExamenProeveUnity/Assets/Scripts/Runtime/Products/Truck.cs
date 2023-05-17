@@ -10,7 +10,8 @@ public class Truck : MonoBehaviour
 
     [SerializeField] private Vector3 startPos;
     [SerializeField] private Vector3 endPos;
-    private Vector3 targetPos;
+    [SerializeField] private ProductOrdering productOrdering;
+    private Vector3 _targetPos;
 
     public UnityEvent onArrive;
     public UnityEvent onDoorsOpened;
@@ -26,6 +27,7 @@ public class Truck : MonoBehaviour
         _grabbable = GetComponent<Grabbable>();
         _grabbable.OnGrabbed.AddListener(GrabUpdate);
         _grabbable.OnReleased.AddListener(GrabUpdate);
+        productOrdering.onDeliveryDone.AddListener(Depart);
     }
 
     private void GrabUpdate()
@@ -34,7 +36,6 @@ public class Truck : MonoBehaviour
         if (_playersGrabbing >= playersNeeded)
         {
             onDoorsOpened.Invoke();
-            Depart();
         }
     }
 
@@ -42,7 +43,7 @@ public class Truck : MonoBehaviour
     public void Arrive()
     {
         onArrive.Invoke();
-        targetPos = endPos;
+        _targetPos = endPos;
         _atDestination = false;
     }
 
@@ -50,20 +51,20 @@ public class Truck : MonoBehaviour
     public void Depart()
     {
         onDepart.Invoke();
-        targetPos = startPos;
+        _targetPos = startPos;
         _atDestination = false;
     }
 
     private void Update()
     {
         if (_atDestination) return;
-        if (Vector3.Distance(transform.position, targetPos) <= 1)
+        if (Vector3.Distance(transform.position, _targetPos) <= 1)
         {
             _atDestination = true;
             return;
         }
         
-        Vector3 direction = (targetPos - transform.position).normalized;
+        Vector3 direction = (_targetPos - transform.position).normalized;
         gameObject.transform.position += direction * speed * Time.deltaTime;
     }
 }
