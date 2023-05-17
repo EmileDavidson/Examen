@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fa890643da664eb23d46de7607cbd, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 17
+  <Type>k__BackingField: 19
   <Prefab>k__BackingField: {fileID: 860419384795998465, guid: d5ebf86ece6c72e4b9e39c31ba6472c2, type: 3}
   <BuyPrice>k__BackingField: 4
   <SellPrice>k__BackingField: 6

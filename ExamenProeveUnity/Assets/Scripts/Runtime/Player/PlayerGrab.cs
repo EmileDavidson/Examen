@@ -1,4 +1,5 @@
-﻿using Runtime.Enums;
+﻿using System;
+using Runtime.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -13,6 +14,7 @@ namespace Runtime.Player
         [SerializeField] private GameObject grabbedPivot;
 
         private Quaternion grabDirection;
+        private Entity _playerEntity;
 
         private GameObject _grabbedObject;
         private Grabbable _grabbedGrabbable;
@@ -26,6 +28,7 @@ namespace Runtime.Player
 
         private void Awake()
         {
+            _playerEntity = GetComponentInParent<Entity>();
             _rigidbody ??= GetComponent<Rigidbody>();
             grabDirection = (handType == HandType.Right) ? Quaternion.Euler(0, 90, 0) : Quaternion.Euler(0, -90, 0);
         }
@@ -95,6 +98,7 @@ namespace Runtime.Player
             _grabbedGrabbable.OnReleased?.Invoke();
             Destroy(_grabbedObjectJoined);
 
+            _grabbedGrabbable.RemoveGrabbedBy(_playerEntity.Uuid);
             _grabbedObject = null;
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
@@ -110,10 +114,12 @@ namespace Runtime.Player
             if (_isGrabbingObject) return;
             if (_grabbedObject == null) return;
 
+            _grabbedGrabbable.AddGrabbedBy(_playerEntity.Uuid);
             if (_grabbedGrabbable.SnapToPivot)
             {
                 _grabbedObject.transform.position = grabbedPivot.transform.position;
             }
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), _grabbedObject.GetComponent<Collider>());
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
             _grabbedObjectJoined.connectedBody = _rigidbody;
             _grabbedGrabbable.OnGrabbed?.Invoke();
@@ -138,5 +144,7 @@ namespace Runtime.Player
             _grabbedObject = null;
             _grabbedGrabbable = null;
         }
+
+        public Grabbable GrabbedGrabbable => _grabbedGrabbable;
     }
 }
