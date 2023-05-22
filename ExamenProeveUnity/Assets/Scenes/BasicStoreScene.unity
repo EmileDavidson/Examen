@@ -4328,6 +4328,14 @@ PrefabInstance:
       propertyPath: onPlayerOutRange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7025007042392690815, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
+      propertyPath: m_Size.z
+      value: 8.419315
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025007042392690815, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
+      propertyPath: m_Center.z
+      value: -5.1831703
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebcd53fa6217beb4c83cc1ae468df2c6, type: 3}
 --- !u!224 &287379603 stripped
@@ -23571,6 +23579,7 @@ MonoBehaviour:
   - {fileID: 1919962717}
   - {fileID: 1182791312}
   - {fileID: 2099852572}
+  rotateToCamera: 1
 --- !u!1 &1432370156
 GameObject:
   m_ObjectHideFlags: 0

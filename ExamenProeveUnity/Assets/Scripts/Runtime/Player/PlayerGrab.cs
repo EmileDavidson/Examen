@@ -3,6 +3,7 @@ using Runtime.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Utilities.MethodExtensions;
 
 namespace Runtime.Player
 {
@@ -23,6 +24,7 @@ namespace Runtime.Player
 
         private bool _isGrabbingObject = false;
         private bool _isGrabButtonPressed = false;
+        private bool _canGrabObject = false;
 
         public UnityEvent onGrab;
 
@@ -102,6 +104,7 @@ namespace Runtime.Player
             _grabbedObject = null;
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
+            _canGrabObject = false;
         }
 
         /// <summary>
@@ -134,10 +137,12 @@ namespace Runtime.Player
 
             _grabbedObject = collision.transform.gameObject;
             _grabbedGrabbable = grabbable;
+            _canGrabObject = true;
         }
 
         private void OnTriggerExit(Collider collision)
         {
+            if (collision.transform.HasComponent<Grabbable>()) _canGrabObject = false;
             if (_isGrabbingObject) return;
             if (collision.transform.gameObject != _grabbedObject) return;
 
@@ -146,5 +151,6 @@ namespace Runtime.Player
         }
 
         public Grabbable GrabbedGrabbable => _grabbedGrabbable;
+        public bool CanGrabObject => _canGrabObject;
     }
 }
