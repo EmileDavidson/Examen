@@ -30,9 +30,11 @@ namespace Runtime.Managers
         private Dictionary<ScoreType, Tuple<int, int, int>> _score = new Dictionary<ScoreType, Tuple<int, int, int>>();
 
         /// <summary>
-        /// The money the player has in this level
+        /// The money the player has, has earned and spent in this level
         /// </summary>
         private int _money = 0;
+        private int _moneyEarned = 0;
+        private int _moneySpent = 0;
 
         public UnityEvent onMoneyChange = new();
         public UnityEvent onScoreChange = new();
@@ -61,10 +63,15 @@ namespace Runtime.Managers
             get => _money;
             set
             {
+                if (_money < value) _moneyEarned += value - _money;
+                else _moneySpent += _money - value;
                 _money = value;
                 onMoneyChange?.Invoke();
             }
         }
+
+        public int MoneyEarned => _moneyEarned;
+        public int MoneySpent => _moneySpent;
 
         public void AddScore(int addScore, int minScore, int maxScore, ScoreType type = ScoreType.General)
         {
