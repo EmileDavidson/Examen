@@ -18,7 +18,6 @@ namespace Runtime.UserInterfaces
 
         private void OnEnable()
         {
-            var moneyEarned = LevelManager.Instance.MoneyEarned;
             var percentage = LevelManager.Instance.GetTotalScorePercentage();
             var rating = LevelManager.Instance.GetStarRating();
             var happinessMaxScore = LevelManager.Instance.GetMaxScore(ScoreType.CustomerHappiness) + Math.Abs(LevelManager.Instance.GetMinScore(ScoreType.CustomerHappiness));
