@@ -17,6 +17,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (!other.TryGetComponent<Interactable>(out var interactable)) return;
         _interactables.Add(interactable);
+        interactable.onPlayerInRange.Invoke();
         InteractableListChange();
     }
 
@@ -24,6 +25,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (!other.TryGetComponent<Interactable>(out var interactable)) return;
         _interactables.Remove(interactable);
+        interactable.onPlayerOutRange.Invoke();
         InteractableListChange();
     }
 
