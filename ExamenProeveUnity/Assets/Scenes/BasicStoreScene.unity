@@ -23579,7 +23579,7 @@ MonoBehaviour:
   - {fileID: 1919962717}
   - {fileID: 1182791312}
   - {fileID: 2099852572}
-  rotateToCamera: 1
+  rotateToCamera: 0
 --- !u!1 &1432370156
 GameObject:
   m_ObjectHideFlags: 0
