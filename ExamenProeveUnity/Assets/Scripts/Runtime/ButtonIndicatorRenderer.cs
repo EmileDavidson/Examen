@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonIndicatorRenderer : MonoBehaviour
 {
-    [SerializeField] private List<Image> uiImages = new();
+    [SerializeField] private List<Image> Images = new();
     [SerializeField] private bool rotateToCamera = false;
 
     private bool _imagesAreShown = false;
@@ -19,7 +18,7 @@ public class ButtonIndicatorRenderer : MonoBehaviour
     private void Update()
     {
         if (!_imagesAreShown) return;
-        foreach (var uiImage in uiImages)
+        foreach (var uiImage in Images)
         {
             RectTransform imageTransform = uiImage.gameObject.GetComponent<RectTransform>();
             _cameraTransform ??= Camera.main.transform;
@@ -31,7 +30,7 @@ public class ButtonIndicatorRenderer : MonoBehaviour
     public void ShowButtons(bool showButtons)
     {
         _imagesAreShown = showButtons;
-        foreach (var uiImage in uiImages)
+        foreach (var uiImage in Images)
         {
             uiImage.enabled = showButtons;
         }
