@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fa890643da664eb23d46de7607cbd, type: 3}
   m_Name: Jar
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 20
+  <Type>k__BackingField: 22
   <Prefab>k__BackingField: {fileID: 873529952034537130, guid: 7004e8c4589e0c245b29aaac1fdf2953, type: 3}
   <BuyPrice>k__BackingField: 7
   <SellPrice>k__BackingField: 9

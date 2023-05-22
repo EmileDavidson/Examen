@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fa890643da664eb23d46de7607cbd, type: 3}
   m_Name: SodaGreen
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 14
+  <Type>k__BackingField: 15
   <Prefab>k__BackingField: {fileID: 6694164504502258405, guid: 8c35fe48cbb459a4c84ecbcc3c4ed36f, type: 3}
   <BuyPrice>k__BackingField: 5
   <SellPrice>k__BackingField: 9
