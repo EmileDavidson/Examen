@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Runtime.Enums;
+using TreeEditor;
 using UnityEngine;
 
 namespace Runtime.Grid.GridPathFinding
@@ -23,8 +24,6 @@ namespace Runtime.Grid.GridPathFinding
 
         public bool DestinationReached { get; set; } = false;
         
-        public PathType PathType { get; set; } = PathType.Unknown;
-
 
         /// <summary>
         /// constructor
@@ -33,12 +32,11 @@ namespace Runtime.Grid.GridPathFinding
         /// <param name="startNode"></param>
         /// <param name="endNode"></param>
         /// <param name="pType"></param>
-        public Path(List<int> nodes, GridNode startNode, GridNode endNode, PathType pType = PathType.Unknown)
+        public Path(List<int> nodes, GridNode startNode, GridNode endNode)
         {
             _path = nodes;
             StartNode = startNode;
             EndNode = endNode;
-            PathType = pType;
         }
 
 
@@ -65,10 +63,24 @@ namespace Runtime.Grid.GridPathFinding
 
         public Path Copy()
         {
-            Path newPath = new Path(_path, StartNode, EndNode, PathType);
+            Path newPath = new Path(_path, StartNode, EndNode);
             newPath.CurrentIndex = CurrentIndex;
             newPath.DestinationReached = DestinationReached;
 
+            return newPath;
+        }
+        
+        public static Path operator +(Path path1, Path path2)
+        {
+            Path newPath = path1.Copy();
+            newPath._path.AddRange(path2._path);
+            return newPath;
+        }
+        
+        public static Path operator -(Path path1, Path path2)
+        {
+            Path newPath = path1.Copy();
+            newPath._path.RemoveRange(0, path2._path.Count);
             return newPath;
         }
     }

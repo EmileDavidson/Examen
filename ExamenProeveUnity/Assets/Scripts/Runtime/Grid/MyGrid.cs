@@ -115,6 +115,7 @@ namespace Runtime.Grid
         /// <returns></returns>
         public GridNode GetNodeByIndex(int index)
         {
+            if (!nodes.ContainsSlot(index)) return null;
             return nodes[index];
         }
 
@@ -205,6 +206,11 @@ namespace Runtime.Grid
                 GetNodeByPosition(currentNode.GridPosition + new Vector3Int(0, -1, 0))); //downward
 
             return neighbourList;
+        }
+        
+        public int GetTotalNodeCount()
+        {
+            return Height * Width * Depth;
         }
     }
 }

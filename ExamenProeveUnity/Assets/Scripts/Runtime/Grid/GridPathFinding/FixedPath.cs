@@ -18,7 +18,7 @@ namespace Runtime.Grid.GridPathFinding
 
         private void Start()
         {
-            _path = new Path(pathNodeIndexes, grid.GetNodeByIndex(pathNodeIndexes[0]), grid.GetNodeByIndex(pathNodeIndexes.Last()), PathType.Fixed);
+            _path = new Path(pathNodeIndexes, grid.GetNodeByIndex(pathNodeIndexes[0]), grid.GetNodeByIndex(pathNodeIndexes.Last()));
         }
 
         private void OnDrawGizmos()

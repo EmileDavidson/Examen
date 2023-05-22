@@ -152,7 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc595f7d362915249b40b691065c9773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  runOnAwake: 1
+  runOnUpdate: 1
+  mainCamera: {fileID: 0}
   lookX: 1
   lookY: 1
   lookZ: 1
@@ -651,6 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495966102053696
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495966268022501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495966575269142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495966681793104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495966970848879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   includeChildren: 1
   collidersToIgnore: []
+  clearOnAwake: 0
 --- !u!114 &8043495966970848885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,23 +1760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cb350a91e6f694ea665daa1f7a9776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGizmos: 1
   myGrid: {fileID: 0}
-  onPathFound:
-    m_PersistentCalls:
-      m_Calls: []
-  onPathNotFound:
-    m_PersistentCalls:
-      m_Calls: []
-  onNewPathFound:
-    m_PersistentCalls:
-      m_Calls: []
-  onFindingNewPath:
-    m_PersistentCalls:
-      m_Calls: []
-  onFindingNewPathFailed:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8043495966970848881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1781,7 +1773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299a012a5e0645548fe046a0d5fca84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 2822542690542881327}
   grid: {fileID: 0}
   hipRb: {fileID: 8043495966599613112}
   hipJoint: {fileID: 8043495966599613114}
@@ -1804,10 +1796,11 @@ MonoBehaviour:
   state: 0
   inventory: {fileID: 2008414403410921536}
   movement: {fileID: 8043495966970848881}
-  playerHip: {fileID: 8043495968001426660}
+  hip: {fileID: 8043495968001426660}
   timeBar: {fileID: 6961119643108868701}
-  emojiSprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
   icon: {fileID: 8589210294425209420}
+  emojiSprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
+  wasGrabbed: 0
 --- !u!114 &2008414403410921536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2121,6 +2114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495967057091137
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,6 +2303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495967067380758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,6 +2906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495967373622125
 GameObject:
   m_ObjectHideFlags: 0
@@ -3223,6 +3219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495967602124555
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,6 +3440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495967822070441
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,6 +3725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495967993052781
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,6 +4011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495968114785393
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,6 +4200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495968123857354
 GameObject:
   m_ObjectHideFlags: 0
@@ -4387,6 +4388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8043495968168747838
 GameObject:
   m_ObjectHideFlags: 0
@@ -4608,6 +4610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPivot: 0
 --- !u!1 &8258200200400412350
 GameObject:
   m_ObjectHideFlags: 0

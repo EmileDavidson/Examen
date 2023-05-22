@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
@@ -24,24 +26,24 @@ namespace Runtime.Customer
         private static readonly int Walk = Animator.StringToHash("Walk");
         private bool _walk;
         private bool _canMove = true;
+        private bool _wantsToMove = true;
 
         private readonly HashSet<int> _blockingPoints = new();
 
-        public Path Path
+        public Path Path => _path;
+
+        public void SetPath(Path value, bool blockFinalNode = false)
         {
-            get => _path;
-            set
+            if (Equals(_path, value)) return;
+
+            foreach (var blockingPoint in _blockingPoints)
             {
-                if (Equals(_path, value)) return;
-
-                foreach (var blockingPoint in _blockingPoints)
-                {
-                    grid.GetNodeByIndex(blockingPoint).SetTempBlock(false, controller.ID);
-                }
-
-                _blockingPoints.Clear();
-                _path = value;
+                if (blockFinalNode && blockingPoint == value.PathNodes.Last()) continue;
+                grid.GetNodeByIndex(blockingPoint).SetTempBlock(false, controller.ID);
             }
+
+            _blockingPoints.Clear();
+            _path = value;
         }
 
         private void OnDisable()
@@ -50,6 +52,7 @@ namespace Runtime.Customer
             {
                 grid.GetNodeByIndex(blockingPoint).SetTempBlock(false, controller.ID);
             }
+
             _blockingPoints.Clear();
         }
 
@@ -67,23 +70,29 @@ namespace Runtime.Customer
         /// </summary>
         private void FixedUpdate()
         {
-            if (!_canMove) return;
+            if (!_canMove)
+            {
+                _walk = false;
+                targetAnimator.SetBool(Walk, _walk);
+                return;
+            }
+
             var pathExists = Path?.PathNodes != null && !Path.PathNodes.IsEmpty() && Path.CurrentIndex != -1;
-            if (!pathExists)
+            if (!pathExists || Path.GetNextNodeIndex() == -1)
             {
                 StopMovement();
                 return;
             }
-            
-            var isTempBlocked = (grid.GetNodeByIndex(Path.GetNextNodeIndex()).IsTempBlocked);
-            var isBlockedByMe = (grid.GetNodeByIndex(Path.GetNextNodeIndex()).IsBlockedBy(controller.ID));
+
+            var isTempBlocked = (grid.GetNodeByIndex(Path.GetNextNodeIndex())?.IsTempBlocked) ?? false;
+            var isBlockedByMe = (grid.GetNodeByIndex(Path.GetNextNodeIndex())?.IsBlockedBy(controller.ID)) ?? false;
 
             if (isTempBlocked && !isBlockedByMe)
             {
                 StopMovement();
                 return;
             }
-            
+
             Vector3 playerPos = hipRb.gameObject.transform.position;
             int nextPathNodeIndex = Path.GetNextNodeIndex();
             var nextPos = grid.GetWorldPositionOfNode(grid.GetNodeByIndex(nextPathNodeIndex).GridPosition);
@@ -122,7 +131,8 @@ namespace Runtime.Customer
         private void ValidateNextPointReached(Vector3 playerPos, int nextPathNodeIndex)
         {
             playerPos.y = 0;
-            if (!(Vector3.Distance(playerPos, grid.GetWorldPositionOfNode(grid.GetNodeByIndex(nextPathNodeIndex).GridPosition)) < .4f))
+            if (!(Vector3.Distance(playerPos,
+                    grid.GetWorldPositionOfNode(grid.GetNodeByIndex(nextPathNodeIndex).GridPosition)) < .4f))
             {
                 return;
             }
@@ -131,13 +141,13 @@ namespace Runtime.Customer
             {
                 grid.GetNodeByIndex(blockedIndex).SetTempBlock(false, controller.ID);
             }
-            
+
             grid.GetNodeByIndex(nextPathNodeIndex).SetTempBlock(true, controller.ID);
             grid.GetNodeByIndex(_path.CurrentIndex).SetTempBlock(true, controller.ID);
 
             _blockingPoints.Add(nextPathNodeIndex);
             _blockingPoints.Add(Path.PathNodes[Path.CurrentIndex]);
-            
+
             Path.CurrentIndex++;
             if (Path.CurrentIndex < Path.PathNodes.Count - 1) return;
 
@@ -152,10 +162,12 @@ namespace Runtime.Customer
         /// <param name="setConstrained"></param>
         private void ConstrainMovement(bool setConstrained)
         {
+            var previousConstraints = hipRb.constraints;
             var constraints =
                 setConstrained ? RigidbodyConstraints.FreezePosition : RigidbodyConstraints.FreezePositionY;
 
             hipRb.constraints = constraints;
+            hipRb.constraints = previousConstraints;
         }
 
         private void StopMovement()
@@ -165,10 +177,42 @@ namespace Runtime.Customer
             ConstrainMovement(!controller.IsGrabbed);
         }
 
+        private void OnDrawGizmos()
+        {
+            if (_path == null) return;
+            if (_path.PathNodes == null) return;
+            if (_path.PathNodes.IsEmpty()) return;
+            if (_path.CurrentIndex == -1) return;
+            if (_path.GetNextNodeIndex() == -1) return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(_path.CurrentIndex).GridPosition), 0.2f);
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(_path.GetNextNodeIndex()).GridPosition),
+                0.2f);
+            Gizmos.color = Color.blue;
+            foreach (var pathNode in _path.PathNodes)
+            {
+                Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(pathNode).GridPosition), 0.2f);
+            }
+
+            Gizmos.color = Color.yellow;
+            foreach (var blockedPoint in _blockingPoints)
+            {
+                Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(blockedPoint).GridPosition), 0.2f);
+            }
+        }
+
         public bool CanMove
         {
             get => _canMove;
             set => _canMove = value;
+        }
+
+        public bool WantsToMove
+        {
+            get => _wantsToMove;
+            set => _wantsToMove = value;
         }
 
         public HashSet<int> BlockingPoints => _blockingPoints;

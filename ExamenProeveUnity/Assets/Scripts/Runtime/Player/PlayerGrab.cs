@@ -40,8 +40,8 @@ namespace Runtime.Player
             //check if the object is destroyed if so release it
             if (_isGrabbingObject && _grabbedObject == null)
             {
-                _isGrabbingObject = false;
                 _grabbedGrabbable.OnReleased?.Invoke();
+                _isGrabbingObject = false;
                 _grabbedGrabbable = null;
                 _grabbedObject = null;
             }
@@ -96,15 +96,16 @@ namespace Runtime.Player
         {
             shoulderJoint.targetRotation = Quaternion.Euler(0, 0, 0);
             if (_grabbedObject is null) return;
-
-            _grabbedGrabbable.OnReleased?.Invoke();
-            Destroy(_grabbedObjectJoined);
+            if (_isGrabbingObject == false) return;
+            if (_grabbedGrabbable is null) return;
 
             _grabbedGrabbable.RemoveGrabbedBy(_playerEntity.Uuid);
+            _grabbedGrabbable.OnReleased?.Invoke();
             _grabbedObject = null;
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
             _objectIsInRange = false;
+            Destroy(_grabbedObjectJoined);
         }
 
         /// <summary>

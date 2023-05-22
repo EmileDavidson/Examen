@@ -9,6 +9,7 @@ namespace Runtime.Customer.CustomerStates
     {
         public override void OnStateStart()
         {
+            Controller.Movement.WantsToMove = true;
             var targetShelf = WorldManager.Instance.shelves.RandomItem();
             Controller.CurrentTargetShelf = targetShelf;
             
