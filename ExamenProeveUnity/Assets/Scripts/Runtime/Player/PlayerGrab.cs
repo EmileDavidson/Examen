@@ -3,6 +3,7 @@ using Runtime.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Utilities.MethodExtensions;
 
 namespace Runtime.Player
 {
@@ -13,7 +14,7 @@ namespace Runtime.Player
         [SerializeField] private ConfigurableJoint shoulderJoint;
         [SerializeField] private GameObject grabbedPivot;
 
-        private Quaternion grabDirection;
+        private Quaternion _grabDirection;
         private Entity _playerEntity;
 
         private GameObject _grabbedObject;
@@ -23,6 +24,7 @@ namespace Runtime.Player
 
         private bool _isGrabbingObject = false;
         private bool _isGrabButtonPressed = false;
+        private bool _objectIsInRange = false;
 
         public UnityEvent onGrab;
 
@@ -30,7 +32,7 @@ namespace Runtime.Player
         {
             _playerEntity = GetComponentInParent<Entity>();
             _rigidbody ??= GetComponent<Rigidbody>();
-            grabDirection = (handType == HandType.Right) ? Quaternion.Euler(0, 90, 0) : Quaternion.Euler(0, -90, 0);
+            _grabDirection = (handType == HandType.Right) ? Quaternion.Euler(0, 90, 0) : Quaternion.Euler(0, -90, 0);
         }
 
         private void Update()
@@ -79,11 +81,11 @@ namespace Runtime.Player
         {
             if (value == null) return;
             Vector2 direction = value.Get<Vector2>();
-            grabDirection = handType switch
+            _grabDirection = handType switch
             {
                 HandType.Right => Quaternion.Euler(direction.y * 45, 90 - direction.x * 45, 0f),
                 HandType.Left => Quaternion.Euler(direction.y * 45, -90 - direction.x * 45, 0f),
-                _ => grabDirection
+                _ => _grabDirection
             };
         }
 
@@ -102,6 +104,7 @@ namespace Runtime.Player
             _grabbedObject = null;
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
+            _objectIsInRange = false;
             Destroy(_grabbedObjectJoined);
         }
 
@@ -110,7 +113,7 @@ namespace Runtime.Player
         /// </summary>
         private void HandlePressed()
         {
-            shoulderJoint.targetRotation = grabDirection;
+            shoulderJoint.targetRotation = _grabDirection;
 
             if (_isGrabbingObject) return;
             if (_grabbedObject == null) return;
@@ -135,10 +138,12 @@ namespace Runtime.Player
 
             _grabbedObject = collision.transform.gameObject;
             _grabbedGrabbable = grabbable;
+            _objectIsInRange = true;
         }
 
         private void OnTriggerExit(Collider collision)
         {
+            if (collision.transform.HasComponent<Grabbable>()) _objectIsInRange = false;
             if (_isGrabbingObject) return;
             if (collision.transform.gameObject != _grabbedObject) return;
 
@@ -147,5 +152,6 @@ namespace Runtime.Player
         }
 
         public Grabbable GrabbedGrabbable => _grabbedGrabbable;
+        public bool ObjectIsInRange => _objectIsInRange;
     }
 }

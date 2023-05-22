@@ -14,5 +14,7 @@ namespace Runtime
         public UnityEvent onRightShoulderClicked = new();
         public UnityEvent onLeftShoulderClicked = new();
         public UnityEvent onInteractionClicked = new();
+        public UnityEvent onPlayerInRange = new();
+        public UnityEvent onPlayerOutRange = new();
     }
 }

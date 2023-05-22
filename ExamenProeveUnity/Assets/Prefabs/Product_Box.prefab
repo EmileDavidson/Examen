@@ -564,10 +564,10 @@ MonoBehaviour:
   onInteractionClicked:
     m_PersistentCalls:
       m_Calls: []
-  onLeftGrab:
+  onPlayerInRange:
     m_PersistentCalls:
       m_Calls: []
-  onRightGrab:
+  onPlayerOutRange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &3434288864474443033
