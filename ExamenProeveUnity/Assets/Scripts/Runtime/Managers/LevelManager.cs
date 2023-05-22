@@ -63,7 +63,7 @@ namespace Runtime.Managers
             get => _money;
             set
             {
-                if (_money < value) _moneyEarned = value;
+                if (_money < value) _moneyEarned += value - _money;
                 else _moneySpent += _money - value;
                 _money = value;
                 onMoneyChange?.Invoke();
