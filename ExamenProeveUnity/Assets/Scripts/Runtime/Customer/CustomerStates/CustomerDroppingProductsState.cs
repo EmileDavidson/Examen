@@ -3,16 +3,18 @@ using Runtime.Environment;
 using Runtime.Managers;
 using UnityEngine;
 using Utilities.MethodExtensions;
-using Utilities.Other.Runtime;
 using Utilities.Other.Runtime.Timer;
 
 namespace Runtime.Customer.CustomerStates
 {
     public class CustomerDroppingProductsState : CustomerStateBase
     {
-        private const int WaitTime = 10;
+        private const int WaitTime = 15;
         private Timer _timer;
         private CashRegister _register;
+
+        private bool readyToExit = false;
+
 
         public CustomerDroppingProductsState(CustomerController controller) : base(controller)
         {
@@ -41,8 +43,8 @@ namespace Runtime.Customer.CustomerStates
                 Controller.TimeBar.HideBar();
 
                 Controller.EmojiType = Controller.EmojiSprites.GetPrevious(Controller.EmojiType);
-
-                FinishState();
+                readyToExit = true;
+                // FinishState();
             });
 
             _register.onProductScanned.AddListener(OnProductsScanned);
@@ -66,7 +68,9 @@ namespace Runtime.Customer.CustomerStates
                 Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
                 _timer.Cancel();
-                FinishState();
+
+                readyToExit = true;
+                // FinishState();
                 return;
             }
 
@@ -76,6 +80,13 @@ namespace Runtime.Customer.CustomerStates
         public override void OnStateUpdate()
         {
             base.OnStateUpdate();
+
+            if (readyToExit && Controller.Grid.GetNodeFromWorldPosition(Controller.Hip.transform.position).Index ==
+                Controller.TargetCashRegister.InteractionGridIndex)
+            {
+                FinishState();
+            }
+            
             if (_timer is null) return;
             _timer.Update(Time.deltaTime);
         }
@@ -88,6 +99,18 @@ namespace Runtime.Customer.CustomerStates
             }
 
             Controller.State = CustomerState.WalkingToExit;
+        }
+
+        protected override void HandleGrabbed()
+        {
+            base.HandleGrabbed();
+            Controller.Movement.BlockingPoints.Add(Controller.TargetCashRegister.InteractionGridIndex);
+        }
+        
+        protected override void HandleReleased()
+        {
+            Controller.wasGrabbed = false;
+            Controller.FindPathAfterGrabCoroutine(Controller.Grid.GetNodeByIndex(Controller.TargetCashRegister.InteractionGridIndex));
         }
     }
 }

@@ -1773,7 +1773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299a012a5e0645548fe046a0d5fca84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 2822542690542881327}
   grid: {fileID: 0}
   hipRb: {fileID: 8043495966599613112}
   hipJoint: {fileID: 8043495966599613114}
@@ -1798,8 +1798,9 @@ MonoBehaviour:
   movement: {fileID: 8043495966970848881}
   hip: {fileID: 8043495968001426660}
   timeBar: {fileID: 6961119643108868701}
-  emojiSprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
   icon: {fileID: 8589210294425209420}
+  emojiSprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
+  wasGrabbed: 0
 --- !u!114 &2008414403410921536
 MonoBehaviour:
   m_ObjectHideFlags: 0

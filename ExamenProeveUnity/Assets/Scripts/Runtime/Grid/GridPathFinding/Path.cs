@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Runtime.Enums;
+using TreeEditor;
 using UnityEngine;
 
 namespace Runtime.Grid.GridPathFinding
@@ -66,6 +67,20 @@ namespace Runtime.Grid.GridPathFinding
             newPath.CurrentIndex = CurrentIndex;
             newPath.DestinationReached = DestinationReached;
 
+            return newPath;
+        }
+        
+        public static Path operator +(Path path1, Path path2)
+        {
+            Path newPath = path1.Copy();
+            newPath._path.AddRange(path2._path);
+            return newPath;
+        }
+        
+        public static Path operator -(Path path1, Path path2)
+        {
+            Path newPath = path1.Copy();
+            newPath._path.RemoveRange(0, path2._path.Count);
             return newPath;
         }
     }

@@ -19,7 +19,7 @@ namespace Runtime.Customer.CustomerStates
             var endNode = grid.GetNodeByIndex(endNodeIndex);
             
             Controller.Movement.onDestinationReached.AddListener(FinishState);
-            Controller.AStarPathFinding.FindPath(startNode, endNode, (path) =>
+            Controller.aStarPathFinding.FindPath(startNode, endNode, (path) =>
             {
                 Controller.Movement.Path = path.Copy();
             }, ()=>{});
@@ -30,21 +30,6 @@ namespace Runtime.Customer.CustomerStates
             Controller.Movement.Path = null;
             Controller.Movement.onDestinationReached.RemoveListener(FinishState);
             Controller.State = CustomerState.DroppingProducts;
-        }
-        
-        private void PathUpdate(Path newPath)
-        {
-            Controller.Movement.Path = newPath;
-        }
-
-        private void IsFindingNewPath()
-        {
-            Controller.Movement.Path = null;
-        }
-        
-        private void PathFindingFailed(Path oldPath)
-        {
-            Controller.Movement.Path = oldPath;
         }
     }
 }

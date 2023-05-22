@@ -108,11 +108,15 @@ namespace Runtime.Grid.GridPathFinding
         /// Path finding algorithm (A*)
         /// </summary>
         /// <returns></returns>
-        private Path FindPath([NotNull] GridNode fromNode, [NotNull] GridNode toNode,
-            [NotNull] PathFindingSettings settings, MyGrid grid)
+        private Path FindPath([NotNull] GridNode fromNode, [NotNull] GridNode toNode, [NotNull] PathFindingSettings settings, MyGrid grid)
         {
             List<GridNode> openList = new List<GridNode> { fromNode };
             List<GridNode> closedList = new List<GridNode>();
+
+            if (fromNode is null || toNode is null)
+            {
+                return null;
+            }
 
             var startNodeIndex = fromNode.Index;
             var endNodeIndex = toNode.Index;

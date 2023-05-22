@@ -78,14 +78,14 @@ namespace Runtime.Customer
             }
 
             var pathExists = Path?.PathNodes != null && !Path.PathNodes.IsEmpty() && Path.CurrentIndex != -1;
-            if (!pathExists)
+            if (!pathExists || Path.GetNextNodeIndex() == -1)
             {
                 StopMovement();
                 return;
             }
 
-            var isTempBlocked = (grid.GetNodeByIndex(Path.GetNextNodeIndex()).IsTempBlocked);
-            var isBlockedByMe = (grid.GetNodeByIndex(Path.GetNextNodeIndex()).IsBlockedBy(controller.ID));
+            var isTempBlocked = (grid.GetNodeByIndex(Path.GetNextNodeIndex())?.IsTempBlocked) ?? false;
+            var isBlockedByMe = (grid.GetNodeByIndex(Path.GetNextNodeIndex())?.IsBlockedBy(controller.ID)) ?? false;
 
             if (isTempBlocked && !isBlockedByMe)
             {
@@ -183,12 +183,12 @@ namespace Runtime.Customer
             if (_path.PathNodes == null) return;
             if (_path.PathNodes.IsEmpty()) return;
             if (_path.CurrentIndex == -1) return;
+            if(_path.GetNextNodeIndex() == -1) return;
 
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(_path.CurrentIndex).GridPosition), 0.2f);
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(_path.GetNextNodeIndex()).GridPosition),
-                0.2f);
+            Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(_path.GetNextNodeIndex()).GridPosition), 0.2f);
             Gizmos.color = Color.blue;
             foreach (var pathNode in _path.PathNodes)
             {

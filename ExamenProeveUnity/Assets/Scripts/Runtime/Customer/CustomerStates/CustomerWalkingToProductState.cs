@@ -25,7 +25,7 @@ namespace Runtime.Customer.CustomerStates
             var endNode = grid.GetNodeByIndex(Controller.CurrentTargetShelf.InteractionGridIndex);            
             
             Controller.Movement.onDestinationReached.AddListener(FinishState);
-            Controller.AStarPathFinding.FindPath(startNode, endNode, (path) =>
+            Controller.aStarPathFinding.FindPath(startNode, endNode, (path) =>
             {
                 Controller.Movement.Path = path.Copy();
             }, () =>
@@ -41,21 +41,6 @@ namespace Runtime.Customer.CustomerStates
             Controller.Grid.GetNodeByIndex(Controller.Movement.Path.PathNodes.Last()).SetTempBlock(false, Controller.ID);
             Controller.Movement.onDestinationReached.RemoveListener(FinishState);
             Controller.State = CustomerState.GettingProducts;
-        }
-        
-        private void PathUpdate(Path newPath)
-        {
-            Controller.Movement.Path = newPath;
-        }
-
-        private void IsFindingNewPath()
-        {
-            Controller.Movement.Path = null;
-        }
-        
-        private void PathFindingFailed(Path oldPath)
-        {
-            Controller.Movement.Path = oldPath;
         }
     }
 }

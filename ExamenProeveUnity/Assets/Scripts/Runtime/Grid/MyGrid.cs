@@ -115,6 +115,7 @@ namespace Runtime.Grid
         /// <returns></returns>
         public GridNode GetNodeByIndex(int index)
         {
+            if (!nodes.ContainsSlot(index)) return null;
             return nodes[index];
         }
 
