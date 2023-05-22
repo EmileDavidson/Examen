@@ -27,7 +27,7 @@ namespace Runtime.Customer.CustomerStates
             Controller.Movement.onDestinationReached.AddListener(FinishState);
             Controller.aStarPathFinding.FindPath(startNode, endNode, (path) =>
             {
-                Controller.Movement.Path = path.Copy();
+                Controller.Movement.SetPath(path.Copy());
             }, () =>
             {
                 //todo: this shouldn't happen for now but it might happen in the future so we should handle it

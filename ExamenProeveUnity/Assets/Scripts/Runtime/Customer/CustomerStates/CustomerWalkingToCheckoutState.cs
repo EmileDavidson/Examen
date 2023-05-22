@@ -21,13 +21,13 @@ namespace Runtime.Customer.CustomerStates
             Controller.Movement.onDestinationReached.AddListener(FinishState);
             Controller.aStarPathFinding.FindPath(startNode, endNode, (path) =>
             {
-                Controller.Movement.Path = path.Copy();
+                Controller.Movement.SetPath(path.Copy());
             }, ()=>{});
         }
 
         public override void FinishState()
         {
-            Controller.Movement.Path = null;
+            Controller.Movement.SetPath(null);
             Controller.Movement.onDestinationReached.RemoveListener(FinishState);
             Controller.State = CustomerState.DroppingProducts;
         }

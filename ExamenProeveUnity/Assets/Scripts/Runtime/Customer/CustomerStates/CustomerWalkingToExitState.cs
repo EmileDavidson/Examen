@@ -14,7 +14,7 @@ namespace Runtime.Customer.CustomerStates
         {
             Controller.Movement.WantsToMove = true;
             Controller.Movement.onDestinationReached.AddListener(FinishState);
-            Controller.Movement.Path = Controller.ExitPath.Path.Copy();
+            Controller.Movement.SetPath(Controller.ExitPath.Path.Copy());
         }
 
         public override void FinishState()

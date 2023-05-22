@@ -11,7 +11,7 @@
         {
             Controller.Movement.WantsToMove = true;
             Controller.Movement.onDestinationReached.AddListener(FinishState);
-            Controller.Movement.Path = Controller.EntryPath.Path.Copy();
+            Controller.Movement.SetPath( Controller.EntryPath.Path.Copy());
         }
 
         public override void FinishState()

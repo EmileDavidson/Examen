@@ -106,7 +106,7 @@ namespace Runtime.Customer
         }
 
         //no longer grabbed so keep checking the velocity and if it's 0 then get the path
-        private IEnumerator FindPathAfterGrab(GridNode toNode = null)
+        private IEnumerator FindPathAfterGrab(GridNode toNode = null, bool blockLastNode = false)
         {
             yield return new WaitUntil(() => _hipRb.velocity.magnitude <= .5);
             var fromNode = grid.GetNodeFromWorldPosition(hip.transform.position);
@@ -118,7 +118,7 @@ namespace Runtime.Customer
 
             aStarPathFinding.FindPath(fromNode, toNode, (path) =>
             {
-                movement.Path = path;
+                movement.SetPath(path, true);
                 movement.CanMove = true;
                 _currentCoroutine = null;
             }, () =>
@@ -128,13 +128,13 @@ namespace Runtime.Customer
             });
         }
 
-        public void FindPathAfterGrabCoroutine(GridNode toNode = null)
+        public void FindPathAfterGrabCoroutine(GridNode toNode = null, bool blockLastNode = false)
         {
             if(_currentCoroutine != null)
             {
                 StopCoroutine(_currentCoroutine);
             }
-            _currentCoroutine = StartCoroutine(FindPathAfterGrab(toNode));
+            _currentCoroutine = StartCoroutine(FindPathAfterGrab(toNode, blockLastNode));
         }
 
 

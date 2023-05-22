@@ -39,12 +39,8 @@ namespace Runtime.Customer.CustomerStates
 
             _timer.onTimerFinished.AddListener(() =>
             {
-                Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
-                Controller.TimeBar.HideBar();
-
                 Controller.EmojiType = Controller.EmojiSprites.GetPrevious(Controller.EmojiType);
                 readyToExit = true;
-                // FinishState();
             });
 
             _register.onProductScanned.AddListener(OnProductsScanned);
@@ -70,7 +66,6 @@ namespace Runtime.Customer.CustomerStates
                 _timer.Cancel();
 
                 readyToExit = true;
-                // FinishState();
                 return;
             }
 
@@ -86,13 +81,15 @@ namespace Runtime.Customer.CustomerStates
             {
                 FinishState();
             }
-            
+
             if (_timer is null) return;
             _timer.Update(Time.deltaTime);
         }
 
         public override void FinishState()
         {
+            Controller.TimeBar.HideBar();
+
             if (_register is not null && _register.onProductScanned is not null)
             {
                 _register.onProductScanned?.RemoveListener(OnProductsScanned);
@@ -105,12 +102,15 @@ namespace Runtime.Customer.CustomerStates
         {
             base.HandleGrabbed();
             Controller.Movement.BlockingPoints.Add(Controller.TargetCashRegister.InteractionGridIndex);
+            Controller.Grid.GetNodeByIndex(Controller.TargetCashRegister.InteractionGridIndex)
+                .SetTempBlock(true, Controller.ID);
         }
-        
+
         protected override void HandleReleased()
         {
             Controller.wasGrabbed = false;
-            Controller.FindPathAfterGrabCoroutine(Controller.Grid.GetNodeByIndex(Controller.TargetCashRegister.InteractionGridIndex));
+            Controller.FindPathAfterGrabCoroutine(
+                Controller.Grid.GetNodeByIndex(Controller.TargetCashRegister.InteractionGridIndex), true);
         }
     }
 }

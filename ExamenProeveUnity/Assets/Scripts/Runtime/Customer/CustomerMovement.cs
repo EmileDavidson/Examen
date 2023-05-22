@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Runtime.Grid;
 using Runtime.Grid.GridPathFinding;
 using Runtime.Managers;
@@ -29,21 +30,20 @@ namespace Runtime.Customer
 
         private readonly HashSet<int> _blockingPoints = new();
 
-        public Path Path
+        public Path Path => _path;
+
+        public void SetPath(Path value, bool blockFinalNode = false)
         {
-            get => _path;
-            set
+            if (Equals(_path, value)) return;
+
+            foreach (var blockingPoint in _blockingPoints)
             {
-                if (Equals(_path, value)) return;
-
-                foreach (var blockingPoint in _blockingPoints)
-                {
-                    grid.GetNodeByIndex(blockingPoint).SetTempBlock(false, controller.ID);
-                }
-
-                _blockingPoints.Clear();
-                _path = value;
+                if (blockFinalNode && blockingPoint == value.PathNodes.Last()) continue;
+                grid.GetNodeByIndex(blockingPoint).SetTempBlock(false, controller.ID);
             }
+
+            _blockingPoints.Clear();
+            _path = value;
         }
 
         private void OnDisable()
@@ -183,12 +183,13 @@ namespace Runtime.Customer
             if (_path.PathNodes == null) return;
             if (_path.PathNodes.IsEmpty()) return;
             if (_path.CurrentIndex == -1) return;
-            if(_path.GetNextNodeIndex() == -1) return;
+            if (_path.GetNextNodeIndex() == -1) return;
 
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(_path.CurrentIndex).GridPosition), 0.2f);
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(_path.GetNextNodeIndex()).GridPosition), 0.2f);
+            Gizmos.DrawSphere(grid.GetWorldPositionOfNode(grid.GetNodeByIndex(_path.GetNextNodeIndex()).GridPosition),
+                0.2f);
             Gizmos.color = Color.blue;
             foreach (var pathNode in _path.PathNodes)
             {
