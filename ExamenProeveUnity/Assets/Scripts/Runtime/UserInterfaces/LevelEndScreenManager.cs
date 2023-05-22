@@ -18,13 +18,14 @@ namespace Runtime.UserInterfaces
 
         private void OnEnable()
         {
+            var moneyEarned = LevelManager.Instance.MoneyEarned;
             var percentage = LevelManager.Instance.GetTotalScorePercentage();
             var rating = LevelManager.Instance.GetStarRating();
             var happinessMaxScore = LevelManager.Instance.GetMaxScore(ScoreType.CustomerHappiness) + Math.Abs(LevelManager.Instance.GetMinScore(ScoreType.CustomerHappiness));
             var happinessScore = LevelManager.Instance.GetScore(ScoreType.CustomerHappiness) + Math.Abs(LevelManager.Instance.GetMinScore(ScoreType.CustomerHappiness));
 
-            moneyEarnedText.text = "0$";
-            moneySpentText.text = "0$";
+            moneyEarnedText.text = $"${LevelManager.Instance.MoneyEarned},-";
+            moneySpentText.text = $"${LevelManager.Instance.MoneySpent},-";
             totalPercentageText.text = $"{percentage}%";
             customerHappinessText.text = $"{happinessScore}/{happinessMaxScore}";
             
