@@ -47,9 +47,7 @@ namespace Runtime.Customer.CustomerStates
         }
 
         private void OnProductsScanned()
-        {
-            int cashRegisterNodeIndex = Controller.ExitPath.pathNodeIndexes.First();
-
+        {   
             bool isEmpty = Controller.Inventory.Items.IsEmpty();
             bool willBeEmpty = Controller.Inventory.Items.Count - 1 <= 0;
 
@@ -61,7 +59,6 @@ namespace Runtime.Customer.CustomerStates
 
             if (willBeEmpty)
             {
-                Controller.Grid.GetNodeByIndex(cashRegisterNodeIndex).SetTempBlock(false, Controller.ID);
                 Controller.TimeBar.HideBar();
                 _timer.Cancel();
 
