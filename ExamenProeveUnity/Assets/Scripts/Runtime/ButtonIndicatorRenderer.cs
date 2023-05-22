@@ -23,6 +23,7 @@ public class ButtonIndicatorRenderer : MonoBehaviour
             RectTransform imageTransform = uiImage.gameObject.GetComponent<RectTransform>();
             _cameraTransform ??= Camera.main.transform;
 
+            if (!rotateToCamera) return;
             imageTransform.rotation = Quaternion.LookRotation(imageTransform.position - _cameraTransform.position, Vector3.up);
         }
     }

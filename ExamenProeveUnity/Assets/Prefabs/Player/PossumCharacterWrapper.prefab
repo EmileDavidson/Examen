@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2be8ae283f20394fab10be5c416ab66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiImages:
+  Images:
   - {fileID: 660678605280713512}
   - {fileID: 1477737799077213493}
   - {fileID: 428884545628064554}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e650e8e3cf1644d3ad47d9458f18fd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerGrabs:
+  playerGrabs:
   - {fileID: 2925654787818499327}
   - {fileID: 4628534999385993174}
   onPlayerInRange:
