@@ -7,19 +7,19 @@ namespace Runtime.Player
 {
     public class PlayerGrabIndicationHandler : MonoBehaviour
     {
-        [SerializeField] private List<PlayerGrab> _playerGrabs = new();
+        [SerializeField] private List<PlayerGrab> playerGrabs = new();
         
         public UnityEvent onPlayerInRange;
         public UnityEvent onPlayerOutRange;
 
         private void Update()
         {
-            if (_playerGrabs.IsEmpty()) return;
+            if (playerGrabs.IsEmpty()) return;
             
             int grabbables = 0;
-            foreach (var playerGrab in _playerGrabs)
+            foreach (var playerGrab in playerGrabs)
             {
-                if (playerGrab.CanGrabObject || playerGrab.GrabbedGrabbable != null) grabbables++;
+                if (playerGrab.ObjectIsInRange || playerGrab.GrabbedGrabbable != null) grabbables++;
             }
 
             if (grabbables >= 1)
