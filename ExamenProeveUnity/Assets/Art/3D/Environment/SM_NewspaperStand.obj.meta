@@ -3,7 +3,42 @@ guid: 61b83489709b3ee479602dd934f88767
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Newspaper_Stand_Newspaper_standMat
+    second: {fileID: 2100000, guid: 1b8794e9a738f4f4b979679ae3152f0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Newspaper_stand_Newspaper_NewspapersMat
+    second: {fileID: 2100000, guid: 1b8794e9a738f4f4b979679ae3152f0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Newspaper_stand_Newspapers_Newspaper1Mat
+    second: {fileID: 2100000, guid: 1b8794e9a738f4f4b979679ae3152f0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Newspaper_stand_Newspapers_Newspaper2Mat
+    second: {fileID: 2100000, guid: 1b8794e9a738f4f4b979679ae3152f0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Newspaper_stand_Newspapers_Newspaper3Mat
+    second: {fileID: 2100000, guid: 1b8794e9a738f4f4b979679ae3152f0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Newspaper_stand_Newspapers_Newspaper4Mat
+    second: {fileID: 2100000, guid: 1b8794e9a738f4f4b979679ae3152f0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Newspaper_stand_Newspapers_Newspaper5Mat
+    second: {fileID: 2100000, guid: 1b8794e9a738f4f4b979679ae3152f0e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +70,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.5
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,7 +123,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
