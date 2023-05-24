@@ -51,8 +51,8 @@ Assets/
     │   └── DebugMaterial2.mat            
     ├── Textures/
     │   └── Emojis/
-    │       ├── Happy.mat
-    │       └── Sad.mat 
+    │       ├── Happy.png
+    │       └── Sad.png
     └── Shaders/
         ├── outline.shader  
         └── water.shader                
