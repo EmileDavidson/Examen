@@ -4,7 +4,7 @@
 
 Summary is used to give some more information about what the whole function does and what the parameters are used for it can also be used to give some examples on how to use the method, if you have some callbacks, or some unusual code
 
-Comments are used to give more information about a certain part of a method this can be really useful when there is a big mathematical formula or some weird code that is hard to understand by reading here a comment can help to clarify to code without spending hours deciphering&#x20;
+Comments are used to give more information about a certain part of a method this can be really useful when there is a big mathematical formula or some weird code that is hard to understand by reading, a comment can help to clarify to code without spending hours deciphering&#x20;
 
 in general we mostly want to use summary since most IDE's will have some visuals when hovering over a method where the summary is displayed this helps if you are not sure what the function does and you don't want your IDE cluttered with opened files since you wanted to see a method logic&#x20;
 
