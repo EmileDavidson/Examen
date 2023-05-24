@@ -17,7 +17,7 @@ namespace Runtime.Managers
             _playerInputs = FindObjectsOfType<PlayerInput>().ToList();
             foreach (var playerInput in _playerInputs)
             {
-                _players.Add(playerInput.GetComponent<Entity>());
+                _players.AddIfNotNull(playerInput.GetComponent<Entity>());
             }
             HandlePlayerSpawning();
         }

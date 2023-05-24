@@ -11,10 +11,10 @@ using UnityEngine.UI;
 public class PlayerGrabRenderer : MonoBehaviour
 {
     [SerializeField] private int playerIndex;
-    [SerializeField] private PlayerGrab leftHand;
-    [SerializeField] private PlayerGrab rightHand;
     [SerializeField] private Image leftHandImage;
     [SerializeField] private Image rightHandImage;
+    private PlayerGrab _leftHand;
+    private PlayerGrab _rightHand;
     private List<PlayerInput> _players;
     private List<PlayerGrab> _playerGrabs;
 
@@ -27,12 +27,16 @@ public class PlayerGrabRenderer : MonoBehaviour
             _playerGrabs = player.GetComponentsInChildren<PlayerGrab>().ToList();
         }
         
-        if (_playerGrabs == null) return;
+        if (_playerGrabs == null)
+        {
+            Debug.LogWarning("Player grabs have not been found");
+            return;
+        };
         
         AssignHands();
         
-        leftHand.onGrabChanged.AddListener(UpdateVisual);
-        rightHand.onGrabChanged.AddListener(UpdateVisual);
+        _leftHand.onGrabChanged.AddListener(UpdateVisual);
+        _rightHand.onGrabChanged.AddListener(UpdateVisual);
         
         UpdateVisual();
     }
@@ -43,31 +47,31 @@ public class PlayerGrabRenderer : MonoBehaviour
         {
             if (playerGrab.HandType == HandType.Left)
             {
-                leftHand = playerGrab;
+                _leftHand = playerGrab;
                 continue;
             }
 
-            rightHand = playerGrab;
+            _rightHand = playerGrab;
         }
     }
 
     private void UpdateVisual()
     {
-        Grabbable leftHandGrabbable = leftHand.IsGrabbingObject ? leftHand.GrabbedGrabbable : null;
-        Grabbable rightHandGrabbable = rightHand.IsGrabbingObject ? rightHand.GrabbedGrabbable : null;
+        Grabbable leftHandGrabbable = _leftHand.IsGrabbingObject ? _leftHand.GrabbedGrabbable : null;
+        Grabbable rightHandGrabbable = _rightHand.IsGrabbingObject ? _rightHand.GrabbedGrabbable : null;
 
         leftHandImage.enabled = false;
         rightHandImage.enabled = false;
         
         if (leftHandGrabbable != null)
         {
-            leftHandImage.sprite = leftHandGrabbable.Icon != null ? leftHandGrabbable.Icon : null;
+            leftHandImage.sprite = leftHandGrabbable.Icon;
             leftHandImage.enabled = leftHandImage.sprite != null;
         }
 
         if (rightHandGrabbable != null)
         {
-            rightHandImage.sprite = rightHandGrabbable.Icon != null ? rightHandGrabbable.Icon : null;
+            rightHandImage.sprite = rightHandGrabbable.Icon;
             rightHandImage.enabled = rightHandImage.sprite != null;
         }
     }
