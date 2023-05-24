@@ -1,9 +1,3 @@
----
-description: >-
-  This is the 'index' file where you can see all sub-pages that's it nothing
-  more oh and you can click on the elements and it will bring you to that page.
----
-
 # Conventions
 
 

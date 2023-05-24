@@ -1,7 +1,32 @@
 # Scenes
 
-All Files Belong In A Folder Called Scenes, Scenes files are incredibly special and it is common for every project to have its own map naming system, especially if they work with sub-scenes or streaming scenes. No matter what system of map organization is in place for the specific project, all scenes should belong in `Assets/Scenes`.
+### All .scene files must be under scenes folder
 
-Being able to tell someone to open a specific map without having to explain where it is is a great time saver and general 'quality of life' improvement. It is common for scenes to be within sub-folders of `scenes`, such as `Scenes/Campaign1/` or `Scenes/Arenas`, but the most important thing here is that they all exist within `Assets/Scenes`.
+All scene files should be under "Assets/scenes" there can not be any other place with a scene file except for library example scene but these should generaly not be included when importating or removed after finishing the library.&#x20;
 
-This also simplifies the job of baking for engineers. Wrangling Scenes for a build process can be extremely frustrating if they have to dig through arbitrary folders for them. If a team's Scenes are all in one place, it is much harder to accidentally not bake a map in a build. It also simplifies lighting build scripts as well QA processes.
+## Folder structure
+
+Depending on the type of game you make the structure can change but we did it the following:
+
+```
+Assets/
+└── Scenes/
+    ├── MainScene.scene //always the first scene the user goes to. 
+    ├── Levels/   
+    │   ├── Level1.scene 
+    │   └── Level2.scene 
+    └── Testing/   
+        ├── fvxTest.scene 
+        └── {scriptName}Test.scene
+
+```
+
+
+
+### Scene Naming
+
+For sene naming we don't really have hard rules but a good way of doing it can be seen in the folder structure section&#x20;
+
+1. first scene is called mainScene.scene
+2. level scenes have a index indicating the number (first level, second level, etc..)
+3. test scenes end with the word test&#x20;

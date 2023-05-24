@@ -1,11 +1,60 @@
-# Material Library
+# Graphics
 
-If your project makes use of master materials, layered materials, or any form of reusable materials or textures that do not belong to any subset of assets, these assets should be located in Assets/Materials, and Assets/Shaders
+{% hint style="warning" %}
+In our project we only used the 'global graphics' system where all types are separated but this just makes it really hard to find connections there for if we would do it again we would switch to this system
+{% endhint %}
 
-This way all 'global' materials have a place to live and are easily located.
+In the root folder (assets) there should've been 2 folders for graphics&#x20;
 
-> This also makes it incredibly easy to enforce a 'use material instances only' policy within a project. If all artists and assets should be using material instances, then the only regular material assets that should exist are within this folder. You can easily verify this by searching for base materials in any folder that isn't the Material Library.
+#### 1. Assets/Graphics&#x20;
 
-The Material Library doesn't have to consist of purely materials. Shared utility textures, material functions, and other things of this nature should be stored here as well within folders that designate their intended purpose. For example, generic noise textures should be located in Materials/Textures/Utility.
+This folder should contain all items separatly with all materials, shaders, textures needed for it in one place meaning if something needs to change about a model you can find all files connected to it right there in the same folder&#x20;
 
-Any testing or debug materials should be within Materials/Debug. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
+<pre><code>Assets/
+└── Graphics/
+    ├── Charactors/
+    │   └── PlayerCharacter/
+    │       ├── Player.fbx 
+    │       ├── Materials/ 
+    │       │   ├── Body.mat
+    │       │   ├── Pants.mat
+    │       │   └── Skin.mat
+    │       ├── Sprites/
+    │       │   └── something.png
+    │       ├── Animation/
+    │       │   ├── playerAnimator.animator
+    │       │   └── idle.anim
+    │       └── Shaders/ 
+    │           └── outline.mat
+<strong>    └── Vechiles/
+</strong>        └── Truck/
+            ├── Truck.fbx 
+            ├── Materials/ 
+            │   ├── Front.mat
+            │   ├── Back.mat
+            │   └── Container.mat
+            ├── Sprites/
+            │   └── something.png
+            └── Shaders/ 
+                └── something.mat
+</code></pre>
+
+2\. Assets/GlobalGraphics
+
+GlobalGraphics should contains graphics that do not fit in a single item but can be used for multiple items these items should not have any connections to any other asset &#x20;
+
+```
+Assets/
+└── GlobalGraphics/
+    ├── Materials/
+    │   ├── DebugMaterial1.mat
+    │   └── DebugMaterial2.mat            
+    ├── Textures/
+    │   └── Emojis/
+    │       ├── Happy.mat
+    │       └── Sad.mat 
+    └── Shaders/
+        ├── outline.shader  
+        └── water.shader                
+```
+

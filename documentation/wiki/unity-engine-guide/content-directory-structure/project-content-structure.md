@@ -6,7 +6,7 @@
 │   ├── Textures
 │   ├── Sprites
 │   ├── Meshes
-│   ├── Shaders
+│   └── Shaders
 │
 ├── Scenes                     
 │    ├── MainMenu.scene            
@@ -22,7 +22,7 @@
 │
 ├── Animators
 │    ├── AC_Character
-<strong>│    ├── AC_Customer
+<strong>│    └── AC_Customer
 </strong>│
 ├── Lighting     
 ├── ScriptableObjects
@@ -34,16 +34,16 @@
 ├── Prefabs                
 │
 ├── Scripts
-│    ├── Runtime          &#x3C;- All scripts that are runtime scripts aka monoBehaviours 
+│    ├── Runtime          
 │    │    ├── Player
 │    │    ├── Inventory
 │    │    ├── Interaction
 │    │    └── Enviroment 
-│    ├── Editor           &#x3C;-- All scripts that are used in the editor 
+│    ├── Editor           
 │    │    ├── Player
 │    │    ├── Inventory
 │    │    └── Interaction
-│    └── Utilities        &#x3C;-- All scripts that are used as tools, or scripts that can run independent  
+│    └── Utilities         
 │
 ├── Sound                     
 │    ├── Characters
@@ -58,3 +58,7 @@
 └── TextMesh Pro
 
 </code></pre>
+
+{% hint style="warning" %}
+If we would do it again we we make a big change to all materials, textures, fonts, animators read more about it [here](material-library.md)&#x20;
+{% endhint %}

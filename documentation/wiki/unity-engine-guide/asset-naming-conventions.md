@@ -78,23 +78,13 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 
 **Most Common**
 
-| Asset Type      | Prefix | Suffix | Notes                                                             |
-| --------------- | ------ | ------ | ----------------------------------------------------------------- |
-| Level / Scene   |        |        | Should be in a folder called Scenes. e.g. `Scenes/MainMenu.unity` |
-| Prefab          |        |        |                                                                   |
-| Material        | M\_    |        |                                                                   |
-| Static Mesh     | SM\_   |        |                                                                   |
-| Texture         | T\_    |        | See Textures section for suffix                                   |
-| Particle System | P\_    |        |                                                                   |
-| Shader          | SH\_   |        |                                                                   |
+<table><thead><tr><th>Asset Type</th><th width="95">Prefix</th><th width="138">Suffix</th><th>Notes</th></tr></thead><tbody><tr><td>Level / Scene</td><td></td><td></td><td>Should be in a folder called Scenes. e.g. <code>Scenes/MainMenu.unity</code></td></tr><tr><td>Prefab</td><td></td><td></td><td></td></tr><tr><td>Material</td><td>M_</td><td></td><td></td></tr><tr><td>Static Mesh</td><td>SM_</td><td></td><td></td></tr><tr><td>Texture</td><td>T_</td><td></td><td>See Textures section for suffix</td></tr><tr><td>Particle System</td><td>P_</td><td></td><td></td></tr><tr><td>Shader</td><td>SH_</td><td></td><td></td></tr></tbody></table>
 
 **3D Models (FBX Files)**
 
 PascalCase
 
-| Asset Type  | Prefix | Suffix | Notes |
-| ----------- | ------ | ------ | ----- |
-| Static Mesh | SM\_   |        |       |
+<table><thead><tr><th width="254">Asset Type</th><th width="98">Prefix</th><th width="142">Suffix</th><th>Notes</th></tr></thead><tbody><tr><td>Static Mesh</td><td>SM_</td><td></td><td></td></tr></tbody></table>
 
 **3d Models (3ds Max)**
 
