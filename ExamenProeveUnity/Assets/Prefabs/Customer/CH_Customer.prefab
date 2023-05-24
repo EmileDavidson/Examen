@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495966102053696
 GameObject:
@@ -937,6 +938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495966268022501
 GameObject:
@@ -1157,6 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495966575269142
 GameObject:
@@ -1377,6 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495966681793104
 GameObject:
@@ -1693,6 +1697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495966970848879
 GameObject:
@@ -1800,6 +1805,8 @@ MonoBehaviour:
   timeBar: {fileID: 6961119643108868701}
   icon: {fileID: 8589210294425209420}
   emojiSprites: {fileID: 11400000, guid: c5ee1f931dae0db4ba06c14216dd5038, type: 2}
+  grid: {fileID: 0}
+  aStarPathFinding: {fileID: 0}
   wasGrabbed: 0
 --- !u!114 &2008414403410921536
 MonoBehaviour:
@@ -2114,6 +2121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495967057091137
 GameObject:
@@ -2303,6 +2311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495967067380758
 GameObject:
@@ -2906,6 +2915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495967373622125
 GameObject:
@@ -3219,6 +3229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495967602124555
 GameObject:
@@ -3440,6 +3451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495967822070441
 GameObject:
@@ -3725,6 +3737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495967993052781
 GameObject:
@@ -4011,6 +4024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495968114785393
 GameObject:
@@ -4200,6 +4214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495968123857354
 GameObject:
@@ -4388,6 +4403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8043495968168747838
 GameObject:
@@ -4610,6 +4626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b75ebacaa582dfe469a7a1bd9d8f2651, type: 3}
   snapToPivot: 0
 --- !u!1 &8258200200400412350
 GameObject:

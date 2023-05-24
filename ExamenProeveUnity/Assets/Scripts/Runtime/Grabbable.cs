@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Runtime;
+using Runtime.Enums;
 using Runtime.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,6 +15,7 @@ namespace Runtime
     /// </summary>
     public class Grabbable : MonoBehaviour, IGrabbable
     {
+        [SerializeField] private Sprite icon;
         [SerializeField] private bool snapToPivot;
 
         private bool _isGrabbed;
@@ -26,6 +28,10 @@ namespace Runtime
         private void Awake()
         {
             _isInteractable = gameObject.HasComponent<Interactable>();
+            if (icon == null)
+            {
+                icon = gameObject.HasComponent<Product>() ? gameObject.GetComponent<Product>().productScriptableObject.Icon : null;
+            }
             _isGrabbed = false;
 
             OnGrabbed?.AddListener(() => { _isGrabbed = true; });
@@ -49,5 +55,6 @@ namespace Runtime
         public bool SnapToPivot => snapToPivot;
         public bool IsGrabbed => _isGrabbed;
         public bool IsInteractable => _isInteractable;
+        public Sprite Icon => icon;
     }
 }

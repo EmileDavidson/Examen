@@ -55,13 +55,13 @@ public class PlayerGrabRenderer : MonoBehaviour
         
         if (leftHandGrabbable != null)
         {
-            leftHandImage.sprite = leftHandGrabbable.HasComponent<Product>() ? leftHandGrabbable.GetComponent<Product>().productScriptableObject.Icon : null;
+            leftHandImage.sprite = leftHandGrabbable.Icon != null ? leftHandGrabbable.Icon : null;
             leftHandImage.enabled = rightHandImage.sprite != null;
         }
 
         if (rightHandGrabbable != null)
         {
-            rightHandImage.sprite = rightHandGrabbable.HasComponent<Product>() ? rightHandGrabbable.GetComponent<Product>().productScriptableObject.Icon : null;
+            rightHandImage.sprite = rightHandGrabbable.Icon != null ? rightHandGrabbable.Icon : null;
             rightHandImage.enabled = rightHandImage.sprite != null;
         }
     }
