@@ -23,7 +23,6 @@ namespace Runtime.Player
         {
             _playerInputManager = GetComponent<PlayerInputManager>();
 
-            //remove all player prefabs that do not have a PlayerInput component attached to them 
             ValidatePrefab();
             
             _playerInputManager.playerJoinedEvent.AddListener(OnPlayerJoined);
