@@ -6,10 +6,10 @@ using Runtime.Managers;
 using Runtime.Player;
 using UnityEngine;
 using UnityEngine.UI;
-using Utilities.MethodExtensions;
 
 public class PlayerGrabRenderer : MonoBehaviour
 {
+    [SerializeField] private int playerIndex;
     [SerializeField] private PlayerGrab leftHand;
     [SerializeField] private PlayerGrab rightHand;
     [SerializeField] private Image leftHandImage;
@@ -22,6 +22,8 @@ public class PlayerGrabRenderer : MonoBehaviour
         _players = PlayerManager.Instance.Players;
         foreach (var player in _players)
         {
+            print(_players.IndexOf(player));
+            if (PlayerManager.Instance.PlayerInputs[_players.IndexOf(player)].playerIndex != playerIndex) continue;
             _playerGrabs = player.GetComponentsInChildren<PlayerGrab>().ToList();
         }
         
