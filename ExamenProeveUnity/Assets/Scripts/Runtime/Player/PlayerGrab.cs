@@ -28,6 +28,7 @@ namespace Runtime.Player
 
         public UnityEvent onGrab;
         public UnityEvent onRelease;
+        public UnityEvent onGrabChanged;
 
         private void Awake()
         {
@@ -45,7 +46,7 @@ namespace Runtime.Player
                 _isGrabbingObject = false;
                 _grabbedGrabbable = null;
                 _grabbedObject = null;
-                onRelease.Invoke();
+                onGrabChanged.Invoke();
             }
 
             if (_isGrabButtonPressed) HandlePressed();
@@ -108,6 +109,7 @@ namespace Runtime.Player
             _grabbedGrabbable = null;
             _objectIsInRange = false;
             onRelease.Invoke();
+            onGrabChanged.Invoke();
             Destroy(_grabbedObjectJoined);
         }
 
@@ -130,8 +132,9 @@ namespace Runtime.Player
             _grabbedObjectJoined = _grabbedObject.AddComponent<FixedJoint>();
             _grabbedObjectJoined.connectedBody = _rigidbody;
             _grabbedGrabbable.OnGrabbed?.Invoke();
-            onGrab.Invoke();
             _isGrabbingObject = true;
+            onGrab.Invoke();
+            onGrabChanged.Invoke();
         }
 
         private void OnTriggerEnter(Collider collision)
@@ -157,5 +160,6 @@ namespace Runtime.Player
         public HandType HandType => handType;
         public Grabbable GrabbedGrabbable => _grabbedGrabbable;
         public bool ObjectIsInRange => _objectIsInRange;
+        public bool IsGrabbingObject => _isGrabbingObject;
     }
 }

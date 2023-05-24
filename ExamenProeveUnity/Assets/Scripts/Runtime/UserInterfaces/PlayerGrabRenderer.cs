@@ -31,10 +31,8 @@ public class PlayerGrabRenderer : MonoBehaviour
         
         AssignHands();
         
-        leftHand.onGrab.AddListener(UpdateVisual);
-        leftHand.onRelease.AddListener(UpdateVisual);
-        rightHand.onGrab.AddListener(UpdateVisual);
-        rightHand.onRelease.AddListener(UpdateVisual);
+        leftHand.onGrabChanged.AddListener(UpdateVisual);
+        rightHand.onGrabChanged.AddListener(UpdateVisual);
         
         UpdateVisual();
     }
@@ -55,8 +53,8 @@ public class PlayerGrabRenderer : MonoBehaviour
 
     private void UpdateVisual()
     {
-        Grabbable leftHandGrabbable = leftHand.GrabbedGrabbable;
-        Grabbable rightHandGrabbable = rightHand.GrabbedGrabbable;
+        Grabbable leftHandGrabbable = leftHand.IsGrabbingObject ? leftHand.GrabbedGrabbable : null;
+        Grabbable rightHandGrabbable = rightHand.IsGrabbingObject ? rightHand.GrabbedGrabbable : null;
 
         leftHandImage.enabled = false;
         rightHandImage.enabled = false;
@@ -64,7 +62,7 @@ public class PlayerGrabRenderer : MonoBehaviour
         if (leftHandGrabbable != null)
         {
             leftHandImage.sprite = leftHandGrabbable.Icon != null ? leftHandGrabbable.Icon : null;
-            leftHandImage.enabled = rightHandImage.sprite != null;
+            leftHandImage.enabled = leftHandImage.sprite != null;
         }
 
         if (rightHandGrabbable != null)

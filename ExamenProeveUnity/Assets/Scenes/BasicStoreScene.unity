@@ -26370,6 +26370,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 485458821, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13
+      objectReference: {fileID: 0}
     - target: {fileID: 7077988386840055593, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
       propertyPath: m_Name
       value: SM_OutsideVrachtwagen
