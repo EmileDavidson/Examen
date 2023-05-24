@@ -39,25 +39,6 @@ namespace Runtime.Managers
         public UnityEvent onMoneyChange = new();
         public UnityEvent onScoreChange = new();
 
-        protected override void Awake()
-        {
-            base.Awake();
-            HandlePlayerSpawning();
-        }
-
-        private void HandlePlayerSpawning()
-        {
-            var players = FindObjectsOfType<PlayerInput>();
-            if (spawnLocations.IsEmpty()) return;
-            if (players is null || players.IsEmpty()) return;
-
-            foreach (var playerInput in players)
-            {
-                playerInput.transform.position = spawnLocations.Get(playerInput.playerIndex).position;
-            }
-        }
-
-
         public int Money
         {
             get => _money;
@@ -139,5 +120,7 @@ namespace Runtime.Managers
         {
             return _score.Keys.ToList();
         }
+
+        public List<Transform> SpawnLocations => spawnLocations;
     }
 }

@@ -27,6 +27,7 @@ namespace Runtime.Player
         private bool _objectIsInRange = false;
 
         public UnityEvent onGrab;
+        public UnityEvent onRelease;
 
         private void Awake()
         {
@@ -44,6 +45,7 @@ namespace Runtime.Player
                 _isGrabbingObject = false;
                 _grabbedGrabbable = null;
                 _grabbedObject = null;
+                onRelease.Invoke();
             }
 
             if (_isGrabButtonPressed) HandlePressed();
@@ -105,6 +107,7 @@ namespace Runtime.Player
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
             _objectIsInRange = false;
+            onRelease.Invoke();
             Destroy(_grabbedObjectJoined);
         }
 
@@ -151,6 +154,7 @@ namespace Runtime.Player
             _grabbedGrabbable = null;
         }
 
+        public HandType HandType => handType;
         public Grabbable GrabbedGrabbable => _grabbedGrabbable;
         public bool ObjectIsInRange => _objectIsInRange;
     }
