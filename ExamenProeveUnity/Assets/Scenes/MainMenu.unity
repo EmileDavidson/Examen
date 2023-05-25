@@ -2085,8 +2085,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputManager: {fileID: 943377561}
   colors:
-  - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &943377566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2100,7 +2100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefabs:
-  - {fileID: 7268764335705670053, guid: ed239bf2b3654b64ca04bb6859262c5b, type: 3}
+  - {fileID: 7268764335705670053, guid: 4020faeddfe344c44a323c4666fde6d9, type: 3}
+  - {fileID: 7268764335705670053, guid: 06f759551adae7c4198846a07b7a60bc, type: 3}
   spawnLocations:
   - {fileID: 1601467333}
   - {fileID: 1392141961}
@@ -2976,6 +2977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa4dc27739f5824c82863a48ed39466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   snapToPivot: 0
 --- !u!65 &1491378298
 BoxCollider:

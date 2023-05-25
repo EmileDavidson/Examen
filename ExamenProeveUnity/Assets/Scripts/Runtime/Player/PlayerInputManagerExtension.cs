@@ -16,7 +16,7 @@ namespace Runtime.Player
         private List<GameObject> playerPrefabs = new();
         [SerializeField] private List<Transform> spawnLocations = new();
 
-        private int _spawnIndex = 0;
+        private int _spawnIndex = 1;
         private PlayerInputManager _playerInputManager;
 
         private void Awake()
