@@ -24,6 +24,8 @@ namespace Runtime.Grid
         //create a vector3 with a min value of 0
         [SerializeField, Min(0)] private Vector3Int gridSize = new();
 
+        [SerializeField] private bool generateOnAwake = true;
+
         [HideInInspector] public List<GridNode> nodes = new List<GridNode>();
         public UnityEvent onResetGrid = new UnityEvent();
         public UnityEvent onGridChanged = new UnityEvent();
@@ -37,7 +39,7 @@ namespace Runtime.Grid
 
         private void Awake()
         {
-            if (!ShouldGenerate()) return;
+            if (!ShouldGenerate() && !generateOnAwake) return;
             GenerateGrid();
         }
 
@@ -207,7 +209,7 @@ namespace Runtime.Grid
 
             return neighbourList;
         }
-        
+
         public int GetTotalNodeCount()
         {
             return Height * Width * Depth;

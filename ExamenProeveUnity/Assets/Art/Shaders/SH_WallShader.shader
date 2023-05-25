@@ -9,6 +9,8 @@ Shader "Game/wall"
 		_Color3("Color 3", Color) = (0,0,0,0)
 		_WallInsideColor("WallInsideColor", Color) = (0,0,0,0)
 		_BorderColor("BorderColor", Color) = (1,1,1,0)
+		_Texture0("Texture 0", 2D) = "white" {}
+		_Tiling("Tiling", Float) = 0.3
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
@@ -21,11 +23,20 @@ Shader "Game/wall"
 		#include "UnityPBSLighting.cginc"
 		#include "Lighting.cginc"
 		#pragma target 3.0
+		#ifdef UNITY_PASS_SHADOWCASTER
+			#undef INTERNAL_DATA
+			#undef WorldReflectionVector
+			#undef WorldNormalVector
+			#define INTERNAL_DATA half3 internalSurfaceTtoW0; half3 internalSurfaceTtoW1; half3 internalSurfaceTtoW2;
+			#define WorldReflectionVector(data,normal) reflect (data.worldRefl, half3(dot(data.internalSurfaceTtoW0,normal), dot(data.internalSurfaceTtoW1,normal), dot(data.internalSurfaceTtoW2,normal)))
+			#define WorldNormalVector(data,normal) half3(dot(data.internalSurfaceTtoW0,normal), dot(data.internalSurfaceTtoW1,normal), dot(data.internalSurfaceTtoW2,normal))
+		#endif
 		struct Input
 		{
 			float2 uv_texcoord;
 			float3 worldPos;
 			float3 worldNormal;
+			INTERNAL_DATA
 		};
 
 		uniform float4 _WallInsideColor;
@@ -33,37 +44,20 @@ Shader "Game/wall"
 		uniform float _BorderSize;
 		uniform float4 _Color2;
 		uniform float4 _Color3;
+		uniform sampler2D _Texture0;
+		uniform float _Tiling;
 
 
-		float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-
-		float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-
-		float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-
-		float snoise( float2 v )
+		inline float4 TriplanarSampling93( sampler2D topTexMap, float3 worldPos, float3 worldNormal, float falloff, float2 tiling, float3 normalScale, float3 index )
 		{
-			const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-			float2 i = floor( v + dot( v, C.yy ) );
-			float2 x0 = v - i + dot( i, C.xx );
-			float2 i1;
-			i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-			float4 x12 = x0.xyxy + C.xxzz;
-			x12.xy -= i1;
-			i = mod2D289( i );
-			float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-			float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-			m = m * m;
-			m = m * m;
-			float3 x = 2.0 * frac( p * C.www ) - 1.0;
-			float3 h = abs( x ) - 0.5;
-			float3 ox = floor( x + 0.5 );
-			float3 a0 = x - ox;
-			m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-			float3 g;
-			g.x = a0.x * x0.x + h.x * x0.y;
-			g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-			return 130.0 * dot( m, g );
+			float3 projNormal = ( pow( abs( worldNormal ), falloff ) );
+			projNormal /= ( projNormal.x + projNormal.y + projNormal.z ) + 0.00001;
+			float3 nsign = sign( worldNormal );
+			half4 xNorm; half4 yNorm; half4 zNorm;
+			xNorm = tex2D( topTexMap, tiling * worldPos.zy * float2(  nsign.x, 1.0 ) );
+			yNorm = tex2D( topTexMap, tiling * worldPos.xz * float2(  nsign.y, 1.0 ) );
+			zNorm = tex2D( topTexMap, tiling * worldPos.xy * float2( -nsign.z, 1.0 ) );
+			return xNorm * projNormal.x + yNorm * projNormal.y + zNorm * projNormal.z;
 		}
 
 
@@ -74,19 +68,17 @@ Shader "Game/wall"
 
 		void surf( Input i , inout SurfaceOutput o )
 		{
+			o.Normal = float3(0,0,1);
 			float3 ase_objectScale = float3( length( unity_ObjectToWorld[ 0 ].xyz ), length( unity_ObjectToWorld[ 1 ].xyz ), length( unity_ObjectToWorld[ 2 ].xyz ) );
 			float2 appendResult50 = (float2(ase_objectScale.x , ase_objectScale.z));
 			float2 break35 = pow( (float2( 0,0 ) + (sin( ( i.uv_texcoord * UNITY_PI ) ) - float2( 0,0 )) * (appendResult50 - float2( 0,0 )) / (float2( 1,1 ) - float2( 0,0 ))) , 2.0 );
 			float Border51 = step( min( break35.x , break35.y ) , _BorderSize );
 			float4 lerpResult53 = lerp( _WallInsideColor , _BorderColor , Border51);
+			float2 temp_cast_0 = (_Tiling).xx;
 			float3 ase_worldPos = i.worldPos;
-			float simplePerlin2D88 = snoise( ase_worldPos.xy*0.1 );
-			simplePerlin2D88 = simplePerlin2D88*0.5 + 0.5;
-			float simplePerlin2D69 = snoise( ase_worldPos.xy*3.39 );
-			simplePerlin2D69 = simplePerlin2D69*0.5 + 0.5;
-			float smoothstepResult81 = smoothstep( 0.0 , 0.1 , simplePerlin2D69);
-			float4 lerpResult66 = lerp( _Color2 , _Color3 , saturate( ( saturate( ( simplePerlin2D88 + 0.8 ) ) * smoothstepResult81 ) ));
-			float3 ase_worldNormal = i.worldNormal;
+			float3 ase_worldNormal = WorldNormalVector( i, float3( 0, 0, 1 ) );
+			float4 triplanar93 = TriplanarSampling93( _Texture0, ase_worldPos, ase_worldNormal, 1.0, temp_cast_0, 1.0, 0 );
+			float4 lerpResult66 = lerp( _Color2 , _Color3 , triplanar93.x);
 			float4 lerpResult13 = lerp( lerpResult53 , lerpResult66 , ( 1.0 - ase_worldNormal.y ));
 			o.Emission = lerpResult13.rgb;
 			o.Alpha = 1;
@@ -120,8 +112,9 @@ Shader "Game/wall"
 			{
 				V2F_SHADOW_CASTER;
 				float2 customPack1 : TEXCOORD1;
-				float3 worldPos : TEXCOORD2;
-				float3 worldNormal : TEXCOORD3;
+				float4 tSpace0 : TEXCOORD2;
+				float4 tSpace1 : TEXCOORD3;
+				float4 tSpace2 : TEXCOORD4;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -135,10 +128,14 @@ Shader "Game/wall"
 				Input customInputData;
 				float3 worldPos = mul( unity_ObjectToWorld, v.vertex ).xyz;
 				half3 worldNormal = UnityObjectToWorldNormal( v.normal );
-				o.worldNormal = worldNormal;
+				half3 worldTangent = UnityObjectToWorldDir( v.tangent.xyz );
+				half tangentSign = v.tangent.w * unity_WorldTransformParams.w;
+				half3 worldBinormal = cross( worldNormal, worldTangent ) * tangentSign;
+				o.tSpace0 = float4( worldTangent.x, worldBinormal.x, worldNormal.x, worldPos.x );
+				o.tSpace1 = float4( worldTangent.y, worldBinormal.y, worldNormal.y, worldPos.y );
+				o.tSpace2 = float4( worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z );
 				o.customPack1.xy = customInputData.uv_texcoord;
 				o.customPack1.xy = v.texcoord;
-				o.worldPos = worldPos;
 				TRANSFER_SHADOW_CASTER_NORMALOFFSET( o )
 				return o;
 			}
@@ -152,10 +149,13 @@ Shader "Game/wall"
 				Input surfIN;
 				UNITY_INITIALIZE_OUTPUT( Input, surfIN );
 				surfIN.uv_texcoord = IN.customPack1.xy;
-				float3 worldPos = IN.worldPos;
+				float3 worldPos = float3( IN.tSpace0.w, IN.tSpace1.w, IN.tSpace2.w );
 				half3 worldViewDir = normalize( UnityWorldSpaceViewDir( worldPos ) );
 				surfIN.worldPos = worldPos;
-				surfIN.worldNormal = IN.worldNormal;
+				surfIN.worldNormal = float3( IN.tSpace0.z, IN.tSpace1.z, IN.tSpace2.z );
+				surfIN.internalSurfaceTtoW0 = IN.tSpace0.xyz;
+				surfIN.internalSurfaceTtoW1 = IN.tSpace1.xyz;
+				surfIN.internalSurfaceTtoW2 = IN.tSpace2.xyz;
 				SurfaceOutput o;
 				UNITY_INITIALIZE_OUTPUT( SurfaceOutput, o )
 				surf( surfIN, o );
@@ -180,8 +180,8 @@ Node;AmplifyShaderEditor.RegisterLocalVarNode;51;-257.0462,1223.529;Inherit;Fals
 Node;AmplifyShaderEditor.OneMinusNode;12;-909.426,501.0004;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.WorldNormalVector;10;-1309.426,581.0004;Inherit;True;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.LerpOp;66;-389.8044,170.4032;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.ColorNode;68;-632.1418,443.1118;Inherit;False;Property;_Color3;Color 3;2;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;67;-776.1417,158.3117;Inherit;False;Property;_Color2;Color 2;1;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;68;-632.1418,443.1118;Inherit;False;Property;_Color3;Color 3;2;0;Create;True;0;0;0;False;0;False;0,0,0,0;1,0.7306221,0.482,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;67;-776.1417,158.3117;Inherit;False;Property;_Color2;Color 2;1;0;Create;True;0;0;0;False;0;False;0,0,0,0;0.8301887,0.4742528,0.2075471,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.DynamicAppendNode;70;-2012.621,343.2394;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.ObjectScaleNode;73;-2126.219,550.4684;Inherit;False;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.TextureCoordinatesNode;72;-2213.2,434.7864;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -199,18 +199,15 @@ Node;AmplifyShaderEditor.TFHCRemapNode;83;-1550.641,407.5245;Inherit;False;5;0;F
 Node;AmplifyShaderEditor.Vector2Node;84;-1523.641,668.5245;Inherit;False;Property;_Vector0;Vector 0;5;0;Create;True;0;0;0;False;0;False;0,0;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.NoiseGeneratorNode;69;-2113.051,-11.00665;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;3.39;False;1;FLOAT;0
 Node;AmplifyShaderEditor.WorldPosInputsNode;80;-2379.805,-26.18469;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.SaturateNode;78;-1002.978,163.2946;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode;61;-2036.426,-265.0069;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;0.4;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;85;-1222.659,183.0151;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode;88;-1935.835,219.7352;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;0.1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SaturateNode;87;-1414.029,104.628;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SmoothstepOpNode;81;-1576.646,206.7912;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0.1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;54;-896.2258,-34.97316;Inherit;False;Property;_BorderColor;BorderColor;4;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,1,1,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;55;-958.851,-456.9254;Inherit;False;Property;_WallInsideColor;WallInsideColor;3;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;55;-958.851,-456.9254;Inherit;False;Property;_WallInsideColor;WallInsideColor;3;0;Create;True;0;0;0;False;0;False;0,0,0,0;0.3960784,0.1686274,0.1019607,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;89;-724.8096,-337.1298;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;90;-1272.069,-718.1956;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.DynamicAppendNode;50;-1473.046,1207.529;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.RangedFloatNode;65;-689.0463,1335.529;Inherit;False;Property;_BorderSize;BorderSize;0;0;Create;True;0;0;0;False;0;False;0.05;0.05;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;65;-689.0463,1335.529;Inherit;False;Property;_BorderSize;BorderSize;0;0;Create;True;0;0;0;False;0;False;0.05;0.69;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.StepOpNode;38;-481.0462,1223.529;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0.04;False;1;FLOAT;0
 Node;AmplifyShaderEditor.BreakToComponentsNode;35;-881.0463,1111.529;Inherit;False;FLOAT2;1;0;FLOAT2;0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15
 Node;AmplifyShaderEditor.ObjectScaleNode;18;-1649.046,1223.529;Inherit;False;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
@@ -222,6 +219,11 @@ Node;AmplifyShaderEditor.SinOpNode;31;-1505.046,1111.529;Inherit;False;1;0;FLOAT
 Node;AmplifyShaderEditor.PowerNode;32;-1121.046,1111.529;Inherit;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;2;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleMinOpNode;37;-753.0463,1127.529;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;86;-1596.958,107.2796;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.8;False;1;FLOAT;0
+Node;AmplifyShaderEditor.TriplanarNode;93;-1323.571,-137.6072;Inherit;True;Spherical;World;False;Top Texture 0;_TopTexture0;white;-1;None;Mid Texture 0;_MidTexture0;white;-1;None;Bot Texture 0;_BotTexture0;white;-1;None;Triplanar Sampler;Tangent;10;0;SAMPLER2D;;False;5;FLOAT;1;False;1;SAMPLER2D;;False;6;FLOAT;0;False;2;SAMPLER2D;;False;7;FLOAT;0;False;9;FLOAT3;0,0,0;False;8;FLOAT;1;False;3;FLOAT2;1,1;False;4;FLOAT;1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SaturateNode;78;-976.0459,249.7628;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;95;-1461.359,-35.71735;Inherit;False;Property;_Tiling;Tiling;7;0;Create;True;0;0;0;False;0;False;0.3;0.09;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;54;-718.2258,-101.9732;Inherit;False;Property;_BorderColor;BorderColor;4;0;Create;True;0;0;0;False;0;False;1,1,1,0;1,0.9037585,0.8160377,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TexturePropertyNode;92;-1638.571,-210.6072;Inherit;True;Property;_Texture0;Texture 0;6;0;Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 WireConnection;13;0;53;0
 WireConnection;13;1;66;0
 WireConnection;13;2;12;0
@@ -233,7 +235,7 @@ WireConnection;51;0;38;0
 WireConnection;12;0;10;2
 WireConnection;66;0;67;0
 WireConnection;66;1;68;0
-WireConnection;66;2;78;0
+WireConnection;66;2;93;1
 WireConnection;63;0;56;0
 WireConnection;63;2;61;0
 WireConnection;56;0;60;0
@@ -246,7 +248,6 @@ WireConnection;83;0;74;0
 WireConnection;83;3;84;1
 WireConnection;83;4;84;2
 WireConnection;69;0;80;0
-WireConnection;78;0;85;0
 WireConnection;61;0;60;0
 WireConnection;85;0;87;0
 WireConnection;85;1;81;0
@@ -268,5 +269,8 @@ WireConnection;32;0;48;0
 WireConnection;37;0;35;0
 WireConnection;37;1;35;1
 WireConnection;86;0;88;0
+WireConnection;93;0;92;0
+WireConnection;93;3;95;0
+WireConnection;78;0;85;0
 ASEEND*/
-//CHKSM=C514E7D6B4F34959627088D7CDDFAAFCE997C22A
+//CHKSM=E2AE1534A07FFA05DD41440AE7E91F009A887C9B
