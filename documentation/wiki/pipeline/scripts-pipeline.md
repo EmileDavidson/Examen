@@ -13,7 +13,7 @@ description: Our pipeline for scripts
 
 ## Software
 
-For code in Unity we always use [<mark style="color:blue;">Jetbrain rider</mark>](https://www.jetbrains.com/rider/) but if we need to make something outside of Unity we use [<mark style="color:blue;">Visual Studio Code</mark>](https://code.visualstudio.com/) <mark style="color:blue;"></mark>&#x20;
+For code in Unity we always use [<mark style="color:blue;">Jetbrain rider</mark>](https://www.jetbrains.com/rider/) but if we need to make something outside of Unity we use [<mark style="color:blue;">Visual Studio Code</mark>](https://code.visualstudio.com/)&#x20;
 
 ## Flow
 
@@ -34,8 +34,7 @@ For the following we assume that the programmer has already chosen a user-story 
    * Classes should not be more than 300 lines of code (excluding empty getter - setters, and variable declaration) this is not a must but in general, if it's more than 300 lines it could've been split into separate classes.
 6. The code has been checked. if there were no problems the validator will merge the branch with the develop branch and delete it. if there were problems these have to be changed before  it will be merged all requested changes can be found in a 'review' within GitHub note that after changing the pull request will need to be checked again.&#x20;
 
-```mermaid
-graph TD
+{% @mermaid/diagram content="graph TD
 B[Order Todo's] --> D(Create branch)
 D --> E(Coding)
 E --> F(Clean up)
@@ -48,6 +47,5 @@ K --> L(Push changes)
 L --> H
 I --> M(Merge to develop)
 M --> N(Delete merged branch)
-
-```
+" %}
 
