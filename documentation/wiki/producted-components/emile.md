@@ -169,7 +169,19 @@ Github:
 
 The customers are a vital part of the game but they also have a lot of different states they can be in, so I created a sort 'statemachine' that triggers state logic giving us the ability make a lot of states for the customers and having them do different things depending on the situation&#x20;
 
+state diagram:
 
+```mermaid
+stateDiagram
+    [*] --> Spawned
+    Spawned --> WalkingToEntrance
+    WalkingToEntrance --> WalkingToProducts
+    WalkingToProducts --> GettingProducts
+    GettingProducts --> WalkingToCheckout
+    WalkingToCheckout --> DroppingProducts
+    DroppingProducts --> WalkingToExit
+    WalkingToExit --> [*]
+```
 
 ## 2. Player
 
