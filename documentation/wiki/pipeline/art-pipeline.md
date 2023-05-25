@@ -101,7 +101,8 @@ this is what we will validate during the review of the pull request this does no
 
 6. Your work has been checked. if there were no problems the validator will merge the branch with the develop branch and delete it. if there were problems these have to be changed before  it will be merged all requested changes can be found in a 'review' within GitHub note that after changing the pull request will need to be checked again.&#x20;
 
-{% @mermaid/diagram content="graph TD
+```mermaid
+graph TD
 B[Order Todo's] --> D(Create branch)
 D --> E(Create artistic piece)
 E --> F(add to Unity)
@@ -114,7 +115,8 @@ K --> L(Push changes)
 L --> H
 I --> M(Merge to develop)
 M --> N(Delete merged branch)
-" %}
+
+```
 
 
 
