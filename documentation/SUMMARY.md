@@ -69,5 +69,3 @@
     * [Sprint 1](wiki/notes/retrospectives/sprint-1.md)
     * [Sprint 2](wiki/notes/retrospectives/sprint-2.md)
     * [Sprint 3](wiki/notes/retrospectives/sprint-3.md)
-
-## sources

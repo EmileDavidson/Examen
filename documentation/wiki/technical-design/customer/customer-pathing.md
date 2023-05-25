@@ -9,11 +9,11 @@ For our customers we had one 'main' goal go from your current position to the gi
 So we went for a grid pathfinding for 2 reasons
 
 1. easier to program and do some tricks with it&#x20;
-2. time since we had limit time a grid is one of the faster ways to get pathing&#x20;
+2. for time sake, since we had limited time and a grid is one of the easiest way to get pathing&#x20;
 
-but now we have a grid not really any pathing yet so what pathing did we use? well let me let you! we went for 2 pathfinding types a fixed path and A\* pathing why 2 you ask? simply put fixed pathing is faster to make and A\* is better when the position can change by other factors besides customer movement (just following the path) since we can re-calculate it at any time from any point of the grid.&#x20;
+but now we have a grid not really any pathing yet so what pathing did we use? well let me let you! we went for 2 pathfinding types a fixed path and A\* pathing, why 2 you ask? simply put fixed pathing is faster to make and A\* is better when the position can change by other factors besides customer movement (just following the path) since we can re-calculate it at any time from any point of the grid.&#x20;
 
-now I have to say having 2 pathing systems gave a lot of problems and conflicts at a later point we didn't foresee but luckily it didn't take more than a day to fix&#x20;
+now I have to say having 2 pathing systems gave a lot of problems and conflicts at a later point we didn't foresee but luckily it didn't take more than a day to remove all problems
 
 ### What is a grid and how does it work?
 
@@ -24,7 +24,7 @@ simply put a grid is where x,y,z values are matched to an integer. Take the imag
 
 Now what is so nice about having a grid where we can match x,y values to an integer and the other way around&#x20;
 
-simply put its great for navigation! if we want to move from node 10 to node 3 we can go from 10 -> 11 -> 12 -> 9 -> 6 -> 3 as an index and convert it to world positions (0,3) -> (1,3) -> (2,3) -> (2,2), -> (2,1), -> (2,3) now these x,y values are something we can let the customer move over since its a question of adding or removing a speed value from the customers position until it reached or is close enough to the grid position so it can go to the next and next until it reached the end and if it reached the end we also know so we can trigger methods or events&#x20;
+simply put its great for navigation! if we want to move from node 10 to node 3 we can go from 10 -> 11 -> 12 -> 9 -> 6 -> 3 as an index and convert it to world positions (0,3) -> (1,3) -> (2,3) -> (2,2), -> (2,1), -> (2,3) now these x/y values are something we can let the customer move over, since its a question of adding or removing a speed value from the customer's position until it reached or is close enough to the grid position so it can go to the next and next until it reached the end and if it reached the end we also know so we can trigger methods or events&#x20;
 
 ### Fixed Path
 

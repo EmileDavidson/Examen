@@ -1,8 +1,6 @@
 # Timers
 
-Here’s a better version of your text:
-
-Our game has a lot of timers that make the customer go to the next state or spawn over time. To address this, we created the timer class.
+Our game has a lot of timers that make the customer go to the next state or spawn over time. to handle all these things that want a timer we created the timer class!&#x20;
 
 The timer class takes a wanted time and should be updated each update using Time.DeltaTime as a parameter. When the timer updates, the timer updated event triggers having a float as value. The float is a 0 to 1 value where 0 is not started and 1 finished.
 
