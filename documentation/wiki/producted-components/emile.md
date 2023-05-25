@@ -28,8 +28,8 @@ Grid is a class that allows us to create 3d / 2d grids in the world it also has 
 
 class diagram:
 
-````mermaid
 ```mermaid
+
 classDiagram
     class GridHelper {
         + Grid3dLoop(width, height, depth, callback)
@@ -72,8 +72,8 @@ classDiagram
     GridHelper --> GridNode
     MyGrid --> GridNode
     GridHelper --> MyGrid
+
 ```
-````
 
 #### PathFinding
 
@@ -83,8 +83,8 @@ Pathfinding is an extension from grid it allows us to create or calculate paths 
 
 class diagram:
 
-````mermaid
 ```mermaid
+
 classDiagram
     class GridNode {
         - int Index
@@ -150,8 +150,8 @@ classDiagram
     MyGrid --> Path
     PathFinding --> MyGrid
     PathFinding --> GridNode
+
 ```
-````
 
 ### 1.2 States
 
