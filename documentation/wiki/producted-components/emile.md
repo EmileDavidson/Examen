@@ -1,6 +1,6 @@
 # Emile
 
-> Just a quick note I've worked on more than just this. but these are the ones most worth mentioning. as for everything i've worked in you might just say that i've touched all scripts even if only a little.&#x20;
+> Just a quick note I've worked on more than just this. but these are the ones most worth mentioning. as for everything i've worked on you might just say that I've touched all scripts even if only a little.&#x20;
 
 ## Customers&#x20;
 
@@ -15,6 +15,9 @@ Technical Design:
 Github:
 
 {% embed url="https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Grid/GridPathFinding" %}
+
+```mermaid
+```
 
 ### States
 
@@ -50,13 +53,23 @@ Technical Design:
 
 ### ResolverIterator
 
+Github:&#x20;
 
+{% embed url="https://github.com/EmileDavidson/Examen/blob/develop/ExamenProeveUnity/Assets/Scripts/Utilities/Other/Runtime/ResolverIteratorChanger.cs" %}
 
 ## Tools
 
 ### Method Extensions
 
+Github:
+
+{% embed url="https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Utilities/MethodExtensions" %}
+
 ### MonoSingleton
+
+Github:
+
+{% embed url="https://github.com/EmileDavidson/Examen/blob/develop/ExamenProeveUnity/Assets/Scripts/Utilities/Other/Runtime/MonoSingleton.cs" %}
 
 
 
