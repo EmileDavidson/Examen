@@ -69,3 +69,6 @@
     * [Sprint 1](wiki/notes/retrospectives/sprint-1.md)
     * [Sprint 2](wiki/notes/retrospectives/sprint-2.md)
     * [Sprint 3](wiki/notes/retrospectives/sprint-3.md)
+* [Producted Components](wiki/producted-components/README.md)
+  * [Emile](wiki/producted-components/emile.md)
+  * [Wouter](wiki/producted-components/wouter.md)
