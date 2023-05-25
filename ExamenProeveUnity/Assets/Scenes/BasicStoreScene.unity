@@ -12780,40 +12780,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
   m_PrefabInstance: {fileID: 507333253}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &507333256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507333255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <GridIndex>k__BackingField: 451
-  maxInventorySize: 6
-  itemCount: 2
-  item: {fileID: 11400000, guid: 48c00431441a1ff4dbc3ab12a6ec30e2, type: 2}
-  displayedItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemCountText: {fileID: 0}
-  canvas: {fileID: 0}
-  onItemAdded:
-    m_PersistentCalls:
-      m_Calls: []
-  onItemRemoved:
-    m_PersistentCalls:
-      m_Calls: []
-  onInventorySizeChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &507333257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23805,40 +23771,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
   m_PrefabInstance: {fileID: 1297248150}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1297248153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297248152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <GridIndex>k__BackingField: 448
-  maxInventorySize: 6
-  itemCount: 2
-  item: {fileID: 11400000, guid: 5c37ee9bfb0cf594fa72c375a508e2c9, type: 2}
-  displayedItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemCountText: {fileID: 0}
-  canvas: {fileID: 0}
-  onItemAdded:
-    m_PersistentCalls:
-      m_Calls: []
-  onItemRemoved:
-    m_PersistentCalls:
-      m_Calls: []
-  onInventorySizeChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &1297248154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26221,40 +26153,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
   m_PrefabInstance: {fileID: 1458237625}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1458237628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458237627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <GridIndex>k__BackingField: 446
-  maxInventorySize: 6
-  itemCount: 2
-  item: {fileID: 11400000, guid: 5f899c53ba428d0499bc06d1a92c5a66, type: 2}
-  displayedItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemCountText: {fileID: 0}
-  canvas: {fileID: 0}
-  onItemAdded:
-    m_PersistentCalls:
-      m_Calls: []
-  onItemRemoved:
-    m_PersistentCalls:
-      m_Calls: []
-  onInventorySizeChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &1458237629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38672,40 +38570,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
   m_PrefabInstance: {fileID: 1996217133}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1996217136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996217135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <GridIndex>k__BackingField: 453
-  maxInventorySize: 6
-  itemCount: 2
-  item: {fileID: 11400000, guid: 74605eadef57c714f8f9dc3cbdb218d8, type: 2}
-  displayedItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemCountText: {fileID: 0}
-  canvas: {fileID: 0}
-  onItemAdded:
-    m_PersistentCalls:
-      m_Calls: []
-  onItemRemoved:
-    m_PersistentCalls:
-      m_Calls: []
-  onInventorySizeChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &1996217137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40083,40 +39947,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f62d6b3d4754d24449448ac7880d87bc, type: 3}
   m_PrefabInstance: {fileID: 2120253163}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2120253166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120253165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f145d7f553024b446b7ce18ccc4d82d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <GridIndex>k__BackingField: 450
-  maxInventorySize: 6
-  itemCount: 2
-  item: {fileID: 11400000, guid: 8604f9973af55604fb95aa753c414117, type: 2}
-  displayedItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemCountText: {fileID: 0}
-  canvas: {fileID: 0}
-  onItemAdded:
-    m_PersistentCalls:
-      m_Calls: []
-  onItemRemoved:
-    m_PersistentCalls:
-      m_Calls: []
-  onInventorySizeChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &2120253167
 BoxCollider:
   m_ObjectHideFlags: 0
