@@ -24,11 +24,13 @@ Github Grid:
 
 Grid is a class that allows us to create 3d / 2d grids in the world it also has some gizmos that allows us to few the grid and see if it is at the right position by giving and offset (offset is from 0,0) or by setting the cell size it works stand alone and does not require any other scripts outside of the grid folder&#x20;
 
+<figure><img src="../../.gitbook/assets/Unity_CUreZS8Beh.png" alt=""><figcaption></figcaption></figure>
+
 #### PathFinding
 
 Pathfinding is an extension from grid it allows us to create or calculate paths on the grid and returns a Path object (a list of grid nodes) this can than be used by anyone that knows of it for whatever it wants.  &#x20;
 
-
+<figure><img src="../../.gitbook/assets/Unity_16BQIWAUJp.gif" alt=""><figcaption></figcaption></figure>
 
 ### 1.2 States
 
