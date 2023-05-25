@@ -26,11 +26,132 @@ Grid is a class that allows us to create 3d / 2d grids in the world it also has 
 
 <figure><img src="../../.gitbook/assets/Unity_CUreZS8Beh.png" alt=""><figcaption></figcaption></figure>
 
+class diagram:
+
+````mermaid
+```mermaid
+classDiagram
+    class GridHelper {
+        + Grid3dLoop(width, height, depth, callback)
+    }
+
+    class GridNode {
+        - IsBlocked: bool
+        - IsTempBlocked: bool
+        - IsLocationNode: bool
+        - GridPosition: Vector3Int
+        - Index: int
+        - TempBlockedBy: List<string>
+        + GridNode(index, x, y, z, blockedNode)
+        + SetBlocked(doBlock)
+        + SetTempBlock(doTempBlock, id)
+        + SetLocationNode(isLocationNode)
+        + IsBlockedBy(id)
+    }
+
+      class MyGrid {
+        - Vector3 pivotPoint
+        - int nodeSize
+        - Vector3Int gridSize
+        - List<GridNode> nodes
+        - UnityEvent onResetGrid
+        - UnityEvent onGridChanged
+        - UnityEvent<GridNode> onGridChangedWithNode
+        + Width: int
+        + Height: int
+        + Depth: int
+        + PivotPoint: Vector3
+        + ShouldGenerate(): bool
+        + GenerateGrid(): MyGrid
+        + ResetGrid(): MyGrid
+        + GetNodeByIndex(index: int): GridNode
+        + GetNodeByPosition(position: Vector3Int): GridNode
+        + GetDirectNeighbourList(currentNode: GridNode): List<GridNode>
+        + GetTotalNodeCount(): int
+    }
+    GridHelper --> GridNode
+    MyGrid --> GridNode
+    GridHelper --> MyGrid
+```
+````
+
 #### PathFinding
 
 Pathfinding is an extension from grid it allows us to create or calculate paths on the grid and returns a Path object (a list of grid nodes) this can than be used by anyone that knows of it for whatever it wants.  &#x20;
 
 <figure><img src="../../.gitbook/assets/Unity_16BQIWAUJp.gif" alt=""><figcaption></figcaption></figure>
+
+class diagram:
+
+````mermaid
+```mermaid
+classDiagram
+    class GridNode {
+        - int Index
+        - int X
+        - int Y
+        - int Z
+        - bool Blocked
+        - bool TempBlocked
+        - bool Endpoint
+        - bool Walkable
+    }
+
+    class Path {
+        - List<int> PathNodes
+        - int CurrentIndex
+        - GridNode StartNode
+        - GridNode EndNode
+        - bool DestinationReached
+        + GetNextNodeIndex(): int
+        + Reset(): void
+        + Copy(): Path
+    }
+
+    class MyGrid {
+        - Vector3 pivotPoint
+        - int nodeSize
+        - Vector3Int gridSize
+        - List<GridNode> nodes
+        - UnityEvent onResetGrid
+        - UnityEvent onGridChanged
+        - UnityEvent<GridNode> onGridChangedWithNode
+        + Width: int
+        + Height: int
+        + Depth: int
+        + PivotPoint: Vector3
+        + ShouldGenerate(): bool
+        + GenerateGrid(): MyGrid
+        + ResetGrid(): MyGrid
+        + GetNodeByIndex(index: int): GridNode
+        + GetNodeByPosition(position: Vector3Int): GridNode
+        + GetDirectNeighbourList(currentNode: GridNode): List<GridNode>
+        + GetTotalNodeCount(): int
+    }
+
+    class PathFinding {
+        - MyGrid grid
+        - GridNode startNode
+        - GridNode endNode
+        - List<GridNode> openList
+        - List<GridNode> closedList
+        - Dictionary<GridNode, PathFindingCost> nodeCosts
+        - Dictionary<GridNode, GridNode> cameFrom
+        + FindPath(start: GridNode, end: GridNode): Path
+        + CalculatePathCost(node: GridNode, cameFromNode: GridNode): PathFindingCost
+        + CalculateHeuristicCost(node: GridNode): int
+        + GetPath(): Path
+        + Clear(): void
+    }
+
+    GridNode --> Path
+    Path --> GridNode
+    MyGrid --> GridNode
+    MyGrid --> Path
+    PathFinding --> MyGrid
+    PathFinding --> GridNode
+```
+````
 
 ### 1.2 States
 
