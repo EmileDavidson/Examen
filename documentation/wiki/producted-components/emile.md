@@ -187,7 +187,7 @@ stateDiagram
 
 ### 2.1 PlayerInputActions + Connecting (coop)&#x20;
 
-Github (mutliple player prefabs + spawn locations):
+Github (PlayerInputManagerExtensions):
 
 {% embed url="https://github.com/EmileDavidson/Examen/blob/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Player/PlayerInputManagerExtension.cs" %}
 
@@ -203,9 +203,13 @@ Github (ResolverIterator):&#x20;
 
 PlayerInputActions is just the ActionMap created by unitys latest input system nothing all to big but a big part in our coop games since it allowed us to link controllers or keyboards to a input script so we could have multiple players.
 
+<figure><img src="../../.gitbook/assets/Photoshop_J0AwyhblU1.png" alt=""><figcaption></figcaption></figure>
+
 #### PlayerInputManagerExtensions
 
-We used the PlayerInputManager to handle devices connecting and spawning a prefab but unities script doesn't allow for spawn locations or multiple prefabs to be spawned so I created the PlayerInputManagerExtensions that does 2 things it allows us to spawn multiple player prefabs and allows us to give spawn locations&#x20;
+We used the PlayerInputManager to handle devices connecting and spawning a prefab but unity doesn't allow for spawn locations or multiple prefabs so I created the PlayerInputManagerExtensions that does 2 things it allows us to spawn multiple player prefabs and allows us to give spawn locations&#x20;
+
+as for why I created a script instead of inheriting PlayerInputManager is simple the inspector was custom drawn for the PlayerInputManager so it looked awful if I used inherting&#x20;
 
 ### 2.2 PlayerAnimation
 
