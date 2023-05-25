@@ -1,6 +1,6 @@
 # Emile
 
-> Just a quick note I've worked on more than just this. but these are the ones most worth mentioning. as for everything i've worked on you might just say that I've touched all scripts even if only a little.&#x20;
+> Just a quick note I've worked on more than just this. but these are the ones most worth mentioning.
 
 ## 1. Customers&#x20;
 
