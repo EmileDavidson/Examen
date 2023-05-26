@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 783204188414254207}
   - component: {fileID: 2038388693538758975}
   - component: {fileID: 346693972892458830}
+  - component: {fileID: 52719494921501444}
   m_Layer: 0
   m_Name: PossumCharacterWrapper
   m_TagString: Untagged
@@ -857,6 +858,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beddbff565ee4a30b0cff9238690b8ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &52719494921501444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268764335705670053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a609e009fb46423a87ce024183cc4eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interact:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7580102462911325161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,6 +3519,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrabChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7268764335299476044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3703,6 +3725,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrabChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7268764334230362033
 MonoBehaviour:
   m_ObjectHideFlags: 0
