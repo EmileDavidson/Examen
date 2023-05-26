@@ -20,7 +20,7 @@ now I have to say having 2 pathing systems gave a lot of problems and conflicts 
 Before I can explain how the pathing works I need to give some more information about what a grid is and how it works.&#x20;
 
 simply put a grid is where x,y,z values are matched to an integer. Take the image as an example where the top (0,1,2) is considered the x and the side (0,1,2,3) is considered the y and if there was depth it would be considered the z but for simplicity, we keep it at a 2d array \
-![](<../../../.gitbook/assets/image (1).png>)&#x20;
+![](<../../../.gitbook/assets/image (1) (1).png>)&#x20;
 
 Now what is so nice about having a grid where we can match x,y values to an integer and the other way around&#x20;
 
@@ -40,7 +40,7 @@ the return value of a\* is the same as a fixed path beside the fact that a fixed
 
 how does a-star calculate the path
 
-![](../../../.gitbook/assets/image.png)
+![](<../../../.gitbook/assets/image (1).png>)
 
 The A-star algorithm calculates the fastest path by starting at the beginning position and getting all neighbors (all nodes that are right next to it). It then checks how far away each neighbor is from the end point and gives each node a distance value. The algorithm then takes the node that is closest to the end position and repeats the process of getting all neighbor nodes and checking their distance values. It updates the distance value and repeats until there are no cells left for the grid to move over or it reaches its position. If the pathfinding reaches the destination, it can backtrack its movements and add them to a list. This list is the path that the customer can follow to reach their destination.
 

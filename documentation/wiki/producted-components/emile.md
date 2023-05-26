@@ -237,6 +237,8 @@ Technical Design:
 
 Since we used a ragdoll player we couldn't simply use the animator to animate the player so a solution to this is creating a copy of the player and copy the rotation from that copy to the ragdoll target rotation, allowing us to the animator to animate ragdoll&#x20;
 
+<figure><img src="../../.gitbook/assets/Unity_BXkFhrfcny (1).gif" alt=""><figcaption></figcaption></figure>
+
 ### 2.3 ResolverIterator
 
 The ResolerIterator on its own is nothing special but in this case its now about the script but more about its function. so.. the players had a lot of problems mostly with stretching when moving to fast or when grabbing a object that is to heavy or having force to the opposite direction you want to walk and we had a hard time fixing it and than we found out we could just update the rigidbody ResolverIterator to a higher number and this fixed the issue!&#x20;
