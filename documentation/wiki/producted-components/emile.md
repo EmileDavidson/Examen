@@ -1,6 +1,20 @@
 # Emile
 
-> Just a quick note I've worked on more than just this. but these are the ones most worth mentioning.
+[Customers](https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Customer)
+
+[Grid](https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Grid)
+
+[Pathfinding](https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Grid/GridPathFinding)
+
+[MethodExtensions](https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Utilities/MethodExtensions)
+
+[PlayerInputManagerExtension](https://github.com/EmileDavidson/Examen/blob/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Player/PlayerInputManagerExtension.cs)
+
+[Player Grabbing ](https://github.com/EmileDavidson/Examen/blob/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Player/PlayerGrab.cs)
+
+[Emoji Scriptable Object](https://github.com/EmileDavidson/Examen/blob/develop/ExamenProeveUnity/Assets/Scripts/Utilities/ScriptableObjects/EmojiSprites.cs)
+
+[Tool classes / stand alone classes](https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Utilities/Other/Runtime)
 
 ## 1. Customers&#x20;
 

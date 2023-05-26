@@ -2,7 +2,9 @@
 
 Players
 
-In the game you (the player) will have to do certain tasks in order to keep your store running and keep the customers happy (to get more info about customers, click [here](customer.md)). To complete these tasks the player will need certain controls and actions to complete these tasks. The tasks the players will be executing are done using a standard controller. \[insert image of the controls]
+In the game you (the player) will have to do certain tasks in order to keep your store running and keep the customers happy (to get more info about customers, click [here](customer.md)). To complete these tasks the player will need certain controls and actions to complete these tasks. The tasks the players will be executing are done using a standard controller.&#x20;
+
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Tasks:
 
