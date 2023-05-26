@@ -38,7 +38,7 @@ The standup started at 9.15 AM. All artists will not be working today as they ar
 {% endtab %}
 
 {% tab title="Week 3" %}
-#### Standup 24/04/2023:
+### Standup 24/04/2023:
 
 The standup started at 9.20 AM. Vivian will be making logo’s for products that don’t have a proper logo yet. Sterre will improve more of the textures of products that yet don’t really fit in the game too well. Leikho is going to rig the customer model so that we can hopefully still implement it before the sprint ends. And after that he is going to texture the customer. LaRhona will continue to make icons for all the products. Wouter will start making the presentation for tomorrow and when the presentation is done he will look at the Trello what things can still be done. Emile is going to fix a bug when the player grabs a customer. And after that he will work on products that can be delivered to the store so that the player can restock.
 {% endtab %}
