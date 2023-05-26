@@ -10,62 +10,14 @@ description: The review of the 2nd sprint
 
 * The game has a lot of potential
 * They are working on a prototype with this concept of their own
+* Good to see how we see and think ( how we envision the game)&#x20;
+* in level money that can be earned and used to proceed is a fun concept
 
 ### Improvement feedback:
 
 * The co-op aspect of the game isn't really showing. Players can do their own things and still complete the level
-*
-
-Networkign bte grote stap
-
-Ze komen binnen en dan?
-
-De klant weet al wat hij wilt
-
-Hoop potentie
-
-Zoveel dat ze. Stiekem al een prototype aan het maken zijn
-
-We hebbe top 3 hehe
-
-We got the spotlights
-
-Tof om te zien hoe wij denken
-
-Gerichte vragen
-
-Zie nog niet veel samenwerking, dit is nodig oh dit is nodig we doen ons eigen ding
-
-Je kan roepen maar er is niet veel meer samenhang
-
-Kleine storingjes zodat ze soms samenwerken, zoals de vrachtwagen deur
-
-Wat voor perspectiefe woord er aangeboden, level layout belangijk, overzicht
-
-Bestellen grappig maar wel complex tijdens een timemanagement game te doen
-
-1e indruk teveel hersen space
-
-Alles is ove de grond gegooit ruim dit op., communiceer daarover
-
-10+ items, & geld management
-
-4 spelers, meer space
-
-Met 2 een uitdagng met 4 mogelijk
-
-Miss makkelijker zoals bellen
-
-Iederekeer wanneer out of stuff dat je een vrachtwagen langs laat komen en die kan plaatsen
-
-3 sterren wanneer je al je klanten weet te doen, dingen beetje minder complicated
-
-Je moet wel het gerecht maken bij 1 van hun overcooked rip-offs
-
-Geld gebruiuken voor tijdens het lvl was/is  leuuk
-
-De acties moeten duidelijk gespecificeerd zijn
-
-Mensen weg lokken bij de stations
-
-Enthoushiast
+* Take a look at the layout (top down view gives some elements that are not shown because other items are to big)&#x20;
+* The game needs to much brain power you can't focus on everything&#x20;
+* Products where dropped on the ground in the current fase of the game but this didn't make sense in there eyes so they asked why? and we sayed we will change it to a product ordering system.
+* why only 2 players? wouldn't it be fun to have 4 players this makes a lot more possible and easier to play (we sayed we do 2 because of the limited time we have but more players are always an option)&#x20;
+* Lack of user feedback
