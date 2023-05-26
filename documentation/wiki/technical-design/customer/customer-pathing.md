@@ -56,6 +56,6 @@ The next step would be to have a connection between the customers. We can do thi
 
 ## Our scripts
 
-All grid related scripts can be found on our github under the 'scripts/runtime/grid' folder\
-[https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Grid](https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Grid)\
-\
+All grid related scripts can be found on our github under the 'scripts/runtime/grid' folder
+
+{% embed url="https://github.com/EmileDavidson/Examen/tree/develop/ExamenProeveUnity/Assets/Scripts/Runtime/Grid" %}
