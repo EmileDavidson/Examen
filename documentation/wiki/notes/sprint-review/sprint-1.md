@@ -4,66 +4,27 @@ description: The review of the 1st sprint
 
 # Sprint 1
 
-Ok nou over presentatie goed gedaan klopt thema is super nice  relatable
+## Feedback of the customer:
 
-Hij ook geweest
+### Positive feedback:
 
-2 player
+* Presentation was really nice and presented well
+* Theme & Concept is very relatable
+* Character designs looking really good
 
-De rollen weten ze niet of dat slim is om zo te houden
+### Improvement feedback
 
-Waarom zou deze diet overnemen want dat klinkt niet logies
-
-Cashiere komt niet van hun plek af mischein rollen beter kunnen los laten.
-
-Uitladen van een truck kan zie hij geen van beide doen
-
-Layout is duidelijk, samen gwn draainende houden = scalebaar
-
-Acties die er moeten gebeuren moet wel visueel heel duidelijk zijn.
-
-Er zijn opties maar kan voorstellen dat dat een aandahts punt moet blijven
-
-Rijd de vrachtwagen weer weg? Is er tijds druk?
-
-Alles is duidelijk in over cooked < refrence
-
-Style is nice, loves it unlit wholesome gezellig
-
-Character designs on the fence, komt ook door scale
-
-Snel heid laag , schaal heel niet goed/correct
-
-De grotes sneltes en designs en alles ff goed testen.
-
-Grote hoeden, subrero ofzo
-
-COSMETICS
-
-Design ook in ander perspectief, maak de characters duidelijk
-
-Layout is goed maar mischien niet het meest logies
-
-Je moet proberen een belans te vinden tussen wat acceptabel is tussen je thema en wat niet.
-
-Werk om dingen heen zoals een bord ipv muur
-
-AI gedoe maybe think of smth easier te regelen, pathfinding, miss lopen ze over vaste paden, simpele dingen.
-
-Vaste paden die je zelf hebt neer gezet.
-
-Waarom hebben we voor deze physics gekozen?
-
-Woah alles is wacky
-
-On the fence over hoeveel invloed dat heeft op de game, dat hoeft geen uitkomt te hebben op de game.
-
-Tenzij je er echt achterstaad
-
-Hoeveel resources gaan we daar in steken voor succes.
-
-Moet niet telang duren
-
-Game feel testen enzo. Moet lekker voelen niet tegen zitten
-
-Groote van het level maakt dan ook uit.
+* Is it smart to keep the asymmetrical aspect of the game? The players would then seem to be stuck at a station the whole game
+  * Let go of the asymmetrical part and focus more on the fun co-op aspect
+* Pull players away from their station more
+  * The truck has to be opened by 2 players before it unloads the products
+* Layout of the level is clear. It is clear where the players have to bring products to or help customers at
+* Actions that the player can do have to be visually clear
+* Speed of the character is quite slow
+  * Speed up the character and experiment with the movement overall more
+* Make it clear for the player who is which character
+  * Maybe add hats to the players to have a clear distinction
+* Is A-star pathfinding too much work to add to the project?
+  * Maybe give the customers a fixed path instead of the A-star
+* How much do the ragdoll physics affect the gameplay
+  * Take the time to test the feel of the game more

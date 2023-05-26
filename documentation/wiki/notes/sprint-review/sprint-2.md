@@ -4,6 +4,18 @@ description: The review of the 2nd sprint
 
 # Sprint 2
 
+## Feedback of the customer:
+
+### Positive feedback:
+
+* The game has a lot of potential
+* They are working on a prototype with this concept of their own
+
+### Improvement feedback:
+
+* The co-op aspect of the game isn't really showing. Players can do their own things and still complete the level
+*
+
 Networkign bte grote stap
 
 Ze komen binnen en dan?
