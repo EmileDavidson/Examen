@@ -1,4 +1,5 @@
 ﻿using Runtime.Managers;
+using Runtime.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,11 @@ namespace Runtime.UserInterfaces.MainMenu
         {
             playerInputManager ??= GetComponent<PlayerInputManager>();
             startButton.onClick?.AddListener(StartButtonPressed);
+            
+            playerInputManager.playerJoinedEvent.AddListener((input) =>
+            {
+                input.GetComponent<PlayerInputEvents>()?.interact?.AddListener(StartButtonPressed);
+            });
         }
 
         /// <summary>

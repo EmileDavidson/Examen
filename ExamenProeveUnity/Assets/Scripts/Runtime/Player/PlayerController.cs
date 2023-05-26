@@ -16,7 +16,10 @@ namespace Runtime.Player
         [Button]
         private void SwitchToActionMap(PlayerInputActionMap map)
         {
-            GetComponent<PlayerInput>().SwitchCurrentActionMap(PlayerInputActionMapDict.Dict[map]);
+            PlayerManager.Instance.PlayerInputs.ForEach(playerInput =>
+            {
+                playerInput.SwitchCurrentActionMap(PlayerInputActionMapDict.Dict[map]);
+            });
         }
 
         private void OnOpenMenu(InputValue inputValue)
