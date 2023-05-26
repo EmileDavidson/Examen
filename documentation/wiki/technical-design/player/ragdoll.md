@@ -22,7 +22,7 @@ description: How did we create our ragdoll
 
 #### problems we encountered
 
-&#x20;\- player was not using the correct way of movement which made the ragdoll explode at certain points when grabbing things
+&#x20;\- Player movement was done by changing the transform directly this gave a lot of problems with physics calculations making the player stretch and sometimes even explode.&#x20;
 
 #### how we fixed those problems
 
