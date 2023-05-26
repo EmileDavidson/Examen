@@ -30,7 +30,7 @@ The player ragdoll was added by using a rigged player model and adding
 
 configurable joints to them as well as colliders.
 
-![](<../../.gitbook/assets/player\_ragdoll (1).JPG>)
+![](<../../.gitbook/assets/player\_ragdoll (1) (1).JPG>)
 
 #### Player Grabbing
 
