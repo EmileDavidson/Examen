@@ -10,7 +10,7 @@ positive feedback: \
 \- Concept is still very cool \
 \- They took their own prototype to and event \
 \- End screen menu is clear and feels finished \
-\- The physics are fun! (that you can collide with a customers and they "wiggels")\
+\- The physics are fun! (that you can collide with customers and they "wiggle")\
 
 
 Improvement feedback: \
