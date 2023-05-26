@@ -26,3 +26,7 @@ Lead Artist
 
 - LaRhona:
 Artist
+
+###Produced game components
+can be found in the [gitbook](https://emiles-organization.gitbook.io/examen-wiki/wiki/produced-components/emile) or under the [documentation branch](https://github.com/EmileDavidson/Examen/tree/documentation/documentation/wiki/producted-components)
+
