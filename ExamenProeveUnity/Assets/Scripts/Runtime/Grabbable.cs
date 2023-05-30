@@ -18,12 +18,14 @@ namespace Runtime
         [SerializeField] private Sprite icon;
         [SerializeField] private bool snapToPivot;
 
+        private bool _canBeGrabbed = true;
         private bool _isGrabbed;
         private bool _isInteractable;
         private readonly List<Guid> _grabbedBy = new();
 
         public readonly UnityEvent OnGrabbed = new UnityEvent();
         public readonly UnityEvent OnReleased = new UnityEvent();
+        public readonly UnityEvent OnForceRelease = new UnityEvent();
 
         private void Awake()
         {
@@ -46,15 +48,19 @@ namespace Runtime
 
         public void RemoveGrabbedBy(Guid entity)
         {
-            if (_isGrabbed) return;
             _grabbedBy.Remove(entity);
         }
-
 
         public List<Guid> GrabbedBy => _grabbedBy;
         public bool SnapToPivot => snapToPivot;
         public bool IsGrabbed => _isGrabbed;
         public bool IsInteractable => _isInteractable;
         public Sprite Icon => icon;
+
+        public bool CanBeGrabbed
+        {
+            get => _canBeGrabbed;
+            set => _canBeGrabbed = value;
+        }
     }
 }

@@ -19704,7 +19704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &969055050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28342,10 +28342,38 @@ PrefabInstance:
       propertyPath: timers.Array.data[2].onTimerFinished.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7997118870621794931, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: m_Mass
+      value: 100000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997118870621794931, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997118870621794931, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997118870621794933, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7997118870621794933, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
       propertyPath: productOrdering
       value: 
       objectReference: {fileID: 1099805980}
+    - target: {fileID: 8911953954282838933, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: m_Size.y
+      value: 6.7869654
+      objectReference: {fileID: 0}
+    - target: {fileID: 8911953954282838933, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: m_Center.y
+      value: 0.85993826
+      objectReference: {fileID: 0}
+    - target: {fileID: 8911953954282838933, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0438e759a1121c4195c5b51ae67a046, type: 3}
 --- !u!114 &1624631263 stripped
@@ -37912,8 +37940,6 @@ MonoBehaviour:
   moneyEarnedText: {fileID: 259446505}
   totalPercentageText: {fileID: 669715054}
   customerHappinessText: {fileID: 1487225199}
-  restartButton: {fileID: 0}
-  returnToMenuButton: {fileID: 0}
 --- !u!1 &1907984122
 GameObject:
   m_ObjectHideFlags: 0

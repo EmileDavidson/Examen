@@ -26,5 +26,15 @@ namespace Runtime.Player
         {
             onLeftShoulder.Invoke();
         }
+        
+        public void OnRightShoulder(InputValue value)
+        {
+            onRightShoulder.Invoke();
+        }
+        
+        public void OnLeftShoulder(InputValue value)
+        {
+            onLeftShoulder.Invoke();
+        }
     }
 }
