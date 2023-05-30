@@ -5,7 +5,6 @@ using Runtime.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using Utilities.MethodExtensions;
 
 namespace Runtime.UserInterfaces
@@ -17,26 +16,20 @@ namespace Runtime.UserInterfaces
         [SerializeField] private TMP_Text moneyEarnedText;
         [SerializeField] private TMP_Text totalPercentageText;
         [SerializeField] private TMP_Text customerHappinessText;
-
-        [SerializeField] private Button restartButton;
-        [SerializeField] private Button returnToMenuButton;
-
+        
         private void OnEnable()
         {
             PlayerManager.Instance.PlayerInputs.ForEach(input =>
             {
                 if (!input.TryGetComponent<PlayerInputEvents>(out var eventComp)) return;
-                eventComp.onRightShoulder.AddListener(() => { restartButton.onClick.Invoke(); });
-
-                eventComp.onLeftShoulder.AddListener(() => { returnToMenuButton.onClick.Invoke(); });
+                eventComp.onRightShoulder.AddListener(RestartLevel);
+                eventComp.onLeftShoulder.AddListener(GotoMainScreen);
             });
 
             var percentage = LevelManager.Instance.GetTotalScorePercentage();
             var rating = LevelManager.Instance.GetStarRating();
-            var happinessMaxScore = LevelManager.Instance.GetMaxScore(ScoreType.CustomerHappiness) +
-                                    Math.Abs(LevelManager.Instance.GetMinScore(ScoreType.CustomerHappiness));
-            var happinessScore = LevelManager.Instance.GetScore(ScoreType.CustomerHappiness) +
-                                 Math.Abs(LevelManager.Instance.GetMinScore(ScoreType.CustomerHappiness));
+            var happinessMaxScore = LevelManager.Instance.GetMaxScore(ScoreType.CustomerHappiness) + Math.Abs(LevelManager.Instance.GetMinScore(ScoreType.CustomerHappiness));
+            var happinessScore = LevelManager.Instance.GetScore(ScoreType.CustomerHappiness) + Math.Abs(LevelManager.Instance.GetMinScore(ScoreType.CustomerHappiness));
 
             moneyEarnedText.text = $"${LevelManager.Instance.MoneyEarned},-";
             moneySpentText.text = $"${LevelManager.Instance.MoneySpent},-";
@@ -48,7 +41,7 @@ namespace Runtime.UserInterfaces
                 star.SetActive(false);
             }
 
-            for (int i = 0; i < rating; i++)
+            for (var i = 0; i < rating; i++)
             {
                 if (!stars.ContainsSlot(i)) return;
                 stars[i].SetActive(true);
