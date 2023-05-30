@@ -125,6 +125,7 @@ namespace Runtime.Player
 
             if (_isGrabbingObject) return;
             if (_grabbedObject == null) return;
+            if (!_grabbedGrabbable.CanBeGrabbed) return;
 
             _grabbedGrabbable.AddGrabbedBy(_playerEntity.Uuid);
             if (_grabbedGrabbable.SnapToPivot)
