@@ -2378,8 +2378,6 @@ GameObject:
   m_Component:
   - component: {fileID: 943377563}
   - component: {fileID: 943377561}
-  - component: {fileID: 943377564}
-  - component: {fileID: 943377565}
   - component: {fileID: 943377566}
   m_Layer: 0
   m_Name: PlayerConnectionManager
@@ -2457,38 +2455,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &943377564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943377560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fdcd792c71349a39d71ea3bde38cc55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connectionTexts:
-  - {fileID: 1398787731}
-  - {fileID: 1425950882}
-  playerInputManager: {fileID: 943377561}
---- !u!114 &943377565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943377560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0326c37d4d4951146a35c5440ff34e89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInputManager: {fileID: 943377561}
-  colors:
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &943377566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2507,6 +2473,11 @@ MonoBehaviour:
   spawnLocations:
   - {fileID: 1601467333}
   - {fileID: 1392141961}
+  dontDestroyPrefabsOnLoad: 1
+  connectionCountText: {fileID: 0}
+  connectionTexts:
+  - {fileID: 1398787731}
+  - {fileID: 1425950882}
 --- !u!1 &946503120
 GameObject:
   m_ObjectHideFlags: 0
