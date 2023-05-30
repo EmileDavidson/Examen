@@ -138,7 +138,6 @@ namespace Runtime.Player
             _isGrabbingObject = true;
             onGrab.Invoke();
             onGrabChanged.Invoke();
-            print("adding");
             _grabbedGrabbable.OnForceRelease?.AddListener(HandleRelease);
         }
 

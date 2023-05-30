@@ -15,7 +15,6 @@ namespace Runtime.UserInterfaces
         
         private void OnEnable()
         {
-            print(PlayerManager.Instance.GetInputs().Count);
             foreach (var input in PlayerManager.Instance.GetInputs(true))
             {
                 if (!input.TryGetComponent<PlayerInputEvents>(out var eventComp)) continue;
@@ -26,7 +25,6 @@ namespace Runtime.UserInterfaces
 
         private void OnDisable()
         {
-            print(PlayerManager.Instance.GetInputs().Count);
             foreach (var input in PlayerManager.Instance.GetInputs())
             {
                 if (!input.TryGetComponent<PlayerInputEvents>(out var eventComp)) continue;
@@ -37,7 +35,6 @@ namespace Runtime.UserInterfaces
 
         public void QuitLevel()
         {
-            print("Quit");
             if (!GameManager.Instance.IsPaused) return;
             
             SceneManager.LoadScene("MainMenu");
@@ -50,7 +47,6 @@ namespace Runtime.UserInterfaces
     
         public void RestartGame()
         {
-            print("restart");
             if (!GameManager.Instance.IsPaused) return;
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

@@ -603,7 +603,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a8f1210cae5357440a345370e9f46e7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14fdefb48de1f0c4b83a522e9e239906, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3256,7 +3256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2240d2b4806e81442a26fbe411f6ba26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2f2d129711be3f438eee54a2b12d035, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4167,7 +4167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9572005df1a438296f5f16a79bdc9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimalPlayerCount: 2
   playerInputManager: {fileID: 943377561}
   startButton: {fileID: 361744952}
 --- !u!1 &1689805402
