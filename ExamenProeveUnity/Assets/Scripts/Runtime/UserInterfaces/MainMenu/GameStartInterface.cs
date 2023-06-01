@@ -9,7 +9,6 @@ namespace Runtime.UserInterfaces.MainMenu
 {
     public class GameStartInterface : MonoBehaviour
     {
-        [SerializeField] private int minimalPlayerCount = 2;
         [SerializeField] private PlayerInputManager playerInputManager;
         [SerializeField] private Button startButton;
         
@@ -32,7 +31,7 @@ namespace Runtime.UserInterfaces.MainMenu
         {
             if (GameManager.Instance.IsPaused) return;
             if (playerInputManager is null) return;
-            if(playerInputManager.playerCount < minimalPlayerCount)
+            if(playerInputManager.playerCount < 1)
             {
                 return;
             }

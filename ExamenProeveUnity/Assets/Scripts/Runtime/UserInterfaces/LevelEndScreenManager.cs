@@ -1,6 +1,7 @@
 ﻿using System;
 using Runtime.Enums;
 using Runtime.Managers;
+using Runtime.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,9 +16,16 @@ namespace Runtime.UserInterfaces
         [SerializeField] private TMP_Text moneyEarnedText;
         [SerializeField] private TMP_Text totalPercentageText;
         [SerializeField] private TMP_Text customerHappinessText;
-
+        
         private void OnEnable()
         {
+            PlayerManager.Instance.PlayerInputs.ForEach(input =>
+            {
+                if (!input.TryGetComponent<PlayerInputEvents>(out var eventComp)) return;
+                eventComp.onRightShoulder.AddListener(RestartLevel);
+                eventComp.onLeftShoulder.AddListener(GotoMainScreen);
+            });
+
             var percentage = LevelManager.Instance.GetTotalScorePercentage();
             var rating = LevelManager.Instance.GetStarRating();
             var happinessMaxScore = LevelManager.Instance.GetMaxScore(ScoreType.CustomerHappiness) + Math.Abs(LevelManager.Instance.GetMinScore(ScoreType.CustomerHappiness));
@@ -27,12 +35,13 @@ namespace Runtime.UserInterfaces
             moneySpentText.text = $"${LevelManager.Instance.MoneySpent},-";
             totalPercentageText.text = $"{percentage}%";
             customerHappinessText.text = $"{happinessScore}/{happinessMaxScore}";
-            
+
             foreach (var star in stars)
             {
                 star.SetActive(false);
             }
-            for (int i = 0; i < rating; i++)
+
+            for (var i = 0; i < rating; i++)
             {
                 if (!stars.ContainsSlot(i)) return;
                 stars[i].SetActive(true);
@@ -43,7 +52,7 @@ namespace Runtime.UserInterfaces
         {
             SceneManager.LoadScene("MainMenu");
         }
-        
+
         public void RestartLevel()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

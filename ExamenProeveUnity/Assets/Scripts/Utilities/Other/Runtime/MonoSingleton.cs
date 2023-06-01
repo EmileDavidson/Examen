@@ -6,7 +6,7 @@ namespace Utilities.Other.Runtime
     public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
         private static T _instance;
-        private GameObject _singletonContainer;
+        private static GameObject _singletonContainer;
         
         /// <summary>
         /// The singleton instance referring to the class
@@ -21,7 +21,7 @@ namespace Utilities.Other.Runtime
                 if (_instance != null) return _instance;
 
                 GameObject singletonObject = new GameObject("Singleton: " + typeof(T).Name);
-                singletonObject.transform.parent = _instance.GetOrCreateSingletonContainer.transform;
+                singletonObject.transform.parent = GetOrCreateSingletonContainer.transform;
                 _instance = singletonObject.AddComponent<T>();
                 return _instance;
             }
@@ -30,7 +30,7 @@ namespace Utilities.Other.Runtime
         /// <summary>
         /// Container for all singletons created if they didn't exists yet
         /// </summary>
-        private GameObject GetOrCreateSingletonContainer
+        private static GameObject GetOrCreateSingletonContainer
         {
             get
             {

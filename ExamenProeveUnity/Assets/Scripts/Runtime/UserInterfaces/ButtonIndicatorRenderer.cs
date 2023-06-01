@@ -24,6 +24,8 @@ public class ButtonIndicatorRenderer : MonoBehaviour
             _cameraTransform ??= Camera.main.transform;
 
             if (!rotateToCamera) return;
+            if (imageTransform == null) return;
+            if(_cameraTransform == null) return;
             imageTransform.rotation = Quaternion.LookRotation(imageTransform.position - _cameraTransform.position, Vector3.up);
         }
     }

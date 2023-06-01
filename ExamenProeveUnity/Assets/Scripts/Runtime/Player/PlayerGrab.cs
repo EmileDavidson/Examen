@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using Runtime.Enums;
 using UnityEngine;
 using UnityEngine.Events;
@@ -40,12 +41,13 @@ namespace Runtime.Player
         private void Update()
         {
             //check if the object is destroyed if so release it
-            if (_isGrabbingObject && _grabbedObject == null)
+            if ((_isGrabbingObject && _grabbedObject == null) || (_grabbedGrabbable != null && _grabbedGrabbable.CanBeGrabbed == false))
             {
                 _grabbedGrabbable.OnReleased?.Invoke();
                 _isGrabbingObject = false;
                 _grabbedGrabbable = null;
                 _grabbedObject = null;
+                if(_grabbedObjectJoined != null) Destroy(_grabbedObjectJoined);
                 onGrabChanged.Invoke();
             }
 
@@ -101,9 +103,10 @@ namespace Runtime.Player
             if (_grabbedObject is null) return;
             if (_isGrabbingObject == false) return;
             if (_grabbedGrabbable is null) return;
-
+            
             _grabbedGrabbable.RemoveGrabbedBy(_playerEntity.Uuid);
             _grabbedGrabbable.OnReleased?.Invoke();
+            _grabbedGrabbable.OnForceRelease?.RemoveListener(HandleRelease);
             _grabbedObject = null;
             _isGrabbingObject = false;
             _grabbedGrabbable = null;
@@ -122,6 +125,7 @@ namespace Runtime.Player
 
             if (_isGrabbingObject) return;
             if (_grabbedObject == null) return;
+            if (!_grabbedGrabbable.CanBeGrabbed) return;
 
             _grabbedGrabbable.AddGrabbedBy(_playerEntity.Uuid);
             if (_grabbedGrabbable.SnapToPivot)
@@ -135,6 +139,7 @@ namespace Runtime.Player
             _isGrabbingObject = true;
             onGrab.Invoke();
             onGrabChanged.Invoke();
+            _grabbedGrabbable.OnForceRelease?.AddListener(HandleRelease);
         }
 
         private void OnTriggerEnter(Collider collision)

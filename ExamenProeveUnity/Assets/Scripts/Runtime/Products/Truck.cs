@@ -1,4 +1,5 @@
 using Runtime;
+using Runtime.Managers;
 using Toolbox.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,6 +8,7 @@ public class Truck : MonoBehaviour
 {
     [SerializeField] private int speed;
     [SerializeField] private int playersNeeded = 2;
+    [SerializeField] private bool usePlayerCount = true; 
 
     [SerializeField] private Vector3 startPos;
     [SerializeField] private Vector3 endPos;
@@ -27,7 +29,10 @@ public class Truck : MonoBehaviour
         _grabbable.OnGrabbed.AddListener(GrabUpdate);
         _grabbable.OnReleased.AddListener(GrabUpdate);
         productOrdering.onDeliveryDone.AddListener(Depart);
+        
+        playersNeeded = (usePlayerCount) ? PlayerManager.Instance.Players.Count : playersNeeded;
     }
+    
 
     private void GrabUpdate()
     {
@@ -52,6 +57,8 @@ public class Truck : MonoBehaviour
         onDepart.Invoke();
         _targetPos = startPos;
         _atDestination = false;
+
+        _grabbable.CanBeGrabbed = false;
     }
 
     private void Update()
@@ -59,10 +66,15 @@ public class Truck : MonoBehaviour
         if (_atDestination) return;
         if (Vector3.Distance(transform.position, _targetPos) <= 1)
         {
+            _grabbable.enabled = true;
             _atDestination = true;
+            _grabbable.CanBeGrabbed = true;
             return;
         }
         
+        //todo: should use physics (rigidbody) instead of transform for movement 
+        //todo: so that it pushes players out of the way
+        _grabbable.enabled = false;
         Vector3 direction = (_targetPos - transform.position).normalized;
         gameObject.transform.position += direction * speed * Time.deltaTime;
     }

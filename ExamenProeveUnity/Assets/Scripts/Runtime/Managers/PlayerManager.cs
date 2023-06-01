@@ -36,5 +36,19 @@ namespace Runtime.Managers
 
         public List<Entity> Players => _players;
         public List<PlayerInput> PlayerInputs => _playerInputs;
+
+        public List<PlayerInput> GetInputs(bool forceFind = false)
+        {
+            if (forceFind)
+            {
+                _playerInputs = FindObjectsOfType<PlayerInput>().ToList();
+                foreach (var playerInput in _playerInputs)
+                {
+                    _players.AddIfNotNull(playerInput.GetComponent<Entity>());
+                }
+            }
+            
+            return _playerInputs;
+        }
     }
 }
