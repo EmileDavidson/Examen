@@ -46,8 +46,6 @@ namespace Runtime.Managers
                 {
                     _players.AddIfNotNull(playerInput.GetComponent<Entity>());
                 }
-
-                return _playerInputs;
             }
             
             return _playerInputs;
