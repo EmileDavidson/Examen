@@ -47,11 +47,21 @@
 
 ### UserTest5:
 
+{% hint style="danger" %}
+Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it.
+{% endhint %}
+
 > Didn't really say all his toughts even reminded him sometimes to keep talking but nothing i can do about it anymore since doing it again wouldn't give me the same results as letting a complete nooby play.&#x20;
 
 Video: [https://youtu.be/PdcVMCvnG6A](https://youtu.be/PdcVMCvnG6A)\
 WebCam: [https://youtu.be/64FSYhOfOT8](https://youtu.be/64FSYhOfOT8)\
 Gameplay: [https://youtu.be/C2NyBi0hydM](https://youtu.be/C2NyBi0hydM)
+
+#### Player(s)
+
+* name: Sascha
+* PlayedBefore: false
+* Age: 22&#x20;
 
 #### What we wanted to test
 
@@ -73,9 +83,84 @@ Gameplay: [https://youtu.be/C2NyBi0hydM](https://youtu.be/C2NyBi0hydM)
 1. Saw products flying off the map after he ran in to it&#x20;
    1. fix: adding a collider around the map&#x20;
 2. make it easier to understand how to order new products.&#x20;
-   1. fix: maybe add some text above the screen with money saying "order products" but need to consult with the team for this!
+   1. fix: maybe add some text above the screen with money saying "order products" (team meeting to find a solution)
 
-\
+#### &#x20;UserTest6:
+
+{% hint style="danger" %}
+Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it
+{% endhint %}
+
+> Didn't really say all his thoughts even reminded him sometimes to keep talking&#x20;
+
+Video: [https://youtu.be/bixO\_dKZ3QU](https://youtu.be/bixO\_dKZ3QU)\
+WebCam: [https://youtu.be/JQBg\_eyyBbo](https://youtu.be/JQBg\_eyyBbo) \
+Gameplay: [https://youtu.be/2uqe0inKn5E](https://youtu.be/2uqe0inKn5E)
+
+#### Player(s)
+
+* name: Calvin
+* PlayedBefore: True (co-op)&#x20;
+* Age: 20
+
+#### What we wanted to test
+
+This player did play before in the early stages of the game and only with someone else so there where 2 things we wanted from this user-test, getting feedback on the improvements we made and the difference between co-op and singleplayer what is more enjoyable.&#x20;
+
+#### Things we noticed
+
+> A lot harder to find things worth mentioning since he knew most things so we can't really say " oh he didn't know this he knew to do the cashregister etc.. " since well he already knew. "
+
+* immediately tried to break the game by buggs he previously found or heard of.&#x20;
+* Did notice you needed to grab the truck but didn't know how to order products at first.
+* Broke the customers and tried to " fix " them but couldn't figure out why they where broken.&#x20;
+
+#### Dev Action points:&#x20;
+
+1. Fixing existing buggs&#x20;
+   1. Customers out of the map will never return so the game never ends.
+   2. Customers may wait indefinitly for eachother at cashregister or when the paths overlap&#x20;
+2. The truck is confusing. did not know that you need to order before grabbing the truck&#x20;
+   1. fix: maybe add the items you ordered on the side of the truck? (team meeting to find a solution)
+3. Order screen in the back (noting the items you have ordered is the small)&#x20;
+   1. fix: move it closer or think of another solution (team meeting to find a solution)
+
+#### UserTest7:
+
+{% hint style="danger" %}
+Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it
+{% endhint %}
+
+Video: [https://youtu.be/bixO\_dKZ3QU](https://youtu.be/bixO\_dKZ3QU)\
+WebCam: [https://youtu.be/JQBg\_eyyBbo](https://youtu.be/JQBg\_eyyBbo) \
+Gameplay: [https://youtu.be/2uqe0inKn5E](https://youtu.be/2uqe0inKn5E)
+
+#### What we wanted to test
+
+
+
+#### Player(s):
+
+* name: Calvin
+* PlayedBefore: True
+* Age: 20
+
+
+
+* name: Sascha
+* PlayedBefore: True (singleplayer)
+* Age: 22
+
+#### Things we noticed:
+
+
+
+
+
+#### Dev Action points:&#x20;
+
+
+
 \
 
 
