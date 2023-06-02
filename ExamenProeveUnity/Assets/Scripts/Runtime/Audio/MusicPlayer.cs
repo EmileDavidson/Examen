@@ -20,6 +20,8 @@ namespace Runtime.Audio
         {
             _audioSource = gameObject.GetOrAddComponent<AudioSource>();
             gameManager.onPlayPause.AddListener(OnGamePauseChanged);
+            
+            OnGamePauseChanged();
         }
 
         /// <summary>

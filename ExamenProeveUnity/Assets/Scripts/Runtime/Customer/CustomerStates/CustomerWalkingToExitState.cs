@@ -19,9 +19,12 @@ namespace Runtime.Customer.CustomerStates
 
         public override void FinishState()
         {
+            foreach (var index in Controller.Movement.BlockingPoints)
+            {
+                Controller.Grid.GetNodeByIndex(index).SetTempBlock(false, Controller.ID);
+            }
             Controller.Movement.onDestinationReached.RemoveListener(FinishState);
-            Controller.Grid.GetNodeByIndex(Controller.ExitPath.Path.PathNodes.Last())
-                .SetTempBlock(false, Controller.ID);
+            Controller.Grid.GetNodeByIndex(Controller.ExitPath.Path.PathNodes.Last()).SetTempBlock(false, Controller.ID);
             CustomersManager.Instance.RemoveCustomer(Controller);
         }
     }
