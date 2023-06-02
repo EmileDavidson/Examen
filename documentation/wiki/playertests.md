@@ -1,4 +1,4 @@
-# PlayerTests
+# UserTests
 
 ### UserTest 1:
 
@@ -40,3 +40,44 @@
 * Wasn’t that easy to grab objects
 * Fun that players could grab the same object to sort of ‘fight’ over the object
 * Possibly adding timer/speedrun element to the game
+
+
+
+
+
+### UserTest5:
+
+> Didn't really say all his toughts even reminded him sometimes to keep talking but nothing i can do about it anymore since doing it again wouldn't give me the same results as letting a complete nooby play.&#x20;
+
+Video: [https://youtu.be/PdcVMCvnG6A](https://youtu.be/PdcVMCvnG6A)\
+WebCam: [https://youtu.be/64FSYhOfOT8](https://youtu.be/64FSYhOfOT8)\
+Gameplay: [https://youtu.be/C2NyBi0hydM](https://youtu.be/C2NyBi0hydM)
+
+#### What we wanted to test
+
+"Pickup and play" so we told him nothing except that the start button is not "A" but "B" since we used a different type of controller, besides the controls we also wanted to see a "singleplayer" view does it feel the same as playing with someone, do we see them same kind of enjoyment?&#x20;
+
+#### Things we noticed
+
+* Started by looking at the control scheme and tested them out immidialty after starting&#x20;
+* Dind't know what he had to do at first and customers where not spawning yet. and he tried taking items from the shelves (asked afterwards since he forgot to talk out loud sometimes)&#x20;
+* Grabbed a customer (maybe by accident? while trying the controls)
+* noticed the customers waiting at the cash register and knew how to pick up the item(s) / scan them &#x20;
+* he noticed that customers can be scanned and we got a small smile from it&#x20;
+* immediately grabbed the "truck" so it is clear how to interact with it but it was not clear what it was for.&#x20;
+* tried recycling the products that he didn't scan (because he didn't know how to order and get new products)&#x20;
+* Did notice he got money from scanning products&#x20;
+
+#### Dev Action points:&#x20;
+
+1. Saw products flying off the map after he ran in to it&#x20;
+   1. fix: adding a collider around the map&#x20;
+2. make it easier to understand how to order new products.&#x20;
+   1. fix: maybe add some text above the screen with money saying "order products" but need to consult with the team for this!
+
+\
+\
+
+
+
+

@@ -51,7 +51,7 @@
   * [Scripts Pipeline](wiki/pipeline/scripts-pipeline.md)
   * [Audio Pipeline](wiki/pipeline/audio-pipeline.md)
 * [Agile planning](wiki/agile-planning.md)
-* [PlayerTests](wiki/playertests.md)
+* [UserTests](wiki/playertests.md)
 * [Notes](wiki/notes.md)
   * [Sprint Planning](wiki/notes/sprint-planning/README.md)
     * [Sprint 1](wiki/notes/sprint-planning/sprint-1.md)
