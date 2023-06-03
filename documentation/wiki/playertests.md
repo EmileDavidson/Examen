@@ -53,9 +53,9 @@ Unfortunately, the webcam footage messed up and ended up capturing the device au
 
 > Didn't really say all his toughts even reminded him sometimes to keep talking but nothing i can do about it anymore since doing it again wouldn't give me the same results as letting a complete nooby play.&#x20;
 
-Video: [https://youtu.be/PdcVMCvnG6A](https://youtu.be/PdcVMCvnG6A)\
-WebCam: [https://youtu.be/64FSYhOfOT8](https://youtu.be/64FSYhOfOT8)\
-Gameplay: [https://youtu.be/C2NyBi0hydM](https://youtu.be/C2NyBi0hydM)
+Video: (url)\
+WebCam: (url)\
+Gameplay: (url)
 
 #### Player(s)
 
@@ -78,12 +78,16 @@ Gameplay: [https://youtu.be/C2NyBi0hydM](https://youtu.be/C2NyBi0hydM)
 * tried recycling the products that he didn't scan (because he didn't know how to order and get new products)&#x20;
 * Did notice he got money from scanning products&#x20;
 
+#### Points of interest (video)&#x20;
+
+> Small clips from the video(s) that are interesting&#x20;
+
 #### Dev Action points:&#x20;
 
 1. Saw products flying off the map after he ran in to it&#x20;
-   1. fix: adding a collider around the map&#x20;
+   * fix: adding a collider around the map&#x20;
 2. make it easier to understand how to order new products.&#x20;
-   1. fix: maybe add some text above the screen with money saying "order products" (team meeting to find a solution)
+   * fix: maybe add some text above the screen with money saying "order products" _(team meeting to find a solution)_
 
 #### &#x20;UserTest6:
 
@@ -93,9 +97,9 @@ Unfortunately, the webcam footage messed up and ended up capturing the device au
 
 > Didn't really say all his thoughts even reminded him sometimes to keep talking&#x20;
 
-Video: [https://youtu.be/bixO\_dKZ3QU](https://youtu.be/bixO\_dKZ3QU)\
-WebCam: [https://youtu.be/JQBg\_eyyBbo](https://youtu.be/JQBg\_eyyBbo) \
-Gameplay: [https://youtu.be/2uqe0inKn5E](https://youtu.be/2uqe0inKn5E)
+Video: (url)\
+WebCam: (url)\
+Gameplay: (url)
 
 #### Player(s)
 
@@ -115,15 +119,19 @@ This player did play before in the early stages of the game and only with someon
 * Did notice you needed to grab the truck but didn't know how to order products at first.
 * Broke the customers and tried to " fix " them but couldn't figure out why they where broken.&#x20;
 
+#### Points of interest (video)&#x20;
+
+> Small clips from the video(s) that are interesting&#x20;
+
 #### Dev Action points:&#x20;
 
 1. Fixing existing buggs&#x20;
-   1. Customers out of the map will never return so the game never ends.
-   2. Customers may wait indefinitly for eachother at cashregister or when the paths overlap&#x20;
+   * Customers out of the map will never return so the game never ends.
+   * Customers may wait indefinitly for eachother at cashregister or when the paths overlap&#x20;
 2. The truck is confusing. did not know that you need to order before grabbing the truck&#x20;
-   1. fix: maybe add the items you ordered on the side of the truck? (team meeting to find a solution)
+   * fix: maybe add the items you ordered on the side of the truck? _(team meeting to find a solution)_
 3. Order screen in the back (noting the items you have ordered is the small)&#x20;
-   1. fix: move it closer or think of another solution (team meeting to find a solution)
+   * fix: move it closer or think of another solution _(team meeting to find a solution)_
 
 #### UserTest7:
 
@@ -131,18 +139,18 @@ This player did play before in the early stages of the game and only with someon
 Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it
 {% endhint %}
 
-Video: [https://youtu.be/bixO\_dKZ3QU](https://youtu.be/bixO\_dKZ3QU)\
-WebCam: [https://youtu.be/JQBg\_eyyBbo](https://youtu.be/JQBg\_eyyBbo) \
-Gameplay: [https://youtu.be/2uqe0inKn5E](https://youtu.be/2uqe0inKn5E)
+Video: (url)\
+WebCam: (url)\
+Gameplay: (url)
 
 #### What we wanted to test
 
-
+These 2 players did play before but only "singleplayer" so what we wanted to do with this is test if its more fun together, singleplayer, or about the same and since one of them is somewhat of a 'veteran' does that change how they play? does the veteran do more or will he help the other player.
 
 #### Player(s):
 
 * name: Calvin
-* PlayedBefore: True
+* PlayedBefore: True (Singleplayer)&#x20;
 * Age: 20
 
 
@@ -153,11 +161,25 @@ Gameplay: [https://youtu.be/2uqe0inKn5E](https://youtu.be/2uqe0inKn5E)
 
 #### Things we noticed:
 
+* player(s) saying "oh jij bent de coole bij" translating to "oh you are the cool bee"&#x20;
+* stopped all customers at first but creating a wave of customers and calling it the "midday-rush"&#x20;
+* broke the game again by throwing customers out of the map
+* walked out of the map trying to recover the customers&#x20;
+* (bugg) whilse walking out of the map to recover the customer they grabbed the truck and triggered the "order deliver" logic and so getting there order (they didn't notice that happened)&#x20;
+* they found out how to order (but the control scheme isn't the best they button smashed the controller trying to figure it out unfortunately i don't have a controller recording. )
 
+#### Points of interest (video)&#x20;
 
-
+> Small clips from the video(s) that are interesting&#x20;
 
 #### Dev Action points:&#x20;
+
+1. Players walking out of the map&#x20;
+   * fix: add a colider arround the map? or maybe something more subtle&#x20;
+2. customers thrown out of the map break the game&#x20;
+   * fix: either make it so they can't leave the store or if this happens remove them and they become unhappy lowering your score (this would also require a visual effect) _(team meeting to find a solution)_
+3. ordering button sceme is confusing&#x20;
+   * fix: ordering needs a rework. _(team meeting to find a solution)_
 
 
 
