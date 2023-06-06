@@ -89,7 +89,7 @@ Gameplay: (url)
 2. make it easier to understand how to order new products.&#x20;
    * fix: maybe add some text above the screen with money saying "order products" _(team meeting to find a solution)_
 
-#### &#x20;UserTest6:
+### &#x20;UserTest6:
 
 {% hint style="danger" %}
 Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it
@@ -133,7 +133,7 @@ This player did play before in the early stages of the game and only with someon
 3. Order screen in the back (noting the items you have ordered is the small)&#x20;
    * fix: move it closer or think of another solution _(team meeting to find a solution)_
 
-#### UserTest7:
+### UserTest7:
 
 {% hint style="danger" %}
 Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it
@@ -181,10 +181,119 @@ These 2 players did play before but only "singleplayer" so what we wanted to do 
 3. ordering button sceme is confusing&#x20;
    * fix: ordering needs a rework. _(team meeting to find a solution)_
 
+### UserTest8:
+
+{% embed url="https://drive.google.com/file/d/1PZuW50cQB5YmRyUC6-DaNqv_UlSgHLxY/view?usp=sharing" %}
+
+#### What we wanted to test
+
+“Pickup & Play.” This means that the person testing has never played the game before and us developers can see how easy the game and controls are to understand. Before testing we told the players nothing about the controls and what tasks the player needs to do in the game.
+
+#### Player(s):
+
+* name: Giel
+* PlayedBefore: False
+* Age: 20
 
 
-\
+
+* name: Luuk
+* PlayedBefore: False
+* Age: 19
+
+#### Things we noticed:
+
+* For a few seconds didn’t know what player he was controlling.
+* Noticed that the checkout had to be attended to.
+* Noticed that customers can get happy.
+* Was confused on how to grab objects.
+* Customer was stuck in place. The player was confused by this.
+* Noticed that they can drag customers out of the store.
+* Didn’t know what to do with the truck.
+
+#### Points of interest (video)&#x20;
+
+> Small clips from the video(s) that are interesting&#x20;
+
+#### Dev Action points:&#x20;
+
+1. &#x20;Create clearer button indications for grabbing, so the player knows what button to press.
+2. Find out how customer can get stuck in place and fix this.
+3. Clear indications for the truck
+   * Perhaps big text that says “Grab!” with an amount of how many of the needed players have to grab it
+
+### UserTest9:
+
+{% embed url="https://drive.google.com/file/d/16EMl4oFy35n0O8DbzG7VIbF3PcBzTfpn/view?usp=sharing" %}
+
+#### What we wanted to test
+
+“Grabbing.” We wanted to test the grabbing mechanic in our game. Checking if the buttons for grabbing feel right and whether it is easy to grab specific objects. Before the testing we told the players to mess around as much as possible to be able to give feedback on pickup range and button handling.
+
+#### Player(s):
+
+* name: Luuk
+* PlayedBefore: True
+* Age: 19
 
 
 
+* name: Jaro
+* PlayedBefore: False
+* Age: 17
+
+#### Things the player noticed:
+
+* Noticed he couldn’t grab cars.
+* Thought the pickup was very natural, range wasn’t too short but not too long either.
+* On keyboard you don’t have very good control over the direction you’re holding something.
+* Tried to grab the plant pot but was disappointed that they couldn’t.
+
+#### Points of interest (video)&#x20;
+
+> Small clips from the video(s) that are interesting&#x20;
+
+#### Dev Action points:&#x20;
+
+1. Either restrict the players to the store only or make cars grabbable. When the cars are grabbable the player must spawn back in the store when leaving the screen.
+2. Add directional for keyboard as well by using the mouse movement.
+3. Create more objects that are grabbable so that the player can mess around more.
+
+### UserTest10:
+
+{% embed url="https://drive.google.com/file/d/14CSJoh60_eWnIxBup-gEmnSqPFhV8sAq/view?usp=sharing" %}
+
+#### What we wanted to test
+
+“Product ordering” We want to test the ordering in the game. The main reason for testing this comes from the "pickup and play" where they did not know that they had to order, how it worked and that the truck is only usefull if you ordered. the other reason is because there are a lot of products and we needed some feedback on how the ordering system (how to cycle trough all products) works since it can be quite overwhelming if you need to look for an apple between \~18 products&#x20;
+
+#### Player(s):
+
+* name: Giel
+* PlayedBefore: True
+* Age: 20
+
+
+
+* name: Luuk
+* PlayedBefore: True
+* Age: 19
+
+#### Things the player noticed:
+
+* It is not very clear what product has to be ordered.
+* The opening of boxes wasn’t clear to the player.
+* Truck could be opened by only one player the second time the truck arrived.
+* The player had to keep good track of the shelves.
+* It was quite easy to learn the list of products on the ordering screen.
+
+#### Points of interest (video)&#x20;
+
+> Small clips from the video(s) that are interesting&#x20;
+
+#### Dev Action points:&#x20;
+
+1. To make it clear what product must be ordered. We could add a highlight to the shelf of the currently selected product. This way the player can see whether the shelf is empty or not.
+2. Create clearer button indications for the opening of boxes.
+3. Fix the truck so that there is always two players needed to open it.
 
