@@ -41,10 +41,6 @@
 * Fun that players could grab the same object to sort of ‘fight’ over the object
 * Possibly adding timer/speedrun element to the game
 
-
-
-
-
 ### UserTest5:
 
 {% hint style="danger" %}
@@ -53,9 +49,9 @@ Unfortunately, the webcam footage messed up and ended up capturing the device au
 
 > Didn't really say all his toughts even reminded him sometimes to keep talking but nothing i can do about it anymore since doing it again wouldn't give me the same results as letting a complete nooby play.&#x20;
 
-Video: (url)\
-WebCam: (url)\
-Gameplay: (url)
+Video: [https://youtu.be/tnGtOzQT65w](https://youtu.be/tnGtOzQT65w)\
+WebCam: [https://youtu.be/tvrvasVcrMQ](https://youtu.be/tvrvasVcrMQ)\
+Gameplay: [https://youtu.be/lt1lGlYMgaM](https://youtu.be/lt1lGlYMgaM)
 
 #### Player(s)
 
@@ -70,10 +66,10 @@ Gameplay: (url)
 #### Things we noticed
 
 * Started by looking at the control scheme and tested them out immidialty after starting&#x20;
-* Dind't know what he had to do at first and customers where not spawning yet. and he tried taking items from the shelves (asked afterwards since he forgot to talk out loud sometimes)&#x20;
+* Dind't know what he had to do at first and customers were not spawning yet. and he tried taking items from the shelves (asked afterward since he forgot to talk out loud sometimes)&#x20;
 * Grabbed a customer (maybe by accident? while trying the controls)
 * noticed the customers waiting at the cash register and knew how to pick up the item(s) / scan them &#x20;
-* he noticed that customers can be scanned and we got a small smile from it&#x20;
+* he noticed that customers can be scanned
 * immediately grabbed the "truck" so it is clear how to interact with it but it was not clear what it was for.&#x20;
 * tried recycling the products that he didn't scan (because he didn't know how to order and get new products)&#x20;
 * Did notice he got money from scanning products&#x20;
@@ -87,7 +83,13 @@ Gameplay: (url)
 1. Saw products flying off the map after he ran in to it&#x20;
    * fix: adding a collider around the map&#x20;
 2. make it easier to understand how to order new products.&#x20;
-   * fix: maybe add some text above the screen with money saying "order products" _(team meeting to find a solution)_
+   * fix: maybe add some text above the ordering screen saying "order products" _(team meeting to find a solution)_
+3. _add a clear indication of what you need to do at the start of the game since just spawning them and then having to wait for customer(s) can be confusing_&#x20;
+   * _possible fix would be to spawn 1 customer the moment the game starts (team meeting to find a solution)_
+4. _Control scheme button is wrong this comes from what controller you are using_&#x20;
+   * _either show the complete picture (eg. the arrows and highlight the arrow you need to use) or change the icon shown based on the (devices) connected but then you have the problem when there are multiple different devices_&#x20;
+
+
 
 ### &#x20;UserTest6:
 
@@ -97,14 +99,14 @@ Unfortunately, the webcam footage messed up and ended up capturing the device au
 
 > Didn't really say all his thoughts even reminded him sometimes to keep talking&#x20;
 
-Video: (url)\
-WebCam: (url)\
-Gameplay: (url)
+Video: [https://youtu.be/NDHn5BlFlN0](https://youtu.be/NDHn5BlFlN0)\
+WebCam: [https://youtu.be/9IueCEBMZBI](https://youtu.be/9IueCEBMZBI)\
+Gameplay: [https://youtu.be/dogD1GrD2uQ](https://youtu.be/dogD1GrD2uQ)
 
 #### Player(s)
 
 * name: Calvin
-* PlayedBefore: True (co-op)&#x20;
+* PlayedBefore: True (co-op) / not the full game / old version
 * Age: 20
 
 #### What we wanted to test
@@ -139,13 +141,13 @@ This player did play before in the early stages of the game and only with someon
 Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it
 {% endhint %}
 
-Video: (url)\
-WebCam: (url)\
-Gameplay: (url)
+Video: [https://youtu.be/NDHn5BlFlN0](https://youtu.be/NDHn5BlFlN0)\
+WebCam: [https://youtu.be/MjB-NySGW\_Y](https://youtu.be/MjB-NySGW\_Y)\
+Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 
 #### What we wanted to test
 
-These 2 players did play before but only "singleplayer" so what we wanted to do with this is test if its more fun together, singleplayer, or about the same and since one of them is somewhat of a 'veteran' does that change how they play? does the veteran do more or will he help the other player.
+"Rookie with veteran" and "coop vs singleplayer", in this usertest we wanted to test 2 things what happens when someone that has only played once, plays with someone that has played multiple (multiple version) times, do they help eachother? does the veteran do everything? (this is moslty per person base and can change depending on who is the veteran but still interesting to see) besides that, we wanted to see if its "more fun" to play with someone instead of solo since they both played the latest version solo and not with someone &#x20;
 
 #### Player(s):
 
@@ -161,12 +163,13 @@ These 2 players did play before but only "singleplayer" so what we wanted to do 
 
 #### Things we noticed:
 
-* player(s) saying "oh jij bent de coole bij" translating to "oh you are the cool bee"&#x20;
+* player(s) saying "oh jij bent de coole bij" translating to "oh you are the cool bee (referring to a character in the game)"&#x20;
 * stopped all customers at first but creating a wave of customers and calling it the "midday-rush"&#x20;
 * broke the game again by throwing customers out of the map
 * walked out of the map trying to recover the customers&#x20;
-* (bugg) whilse walking out of the map to recover the customer they grabbed the truck and triggered the "order deliver" logic and so getting there order (they didn't notice that happened)&#x20;
-* they found out how to order (but the control scheme isn't the best they button smashed the controller trying to figure it out unfortunately i don't have a controller recording. )
+* (bugg) while walking out of the map to recover the customer they grabbed the truck and triggered the "order deliver" logic and so getting there order (they didn't notice that happened)&#x20;
+* they found out how to order!&#x20;
+* they found out how to order (but the control scheme isn't the best they button smashed the controller trying to figure it out unfortunately, I don't have a controller recording. )
 
 #### Points of interest (video)&#x20;
 
@@ -179,7 +182,7 @@ These 2 players did play before but only "singleplayer" so what we wanted to do 
 2. customers thrown out of the map break the game&#x20;
    * fix: either make it so they can't leave the store or if this happens remove them and they become unhappy lowering your score (this would also require a visual effect) _(team meeting to find a solution)_
 3. ordering button sceme is confusing&#x20;
-   * fix: ordering needs a rework. _(team meeting to find a solution)_
+   * fix: we where already planning to take a look at ordering so its good to see the users also agree  _(team meeting to find a solution)_
 
 ### UserTest8:
 
