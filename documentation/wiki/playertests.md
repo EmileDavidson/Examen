@@ -47,8 +47,6 @@
 Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it.
 {% endhint %}
 
-> Didn't really say all his toughts even reminded him sometimes to keep talking but nothing i can do about it anymore since doing it again wouldn't give me the same results as letting a complete nooby play.&#x20;
-
 Video: [https://youtu.be/tnGtOzQT65w](https://youtu.be/tnGtOzQT65w)\
 WebCam: [https://youtu.be/tvrvasVcrMQ](https://youtu.be/tvrvasVcrMQ)\
 Gameplay: [https://youtu.be/lt1lGlYMgaM](https://youtu.be/lt1lGlYMgaM)
@@ -142,9 +140,9 @@ This player did play before in the early stages of the game and only with someon
 3. trying to fix broken customers "what do you want me to do"
    * &#x20;[https://youtu.be/NDHn5BlFlN0?t=122](https://youtu.be/NDHn5BlFlN0?t=122)
 4. grabbing the truck without having ordered anything
-   * &#x20;[https://youtu.be/NDHn5BlFlN0](https://youtu.be/NDHn5BlFlN0)
+   * [https://youtu.be/NDHn5BlFlN0?t=132](https://youtu.be/NDHn5BlFlN0?t=132)
 5. tried ordering but had no idea how
-   * &#x20;[https://youtu.be/NDHn5BlFlN0](https://youtu.be/NDHn5BlFlN0)
+   * [https://youtu.be/NDHn5BlFlN0?t=138](https://youtu.be/NDHn5BlFlN0?t=138)
 6. speeds up customers by thowing them to the cash register
    * &#x20;[https://youtu.be/NDHn5BlFlN0?t=208](https://youtu.be/NDHn5BlFlN0?t=208)
 7. finnaly fixed the customers&#x20;
@@ -239,7 +237,7 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 
 ### UserTest8:
 
-{% embed url="https://drive.google.com/file/d/1PZuW50cQB5YmRyUC6-DaNqv_UlSgHLxY/view?usp=sharing" %}
+video: [https://youtu.be/roXlpcWeRqo](https://youtu.be/roXlpcWeRqo)
 
 #### What we wanted to test
 
@@ -257,7 +255,9 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 * PlayedBefore: False
 * Age: 19
 
-#### Things we noticed:
+#### Points of interest (video)  & Things we noticed:
+
+> Small clips from the video(s) that are interesting and things we noticed the player do or player say
 
 * For a few seconds didn’t know what player he was controlling.
 * Noticed that the checkout had to be attended to.
@@ -266,10 +266,6 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 * Customer was stuck in place. The player was confused by this.
 * Noticed that they can drag customers out of the store.
 * Didn’t know what to do with the truck.
-
-#### Points of interest (video)&#x20;
-
-> Small clips from the video(s) that are interesting&#x20;
 
 #### Dev Action points:&#x20;
 
@@ -280,7 +276,7 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 
 ### UserTest9:
 
-{% embed url="https://drive.google.com/file/d/16EMl4oFy35n0O8DbzG7VIbF3PcBzTfpn/view?usp=sharing" %}
+video: [https://youtu.be/Pul6UgyJHJ8](https://youtu.be/Pul6UgyJHJ8)
 
 #### What we wanted to test
 
@@ -298,16 +294,18 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 * PlayedBefore: False
 * Age: 17
 
-#### Things the player noticed:
+#### Points of interest (video)  & Things the player / we noticed:
 
-* Noticed he couldn’t grab cars.
-* Thought the pickup was very natural, range wasn’t too short but not too long either.
-* On keyboard you don’t have very good control over the direction you’re holding something.
-* Tried to grab the plant pot but was disappointed that they couldn’t.
+> Small clips from the video(s) that are interesting and things we noticed the player do or player say
 
-#### Points of interest (video)&#x20;
+1. Noticed he couldn’t grab cars.
+   * [https://youtu.be/Pul6UgyJHJ8?t=108](https://youtu.be/Pul6UgyJHJ8?t=108)
+2. Thought the pickup was very natural, range wasn’t too short but not too long either.
+3. On keyboard you don’t have very good control over the direction you’re holding something.
+4. Tried to grab the plant pot but was disappointed that they couldn’t.
+   * [https://youtu.be/Pul6UgyJHJ8?t=99](https://youtu.be/Pul6UgyJHJ8?t=99)
 
-> Small clips from the video(s) that are interesting&#x20;
+####
 
 #### Dev Action points:&#x20;
 
@@ -317,7 +315,7 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 
 ### UserTest10:
 
-{% embed url="https://drive.google.com/file/d/14CSJoh60_eWnIxBup-gEmnSqPFhV8sAq/view?usp=sharing" %}
+video: [https://youtu.be/FAI2pQZRMvE](https://youtu.be/FAI2pQZRMvE)
 
 #### What we wanted to test
 
@@ -335,17 +333,18 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 * PlayedBefore: True
 * Age: 19
 
-#### Things the player noticed:
+#### Points of interest (video) & Things the player noticed:
+
+> Small clips from the video(s) that are interesting and things we noticed the player do or player say
 
 * It is not very clear what product has to be ordered.
+  * [https://youtu.be/FAI2pQZRMvE?t=27](https://youtu.be/FAI2pQZRMvE?t=27)
 * The opening of boxes wasn’t clear to the player.
+  * [https://youtu.be/FAI2pQZRMvE?t=88](https://youtu.be/FAI2pQZRMvE?t=88)
 * Truck could be opened by only one player the second time the truck arrived.
+  * [https://youtu.be/FAI2pQZRMvE?t=183](https://youtu.be/FAI2pQZRMvE?t=183)
 * The player had to keep good track of the shelves.
 * It was quite easy to learn the list of products on the ordering screen.
-
-#### Points of interest (video)&#x20;
-
-> Small clips from the video(s) that are interesting&#x20;
 
 #### Dev Action points:&#x20;
 
