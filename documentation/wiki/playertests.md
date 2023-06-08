@@ -63,25 +63,41 @@ Gameplay: [https://youtu.be/lt1lGlYMgaM](https://youtu.be/lt1lGlYMgaM)
 
 "Pickup and play" so we told him nothing except that the start button is not "A" but "B" since we used a different type of controller, besides the controls we also wanted to see a "singleplayer" view does it feel the same as playing with someone, do we see them same kind of enjoyment?&#x20;
 
-#### Things we noticed
-
-* Started by looking at the control scheme and tested them out immidialty after starting&#x20;
-* Dind't know what he had to do at first and customers were not spawning yet. and he tried taking items from the shelves (asked afterward since he forgot to talk out loud sometimes)&#x20;
-* Grabbed a customer (maybe by accident? while trying the controls)
-* noticed the customers waiting at the cash register and knew how to pick up the item(s) / scan them &#x20;
-* he noticed that customers can be scanned
-* immediately grabbed the "truck" so it is clear how to interact with it but it was not clear what it was for.&#x20;
-* tried recycling the products that he didn't scan (because he didn't know how to order and get new products)&#x20;
-* Did notice he got money from scanning products&#x20;
-
-#### Points of interest (video)&#x20;
+#### Points of interest (video) & Things we noticed
 
 > Small clips from the video(s) that are interesting&#x20;
+
+1. Started by looking at the control scheme and tested them out immidialty after starting&#x20;
+   * [https://youtu.be/tnGtOzQT65w](https://youtu.be/tnGtOzQT65w)
+2. looks like he liked the grab "animation" (repeating it)&#x20;
+   * [https://youtu.be/tnGtOzQT65w?t=18](https://youtu.be/tnGtOzQT65w?t=18)
+3. "No idea what L1 and R1 do" (ordering screen cycle trough buttons)
+   * [https://youtu.be/tnGtOzQT65w?t=26](https://youtu.be/tnGtOzQT65w?t=26)
+4. Dind't know what he had to do at first and customers were not spawning yet. and he tried taking items from the shelves (asked afterward since he forgot to talk out loud sometimes)&#x20;
+   * [https://youtu.be/tnGtOzQT65w?t=15](https://youtu.be/tnGtOzQT65w?t=15)
+5. Grabbed a customer (maybe by accident? while trying the controls)
+   * [https://youtu.be/tnGtOzQT65w?t=29](https://youtu.be/tnGtOzQT65w?t=29)
+6. noticed the customers waiting at the cash register and knew how to pick up the item(s) / scan them &#x20;
+   * [https://youtu.be/tnGtOzQT65w?t=39](https://youtu.be/tnGtOzQT65w?t=39)
+7. the door doesn't open you go trough it&#x20;
+   * [https://youtu.be/tnGtOzQT65w?t=58](https://youtu.be/tnGtOzQT65w?t=58)
+8. dropped an item of the cash register but ignored it&#x20;
+   1. [https://youtu.be/tnGtOzQT65w](https://youtu.be/tnGtOzQT65w)
+9. he noticed that customers can be scanned (got a small from it)&#x20;
+   * [https://youtu.be/tnGtOzQT65w?t=113](https://youtu.be/tnGtOzQT65w?t=113)
+10. immediately grabbed the "truck" so it is clear how to interact with it but it was not clear what it was for.&#x20;
+    * [https://youtu.be/tnGtOzQT65w?t=123](https://youtu.be/tnGtOzQT65w?t=123)
+    * [https://youtu.be/tnGtOzQT65w?t=175](https://youtu.be/tnGtOzQT65w?t=175)
+11. tried recycling the products that he didn't scan (because he didn't know how to order and get new products)&#x20;
+    * [https://youtu.be/tnGtOzQT65w?t=215](https://youtu.be/tnGtOzQT65w?t=215)
+12. Did notice he got money from scanning products but no idea what to do with it&#x20;
+    * [https://youtu.be/tnGtOzQT65w?t=203](https://youtu.be/tnGtOzQT65w?t=203)
 
 #### Dev Action points:&#x20;
 
 1. Saw products flying off the map after he ran in to it&#x20;
    * fix: adding a collider around the map&#x20;
+   * [https://youtu.be/tnGtOzQT65w?t=200](https://youtu.be/tnGtOzQT65w?t=200)
 2. make it easier to understand how to order new products.&#x20;
    * fix: maybe add some text above the ordering screen saying "order products" _(team meeting to find a solution)_
 3. _add a clear indication of what you need to do at the start of the game since just spawning them and then having to wait for customer(s) can be confusing_&#x20;
@@ -111,29 +127,43 @@ Gameplay: [https://youtu.be/dogD1GrD2uQ](https://youtu.be/dogD1GrD2uQ)
 
 #### What we wanted to test
 
-This player did play before in the early stages of the game and only with someone else so there where 2 things we wanted from this user-test, getting feedback on the improvements we made and the difference between co-op and singleplayer what is more enjoyable.&#x20;
+This player did play before in the early stages of the game and only with someone else so there where 2 things we wanted from this user-test, getting feedback on the improvements we made and the difference between co-op and singleplayer what is more enjoyable. &#x20;
 
-#### Things we noticed
+#### Points of interest (video) & Things we noticed
+
+> Small clips from the video(s) that are interesting&#x20;
 
 > A lot harder to find things worth mentioning since he knew most things so we can't really say " oh he didn't know this he knew to do the cashregister etc.. " since well he already knew. "
 
-* immediately tried to break the game by buggs he previously found or heard of.&#x20;
-* Did notice you needed to grab the truck but didn't know how to order products at first.
-* Broke the customers and tried to " fix " them but couldn't figure out why they where broken.&#x20;
-
-#### Points of interest (video)&#x20;
-
-> Small clips from the video(s) that are interesting&#x20;
+1. hitting the products of the cash register
+   * &#x20;[https://youtu.be/NDHn5BlFlN0?t=78](https://youtu.be/NDHn5BlFlN0?t=78)
+2. picking up the customers and throwing them out of the store (breaking the game)&#x20;
+   * [https://youtu.be/NDHn5BlFlN0?t=12](https://youtu.be/NDHn5BlFlN0?t=12)
+3. trying to fix broken customers "what do you want me to do"
+   * &#x20;[https://youtu.be/NDHn5BlFlN0?t=122](https://youtu.be/NDHn5BlFlN0?t=122)
+4. grabbing the truck without having ordered anything
+   * &#x20;[https://youtu.be/NDHn5BlFlN0](https://youtu.be/NDHn5BlFlN0)
+5. tried ordering but had no idea how
+   * &#x20;[https://youtu.be/NDHn5BlFlN0](https://youtu.be/NDHn5BlFlN0)
+6. speeds up customers by thowing them to the cash register
+   * &#x20;[https://youtu.be/NDHn5BlFlN0?t=208](https://youtu.be/NDHn5BlFlN0?t=208)
+7. finnaly fixed the customers&#x20;
+   * [https://youtu.be/NDHn5BlFlN0?t=221](https://youtu.be/NDHn5BlFlN0?t=221)
+8. immediately tried to break the game by buggs he previously found or heard of.&#x20;
 
 #### Dev Action points:&#x20;
 
 1. Fixing existing buggs&#x20;
-   * Customers out of the map will never return so the game never ends.
-   * Customers may wait indefinitly for eachother at cashregister or when the paths overlap&#x20;
+   * Customers out of the map will never return so the game never ends. (known issue)&#x20;
+   * Customers may wait indefinitly for eachother at cashregister or when the paths overlap (known issue)&#x20;
 2. The truck is confusing. did not know that you need to order before grabbing the truck&#x20;
    * fix: maybe add the items you ordered on the side of the truck? _(team meeting to find a solution)_
 3. Order screen in the back (noting the items you have ordered is the small)&#x20;
-   * fix: move it closer or think of another solution _(team meeting to find a solution)_
+   * fix: move it closer, or make it bigger, or think of another solution _(team meeting to find a solution)_
+4. _Order button scheme is confusing_&#x20;
+   * _needs a rework (team meeting to find a better solution)_&#x20;
+5. _Hitting products of the cash register can be frustrating since you barely have enough time to deal with_&#x20;
+   * a fix could be adding a "jump" mechanic where you can jump over the cash register and or other elements of the game&#x20;
 
 ### UserTest7:
 
