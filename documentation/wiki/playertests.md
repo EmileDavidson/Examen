@@ -65,7 +65,7 @@ Gameplay: [https://youtu.be/lt1lGlYMgaM](https://youtu.be/lt1lGlYMgaM)
 
 #### Points of interest (video) & Things we noticed
 
-> Small clips from the video(s) that are interesting&#x20;
+> Small clips from the video(s) that are interesting and things we noticed the player do or player say
 
 1. Started by looking at the control scheme and tested them out immidialty after starting&#x20;
    * [https://youtu.be/tnGtOzQT65w](https://youtu.be/tnGtOzQT65w)
@@ -131,7 +131,7 @@ This player did play before in the early stages of the game and only with someon
 
 #### Points of interest (video) & Things we noticed
 
-> Small clips from the video(s) that are interesting&#x20;
+> Small clips from the video(s) that are interesting and things we noticed the player do or player say
 
 > A lot harder to find things worth mentioning since he knew most things so we can't really say " oh he didn't know this he knew to do the cashregister etc.. " since well he already knew. "
 
@@ -171,7 +171,7 @@ This player did play before in the early stages of the game and only with someon
 Unfortunately, the webcam footage messed up and ended up capturing the device audio, making it nearly impossible to hear the microphone. I toggled off the device audio beforehand, but somehow it magically turned itself back on during the user test. and I only noticed after the recordings. By that point, there wasn't much I could do to fix it
 {% endhint %}
 
-Video: [https://youtu.be/NDHn5BlFlN0](https://youtu.be/NDHn5BlFlN0)\
+Video: [https://youtu.be/GMyIv6XsBeI](https://youtu.be/GMyIv6XsBeI)\
 WebCam: [https://youtu.be/MjB-NySGW\_Y](https://youtu.be/MjB-NySGW\_Y)\
 Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 
@@ -191,19 +191,40 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
 * PlayedBefore: True (singleplayer)
 * Age: 22
 
-#### Things we noticed:
+#### Points of interest (video) & Things we noticed:
 
-* player(s) saying "oh jij bent de coole bij" translating to "oh you are the cool bee (referring to a character in the game)"&#x20;
-* stopped all customers at first but creating a wave of customers and calling it the "midday-rush"&#x20;
-* broke the game again by throwing customers out of the map
-* walked out of the map trying to recover the customers&#x20;
-* (bugg) while walking out of the map to recover the customer they grabbed the truck and triggered the "order deliver" logic and so getting there order (they didn't notice that happened)&#x20;
-* they found out how to order!&#x20;
-* they found out how to order (but the control scheme isn't the best they button smashed the controller trying to figure it out unfortunately, I don't have a controller recording. )
+> Small clips from the video(s) that are interesting and things we noticed the player do or player say
 
-#### Points of interest (video)&#x20;
+1. "Don't press "x" because that would start the game before the other player joins (did have to tell them)
+   * &#x20;[https://youtu.be/GMyIv6XsBeI?t=1](https://youtu.be/GMyIv6XsBeI?t=1)
+2. Trying to figure out wich character they are playing&#x20;
+   * [https://youtu.be/GMyIv6XsBeI?t=9](https://youtu.be/GMyIv6XsBeI?t=9)
+3. player(s) saying "oh jij bent de coole bij" translating to "oh you are the cool bee and "I'm something" (referring to a character in the game)"&#x20;
+   * [https://youtu.be/GMyIv6XsBeI?t=9](https://youtu.be/GMyIv6XsBeI?t=9)
+4. stopped all customers at first but creating a wave of customers and calling it the "midday-rush"&#x20;
+   1. [https://youtu.be/GMyIv6XsBeI?t=19](https://youtu.be/GMyIv6XsBeI?t=19)
+   2. [https://youtu.be/GMyIv6XsBeI?t=54](https://youtu.be/GMyIv6XsBeI?t=54)
+5. "Wait I can hold the customers so you can help them easier"
+   * [https://youtu.be/GMyIv6XsBeI?t=66](https://youtu.be/GMyIv6XsBeI?t=66)
+6. "Previous play I thruw them out of the map here and they didn't return" saying to me "look at me i'm going to break your game again!" and ofcourse showing that they show things to eachother&#x20;
+   * [https://youtu.be/GMyIv6XsBeI?t=25](https://youtu.be/GMyIv6XsBeI?t=25)
+7. Didn't realise the truck needs all players before it works&#x20;
+   * [https://youtu.be/GMyIv6XsBeI?t=82](https://youtu.be/GMyIv6XsBeI?t=82)
+8. "they want the other cash register but they are stuck let me help them"
+   * [https://youtu.be/GMyIv6XsBeI?t=94](https://youtu.be/GMyIv6XsBeI?t=94)
+9. stressing because a lot of customers are at the cash register
+   * [https://youtu.be/GMyIv6XsBeI?t=93](https://youtu.be/GMyIv6XsBeI?t=93)
+10. "what products was here 0/4" so its not clear what product is where after the shelf is empty (they did try to remember by asking eachother) and ordering products&#x20;
+    1. [https://youtu.be/GMyIv6XsBeI?t=120](https://youtu.be/GMyIv6XsBeI?t=120)
+    2. [https://youtu.be/GMyIv6XsBeI?t=126](https://youtu.be/GMyIv6XsBeI?t=126)
+11. stressing because there was a customer at the cash register but they where focussed on ordering&#x20;
+    * [https://youtu.be/GMyIv6XsBeI?t=130](https://youtu.be/GMyIv6XsBeI?t=130)
+12. walked out of the map trying to recover the customers and "fixing" the game&#x20;
+    * [https://youtu.be/GMyIv6XsBeI?t=281](https://youtu.be/GMyIv6XsBeI?t=281)
+13. hard time trying to pick up a product from the ground&#x20;
+    * [https://youtu.be/GMyIv6XsBeI?t=222](https://youtu.be/GMyIv6XsBeI?t=222)
 
-> Small clips from the video(s) that are interesting&#x20;
+
 
 #### Dev Action points:&#x20;
 
@@ -213,6 +234,8 @@ Gameplay: [https://youtu.be/cyl0cmX1jD4](https://youtu.be/cyl0cmX1jD4)
    * fix: either make it so they can't leave the store or if this happens remove them and they become unhappy lowering your score (this would also require a visual effect) _(team meeting to find a solution)_
 3. ordering button sceme is confusing&#x20;
    * fix: we where already planning to take a look at ordering so its good to see the users also agree  _(team meeting to find a solution)_
+4. (bugg) while walking out of the map to recover the customer they grabbed the truck and triggered the "order deliver" logic and so getting there order (they didn't notice that happened)&#x20;
+   * fix: make it so the truck logic is "disabled" whilse inactive
 
 ### UserTest8:
 
